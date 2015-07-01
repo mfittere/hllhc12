@@ -1,0 +1,40 @@
+----- pre-squeezed optics -----
+1       pre_squeeze optics of HLLHCV1.1 with HLLHCV1.2 hllhc_sequence.madx file, but on_layout_custom=1 with HLLHCV1.1 layout
+2       de-squeeze and reduce margin in imq5l, kq7.l5b2, betxip5b1=0.455
+3       de-squeeze to betxip5b1=0.5
+4       increase length: betxip5b1=0.5;l.mqx=6.91;l.mqxl=8.09;
+5       increase length,adjust distance between ITs: betxip5b1=0.5;l.mqx=6.93;l.mqxl=8.19;dq2bq3  =  3.6280;dq1q2a  =  3.62800;
+6       increase length,adjust distance between ITs: betxip5b1=0.5;l.mqx=6.93;l.mqxl=8.19;dq2bq3  =  3.6280;dq1q2a  =  3.62800;dq1aq1b =  0.6460;
+7       increase length,adjust distance between ITs: betxip5b1=0.5;l.mqx=7.15;l.mqxl=8.40;dq2bq3  =  3.6280;dq1q2a  =  3.62800;dq1aq1b =  0.6460;
+8       optics 7 with deltaposD2=-15.386200;
+->final layout reached
+9       equalize beta -> reduce Q1 gradient
+10      grad=132.6 -> gradient limitation reached
+11      squeeze beta*: betxip5b1=0.47;
+12      squeeze beta*: betxip5b1=0.46;
+13      squeeze beta*: betxip5b1=0.45;
+14      squeeze beta*: betxip5b1=0.446;
+15      squeeze beta*: betxip5b1=0.446;equalize beta_max in IT, bety_q3=7235;
+16      squeeze beta*: betxip5b1=0.443;
+17      squeeze beta*: betxip5b1=0.44;
+18      squeeze beta*: betxip5b1=0.44;equalize beta_max in IT, bety_q3=7360;
+19      squeeze beta*: betxip5b1=0.46;equalize beta_max in IT, bety_q3=7040;
+
+
+v_crabh.l1b1 = 11.5956813452851 ;
+v_crabh.l1b2 = 11.7134415799584 ;
+v_crabh.r1b1 = 11.7134714141833 ;
+v_crabh.r1b2 = 11.5957060900513 ;
+v_crabh.l5b1 = 11.5956962309392 ;
+v_crabh.l5b2 = 11.7134917388357 ;
+v_crabh.r5b1 = 11.7134961009387 ;
+v_crabh.r5b2 = 11.5956449302502 ;
+v_crabv.l1b1 = 12.2693316126678 ;
+v_crabv.l1b2 = 11.4180793096469 ;
+v_crabv.r1b1 = 11.4180764666803 ;
+v_crabv.r1b2 = 12.2693346577808 ;
+v_crabv.l5b1 = 12.2693317271631 ;
+v_crabv.l5b2 = 11.4180794315093 ;
+v_crabv.r5b1 = 11.4180765866078 ;
+v_crabv.r5b2 = 12.2693348099299 ;
+
