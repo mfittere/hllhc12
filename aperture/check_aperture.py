@@ -3,11 +3,9 @@
 import sys
 import gzip
 
-eps=-0.1
-eps=+0.0
-
-def check_aperture(fn):
+def check_aperture(fn,eps=0,n1ref='nominal'):
   print "Checking %s" % fn
+  print "aperture margin %s"%n1ref
   if fn.endswith('.gz'):
     fh=gzip.open(fn)
   else:
@@ -17,7 +15,8 @@ def check_aperture(fn):
   labels=['NAME', 'BETX', 'BETY', 'DX', 'DY', 'X', 'Y', 'N1']
 
   out=[]
-
+  limn1={'nominal':{'MSD':7.5,'MQW':5.5,'MQF':7,'MQD':6.7,'TCT':6.5},'hllhc_col':{'MSD':12.0,'MQW':12.0,'MQF':12.0,'MQD':12.0,'TCT':12.0},'hllhc_inj':{'MSD':10.0,'MQW':10.0,'MQF':10.0,'MQD':10.0,'TCT':10.0}}
+    
   for l in fh:
     if l.startswith('*'):
       label_line=l.split()
@@ -28,17 +27,17 @@ def check_aperture(fn):
       data=l.split()
       name,betx,bety,dx,dy,x,y,n1=[ eval(data[idx[lb]]) for lb in labels]
       if name.startswith('M'):
-        if  name.startswith('MSD') and n1<7.5-eps:
-          out.append([2,name,betx,bety,dx,x,y,n1,n1-7.5])
+        if  name.startswith('MSD') and n1<limn1[n1ref]['MSD']-eps:
+          out.append([2,name,betx,bety,dx,x,y,n1,n1-limn1[n1ref]['MSD']])
         elif 'MQW' in name or 'MQTLH' in name or '6R3' in name or '6L3' in name:
-          if n1<5.5-eps:
+          if n1<limn1[n1ref]['MQW']-eps:
             out.append([4,name,betx,bety,dx,dy,x,y,n1])
-        elif betx>bety and n1<7-eps:
-          out.append([0,name,betx,bety,dx,dy,x,y,n1,n1-7])
-        elif betx<bety and n1<6.7-eps:
-          out.append([1,name,betx,bety,dx,dy,x,y,n1,n1-6.7])
-      elif  name.startswith('TCT') and  n1<6.5-eps:
-          out.append([3,name,betx,bety,dx,dy,x,y,n1,n1-6.5])
+        elif betx>bety and n1<limn1[n1ref]['MQF']-eps:
+          out.append([0,name,betx,bety,dx,dy,x,y,n1,n1-limn1[n1ref]['MQF']])
+        elif betx<bety and n1<limn1[n1ref]['MQD']-eps:
+          out.append([1,name,betx,bety,dx,dy,x,y,n1,n1-limn1[n1ref]['MQD']])
+      elif  name.startswith('TCT') and  n1<limn1[n1ref]['TCT']-eps:
+          out.append([3,name,betx,bety,dx,dy,x,y,n1,n1-limn1[n1ref]['TCT']])
 
   prefix='H V S C 3'.split()
   out.sort()
@@ -69,10 +68,16 @@ alltblinj="""
 try:
   eps=float(sys.argv[2])
 except:
+  eps=0
+  pass
+try:
+  n1ref=sys.argv[3]
+except:
+  n1ref='hllhc_col'
   pass
 
 if sys.argv[1]=='inj':
   for tbl in alltblinj:
     check_aperture(tbl)
 else:
-  check_aperture(sys.argv[1])
+  check_aperture(sys.argv[1],eps,n1ref)
