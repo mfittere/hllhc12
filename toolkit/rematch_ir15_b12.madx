@@ -117,16 +117,16 @@ if (match_on_aperture==1) {
 !constraint,sequence=lhcb1,range= MQ.11R5.B1,Dx<2.30,betx<191;
 !constraint,sequence=lhcb2,range= MQ.11L5.B2,betx<185;
 !constraint,sequence=lhcb2,range=MQML.10l5.B2,bety<175.25+epsap;
-constraint,sequence=lhcb2,range=MQML.10r5.B2,betx<190+epsap;
+!constraint,sequence=lhcb2,range=MQML.10r5.B2,betx<190+epsap;
 !  if (betx_ip5>8){
 !  constraint,sequence=lhcb2,range= MQ.11r5.B2,bety<182.2+epsap+3.1-3.1;
 !  };
 !  if (betx_ip5<6){
 !    constraint,sequence=lhcb2,range= MQ.11r5.B2,bety<182.2+epsap+3.1;
 !  };
-constraint,sequence=lhcb1,range= MQM.9L5.B1,bety<158+epsap;!165;
+!constraint,sequence=lhcb1,range= MQM.9L5.B1,bety<158+epsap;!165;
 !constraint,sequence=lhcb2,range= MQM.9r5.B2,bety<150+epsap;
-constraint,sequence=lhcb1,range= MQML.8R5.B1,bety<160+epsap;!179.15
+!constraint,sequence=lhcb1,range= MQML.8R5.B1,bety<160+epsap;!179.15
 !constraint,sequence=lhcb2,range= MQML.8l5.B2,bety<179.15-8;
 !constraint,sequence=lhcb1,range= MQM.A7L5.B1,bety<175.0+epsap;!175;
 !constraint,sequence=lhcb1,range= MQM.A7R5.B1,betx<175+epsap;!175;
@@ -136,8 +136,8 @@ constraint,sequence=lhcb1,range= MQ.11L5.B1,bety<180.7+4.3+epsap;
 !constraint,sequence=lhcb1,range=MQML.10L5.B1,betx<178;!179.15!
 !constraint,sequence=lhcb1,range=MQML.10R5.B1,bety<179.1+8.5;
 !constraint,sequence=lhcb2,range= MQ.11r5.B2,bety=182.2+epsap+2;
-constraint,sequence=lhcb1,range= MQ.11R5.B1,Dx<2.44,betx<183+4+epsap;
-constraint,sequence=lhcb1,range= MQ.12L5.B1,betx<183+epsap,dx<2.22;
+!constraint,sequence=lhcb1,range= MQ.11R5.B1,Dx<2.44,betx<183+4+epsap;
+!constraint,sequence=lhcb1,range= MQ.12L5.B1,betx<183+epsap,dx<2.22;
 !constraint,sequence=lhcb2,range= MQ.11L5.B2,betx<185,dx<2.22;
 !constraint,sequence=lhcb2,range= MQ.11R5.B2,bety<184.1+epsap;
 constraint,sequence=lhcb2,range= MQ.12R5.B2,betx<180.4+3+epsap,dx<2.3;
@@ -238,21 +238,21 @@ KQX3.L5_100=KQX3.L5/mqxw;
 KQX1.L5:=KQX1.L5_100*mqxw;
 KQX2.L5:=KQX2.L5_100*mqxw;
 KQX3.L5:=KQX3.L5_100*mqxw;
-!vary,name=KQX1.L5_100    ,LOWER=-qtlim1/mqxw,UPPER=0.00*qtlim1;
+vary,name=KQX1.L5_100    ,LOWER=-qtlim1/mqxw,UPPER=0.00*qtlim1;
 vary,name=KQX2.L5_100    ,LOWER=-mqxw*qtlim1,UPPER=0.00*qtlim1;
-!vary,name=KQX3.L5_100    ,LOWER=-qtlim1/mqxw,upper=0.00*qtlim1;
+vary,name=KQX3.L5_100    ,LOWER=-qtlim1/mqxw,upper=0.00*qtlim1;
 };
 if (match_on_triplet==2) {! q1 q2 linked
 !KQX1.L5:=KQX2.L5;
 vary,name=KQX2.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
 };
-if (match_on_triplet==3) {! only q3
+if (match_on_triplet==3) {! only beta in q3 and cc region constrained
 !KQX1.L5:=KQX2.L5;
 vary,name=KQX1.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
 vary,name=KQX2.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
 vary,name=KQX3.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
-constraint,sequence=lhcb2,range=MCBYYH.4R5.B2,betx=betx_mcby;
-constraint,sequence=lhcb2,range=MCBYYH.4R5.B2,bety=bety_mcby;
+!constraint,sequence=lhcb2,range=MCBYYH.4R5.B2,betx=betx_mcby;
+!constraint,sequence=lhcb2,range=MCBYYH.4R5.B2,bety=bety_mcby;
 if (bety_q3>0){
   constraint,sequence=lhcb2,range=MQXFA.B3R5,bety=bety_q3;
 };
@@ -385,7 +385,7 @@ value,KQT13.L5B1 /qtlim5;
 value,KQT13.L5b2 /qtlim5;
 value,KQT13.R5B1 /qtlim5;
 value,KQT13.R5b2 /qtlim5;
-
+value,imq5l,imq5r;
 
 
 !value,tar;
