@@ -32,13 +32,12 @@ if (mylhcbeam>2){
 };
 
 
-
 if (on_layout_custom==0){
 l.MQXL      =          8.4000000000 ;
 l.MQX       =          7.1500000000 ;
-dq1q2a      =          3.6280000000 ;
+dq1q2a      =          3.6290000000 ;
 dq1aq1b     =          0.6460000000 ;
-dq2aq2b     =          2.1080000000 ;
+dq2aq2b     =          2.1070000000 ;
 dq2bq3      =          3.6280000000 ;
 deltaposD2  =        -15.3862000000 ;!max. field D2 35 Tm -> move D2 as close as possible to D1
 deltaposQ4  =          8.0470000000 ;!new value (excel file): 11.1690400000
@@ -312,8 +311,8 @@ posQ2a:=posQ1b+(l.Q13+l.MQX)/2.+dq1q2a;
 posQ2b:=posQ2a+l.MQX+dq2aq2b;
 posQ3a:=posQ2b+(l.Q13+l.MQX)/2.+dq2bq3;
 posQ3b:=posQ3a+l.Q13+dq1aq1b;
-!value, posQ1,posQ2a,posQ2b,posQ3;
-
+value, posQ1a,posQ1b,posQ2a,posQ2b,posQ3a,posQ3b;
+       
 ! new element types
 MQXFA:   QUADRUPOLE, L := l.Q13;   ! Q1 Q3
 MQXFB:   QUADRUPOLE, L := l.MQX;    ! Q2a Q2b
@@ -1454,8 +1453,8 @@ exec,crab_install(D,posCRABD1,posCRABD2);
 !! v6.503  10.425 ,   7.335 ,   5.655 ,   3.445 ,   2.0805
 !! slhc 1.275 closer to D2
 !posTAN    := posD2    - l.MBRD/2 -  L.TAXN/2 - 8.020;
-!posTCTV   := posTAN   + L.TAXN/2 +  l.TCT/2  + 0.567-0.08+0.01;!720
-!posTCTH   := posTCTV  + l.TCT/2  +  l.TCT/2  + 0.695-0.075;
+!posTCTV   := posTAN   + L.TAXN/2 +  l.TCT/2  + 0.567-0.08+0.01;!720 - !!! not checked !!!
+!posTCTH   := posTCTV  + l.TCT/2  +  l.TCT/2  + 0.695-0.075;! !!!! not checked !!!
 !posTCL.4  := posTCTH  + l.TCT/2  +  l.TCT/2  + 0.595-0.07;
 !posTCL.5  := posTCLMB.5  - l.TCLMB/2 - l.TCT/2 - 0.760;
 !posTCL.6C := posTCLMC.6C - l.TCLMC/2 - l.TCT/2 - 0.760;
