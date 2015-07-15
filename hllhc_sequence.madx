@@ -1371,38 +1371,32 @@ exec,crab_install(D,posCRABD1,posCRABD2);
 !===============================================
 ! Masks
 !===============================================
+!compared to HLLHCV1.1:
+!- mask in front of D2 removed
+!- mask in front of Q4 removed
 
-
-!l.TCLMA=0.5;
 l.TCLMB=1.0;
 l.TCLMC=1.0;
 
-!posTCLMA    := posD2 - l.MBRD/2 - l.TCLMA/2 - 1.8312;!to be checked
-
-!posTCLMB.6  := posQ6 - l.MQML/2 - dist_TM - l.TCLMB/2;
-posTCLMB.5  := posQ5 - dposMCBY.A5 - l.MCBY/2 - l.TCLMB/2 - 1.835;!930+655+(1500-1000)/2
-posTCLMC.6C := posQ6 - l.MQML/2 - 2.673 - 0.250 - l.TCLMC/2;
-posTCLMC.6Q := posQ6 - l.MQML/2 - 2.066 - 0.250 - l.TCLMC/2;
+posTCLMB.5  := posQ5 - dposMCBY.A5 - l.MCBY/2 - l.TCLMB/2 - 1.835;!930+655+500/2
+posTCLMC.6C := posQ6 - dposMCBCH - l.TCLMC/2 - 1.831;!926+655+500/2
+posTCLMC.6Q := posQ6 - dposMCBCH - l.TCLMC/2 - 1.831;
 
 value,posTCLMB.5,posTCLMC.6C,posTCLMC.6Q;
 
-!TCLMA : RCOLLIMATOR, L := l.TCLMA;
 TCLMB : RCOLLIMATOR, L := l.TCLMB;
 TCLMC : RCOLLIMATOR, L := l.TCLMC;
 
-!exec,newel_ir15_b12(TCLMA.4,TCLMA);
-exec,newel_ir15_b12(TCLMB.4,TCLMB);
 exec,newel_ir15_b12(TCLMB.5,TCLMB);
 exec,newel_ir15_b12(TCLMC.6,TCLMC);
 
-!exec,install_ir15_b12(TCLMA.4,    posTCLMA   );
-!exec,install_ir15_b12(TCLMB.4,    posTCLMB.4 );
-exec,install_ir15_b12(TCLMB.5,    posTCLMB.5 );
+!mask Q5
+exec,install_ir15_b12(TCLMB.5, posTCLMB.5 );
 
-
+!mask Q6
 if(bv_aux == 1){
 seqedit,sequence=lhcb1;
-! TCLMC
+! ... TCLMC
 install,element=TCLMC.6L1.B1,at=-posTCLMC.6C, from= IP1.L1;
 install,element=TCLMC.6R1.B1,at= posTCLMC.6Q, from= IP1;
 install,element=TCLMC.6L5.B1,at=-posTCLMC.6Q, from= IP5;
@@ -1411,7 +1405,7 @@ endedit;
 };
 
 seqedit,sequence=lhcb2;
-! .... MCBC.6
+! ... TCLMC
 install,element=TCLMC.6L1.B2, at=(-posTCLMC.6C)*bv_aux, from= IP1.L1;
 install,element=TCLMC.6R1.B2, at=( posTCLMC.6Q)*bv_aux, from= IP1;
 install,element=TCLMC.6L5.B2, at=(-posTCLMC.6Q)*bv_aux, from= IP5;
@@ -1433,14 +1427,14 @@ posTCL.4  := posBPMWQ  - l.BPMWQ/2 - l.TCL/2 - 0.460;
 posTCTH   := posTCL.4  - l.TCL/2   - l.TCT/2 - 0.940;
 posTCTV   := posTCTH   - l.TCT - 1.000;
 posTAN    := posTCTV   - l.TCT/2   - l.TAXN/2 - 0.580;
-!Q5 region
-posTCL.5  := posTCLMB.5  - l.TCLMB/2 - l.TCL/2 - 0.760;
-posTCL.6C := posTCLMC.6C - l.TCLMC/2 - l.TCL/2 - 0.760;
-posTCL.6Q := posTCLMC.6Q - l.TCLMC/2 - l.TCL/2 - 0.760;
-
-posTCTV.5 := posQ5+l.MQY/2 + 2.600+l.TCT/2;
-posTCTH.5 := posTCTV.5  +1.000+l.TCT;
-
+!Q5/Q6 region
+!IP side
+posTCL.5  := posTCLMB.5  - l.TCLMB/2 - l.TCL/2 - 0.760;!500/2+270+480/2
+posTCL.6C := posTCLMC.6C - l.TCLMC/2 - l.TCL/2 - 0.760;!500/2+270+480/2
+posTCL.6Q := posTCLMC.6Q - l.TCLMC/2 - l.TCL/2 - 0.760;!500/2+270+480/2
+!non IP side
+posTCTV.5 := posQ5 + l.MQY/2 + l.TCT/2 + 2.600;!1435+655+270+480/2
+posTCTH.5 := posTCTV.5       + l.TCT   + 1.000;!520+480
 
 value,posTAN;
 value,posTCTH,posTCTV,posTCL.4,posTCL.5,posTCL.6C,posTCL.6Q;
@@ -1451,7 +1445,6 @@ TCL.5R1.B1: TCL; TCL.5R5.B1: TCL;
 TCL.5L1.B2: TCL; TCL.5L5.B2: TCL;
 TCL.6R1.B1: TCL; TCL.6R5.B1: TCL;
 TCL.6L1.B2: TCL; TCL.6L5.B2: TCL;
-
 
 TAXN: RCOLLIMATOR, l:=l.TAXN;
 
@@ -1473,7 +1466,7 @@ TCTH.5R1.B2: TCTH; TCTH.5R5.B2: TCTH;
 TCTV.5R1.B2: TCTV; TCTV.5R5.B2: TCTV;
 
 l.BPTXaux=0.285;
-posBPTX=posQ4+l.MQYY/2+3.313+l.BPTXaux/2+0.1425;
+posBPTX=posQ4 + l.MQYY/2 + l.BPTXaux/2 + 3.313;!1463+655+1195=3313
 
 
 APWL.5R5.B1: APWL; APWL.5R5.B2: APWL;
@@ -1481,21 +1474,15 @@ APWL.5L5.B1: APWL; APWL.5L5.B2: APWL;
 APWL.5R1.B1: APWL; APWL.5R1.B2: APWL;
 APWL.5L1.B1: APWL; APWL.5L1.B2: APWL;
 
-L.APWLaux=0.0;
-posAPWL1=posQ4+l.MQYY/2+5.05+L.APWLaux/2;
-posAPWL2=posQ4+l.MQYY/2+5.05+3*L.APWLaux/2;
+L.APWLaux=0.6;
+posAPWL1=posQ4 + l.MQYY/2 + L.APWLaux/2   + 4.750 ;!1463+655+1195+285+1152=4750
+posAPWL2=posQ4 + l.MQYY/2 + 3*L.APWLaux/2 + 4.750 ;
 
 exec,install_ir15_b1_b2(APWL.5,  posAPWL1, posAPWL2);
-
 exec, install_ir15_cmn(TAXN.4,posTAN);
 
 if(bv_aux == 1){
 seqedit,sequence=lhcb1;
-!! ... TAN
-!install,element=TAXN.4L1,   at= -posTAN,    from= IP1.L1;
-!install,element=TAXN.4R1,   at=  posTAN,    from= IP1;
-!install,element=TAXN.4L5,   at= -posTAN,    from= IP5;
-!install,element=TAXN.4R5,   at=  posTAN,    from= IP5;
 ! ... TCTH
 install,element=TCTH.4L1.B1, at= -posTCTH,   from= IP1.L1;
 install,element=TCTH.4L5.B1, at= -posTCTH,   from= IP5;
@@ -1513,45 +1500,32 @@ install,element=TCL.5R1.B1,  at= posTCL.5, from=IP1;
 install,element=TCL.5R5.B1,  at= posTCL.5, from=IP5;
 install,element=TCL.6R1.B1,  at= posTCL.6Q, from=IP1;
 install,element=TCL.6R5.B1,  at= posTCL.6C, from=IP5;
-
+! ... BPTX
 install,element=BPTX.5L1.B1, at= -posBPTX, from=IP1.L1;
 install,element=BPTX.5L5.B1, at= -posBPTX, from=IP5;
-
-
 endedit;
 };
 
 seqedit,sequence=lhcb2;
-!! ... TAN
-!install,element=TAXN.4L1,   at= -posTAN*bv_aux,    from= IP1.L1;
-!install,element=TAXN.4R1,   at=  posTAN*bv_aux,    from= IP1;
-!install,element=TAXN.4L5,   at= -posTAN*bv_aux,    from= IP5;
-!install,element=TAXN.4R5,   at=  posTAN*bv_aux,    from= IP5;
-
 ! ... TCTH
 install,element=TCTH.4R1.B2, at=  posTCTH*bv_aux,   from= IP1;
 install,element=TCTH.4R5.B2, at=  posTCTH*bv_aux,   from= IP5;
 install,element=TCTH.5R1.B2, at=  posTCTH.5*bv_aux,   from= IP1;
 install,element=TCTH.5R5.B2, at=  posTCTH.5*bv_aux,   from= IP5;
-
 ! ... TCTV
 install,element=TCTV.4R1.B2, at= posTCTV*bv_aux, from=IP1;
 install,element=TCTV.4R5.B2, at= posTCTV*bv_aux, from=IP5;
 install,element=TCTV.5R1.B2, at= posTCTV.5*bv_aux, from=IP1;
 install,element=TCTV.5R5.B2, at= posTCTV.5*bv_aux, from=IP5;
-
-install,element=BPTX.5R1.B2, at= posBPTX*bv_aux, from=IP1;
-install,element=BPTX.5R5.B2, at= posBPTX*bv_aux, from=IP5;
-
 ! ... TCL
 install,element=TCL.4L1.B2,  at= -posTCL.4*bv_aux, from=IP1.L1;
 install,element=TCL.4L5.B2,  at= -posTCL.4*bv_aux, from=IP5;
-
 install,element=TCL.5L1.B2,  at= -posTCL.5*bv_aux, from=IP1.L1;
 install,element=TCL.5L5.B2,  at= -posTCL.5*bv_aux, from=IP5;
-
 install,element=TCL.6L1.B2,  at= -posTCL.6Q*bv_aux, from=IP1.L1;
 install,element=TCL.6L5.B2,  at= -posTCL.6C*bv_aux, from=IP5;
-
+! ... BPTX
+install,element=BPTX.5R1.B2, at= posBPTX*bv_aux, from=IP1;
+install,element=BPTX.5R5.B2, at= posBPTX*bv_aux, from=IP5;
 
 endedit;
