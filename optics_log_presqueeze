@@ -19,22 +19,13 @@
 17      squeeze beta*: betxip5b1=0.44;
 18      squeeze beta*: betxip5b1=0.44;equalize beta_max in IT, bety_q3=7360;
 19      squeeze beta*: betxip5b1=0.46;equalize beta_max in IT, bety_q3=7040;
+20      betxip5b1=0.46;equalize beta_max in IT and at crab cavtities, bety_q3=7140;betx_mcby_ref = 1087.256;bety_mcby_ref = 705 ;
+21      betxip5b1=0.46;equalize beta_max in IT and at crab cavtities ...
+22      betxip5b1=0.46;equalize beta_max in IT and at crab cavtities ...
+23      betxip5b1=0.46;equalize beta_max in IT and at crab cavtities: bety_q3=7045;bety_mcby = 740;
+24      betxip5b1=0.48;equalize beta_max in IT, 0.99 % of Q7 strength bety_q3=6756; betx_mcby_ref = 978.9829548; bety_mcby_ref = 715.05527; vcrab_max=v_crabv.l1b1 = 11.96468
+25      betxip5b1=0.48;bety_q3=6756; bety_mcby = 720; vcrab_max=v_crabv.l1b1 = 11.96468
+26      betxip5b1=0.48;bety_q3=6753.5;betx_mcby= 0;bety_mcby = 723; equalized beta-functions in IT to 1.e-1
 
 
-v_crabh.l1b1 = 11.5956813452851 ;
-v_crabh.l1b2 = 11.7134415799584 ;
-v_crabh.r1b1 = 11.7134714141833 ;
-v_crabh.r1b2 = 11.5957060900513 ;
-v_crabh.l5b1 = 11.5956962309392 ;
-v_crabh.l5b2 = 11.7134917388357 ;
-v_crabh.r5b1 = 11.7134961009387 ;
-v_crabh.r5b2 = 11.5956449302502 ;
-v_crabv.l1b1 = 12.2693316126678 ;
-v_crabv.l1b2 = 11.4180793096469 ;
-v_crabv.r1b1 = 11.4180764666803 ;
-v_crabv.r1b2 = 12.2693346577808 ;
-v_crabv.l5b1 = 12.2693317271631 ;
-v_crabv.l5b2 = 11.4180794315093 ;
-v_crabv.r5b1 = 11.4180765866078 ;
-v_crabv.r5b2 = 12.2693348099299 ;
 

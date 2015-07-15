@@ -358,16 +358,6 @@ matchXscheme(IRN,VAR1,VAR2,VPHI): macro={
   constraint, sequence=lhcb1,range=E.DS.RIRN.B1,y = 0.0, py = 0.0;
   constraint, sequence=lhcb2,range=E.DS.RIRN.B2,x = 0.0, px = 0.0;
   constraint, sequence=lhcb2,range=E.DS.RIRN.B2,y = 0.0, py = 0.0;
-!  cavshift=0.0005*3;! match orbit in D2 (vertical) = aperture bottleneck
-!  constraint, sequence=lhcb1,range=MCBRDV.4LIRN.B1,x=-cavshift*xcosirIRN;
-!  constraint, sequence=lhcb1,range=MBRD.4RIRN.B1,  x= cavshift*xcosirIRN;
-!  constraint, sequence=lhcb2,range=MCBRDV.4LIRN.B2,x= cavshift*xcosirIRN;
-!  constraint, sequence=lhcb2,range=MBRD.4RIRN.B2,  x=-cavshift*xcosirIRN;
-!  constraint, sequence=lhcb1,range=MCBRDV.4LIRN.B1,y=-cavshift*xsinirIRN;
-!  constraint, sequence=lhcb1,range=MBRD.4RIRN.B1,  y= cavshift*xsinirIRN;
-!  constraint, sequence=lhcb2,range=MCBRDV.4LIRN.B2,y= cavshift*xsinirIRN;
-!  constraint, sequence=lhcb2,range=MBRD.4RIRN.B2,  y=-cavshift*xsinirIRN;
-
   acbxh2.lIRNVAR1:=cmcb12*acbxh1.lIRNVAR1;
   vary, name=acbxh3.lIRNVAR1,step=1.e-12,lower=-climmcbxfa,upper=climmcbxfa;
 !  vary, name=acbxh2.lIRNVAR1,step=1.e-12,lower=-climmcbxfb,upper=climmcbxfb;
@@ -389,10 +379,10 @@ matchXscheme(IRN,VAR1,VAR2,VPHI): macro={
 !  vary, name=acbyhs4.lIRNb2VAR1;
 !  vary, name=acbyhs4.rIRNb1VAR1;
 !  vary, name=acbyhs4.rIRNb2VAR1;
-!!  vary, name=acbyhs5.lIRNb1VAR1;
-!!  vary, name=acbyhs5.lIRNb2VAR1;
-!!  vary, name=acbyhs5.rIRNb1VAR1;
-!!  vary, name=acbyhs5.rIRNb2VAR1;
+!  vary, name=acbyhs5.lIRNb1VAR1;
+!  vary, name=acbyhs5.lIRNb2VAR1;
+!  vary, name=acbyhs5.rIRNb1VAR1;
+!  vary, name=acbyhs5.rIRNb2VAR1;
 
   acbxv2.lIRNVAR2:=cmcb12*acbxv1.lIRNVAR2;
   vary, name=acbxv3.lIRNVAR2,step=1.e-12,lower=-climmcbxfa,upper=climmcbxfa;
@@ -415,10 +405,10 @@ matchXscheme(IRN,VAR1,VAR2,VPHI): macro={
 !  vary, name=acbyvs4.lIRNb2VAR2;
 !  vary, name=acbyvs4.rIRNb1VAR2;
 !  vary, name=acbyvs4.rIRNb2VAR2;
-!!  vary, name=acbyvs5.lIRNb1VAR2;
-!!  vary, name=acbyvs5.lIRNb2VAR2;
-!!  vary, name=acbyvs5.rIRNb1VAR2;
-!!  vary, name=acbyvs5.rIRNb2VAR2;
+!  vary, name=acbyvs5.lIRNb1VAR2;
+!  vary, name=acbyvs5.lIRNb2VAR2;
+!  vary, name=acbyvs5.rIRNb1VAR2;
+!  vary, name=acbyvs5.rIRNb2VAR2;
   if (acbrdv4.rIRNb1VAR2==0){simplex,calls=200;};
   jacobian, calls = 10, tolerance=1.E-30,bisec=3;
   endmatch;

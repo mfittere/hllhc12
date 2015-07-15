@@ -264,14 +264,11 @@ aperture,range=s.ds.lnir.bim/e.ds.rnir.bim,
          dparx=DParcx,dpary=DParcy,
          file=temp/ap_irnirbim.tfs;
 !system, "rm offset.ip*b*.tfs";
-if(NRJ<4000)
-{
-  system,"slhc/aperture/check_aperture.py temp/ap_irnirbim.tfs 0 hllhc_inj";
-}
-else
-{
-  system,"slhc/aperture/check_aperture.py temp/ap_irnirbim.tfs 0 hllhc_col";
-}
+if (NRJ < 4000){
+system,"slhc/aperture/check_aperture.py temp/ap_irnirbim.tfs 0 hllhc_inj";
+} else {
+system,"slhc/aperture/check_aperture.py temp/ap_irnirbim.tfs 0 hllhc_col";
+};
 };
 
 mk_aparc(NARC1,NARC2,BIM,NRJ) : macro ={
