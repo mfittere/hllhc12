@@ -28,10 +28,14 @@ match,      sequence=lhcb2, beta0=bir6b2;
 weight,mux=10,muy=10;
 constraint,sequence=lhcb2,range=ip6,betx=betxip6b2;
 constraint,sequence=lhcb2,range=ip6,bety=betyip6b2;
-constraint,sequence=lhcb2,range=ip6,dx=dxip6b2;
-constraint,sequence=lhcb2,range=ip6,dpx=dpxip6b2;
 constraint,sequence=lhcb2,range=ip6,alfx=alfxip6b2;
 constraint,sequence=lhcb2,range=ip6,alfy=alfyip6b2;
+if(match_on_dx ==0){
+constraint,sequence=lhcb2,range=ip6,dx=dxip6b2;
+};
+if(match_on_dpx==0){
+constraint,sequence=lhcb2,range=ip6,dpx=dpxip6b2;
+};
 !if(is_thin==1){
 !  constraint,sequence=lhcb2,range=ip6,dx=dxip6b2,dpx =dpxip6b2;
 !};
@@ -74,7 +78,7 @@ if (is_thin==0){
  vary,name=kqt13.r6b2,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
 !lmdif,calls=200,tolerance=1.e-21;
 jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-!simplex,  calls=15, tolerance=jac_tol;-
+!simplex,  calls=15, tolerance=jac_tol;
 endmatch;
 
 exec,mk_irtwiss(6,b2);
@@ -89,9 +93,9 @@ bydumpb2=refbetyip6b2+2*al_dump*refalfyip6b2+
 value,bxdumpb2,bydumpb2;
 
 tarir6b2=tar;
+value,kqt13.l6b2/qtlimit5,kqt12.l6b2/qtlimit5,kqtl11.l6b2,kq10.l6b2,kq9.l6b2,kq8.l6b2,kq5.l6b2,kq4.l6b2,
+kq4.r6b2,kq5.r6b2,kq8.r6b2,kq9.r6b2,kq10.r6b2,kqtl11.r6b2,kqt12.r6b2/qtlimit5,kqt13.r6b2/qtlimit5;
 value,tarir6b2;
-value,kqt13.l6b2,kqt12.l6b2,kqtl11.l6b2,kq10.l6b2,kq9.l6b2,kq8.l6b2,kq5.l6b2,kq4.l6b2,
-kq4.r6b2,kq5.r6b2,kq8.r6b2,kq9.r6b2,kq10.r6b2,kqtl11.r6b2,kqt12.r6b2,kqt13.r6b2;
 
 !muxip6b2 = 2.0000 ;betxip6b2= 1.96000000E+02 ;alfxip6b2 = 5.98285418E-01  ;
 !muyip6b2 = 2.0300 ;betyip6b2= 1.79082800E+02;alfyip6b2 =-5.41937487E-01 ;

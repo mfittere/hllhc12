@@ -25,10 +25,14 @@ match,      sequence=lhcb1, beta0=bir6b1;
 weight,mux=10,muy=10;
 constraint,sequence=lhcb1,range=ip6,bety=betyip6b1;
 constraint,sequence=lhcb1,range=ip6,betx=betxip6b1;
-constraint,sequence=lhcb1,range=ip6,dx =dxip6b1;
-constraint,sequence=lhcb1,range=ip6,dpx=dpxip6b1;
 constraint,sequence=lhcb1,range=ip6,alfx=alfxip6b1;
 constraint,sequence=lhcb1,range=ip6,alfy=alfyip6b1;
+if(match_on_dx ==0){
+  constraint,sequence=lhcb1,range=ip6,dx =dxip6b1;
+};
+if(match_on_dpx==0){
+  constraint,sequence=lhcb1,range=ip6,dpx=dpxip6b1;
+};
 !constraint,range=mqml.10l6.b1,bety< 700;
 !constraint,range=mqm.9l6.b1,betx< 1250;
 !if(is_thin==1){
@@ -91,9 +95,9 @@ exec,plot_ap(6,b1,$nrj,$full);
 
 
 tarir6b1=tar;
-value,tarir6b1;
 value,kqt13.l6b1,kqt12.l6b1,kqtl11.l6b1,kq10.l6b1,kq9.l6b1,kq8.l6b1,kq5.l6b1,kq4.l6b1,
 kq4.r6b1,kq5.r6b1,kq8.r6b1,kq9.r6b1,kq10.r6b1,kqtl11.r6b1,kqt12.r6b1,kqt13.r6b1;
+value,tarir6b1;
 
 
 !muxip6b1 = 2.0000 ;betxip6b1= 187.297499 ;alfxip6b1 = -0.541994 ;
