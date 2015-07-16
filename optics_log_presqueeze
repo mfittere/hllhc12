@@ -26,6 +26,8 @@
 24      betxip5b1=0.48;equalize beta_max in IT, 0.99 % of Q7 strength bety_q3=6756; betx_mcby_ref = 978.9829548; bety_mcby_ref = 715.05527; vcrab_max=v_crabv.l1b1 = 11.96468
 25      betxip5b1=0.48;bety_q3=6756; bety_mcby = 720; vcrab_max=v_crabv.l1b1 = 11.96468
 26      betxip5b1=0.48;bety_q3=6753.5;betx_mcby= 0;bety_mcby = 723; equalized beta-functions in IT to 1.e-1
+27      slightly wrong layout, now corrected: betxip5b1=0.48;bety_q3=6753.7;betx_mcby= 0;bety_mcby = 725; equalized beta-functions in IT to 1.e-1
+28      betxip5b1=0.48;bety_q3=6753.91;bety_mcby = 726.5; equalized beta-functions in IT to 1.e-1
 
 
 
