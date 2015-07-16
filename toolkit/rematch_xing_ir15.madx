@@ -12,9 +12,11 @@ if(abs(cd2q4)<1.e-6){
 cd2q4:=0.5;
 };
 !MCBXFB
-climmcbxfb =2.5/scale;!2.5 Tm integrated strength, MCBXFB[HV][12]
-climmcbxfa =4.5/scale;!4.5 Tm integrated strength, MCBXFA[HV]3
-climmcbrd =4.5/scale;!4.5 Tm integrated strength, MCBXFA[HV]3
+climmcbxfb = 2.5/scale;!2.5 Tm integrated strength, MCBXFB[HV][12]
+climmcbxfa = 4.5/scale;!4.5 Tm integrated strength, MCBXFA[HV]3
+climmcbrd  = 4.5/scale;!4.5 Tm integrated strength, MCBRD[HV].4 and MCBYY[HV].4
+climmcby5  = 2.697/scale;!2.697 Tm integrated strength, MCBY[HV].5
+climmcbc   =2.097/scale;!2.33 Tm integrated strength (assuming 2.33 T and l.MCBCH=0.90 m (note l.MCBCV=0.9040 m which is not taken into account)
 
 resetXscheme(nIR) : macro ={
 ACBXH1.LnIR=0;ACBXH1.LnIRx=0;ACBXH1.LnIRs=0;ACBXH1.LnIRo=0;
@@ -80,12 +82,6 @@ acbyvs5.LnIRB2=0;acbyvs5.LnIRB2x=0;acbyvs5.LnIRB2s=0;acbyvs5.LnIRB2o=0;
 acbyvs5.RnIRB2=0;acbyvs5.RnIRB2x=0;acbyvs5.RnIRB2s=0;acbyvs5.RnIRB2o=0;
 };
 
-
-!MCBXFB
-climmcbxfb = 2.5/scale;!2.5 Tm integrated strength, MCBXFB[HV][12]
-climmcbxfa = 4.5/scale;!4.5 Tm integrated strength, MCBXFA[HV]3
-climmcbrd  = 4.5/scale;!4.5 Tm integrated strength, MCBRD[HV].4 and MCBYY[HV].4
-climmcby5  = 2.697/scale;!2.697 Tm integrated strength, MCBY[HV].5
 
 valueXscheme_rel(nIR) : macro ={
 value,ACBXH1.LnIRx/climmcbxfb,ACBXH1.LnIRs/climmcbxfb,ACBXH1.LnIRo/climmcbxfb;
