@@ -970,30 +970,32 @@ MQY.5L1.B2:MQY,K1 := -kq5.l1b2*bv_aux, polarity=+1;
 !MCBYV.5R5.B2: MCBYV, KICK := -acbcv5.r5b2*bv_aux, polarity=+1;
 !MCBYH.5L1.B2: MCBYH, KICK := -acbch5.l1b2, polarity=+1;
 
-MCBYV.A5R1.B1:MCBYV, KICK:= acbyvs5.r1b1*bv_aux, polarity=+1;
-MCBYH.5R1.B1 :MCBYH, KICK:= acbyhs5.r1b1, polarity=+1;
-MCBYV.B5R1.B1:MCBYV, KICK:= acbyv5.r1b1*bv_aux, polarity=+1;
-MCBYH.B5L5.B1:MCBYH, KICK:= acbyh5.l5b1, polarity=+1;
-MCBYV.5L5.B1 :MCBYV, KICK:= acbyvs5.l5b1*bv_aux, polarity=+1;
-MCBYH.A5L5.B1:MCBYH, KICK:= acbyhs5.l5b1, polarity=+1;
-MCBYV.A5R5.B1:MCBYV, KICK:= acbyvs5.r5b1*bv_aux, polarity=+1;
-MCBYH.5R5.B1 :MCBYH, KICK:= acbyhs5.r5b1, polarity=+1;
-MCBYV.B5R5.B1:MCBYV, KICK:= acbyv5.r5b1*bv_aux, polarity=+1;
-MCBYH.B5L1.B1:MCBYH, KICK:= acbyh5.l1b1, polarity=+1;
-MCBYV.5L1.B1 :MCBYV, KICK:= acbyvs5.l1b1*bv_aux, polarity=+1;
-MCBYH.A5L1.B1:MCBYH, KICK:= acbyhs5.l1b1, polarity=+1;
-MCBYH.A5R1.B2:MCBYH, KICK:= -acbyhs5.r1b2, polarity=+1;
-MCBYV.5R1.B2 :MCBYV, KICK:= -acbyvs5.r1b2*bv_aux, polarity=+1;
-MCBYH.B5R1.B2:MCBYH, KICK:= -acbyh5.r1b2, polarity=+1;
-MCBYV.B5L5.B2:MCBYV, KICK:= -acbyv5.l5b2*bv_aux, polarity=+1;
-MCBYH.5L5.B2 :MCBYH, KICK:= -acbyhs5.l5b2, polarity=+1;
-MCBYV.A5L5.B2:MCBYV, KICK:= -acbyvs5.l5b2*bv_aux, polarity=+1;
-MCBYH.A5R5.B2:MCBYH, KICK:= -acbyhs5.r5b2, polarity=+1;
-MCBYV.5R5.B2 :MCBYV, KICK:= -acbyvs5.r5b2*bv_aux, polarity=+1;
-MCBYH.B5R5.B2:MCBYH, KICK:= -acbyh5.r5b2, polarity=+1;
-MCBYV.B5L1.B2:MCBYV, KICK:= -acbyv5.l1b2*bv_aux, polarity=+1;
-MCBYH.5L1.B2 :MCBYH, KICK:= -acbyhs5.l1b2, polarity=+1;
-MCBYV.A5L1.B2:MCBYV, KICK:= -acbyvs5.l1b2*bv_aux, polarity=+1;
+! MQY B - A for all MQY the B corrector is closest to the MQY
+MCBYV.A5R1.B2:MCBYV, KICK:= acbyvs5.r1b2*bv_aux, polarity=+1;
+MCBYH.5R1.B2 :MCBYH, KICK:= acbyhs5.r1b2, polarity=+1;
+MCBYV.B5R1.B2:MCBYV, KICK:= acbyv5.r1b2*bv_aux, polarity=+1;
+MCBYH.B5L5.B2:MCBYH, KICK:= acbyh5.l5b2, polarity=+1;
+MCBYV.5L5.B2 :MCBYV, KICK:= acbyvs5.l5b2*bv_aux, polarity=+1;
+MCBYH.A5L5.B2:MCBYH, KICK:= acbyhs5.l5b2, polarity=+1;
+MCBYV.A5R5.B2:MCBYV, KICK:= acbyvs5.r5b2*bv_aux, polarity=+1;
+MCBYH.5R5.B2 :MCBYH, KICK:= acbyhs5.r5b2, polarity=+1;
+MCBYV.B5R5.B2:MCBYV, KICK:= acbyv5.r5b2*bv_aux, polarity=+1;
+MCBYH.B5L1.B2:MCBYH, KICK:= acbyh5.l1b2, polarity=+1;
+MCBYV.5L1.B2 :MCBYV, KICK:= acbyvs5.l1b2*bv_aux, polarity=+1;
+MCBYH.A5L1.B2:MCBYH, KICK:= acbyhs5.l1b2, polarity=+1;
+
+MCBYH.A5R1.B1:MCBYH, KICK:= -acbyhs5.r1b1, polarity=+1;
+MCBYV.5R1.B1 :MCBYV, KICK:= -acbyvs5.r1b1*bv_aux, polarity=+1;
+MCBYH.B5R1.B1:MCBYH, KICK:= -acbyh5.r1b1, polarity=+1;
+MCBYV.B5L5.B1:MCBYV, KICK:= -acbyv5.l5b1*bv_aux, polarity=+1;
+MCBYH.5L5.B1 :MCBYH, KICK:= -acbyhs5.l5b1, polarity=+1;
+MCBYV.A5L5.B1:MCBYV, KICK:= -acbyvs5.l5b1*bv_aux, polarity=+1;
+MCBYH.A5R5.B1:MCBYH, KICK:= -acbyhs5.r5b1, polarity=+1;
+MCBYV.5R5.B1 :MCBYV, KICK:= -acbyvs5.r5b1*bv_aux, polarity=+1;
+MCBYH.B5R5.B1:MCBYH, KICK:= -acbyh5.r5b1, polarity=+1;
+MCBYV.B5L1.B1:MCBYV, KICK:= -acbyv5.l1b1*bv_aux, polarity=+1;
+MCBYH.5L1.B1 :MCBYH, KICK:= -acbyhs5.l1b1, polarity=+1;
+MCBYV.A5L1.B1:MCBYV, KICK:= -acbyvs5.l1b1*bv_aux, polarity=+1;
 
 
 posQ5  := 196.490 + deltaPosQ5; !new layout (excel file): 207.49
@@ -1483,15 +1485,15 @@ exec, install_ir15_cmn(TAXN.4,posTAN);
 
 if(bv_aux == 1){
 seqedit,sequence=lhcb1;
-! ... TCTH
+!! ... TCTH
 install,element=TCTH.4L1.B1, at= -posTCTH,   from= IP1.L1;
 install,element=TCTH.4L5.B1, at= -posTCTH,   from= IP5;
-install,element=TCTH.5L1.B1, at= -posTCTH.5,   from= IP1.L1;
+!install,element=TCTH.5L1.B1, at= -posTCTH.5,   from= IP1.L1;
 install,element=TCTH.5L5.B1, at= -posTCTH.5,   from= IP5;
-! ... TCTV
+!! ... TCTV
 install,element=TCTV.4L1.B1, at= -posTCTV, from=IP1.L1;
 install,element=TCTV.4L5.B1, at= -posTCTV, from=IP5;
-install,element=TCTV.5L1.B1, at= -posTCTV.5,   from= IP1.L1;
+!install,element=TCTV.5L1.B1, at= -posTCTV.5,   from= IP1.L1;
 install,element=TCTV.5L5.B1, at= -posTCTV.5,   from= IP5;
 ! ... TCL
 install,element=TCL.4R1.B1,  at= posTCL.4, from=IP1;
@@ -1511,12 +1513,12 @@ seqedit,sequence=lhcb2;
 install,element=TCTH.4R1.B2, at=  posTCTH*bv_aux,   from= IP1;
 install,element=TCTH.4R5.B2, at=  posTCTH*bv_aux,   from= IP5;
 install,element=TCTH.5R1.B2, at=  posTCTH.5*bv_aux,   from= IP1;
-install,element=TCTH.5R5.B2, at=  posTCTH.5*bv_aux,   from= IP5;
+!install,element=TCTH.5R5.B2, at=  posTCTH.5*bv_aux,   from= IP5;
 ! ... TCTV
 install,element=TCTV.4R1.B2, at= posTCTV*bv_aux, from=IP1;
 install,element=TCTV.4R5.B2, at= posTCTV*bv_aux, from=IP5;
 install,element=TCTV.5R1.B2, at= posTCTV.5*bv_aux, from=IP1;
-install,element=TCTV.5R5.B2, at= posTCTV.5*bv_aux, from=IP5;
+!install,element=TCTV.5R5.B2, at= posTCTV.5*bv_aux, from=IP5;
 ! ... TCL
 install,element=TCL.4L1.B2,  at= -posTCL.4*bv_aux, from=IP1.L1;
 install,element=TCL.4L5.B2,  at= -posTCL.4*bv_aux, from=IP5;
