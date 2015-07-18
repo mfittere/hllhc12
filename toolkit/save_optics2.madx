@@ -232,19 +232,28 @@ print,text="";
 
 
 print,text=" !***Exp. configuration in IR1, IR2, IR5 and IR8***";
-printf,text="on_sep1=%g;on_x1=%g;on_os1=%g;on_ox1=%g;phi_IR1=%g;",
-       value=on_sep1,on_x1,on_os1,on_ox1,phi_IR1;
+printf,text="on_sep1=%g;on_x1=%g;on_os1=%g;on_ox1=%g;phi_IR1=%g;on_o1=%g;phio_ir1=%g;",
+       value=on_sep1,on_x1,on_os1,on_ox1,phi_IR1,on_o1,phio_IR1;
 printf,text="on_sep2=%g;on_x2=%g;on_os2=%g;on_ox2=%g;phi_IR2=%g;",
        value=on_sep2,on_x2,on_os2,on_ox2,phi_IR2;
-printf,text="on_sep5=%g;on_x5=%g;on_os5=%g;on_ox5=%g;phi_IR5=%g;",
-       value=on_sep5,on_x5,on_os5,on_ox5,phi_IR5;
+printf,text="on_sep5=%g;on_x5=%g;on_os5=%g;on_ox5=%g;phi_IR5=%g;on_o5=%g;phio_ir5=%g;",
+       value=on_sep5,on_x5,on_os5,on_ox5,phi_IR5,on_o5,phio_IR5;
 printf,text="on_sep8=%g;on_x8=%g;on_os8=%g;on_ox8=%g;phi_IR8=%g;",
        value=on_sep8,on_x8,on_os8,on_ox8,phi_IR8;
+
+print,text=" !***Beam based alignment crab cavities in IR1 and IR5***";
+printf,text="on_ccp1=%g;on_ccm1=%g;on_ccs1=%g;",
+       value=on_ccp1,on_ccm1,on_ccs1;
+printf,text="on_ccp5=%g;on_ccm5=%g;on_ccs5=%g;",
+       value=on_ccp5,on_ccm5,on_ccs5;
 
 print,text="cphi_IR1:=cos(phi_IR1*pi/180.);sphi_IR1:=sin(phi_IR1*pi/180.);";
 print,text="cphi_IR2:=cos(phi_IR2*pi/180.);sphi_IR2:=sin(phi_IR2*pi/180.);";
 print,text="cphi_IR5:=cos(phi_IR5*pi/180.);sphi_IR5:=sin(phi_IR5*pi/180.);";
 print,text="cphi_IR8:=cos(phi_IR8*pi/180.);sphi_IR8:=sin(phi_IR8*pi/180.);";
+
+print,text="cphio_IR1:=cos(phio_IR1*pi/180.);sphi_IR1:=sin(phio_IR1*pi/180.);";
+print,text="cphio_IR5:=cos(phio_IR5*pi/180.);sphi_IR5:=sin(phio_IR5*pi/180.);";
 
 print,text="on_disp=0;";
 
@@ -321,12 +330,16 @@ print,text="";
 print_orbit_knob_ip(corrname,ccc,sss,irn): macro={
 printf,text="corrnamex = %20.10e ;",value=corrnamex;
 printf,text="corrnames = %20.10e ;",value=corrnames;
-printf,text="corrnameox= %20.10e ;",value=corrnameox;
-printf,text="corrnameos= %20.10e ;",value=corrnameos;
-printf,text="corrname :=+on_xirn *cccphi_irirn*(%20.10e)" ,value=corrnamex;
+printf,text="corrnameo = %20.10e ;",value=corrnameo;
+printf,text="corrnameccp = %20.10e ;",value=corrnameccp;
+printf,text="corrnameccm = %20.10e ;",value=corrnameccm;
+printf,text="corrnameccs = %20.10e ;",value=corrnameccs;
+printf,text="corrname :=+on_xirn  *cccphi_irirn*(%20.10e)" ,value=corrnamex;
 printf,text="           +on_sepirn*sssphi_irirn*(%20.10e)" ,value=corrnames;
-printf,text="           +on_oxirn *cccphi_irirn*(%20.10e)" ,value=corrnameox;
-printf,text="           +on_osirn *sssphi_irirn*(%20.10e);",value=corrnameos;
+printf,text="           +on_oirn  *cccphio_irirn*(%20.10e)" ,value=corrnameo;
+printf,text="           +on_ccpirn  *(%20.10e)" ,value=corrnameccp;
+printf,text="           +on_ccmirn  *(%20.10e)" ,value=corrnameccm;
+printf,text="           +on_ccsirn  *(%20.10e);",value=corrnameccs;
 };
 
 
