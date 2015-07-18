@@ -1,4 +1,7 @@
 Poff=2.0e-03;!account for 2 mm offset
+!design crab cavity knobs to cope with +/-0.5mm misalignment of cavities
+!Occ: ccp and ccm knob, dABCD: ccs knob
+Occ:=5.0e-4;dABCD:=2.5e-04;
 Xang=pxip5b1+pyip5b1;Psep=xip5b1+yip5b1;
 Xang=round(Xang*1e6)/1e6; Psep=round(Psep*1e6)/1e6;
 
@@ -31,5 +34,7 @@ if (arc_squeeze>0){
 
 tarcrossing=tarir1xing90+tarir1xing0+tarir5xing90+tarir5xing0+
             tarir2b1xing+tarir2b2xing+tarir8b1xing+tarir8b2xing;
+tarcrab    = tarcrab1+tarcrab5;
 value,tarcrossing;
+value,tarcrab;
 

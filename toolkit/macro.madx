@@ -3060,7 +3060,15 @@ on_x8=on_x2aux;on_sep8=on_sep8aux;on_lhcb=on_lhcbaux;
 on_disp=on_dispaux;
 };
 
+orbcrab_disable: macro={
+on_ccp1=0;on_ccm1=0;on_ccs1=0;
+on_ccp5=0;on_ccm5=0;on_ccs5=0;
+};
 
+orbcrab_restore: macro={
+on_ccp1=on_ccp1aux;on_ccm1=on_ccm1aux;on_ccs1=on_ccs1aux;
+on_ccp5=on_ccp5aux;on_ccm5=on_ccm5aux;on_ccs5=on_ccs5aux;
+};
 copytable(source,target): macro={
 iii=1;
 copiedrows=table(source,tablelength);

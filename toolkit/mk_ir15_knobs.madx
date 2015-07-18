@@ -63,7 +63,7 @@ acbyvs5.RnIRB1=0;acbyvs5.RnIRB1x=0;acbyvs5.RnIRB1s=0;acbyvs5.RnIRB1o=0;acbyvs5.R
 acbyhs5.LnIRB2=0;acbyhs5.LnIRB2x=0;acbyhs5.LnIRB2s=0;acbyhs5.LnIRB2o=0;acbyhs5.LnIRB2ccp=0;acbyhs5.LnIRB2ccm=0;acbyhs5.LnIRB2ccs=0;
 acbyhs5.RnIRB2=0;acbyhs5.RnIRB2x=0;acbyhs5.RnIRB2s=0;acbyhs5.RnIRB2o=0;acbyhs5.RnIRB2ccp=0;acbyhs5.RnIRB2ccm=0;acbyhs5.RnIRB2ccs=0;
 acbyvs5.LnIRB2=0;acbyvs5.LnIRB2x=0;acbyvs5.LnIRB2s=0;acbyvs5.LnIRB2o=0;acbyvs5.LnIRB2ccp=0;acbyvs5.LnIRB2ccm=0;acbyvs5.LnIRB2ccs=0;
-acbyvs5.RnIRB2=0;acbyvs5.RnIRB2x=0;acbyvs4.RnIRB2s=0;acbyvs4.RnIRB2o=0;acbyvs4.RnIRB2ccp=0;acbyvs4.RnIRB2ccm=0;acbyvs4.RnIRB2ccs=0;
+acbyvs5.RnIRB2=0;acbyvs5.RnIRB2x=0;acbyvs5.RnIRB2s=0;acbyvs5.RnIRB2o=0;acbyvs5.RnIRB2ccp=0;acbyvs5.RnIRB2ccm=0;acbyvs5.RnIRB2ccs=0;
 
 acbch6.lIRNb1=0;acbch6.lIRNb1x=0;acbch6.lIRNb1s=0;acbch6.lIRNb1o=0;acbch6.lIRNb1ccp=0;acbch6.lIRNb1ccm=0;acbch6.lIRNb1ccs=0;
 acbch6.rIRNb2=0;acbch6.rIRNb2x=0;acbch6.rIRNb2s=0;acbch6.rIRNb2o=0;acbch6.rIRNb2ccp=0;acbch6.rIRNb2ccm=0;acbch6.rIRNb2ccs=0;
@@ -79,57 +79,57 @@ acbcv7.rIRNb2=0;acbcv7.rIRNb2x=0;acbcv7.rIRNb2s=0;acbcv7.rIRNb2o=0;acbcv7.rIRNb2
 
 
 valueXscheme(nIR) : macro ={
-value,ACBXH1.LnIRx*1e6,ACBXH1.LnIRs*1e6,ACBXH1.LnIRo*1e6;
-value,ACBXH1.RnIRx*1e6,ACBXH1.RnIRs*1e6,ACBXH1.RnIRo*1e6;
-value,ACBXV1.LnIRx*1e6,ACBXV1.LnIRs*1e6,ACBXV1.LnIRo*1e6;
-value,ACBXV1.RnIRx*1e6,ACBXV1.RnIRs*1e6,ACBXV1.RnIRo*1e6;
-                                                       
-value,ACBXH2.LnIRx*1e6,ACBXH2.LnIRs*1e6,ACBXH2.LnIRo*1e6;
-value,ACBXH2.RnIRx*1e6,ACBXH2.RnIRs*1e6,ACBXH2.RnIRo*1e6;
-value,ACBXV2.LnIRx*1e6,ACBXV2.LnIRs*1e6,ACBXV2.LnIRo*1e6;
-value,ACBXV2.RnIRx*1e6,ACBXV2.RnIRs*1e6,ACBXV2.RnIRo*1e6;
-                                                       
-value,ACBXH3.LnIRx*1e6,ACBXH3.LnIRs*1e6,ACBXH3.LnIRo*1e6;
-value,ACBXH3.RnIRx*1e6,ACBXH3.RnIRs*1e6,ACBXH3.RnIRo*1e6;
-value,ACBXV3.LnIRx*1e6,ACBXV3.LnIRs*1e6,ACBXV3.LnIRo*1e6;
-value,ACBXV3.RnIRx*1e6,ACBXV3.RnIRs*1e6,ACBXV3.RnIRo*1e6;
+value,ACBXH1.LnIRx*1e6,ACBXH1.LnIRs*1e6,ACBXH1.LnIRo*1e6,ACBXH1.LnIRccp*1e6,ACBXH1.LnIRccm*1e6,ACBXH1.LnIRccs*1e6;
+value,ACBXH1.RnIRx*1e6,ACBXH1.RnIRs*1e6,ACBXH1.RnIRo*1e6,ACBXH1.RnIRccp*1e6,ACBXH1.RnIRccm*1e6,ACBXH1.RnIRccs*1e6;
+value,ACBXV1.LnIRx*1e6,ACBXV1.LnIRs*1e6,ACBXV1.LnIRo*1e6,ACBXV1.LnIRccp*1e6,ACBXV1.LnIRccm*1e6,ACBXV1.LnIRccs*1e6;
+value,ACBXV1.RnIRx*1e6,ACBXV1.RnIRs*1e6,ACBXV1.RnIRo*1e6,ACBXV1.RnIRccp*1e6,ACBXV1.RnIRccm*1e6,ACBXV1.RnIRccs*1e6;
+                                                                                                                
+value,ACBXH2.LnIRx*1e6,ACBXH2.LnIRs*1e6,ACBXH2.LnIRo*1e6,ACBXH2.LnIRccp*1e6,ACBXH2.LnIRccm*1e6,ACBXH2.LnIRccs*1e6;
+value,ACBXH2.RnIRx*1e6,ACBXH2.RnIRs*1e6,ACBXH2.RnIRo*1e6,ACBXH2.RnIRccp*1e6,ACBXH2.RnIRccm*1e6,ACBXH2.RnIRccs*1e6;
+value,ACBXV2.LnIRx*1e6,ACBXV2.LnIRs*1e6,ACBXV2.LnIRo*1e6,ACBXV2.LnIRccp*1e6,ACBXV2.LnIRccm*1e6,ACBXV2.LnIRccs*1e6;
+value,ACBXV2.RnIRx*1e6,ACBXV2.RnIRs*1e6,ACBXV2.RnIRo*1e6,ACBXV2.RnIRccp*1e6,ACBXV2.RnIRccm*1e6,ACBXV2.RnIRccs*1e6;
+                                                                                                                
+value,ACBXH3.LnIRx*1e6,ACBXH3.LnIRs*1e6,ACBXH3.LnIRo*1e6,ACBXH3.LnIRccp*1e6,ACBXH3.LnIRccm*1e6,ACBXH3.LnIRccs*1e6;
+value,ACBXH3.RnIRx*1e6,ACBXH3.RnIRs*1e6,ACBXH3.RnIRo*1e6,ACBXH3.RnIRccp*1e6,ACBXH3.RnIRccm*1e6,ACBXH3.RnIRccs*1e6;
+value,ACBXV3.LnIRx*1e6,ACBXV3.LnIRs*1e6,ACBXV3.LnIRo*1e6,ACBXV3.LnIRccp*1e6,ACBXV3.LnIRccm*1e6,ACBXV3.LnIRccs*1e6;
+value,ACBXV3.RnIRx*1e6,ACBXV3.RnIRs*1e6,ACBXV3.RnIRo*1e6,ACBXV3.RnIRccp*1e6,ACBXV3.RnIRccm*1e6,ACBXV3.RnIRccs*1e6;
 
-value,acbrdH4.LnIRB1x*1e6,acbrdH4.LnIRB1s*1e6,acbrdH4.LnIRB1o*1e6;
-value,acbrdH4.RnIRB1x*1e6,acbrdH4.RnIRB1s*1e6,acbrdH4.RnIRB1o*1e6;
-value,acbrdV4.LnIRB1x*1e6,acbrdV4.LnIRB1s*1e6,acbrdV4.LnIRB1o*1e6;
-value,acbrdV4.RnIRB1x*1e6,acbrdV4.RnIRB1s*1e6,acbrdV4.RnIRB1o*1e6;
-value,acbrdH4.LnIRB2x*1e6,acbrdH4.LnIRB2s*1e6,acbrdH4.LnIRB2o*1e6;
-value,acbrdH4.RnIRB2x*1e6,acbrdH4.RnIRB2s*1e6,acbrdH4.RnIRB2o*1e6;
-value,acbrdV4.LnIRB2x*1e6,acbrdV4.LnIRB2s*1e6,acbrdV4.LnIRB2o*1e6;
-value,acbrdV4.RnIRB2x*1e6,acbrdV4.RnIRB2s*1e6,acbrdV4.RnIRB2o*1e6;
+value,acbrdH4.LnIRB1x*1e6,acbrdH4.LnIRB1s*1e6,acbrdH4.LnIRB1o*1e6,acbrdH4.LnIRB1ccp*1e6,acbrdH4.LnIRB1ccm*1e6,acbrdH4.LnIRB1ccs*1e6;
+value,acbrdH4.RnIRB1x*1e6,acbrdH4.RnIRB1s*1e6,acbrdH4.RnIRB1o*1e6,acbrdH4.RnIRB1ccp*1e6,acbrdH4.RnIRB1ccm*1e6,acbrdH4.RnIRB1ccs*1e6;
+value,acbrdV4.LnIRB1x*1e6,acbrdV4.LnIRB1s*1e6,acbrdV4.LnIRB1o*1e6,acbrdV4.LnIRB1ccp*1e6,acbrdV4.LnIRB1ccm*1e6,acbrdV4.LnIRB1ccs*1e6;
+value,acbrdV4.RnIRB1x*1e6,acbrdV4.RnIRB1s*1e6,acbrdV4.RnIRB1o*1e6,acbrdV4.RnIRB1ccp*1e6,acbrdV4.RnIRB1ccm*1e6,acbrdV4.RnIRB1ccs*1e6;
+value,acbrdH4.LnIRB2x*1e6,acbrdH4.LnIRB2s*1e6,acbrdH4.LnIRB2o*1e6,acbrdH4.LnIRB2ccp*1e6,acbrdH4.LnIRB2ccm*1e6,acbrdH4.LnIRB2ccs*1e6;
+value,acbrdH4.RnIRB2x*1e6,acbrdH4.RnIRB2s*1e6,acbrdH4.RnIRB2o*1e6,acbrdH4.RnIRB2ccp*1e6,acbrdH4.RnIRB2ccm*1e6,acbrdH4.RnIRB2ccs*1e6;
+value,acbrdV4.LnIRB2x*1e6,acbrdV4.LnIRB2s*1e6,acbrdV4.LnIRB2o*1e6,acbrdV4.LnIRB2ccp*1e6,acbrdV4.LnIRB2ccm*1e6,acbrdV4.LnIRB2ccs*1e6;
+value,acbrdV4.RnIRB2x*1e6,acbrdV4.RnIRB2s*1e6,acbrdV4.RnIRB2o*1e6,acbrdV4.RnIRB2ccp*1e6,acbrdV4.RnIRB2ccm*1e6,acbrdV4.RnIRB2ccs*1e6;
+                                                                                                             
+value,acbyhs4.LnIRB1x*1e6,acbyhs4.LnIRB1s*1e6,acbyhs4.LnIRB1o*1e6,acbyhs4.LnIRB1ccp*1e6,acbyhs4.LnIRB1ccm*1e6,acbyhs4.LnIRB1ccs*1e6;
+value,acbyhs4.LnIRB2x*1e6,acbyhs4.LnIRB2s*1e6,acbyhs4.LnIRB2o*1e6,acbyhs4.LnIRB2ccp*1e6,acbyhs4.LnIRB2ccm*1e6,acbyhs4.LnIRB2ccs*1e6;
+value,acbyhs4.RnIRB1x*1e6,acbyhs4.RnIRB1s*1e6,acbyhs4.RnIRB1o*1e6,acbyhs4.RnIRB1ccp*1e6,acbyhs4.RnIRB1ccm*1e6,acbyhs4.RnIRB1ccs*1e6;
+value,acbyhs4.RnIRB2x*1e6,acbyhs4.RnIRB2s*1e6,acbyhs4.RnIRB2o*1e6,acbyhs4.RnIRB2ccp*1e6,acbyhs4.RnIRB2ccm*1e6,acbyhs4.RnIRB2ccs*1e6;
+value,acbyvs4.LnIRB1x*1e6,acbyvs4.LnIRB1s*1e6,acbyvs4.LnIRB1o*1e6,acbyvs4.LnIRB1ccp*1e6,acbyvs4.LnIRB1ccm*1e6,acbyvs4.LnIRB1ccs*1e6;
+value,acbyvs4.LnIRB2x*1e6,acbyvs4.LnIRB2s*1e6,acbyvs4.LnIRB2o*1e6,acbyvs4.LnIRB2ccp*1e6,acbyvs4.LnIRB2ccm*1e6,acbyvs4.LnIRB2ccs*1e6;
+value,acbyvs4.RnIRB1x*1e6,acbyvs4.RnIRB1s*1e6,acbyvs4.RnIRB1o*1e6,acbyvs4.RnIRB1ccp*1e6,acbyvs4.RnIRB1ccm*1e6,acbyvs4.RnIRB1ccs*1e6;
+value,acbyvs4.RnIRB2x*1e6,acbyvs4.RnIRB2s*1e6,acbyvs4.RnIRB2o*1e6,acbyvs4.RnIRB2ccp*1e6,acbyvs4.RnIRB2ccm*1e6,acbyvs4.RnIRB2ccs*1e6;
+                                                                                                             
+value,acbyhs5.LnIRB1x*1e6,acbyhs5.LnIRB1s*1e6,acbyhs5.LnIRB1o*1e6,acbyhs5.LnIRB1ccp*1e6,acbyhs5.LnIRB1ccm*1e6,acbyhs5.LnIRB1ccs*1e6;
+value,acbyhs5.LnIRB2x*1e6,acbyhs5.LnIRB2s*1e6,acbyhs5.LnIRB2o*1e6,acbyhs5.LnIRB2ccp*1e6,acbyhs5.LnIRB2ccm*1e6,acbyhs5.LnIRB2ccs*1e6;
+value,acbyhs5.RnIRB1x*1e6,acbyhs5.RnIRB1s*1e6,acbyhs5.RnIRB1o*1e6,acbyhs5.RnIRB1ccp*1e6,acbyhs5.RnIRB1ccm*1e6,acbyhs5.RnIRB1ccs*1e6;
+value,acbyhs5.RnIRB2x*1e6,acbyhs5.RnIRB2s*1e6,acbyhs5.RnIRB2o*1e6,acbyhs5.RnIRB2ccp*1e6,acbyhs5.RnIRB2ccm*1e6,acbyhs5.RnIRB2ccs*1e6;
+value,acbyvs5.LnIRB1x*1e6,acbyvs5.LnIRB1s*1e6,acbyvs5.LnIRB1o*1e6,acbyvs5.LnIRB1ccp*1e6,acbyvs5.LnIRB1ccm*1e6,acbyvs5.LnIRB1ccs*1e6;
+value,acbyvs5.LnIRB2x*1e6,acbyvs5.LnIRB2s*1e6,acbyvs5.LnIRB2o*1e6,acbyvs5.LnIRB2ccp*1e6,acbyvs5.LnIRB2ccm*1e6,acbyvs5.LnIRB2ccs*1e6;
+value,acbyvs5.RnIRB1x*1e6,acbyvs5.RnIRB1s*1e6,acbyvs5.RnIRB1o*1e6,acbyvs5.RnIRB1ccp*1e6,acbyvs5.RnIRB1ccm*1e6,acbyvs5.RnIRB1ccs*1e6;
+value,acbyvs5.RnIRB2x*1e6,acbyvs5.RnIRB2s*1e6,acbyvs5.RnIRB2o*1e6,acbyvs5.RnIRB2ccp*1e6,acbyvs5.RnIRB2ccm*1e6,acbyvs5.RnIRB2ccs*1e6;
 
-value,acbyhs4.LnIRB1x*1e6,acbyhs4.LnIRB1s*1e6,acbyhs4.LnIRB1o*1e6;
-value,acbyhs4.LnIRB2x*1e6,acbyhs4.LnIRB2s*1e6,acbyhs4.LnIRB2o*1e6;
-value,acbyhs4.RnIRB1x*1e6,acbyhs4.RnIRB1s*1e6,acbyhs4.RnIRB1o*1e6;
-value,acbyhs4.RnIRB2x*1e6,acbyhs4.RnIRB2s*1e6,acbyhs4.RnIRB2o*1e6;
-value,acbyvs4.LnIRB1x*1e6,acbyvs4.LnIRB1s*1e6,acbyvs4.LnIRB1o*1e6;
-value,acbyvs4.LnIRB2x*1e6,acbyvs4.LnIRB2s*1e6,acbyvs4.LnIRB2o*1e6;
-value,acbyvs4.RnIRB1x*1e6,acbyvs4.RnIRB1s*1e6,acbyvs4.RnIRB1o*1e6;
-value,acbyvs4.RnIRB2x*1e6,acbyvs4.RnIRB2s*1e6,acbyvs4.RnIRB2o*1e6;
-
-value,acbyhs5.LnIRB1x*1e6,acbyhs5.LnIRB1s*1e6,acbyhs5.LnIRB1o*1e6;
-value,acbyhs5.LnIRB2x*1e6,acbyhs5.LnIRB2s*1e6,acbyhs5.LnIRB2o*1e6;
-value,acbyhs5.RnIRB1x*1e6,acbyhs5.RnIRB1s*1e6,acbyhs5.RnIRB1o*1e6;
-value,acbyhs5.RnIRB2x*1e6,acbyhs5.RnIRB2s*1e6,acbyhs5.RnIRB2o*1e6;
-value,acbyvs5.LnIRB1x*1e6,acbyvs5.LnIRB1s*1e6,acbyvs5.LnIRB1o*1e6;
-value,acbyvs5.LnIRB2x*1e6,acbyvs5.LnIRB2s*1e6,acbyvs5.LnIRB2o*1e6;
-value,acbyvs5.RnIRB1x*1e6,acbyvs5.RnIRB1s*1e6,acbyvs5.RnIRB1o*1e6;
-value,acbyvs5.RnIRB2x*1e6,acbyvs5.RnIRB2s*1e6,acbyvs5.RnIRB2o*1e6;
-
-value,acbch6.lIRNb1*1.e6,acbch6.lIRNb1x*1.e6,acbch6.lIRNb1s*1.e6,acbch6.lIRNb1o*1.e6,
-value,acbch6.rIRNb2*1.e6,acbch6.rIRNb2x*1.e6,acbch6.rIRNb2s*1.e6,acbch6.rIRNb2o*1.e6,
-value,acbcv6.rIRNb1*1.e6,acbcv6.rIRNb1x*1.e6,acbcv6.rIRNb1s*1.e6,acbcv6.rIRNb1o*1.e6,
-value,acbcv6.lIRNb2*1.e6,acbcv6.lIRNb2x*1.e6,acbcv6.lIRNb2s*1.e6,acbcv6.lIRNb2o*1.e6,
-
-value,acbch7.rIRNb1*1.e6,acbch7.rIRNb1x*1.e6,acbch7.rIRNb1s*1.e6,acbch7.rIRNb1o*1.e6,
-value,acbch7.lIRNb2*1.e6,acbch7.lIRNb2x*1.e6,acbch7.lIRNb2s*1.e6,acbch7.lIRNb2o*1.e6,
-value,acbcv7.lIRNb1*1.e6,acbcv7.lIRNb1x*1.e6,acbcv7.lIRNb1s*1.e6,acbcv7.lIRNb1o*1.e6,
-value,acbcv7.rIRNb2*1.e6,acbcv7.rIRNb2x*1.e6,acbcv7.rIRNb2s*1.e6,acbcv7.rIRNb2o*1.e6,
+value,acbch6.lIRNb1*1.e6,acbch6.lIRNb1x*1.e6,acbch6.lIRNb1s*1.e6,acbch6.lIRNb1o*1.e6,acbch6.lIRNb1ccp*1.e6,acbch6.lIRNb1ccm*1.e6,acbch6.lIRNb1ccs*1.e6;
+value,acbch6.rIRNb2*1.e6,acbch6.rIRNb2x*1.e6,acbch6.rIRNb2s*1.e6,acbch6.rIRNb2o*1.e6,acbch6.rIRNb2ccp*1.e6,acbch6.rIRNb2ccm*1.e6,acbch6.rIRNb2ccs*1.e6;
+value,acbcv6.rIRNb1*1.e6,acbcv6.rIRNb1x*1.e6,acbcv6.rIRNb1s*1.e6,acbcv6.rIRNb1o*1.e6,acbcv6.rIRNb1ccp*1.e6,acbcv6.rIRNb1ccm*1.e6,acbcv6.rIRNb1ccs*1.e6;
+value,acbcv6.lIRNb2*1.e6,acbcv6.lIRNb2x*1.e6,acbcv6.lIRNb2s*1.e6,acbcv6.lIRNb2o*1.e6,acbcv6.lIRNb2ccp*1.e6,acbcv6.lIRNb2ccm*1.e6,acbcv6.lIRNb2ccs*1.e6;
+                                                                                                                                
+value,acbch7.rIRNb1*1.e6,acbch7.rIRNb1x*1.e6,acbch7.rIRNb1s*1.e6,acbch7.rIRNb1o*1.e6,acbch7.rIRNb1ccp*1.e6,acbch7.rIRNb1ccm*1.e6,acbch7.rIRNb1ccs*1.e6;
+value,acbch7.lIRNb2*1.e6,acbch7.lIRNb2x*1.e6,acbch7.lIRNb2s*1.e6,acbch7.lIRNb2o*1.e6,acbch7.lIRNb2ccp*1.e6,acbch7.lIRNb2ccm*1.e6,acbch7.lIRNb2ccs*1.e6;
+value,acbcv7.lIRNb1*1.e6,acbcv7.lIRNb1x*1.e6,acbcv7.lIRNb1s*1.e6,acbcv7.lIRNb1o*1.e6,acbcv7.lIRNb1ccp*1.e6,acbcv7.lIRNb1ccm*1.e6,acbcv7.lIRNb1ccs*1.e6;
+value,acbcv7.rIRNb2*1.e6,acbcv7.rIRNb2x*1.e6,acbcv7.rIRNb2s*1.e6,acbcv7.rIRNb2o*1.e6,acbcv7.rIRNb2ccp*1.e6,acbcv7.rIRNb2ccm*1.e6,acbcv7.rIRNb2ccs*1.e6;
 
 };
 
@@ -203,19 +203,19 @@ acbxh1.lIRN   :=acbxh1.lIRNx   *on_xIRN*xcosirIRN +
                 acbxh1.lIRNccs *on_ccsIRN;
 acbxh1.rIRN   :=acbxh1.rIRNx   *on_xIRN*xcosirIRN +
                 acbxh1.rIRNs   *on_sepIRN*xsinirIRN +
-                acbxh1.rIRNo   *on_oIRN*oxcosirIRN;
+                acbxh1.rIRNo   *on_oIRN*oxcosirIRN +
                 acbxh1.rIRNccp *on_ccpIRN +
                 acbxh1.rIRNccm *on_ccmIRN +
                 acbxh1.rIRNccs *on_ccsIRN;
 acbxv1.lIRN   :=acbxv1.lIRNx   *on_xIRN*xsinirIRN +
                 acbxv1.lIRNs   *on_sepIRN*xcosirIRN +
-                acbxv1.lIRNo   *on_oIRN*oxsinirIRN;
+                acbxv1.lIRNo   *on_oIRN*oxsinirIRN +
                 acbxv1.lIRNccp *on_ccpIRN +
                 acbxv1.lIRNccm *on_ccmIRN +
                 acbxv1.lIRNccs *on_ccsIRN;
 acbxv1.rIRN   :=acbxv1.rIRNx   *on_xIRN*xsinirIRN +
                 acbxv1.rIRNs   *on_sepIRN*xcosirIRN +
-                acbxv1.rIRNo   *on_oIRN*oxsinirIRN;
+                acbxv1.rIRNo   *on_oIRN*oxsinirIRN +
                 acbxv1.rIRNccp *on_ccpIRN +
                 acbxv1.rIRNccm *on_ccmIRN +
                 acbxv1.rIRNccs *on_ccsIRN;
@@ -228,19 +228,19 @@ acbxh2.lIRN   :=acbxh2.lIRNx   *on_xIRN*xcosirIRN +
                 acbxh2.lIRNccs *on_ccsIRN;
 acbxh2.rIRN   :=acbxh2.rIRNx   *on_xIRN*xcosirIRN +
                 acbxh2.rIRNs   *on_sepIRN*xsinirIRN +
-                acbxh2.rIRNo   *on_oIRN*oxcosirIRN;
+                acbxh2.rIRNo   *on_oIRN*oxcosirIRN +
                 acbxh2.rIRNccp *on_ccpIRN +
                 acbxh2.rIRNccm *on_ccmIRN +
                 acbxh2.rIRNccs *on_ccsIRN;
 acbxv2.lIRN   :=acbxv2.lIRNx   *on_xIRN*xsinirIRN +
                 acbxv2.lIRNs   *on_sepIRN*xcosirIRN +
-                acbxv2.lIRNo   *on_oIRN*oxsinirIRN;
+                acbxv2.lIRNo   *on_oIRN*oxsinirIRN +
                 acbxv2.lIRNccp *on_ccpIRN +
                 acbxv2.lIRNccm *on_ccmIRN +
                 acbxv2.lIRNccs *on_ccsIRN;
 acbxv2.rIRN   :=acbxv2.rIRNx   *on_xIRN*xsinirIRN +
                 acbxv2.rIRNs   *on_sepIRN*xcosirIRN +
-                acbxv2.rIRNo   *on_oIRN*oxsinirIRN;
+                acbxv2.rIRNo   *on_oIRN*oxsinirIRN +
                 acbxv2.rIRNccp *on_ccpIRN +
                 acbxv2.rIRNccm *on_ccmIRN +
                 acbxv2.rIRNccs *on_ccsIRN;
@@ -253,19 +253,19 @@ acbxh3.lIRN   :=acbxh3.lIRNx   *on_xIRN*xcosirIRN +
                 acbxh3.lIRNccs *on_ccsIRN;
 acbxh3.rIRN   :=acbxh3.rIRNx   *on_xIRN*xcosirIRN +
                 acbxh3.rIRNs   *on_sepIRN*xsinirIRN +
-                acbxh3.rIRNo   *on_oIRN*oxcosirIRN;
+                acbxh3.rIRNo   *on_oIRN*oxcosirIRN +
                 acbxh3.rIRNccp *on_ccpIRN +
                 acbxh3.rIRNccm *on_ccmIRN +
                 acbxh3.rIRNccs *on_ccsIRN;
 acbxv3.lIRN   :=acbxv3.lIRNx   *on_xIRN*xsinirIRN +
                 acbxv3.lIRNs   *on_sepIRN*xcosirIRN +
-                acbxv3.lIRNo   *on_oIRN*oxsinirIRN;
+                acbxv3.lIRNo   *on_oIRN*oxsinirIRN +
                 acbxv3.lIRNccp *on_ccpIRN +
                 acbxv3.lIRNccm *on_ccmIRN +
                 acbxv3.lIRNccs *on_ccsIRN;
 acbxv3.rIRN   :=acbxv3.rIRNx   *on_xIRN*xsinirIRN +
                 acbxv3.rIRNs   *on_sepIRN*xcosirIRN +
-                acbxv3.rIRNo   *on_oIRN*oxsinirIRN;
+                acbxv3.rIRNo   *on_oIRN*oxsinirIRN +
                 acbxv3.rIRNccp *on_ccpIRN +
                 acbxv3.rIRNccm *on_ccmIRN +
                 acbxv3.rIRNccs *on_ccsIRN;
@@ -461,7 +461,7 @@ acbch7.rIRNb1:=acbch7.rIRNb1x*on_xIRN*xcosirIRN +
 
 acbcv7.rIRNb2:=acbcv7.rIRNb2x*on_xIRN*xsinirIRN +
                acbcv7.rIRNb2s*on_sepIRN*xcosirIRN +
-               acbcv7.rIRNb2o*on_oIRN*oxsinirIRN;
+               acbcv7.rIRNb2o*on_oIRN*oxsinirIRN +
                acbcv7.rIRNb2ccp *on_ccpIRN +
                acbcv7.rIRNb2ccm *on_ccmIRN +
                acbcv7.rIRNb2ccs *on_ccsIRN;
