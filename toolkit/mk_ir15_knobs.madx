@@ -5,77 +5,75 @@
 scale = 23348.89927;
 
 resetXscheme(nIR) : macro ={
-ACBXH1.LnIR=0;ACBXH1.LnIRx=0;ACBXH1.LnIRs=0;ACBXH1.LnIRo=0;
-ACBXH1.RnIR=0;ACBXH1.RnIRx=0;ACBXH1.RnIRs=0;ACBXH1.RnIRo=0;
-ACBXV1.LnIR=0;ACBXV1.LnIRx=0;ACBXV1.LnIRs=0;ACBXV1.LnIRo=0;
-ACBXV1.RnIR=0;ACBXV1.RnIRx=0;ACBXV1.RnIRs=0;ACBXV1.RnIRo=0;
-                                                          
-ACBXH2.LnIR=0;ACBXH2.LnIRx=0;ACBXH2.LnIRs=0;ACBXH2.LnIRo=0;
-ACBXH2.RnIR=0;ACBXH2.RnIRx=0;ACBXH2.RnIRs=0;ACBXH2.RnIRo=0;
-ACBXV2.LnIR=0;ACBXV2.LnIRx=0;ACBXV2.LnIRs=0;ACBXV2.LnIRo=0;
-ACBXV2.RnIR=0;ACBXV2.RnIRx=0;ACBXV2.RnIRs=0;ACBXV2.RnIRo=0;
-                                                          
-ACBXH3.LnIR=0;ACBXH3.LnIRx=0;ACBXH3.LnIRs=0;ACBXH3.LnIRo=0;
-ACBXH3.RnIR=0;ACBXH3.RnIRx=0;ACBXH3.RnIRs=0;ACBXH3.RnIRo=0;
-ACBXV3.LnIR=0;ACBXV3.LnIRx=0;ACBXV3.LnIRs=0;ACBXV3.LnIRo=0;
-ACBXV3.RnIR=0;ACBXV3.RnIRx=0;ACBXV3.RnIRs=0;ACBXV3.RnIRo=0;
+ACBXH1.LnIR=0;ACBXH1.LnIRx=0;ACBXH1.LnIRs=0;ACBXH1.LnIRo=0;ACBXH1.LnIRccp=0;ACBXH1.LnIRccm=0;
+ACBXH1.RnIR=0;ACBXH1.RnIRx=0;ACBXH1.RnIRs=0;ACBXH1.RnIRo=0;ACBXH1.RnIRccp=0;ACBXH1.RnIRccm=0;
+ACBXV1.LnIR=0;ACBXV1.LnIRx=0;ACBXV1.LnIRs=0;ACBXV1.LnIRo=0;ACBXV1.LnIRccp=0;ACBXV1.LnIRccm=0;
+ACBXV1.RnIR=0;ACBXV1.RnIRx=0;ACBXV1.RnIRs=0;ACBXV1.RnIRo=0;ACBXV1.RnIRccp=0;ACBXV1.RnIRccm=0;
+                                                                                            
+ACBXH2.LnIR=0;ACBXH2.LnIRx=0;ACBXH2.LnIRs=0;ACBXH2.LnIRo=0;ACBXH2.LnIRccp=0;ACBXH2.LnIRccm=0;
+ACBXH2.RnIR=0;ACBXH2.RnIRx=0;ACBXH2.RnIRs=0;ACBXH2.RnIRo=0;ACBXH2.RnIRccp=0;ACBXH2.RnIRccm=0;
+ACBXV2.LnIR=0;ACBXV2.LnIRx=0;ACBXV2.LnIRs=0;ACBXV2.LnIRo=0;ACBXV2.LnIRccp=0;ACBXV2.LnIRccm=0;
+ACBXV2.RnIR=0;ACBXV2.RnIRx=0;ACBXV2.RnIRs=0;ACBXV2.RnIRo=0;ACBXV2.RnIRccp=0;ACBXV2.RnIRccm=0;
+                                                                                            
+ACBXH3.LnIR=0;ACBXH3.LnIRx=0;ACBXH3.LnIRs=0;ACBXH3.LnIRo=0;ACBXH3.LnIRccp=0;ACBXH3.LnIRccm=0;
+ACBXH3.RnIR=0;ACBXH3.RnIRx=0;ACBXH3.RnIRs=0;ACBXH3.RnIRo=0;ACBXH3.RnIRccp=0;ACBXH3.RnIRccm=0;
+ACBXV3.LnIR=0;ACBXV3.LnIRx=0;ACBXV3.LnIRs=0;ACBXV3.LnIRo=0;ACBXV3.LnIRccp=0;ACBXV3.LnIRccm=0;
+ACBXV3.RnIR=0;ACBXV3.RnIRx=0;ACBXV3.RnIRs=0;ACBXV3.RnIRo=0;ACBXV3.RnIRccp=0;ACBXV3.RnIRccm=0;
 
-ACBYHS4.LnIRB1=0;ACBYHS4.LnIRB1x=0;ACBYHS4.LnIRB1s=0;ACBYHS4.LnIRB1o=0;
-ACBYHS4.RnIRB1=0;ACBYHS4.RnIRB1x=0;ACBYHS4.RnIRB1s=0;ACBYHS4.RnIRB1o=0;
-ACBCH6.LnIRB1 =0;ACBCH6.LnIRB1x =0;ACBCH6.LnIRB1s =0;ACBCH6.LnIRB1o =0;
-ACBCH5.RnIRB1 =0;ACBCH5.RnIRB1x =0;ACBCH5.RnIRB1s =0;ACBCH5.RnIRB1o =0;
-                                                                      
-ACBYVS4.LnIRB1=0;ACBYVS4.LnIRB1x=0;ACBYVS4.LnIRB1s=0;ACBYVS4.LnIRB1o=0;
-ACBYVS4.RnIRB1=0;ACBYVS4.RnIRB1x=0;ACBYVS4.RnIRB1s=0;ACBYVS4.RnIRB1o=0;
-ACBCV5.LnIRB1 =0;ACBCV5.LnIRB1x =0;ACBCV5.LnIRB1s =0;ACBCV5.LnIRB1o =0;
-ACBCV6.RnIRB1 =0;ACBCV6.RnIRB1x =0;ACBCV6.RnIRB1s =0;ACBCV6.RnIRB1o =0;
-                                                                      
-ACBYHS4.LnIRB2=0;ACBYHS4.LnIRB2x=0;ACBYHS4.LnIRB2s=0;ACBYHS4.LnIRB2o=0;
-ACBYHS4.RnIRB2=0;ACBYHS4.RnIRB2x=0;ACBYHS4.RnIRB2s=0;ACBYHS4.RnIRB2o=0;
-ACBCH5.LnIRB2 =0;ACBCH5.LnIRB2x =0;ACBCH5.LnIRB2s =0;ACBCH5.LnIRB2o =0;
-ACBCH6.RnIRB2 =0;ACBCH6.RnIRB2x =0;ACBCH6.RnIRB2s =0;ACBCH6.RnIRB2o =0;
-                                                                      
-ACBYVS4.LnIRB2=0;ACBYVS4.LnIRB2x=0;ACBYVS4.LnIRB2s=0;ACBYVS4.LnIRB2o=0;
-ACBYVS4.RnIRB2=0;ACBYVS4.RnIRB2x=0;ACBYVS4.RnIRB2s=0;ACBYVS4.RnIRB2o=0;
-ACBCV6.LnIRB2 =0;ACBCV6.LnIRB2x =0;ACBCV6.LnIRB2s =0;ACBCV6.LnIRB2o =0;
-ACBCV5.RnIRB2 =0;ACBCV5.RnIRB2x =0;ACBCV5.RnIRB2s =0;ACBCV5.RnIRB2o =0;
-                                                                      
-acbrdH4.LnIRB1=0;acbrdH4.LnIRB1x=0;acbrdH4.LnIRB1s=0;acbrdH4.LnIRB1o=0;
-acbrdH4.RnIRB1=0;acbrdH4.RnIRB1x=0;acbrdH4.RnIRB1s=0;acbrdH4.RnIRB1o=0;
-acbrdV4.LnIRB1=0;acbrdV4.LnIRB1x=0;acbrdV4.LnIRB1s=0;acbrdV4.LnIRB1o=0;
-acbrdV4.RnIRB1=0;acbrdV4.RnIRB1x=0;acbrdV4.RnIRB1s=0;acbrdV4.RnIRB1o=0;
-acbrdH4.LnIRB2=0;acbrdH4.LnIRB2x=0;acbrdH4.LnIRB2s=0;acbrdH4.LnIRB2o=0;
-acbrdH4.RnIRB2=0;acbrdH4.RnIRB2x=0;acbrdH4.RnIRB2s=0;acbrdH4.RnIRB2o=0;
-acbrdV4.LnIRB2=0;acbrdV4.LnIRB2x=0;acbrdV4.LnIRB2s=0;acbrdV4.LnIRB2o=0;
-acbrdV4.RnIRB2=0;acbrdV4.RnIRB2x=0;acbrdV4.RnIRB2s=0;acbrdV4.RnIRB2o=0;
+ACBCH6.LnIRB1 =0;ACBCH6.LnIRB1x =0;ACBCH6.LnIRB1s =0;ACBCH6.LnIRB1o =0;ACBCH6.LnIRB1ccp =0;ACBCH6.LnIRB1ccm =0;ACBCH6.LnIRB1ccs =0;
+ACBCH5.RnIRB1 =0;ACBCH5.RnIRB1x =0;ACBCH5.RnIRB1s =0;ACBCH5.RnIRB1o =0;ACBCH5.RnIRB1ccp =0;ACBCH5.RnIRB1ccm =0;ACBCH5.RnIRB1ccs =0;
+ACBCV5.LnIRB1 =0;ACBCV5.LnIRB1x =0;ACBCV5.LnIRB1s =0;ACBCV5.LnIRB1o =0;ACBCV5.LnIRB1ccp =0;ACBCV5.LnIRB1ccm =0;ACBCV5.LnIRB1ccs =0;
+ACBCV6.RnIRB1 =0;ACBCV6.RnIRB1x =0;ACBCV6.RnIRB1s =0;ACBCV6.RnIRB1o =0;ACBCV6.RnIRB1ccp =0;ACBCV6.RnIRB1ccm =0;ACBCV6.RnIRB1ccs =0;
+ACBCH5.LnIRB2 =0;ACBCH5.LnIRB2x =0;ACBCH5.LnIRB2s =0;ACBCH5.LnIRB2o =0;ACBCH5.LnIRB2ccp =0;ACBCH5.LnIRB2ccm =0;ACBCH5.LnIRB2ccs =0;
+ACBCH6.RnIRB2 =0;ACBCH6.RnIRB2x =0;ACBCH6.RnIRB2s =0;ACBCH6.RnIRB2o =0;ACBCH6.RnIRB2ccp =0;ACBCH6.RnIRB2ccm =0;ACBCH6.RnIRB2ccs =0;
+ACBCV6.LnIRB2 =0;ACBCV6.LnIRB2x =0;ACBCV6.LnIRB2s =0;ACBCV6.LnIRB2o =0;ACBCV6.LnIRB2ccp =0;ACBCV6.LnIRB2ccm =0;ACBCV6.LnIRB2ccs =0;
+ACBCV5.RnIRB2 =0;ACBCV5.RnIRB2x =0;ACBCV5.RnIRB2s =0;ACBCV5.RnIRB2o =0;ACBCV5.RnIRB2ccp =0;ACBCV5.RnIRB2ccm =0;ACBCV5.RnIRB2ccs =0;
+                                                                                                                            
+ACBYHS4.LnIRB1=0;ACBYHS4.LnIRB1x=0;ACBYHS4.LnIRB1s=0;ACBYHS4.LnIRB1o=0;ACBYHS4.LnIRB1ccp=0;ACBYHS4.LnIRB1ccm=0;ACBYHS4.LnIRB1ccs=0;
+ACBYHS4.RnIRB1=0;ACBYHS4.RnIRB1x=0;ACBYHS4.RnIRB1s=0;ACBYHS4.RnIRB1o=0;ACBYHS4.RnIRB1ccp=0;ACBYHS4.RnIRB1ccm=0;ACBYHS4.RnIRB1ccs=0;
+ACBYVS4.LnIRB1=0;ACBYVS4.LnIRB1x=0;ACBYVS4.LnIRB1s=0;ACBYVS4.LnIRB1o=0;ACBYVS4.LnIRB1ccp=0;ACBYVS4.LnIRB1ccm=0;ACBYVS4.LnIRB1ccs=0;
+ACBYVS4.RnIRB1=0;ACBYVS4.RnIRB1x=0;ACBYVS4.RnIRB1s=0;ACBYVS4.RnIRB1o=0;ACBYVS4.RnIRB1ccp=0;ACBYVS4.RnIRB1ccm=0;ACBYVS4.RnIRB1ccs=0;
+ACBYHS4.LnIRB2=0;ACBYHS4.LnIRB2x=0;ACBYHS4.LnIRB2s=0;ACBYHS4.LnIRB2o=0;ACBYHS4.LnIRB2ccp=0;ACBYHS4.LnIRB2ccm=0;ACBYHS4.LnIRB2ccs=0;
+ACBYHS4.RnIRB2=0;ACBYHS4.RnIRB2x=0;ACBYHS4.RnIRB2s=0;ACBYHS4.RnIRB2o=0;ACBYHS4.RnIRB2ccp=0;ACBYHS4.RnIRB2ccm=0;ACBYHS4.RnIRB2ccs=0;
+ACBYVS4.LnIRB2=0;ACBYVS4.LnIRB2x=0;ACBYVS4.LnIRB2s=0;ACBYVS4.LnIRB2o=0;ACBYVS4.LnIRB2ccp=0;ACBYVS4.LnIRB2ccm=0;ACBYVS4.LnIRB2ccs=0;
+ACBYVS4.RnIRB2=0;ACBYVS4.RnIRB2x=0;ACBYVS4.RnIRB2s=0;ACBYVS4.RnIRB2o=0;ACBYVS4.RnIRB2ccp=0;ACBYVS4.RnIRB2ccm=0;ACBYVS4.RnIRB2ccs=0;
+                                                                                                                                  
+acbrdH4.LnIRB1=0;acbrdH4.LnIRB1x=0;acbrdH4.LnIRB1s=0;acbrdH4.LnIRB1o=0;acbrdH4.LnIRB1ccp=0;acbrdH4.LnIRB1ccm=0;acbrdH4.LnIRB1ccs=0;
+acbrdH4.RnIRB1=0;acbrdH4.RnIRB1x=0;acbrdH4.RnIRB1s=0;acbrdH4.RnIRB1o=0;acbrdH4.RnIRB1ccp=0;acbrdH4.RnIRB1ccm=0;acbrdH4.RnIRB1ccs=0;
+acbrdV4.LnIRB1=0;acbrdV4.LnIRB1x=0;acbrdV4.LnIRB1s=0;acbrdV4.LnIRB1o=0;acbrdV4.LnIRB1ccp=0;acbrdV4.LnIRB1ccm=0;acbrdV4.LnIRB1ccs=0;
+acbrdV4.RnIRB1=0;acbrdV4.RnIRB1x=0;acbrdV4.RnIRB1s=0;acbrdV4.RnIRB1o=0;acbrdV4.RnIRB1ccp=0;acbrdV4.RnIRB1ccm=0;acbrdV4.RnIRB1ccs=0;
+acbrdH4.LnIRB2=0;acbrdH4.LnIRB2x=0;acbrdH4.LnIRB2s=0;acbrdH4.LnIRB2o=0;acbrdH4.LnIRB2ccp=0;acbrdH4.LnIRB2ccm=0;acbrdH4.LnIRB2ccs=0;
+acbrdH4.RnIRB2=0;acbrdH4.RnIRB2x=0;acbrdH4.RnIRB2s=0;acbrdH4.RnIRB2o=0;acbrdH4.RnIRB2ccp=0;acbrdH4.RnIRB2ccm=0;acbrdH4.RnIRB2ccs=0;
+acbrdV4.LnIRB2=0;acbrdV4.LnIRB2x=0;acbrdV4.LnIRB2s=0;acbrdV4.LnIRB2o=0;acbrdV4.LnIRB2ccp=0;acbrdV4.LnIRB2ccm=0;acbrdV4.LnIRB2ccs=0;
+acbrdV4.RnIRB2=0;acbrdV4.RnIRB2x=0;acbrdV4.RnIRB2s=0;acbrdV4.RnIRB2o=0;acbrdV4.RnIRB2ccp=0;acbrdV4.RnIRB2ccm=0;acbrdV4.RnIRB2ccs=0;
+                                                                                                               
+acbyhs4.LnIRB1=0;acbyhs4.LnIRB1x=0;acbyhs4.LnIRB1s=0;acbyhs4.LnIRB1o=0;acbyhs4.LnIRB1ccp=0;acbyhs4.LnIRB1ccm=0;acbyhs4.LnIRB1ccs=0;
+acbyhs4.RnIRB1=0;acbyhs4.RnIRB1x=0;acbyhs4.RnIRB1s=0;acbyhs4.RnIRB1o=0;acbyhs4.RnIRB1ccp=0;acbyhs4.RnIRB1ccm=0;acbyhs4.RnIRB1ccs=0;
+acbyvs4.LnIRB1=0;acbyvs4.LnIRB1x=0;acbyvs4.LnIRB1s=0;acbyvs4.LnIRB1o=0;acbyvs4.LnIRB1ccp=0;acbyvs4.LnIRB1ccm=0;acbyvs4.LnIRB1ccs=0;
+acbyvs4.RnIRB1=0;acbyvs4.RnIRB1x=0;acbyvs4.RnIRB1s=0;acbyvs4.RnIRB1o=0;acbyvs4.RnIRB1ccp=0;acbyvs4.RnIRB1ccm=0;acbyvs4.RnIRB1ccs=0;
+acbyhs4.LnIRB2=0;acbyhs4.LnIRB2x=0;acbyhs4.LnIRB2s=0;acbyhs4.LnIRB2o=0;acbyhs4.LnIRB2ccp=0;acbyhs4.LnIRB2ccm=0;acbyhs4.LnIRB2ccs=0;
+acbyhs4.RnIRB2=0;acbyhs4.RnIRB2x=0;acbyhs4.RnIRB2s=0;acbyhs4.RnIRB2o=0;acbyhs4.RnIRB2ccp=0;acbyhs4.RnIRB2ccm=0;acbyhs4.RnIRB2ccs=0;
+acbyvs4.LnIRB2=0;acbyvs4.LnIRB2x=0;acbyvs4.LnIRB2s=0;acbyvs4.LnIRB2o=0;acbyvs4.LnIRB2ccp=0;acbyvs4.LnIRB2ccm=0;acbyvs4.LnIRB2ccs=0;
+acbyvs4.RnIRB2=0;acbyvs4.RnIRB2x=0;acbyvs4.RnIRB2s=0;acbyvs4.RnIRB2o=0;acbyvs4.RnIRB2ccp=0;acbyvs4.RnIRB2ccm=0;acbyvs4.RnIRB2ccs=0;
+                                                                                                                
+acbyhs5.LnIRB1=0;acbyhs5.LnIRB1x=0;acbyhs5.LnIRB1s=0;acbyhs5.LnIRB1o=0;acbyhs5.LnIRB1ccp=0;acbyhs5.LnIRB1ccm=0;acbyhs5.LnIRB1ccs=0;
+acbyhs5.RnIRB1=0;acbyhs5.RnIRB1x=0;acbyhs5.RnIRB1s=0;acbyhs5.RnIRB1o=0;acbyhs5.RnIRB1ccp=0;acbyhs5.RnIRB1ccm=0;acbyhs5.RnIRB1ccs=0;
+acbyvs5.LnIRB1=0;acbyvs5.LnIRB1x=0;acbyvs5.LnIRB1s=0;acbyvs5.LnIRB1o=0;acbyvs5.LnIRB1ccp=0;acbyvs5.LnIRB1ccm=0;acbyvs5.LnIRB1ccs=0;
+acbyvs5.RnIRB1=0;acbyvs5.RnIRB1x=0;acbyvs5.RnIRB1s=0;acbyvs5.RnIRB1o=0;acbyvs5.RnIRB1ccp=0;acbyvs5.RnIRB1ccm=0;acbyvs5.RnIRB1ccs=0;
+acbyhs5.LnIRB2=0;acbyhs5.LnIRB2x=0;acbyhs5.LnIRB2s=0;acbyhs5.LnIRB2o=0;acbyhs5.LnIRB2ccp=0;acbyhs5.LnIRB2ccm=0;acbyhs5.LnIRB2ccs=0;
+acbyhs5.RnIRB2=0;acbyhs5.RnIRB2x=0;acbyhs5.RnIRB2s=0;acbyhs5.RnIRB2o=0;acbyhs5.RnIRB2ccp=0;acbyhs5.RnIRB2ccm=0;acbyhs5.RnIRB2ccs=0;
+acbyvs5.LnIRB2=0;acbyvs5.LnIRB2x=0;acbyvs5.LnIRB2s=0;acbyvs5.LnIRB2o=0;acbyvs5.LnIRB2ccp=0;acbyvs5.LnIRB2ccm=0;acbyvs5.LnIRB2ccs=0;
+acbyvs5.RnIRB2=0;acbyvs5.RnIRB2x=0;acbyvs4.RnIRB2s=0;acbyvs4.RnIRB2o=0;acbyvs4.RnIRB2ccp=0;acbyvs4.RnIRB2ccm=0;acbyvs4.RnIRB2ccs=0;
 
-acbyhs4.LnIRB1=0;acbyhs4.LnIRB1x=0;acbyhs4.LnIRB1s=0;acbyhs4.LnIRB1o=0;
-acbyhs4.RnIRB1=0;acbyhs4.RnIRB1x=0;acbyhs4.RnIRB1s=0;acbyhs4.RnIRB1o=0;
-acbyvs4.LnIRB1=0;acbyvs4.LnIRB1x=0;acbyvs4.LnIRB1s=0;acbyvs4.LnIRB1o=0;
-acbyvs4.RnIRB1=0;acbyvs4.RnIRB1x=0;acbyvs4.RnIRB1s=0;acbyvs4.RnIRB1o=0;
-acbyhs4.LnIRB2=0;acbyhs4.LnIRB2x=0;acbyhs4.LnIRB2s=0;acbyhs4.LnIRB2o=0;
-acbyhs4.RnIRB2=0;acbyhs4.RnIRB2x=0;acbyhs4.RnIRB2s=0;acbyhs4.RnIRB2o=0;
-acbyvs4.LnIRB2=0;acbyvs4.LnIRB2x=0;acbyvs4.LnIRB2s=0;acbyvs4.LnIRB2o=0;
-acbyvs4.RnIRB2=0;acbyvs4.RnIRB2x=0;acbyvs4.RnIRB2s=0;acbyvs4.RnIRB2o=0;
-                                                      
-acbyhs5.LnIRB1=0;acbyhs5.LnIRB1x=0;acbyhs5.LnIRB1s=0;acbyhs5.LnIRB1o=0;
-acbyhs5.RnIRB1=0;acbyhs5.RnIRB1x=0;acbyhs5.RnIRB1s=0;acbyhs5.RnIRB1o=0;
-acbyvs5.LnIRB1=0;acbyvs5.LnIRB1x=0;acbyvs5.LnIRB1s=0;acbyvs5.LnIRB1o=0;
-acbyvs5.RnIRB1=0;acbyvs5.RnIRB1x=0;acbyvs5.RnIRB1s=0;acbyvs5.RnIRB1o=0;
-acbyhs5.LnIRB2=0;acbyhs5.LnIRB2x=0;acbyhs5.LnIRB2s=0;acbyhs5.LnIRB2o=0;
-acbyhs5.RnIRB2=0;acbyhs5.RnIRB2x=0;acbyhs5.RnIRB2s=0;acbyhs5.RnIRB2o=0;
-acbyvs5.LnIRB2=0;acbyvs5.LnIRB2x=0;acbyvs5.LnIRB2s=0;acbyvs5.LnIRB2o=0;
-acbyvs5.RnIRB2=0;acbyvs5.RnIRB2x=0;acbyvs4.RnIRB2s=0;acbyvs4.RnIRB2o=0;
-
-acbch6.lIRNb1=0;acbch6.lIRNb1x=0;acbch6.lIRNb1s=0;acbch6.lIRNb1o=0;
-acbch6.rIRNb2=0;acbch6.rIRNb2x=0;acbch6.rIRNb2s=0;acbch6.rIRNb2o=0;
-acbcv6.rIRNb1=0;acbcv6.rIRNb1x=0;acbcv6.rIRNb1s=0;acbcv6.rIRNb1o=0;
-acbcv6.lIRNb2=0;acbcv6.lIRNb2x=0;acbcv6.lIRNb2s=0;acbcv6.lIRNb2o=0;
-
-acbch7.rIRNb1=0;acbch7.rIRNb1x=0;acbch7.rIRNb1s=0;acbch7.rIRNb1o=0;
-acbch7.lIRNb2=0;acbch7.lIRNb2x=0;acbch7.lIRNb2s=0;acbch7.lIRNb2o=0;
-acbcv7.lIRNb1=0;acbcv7.lIRNb1x=0;acbcv7.lIRNb1s=0;acbcv7.lIRNb1o=0;
-acbcv7.rIRNb2=0;acbcv7.rIRNb2x=0;acbcv7.rIRNb2s=0;acbcv7.rIRNb2o=0;
+acbch6.lIRNb1=0;acbch6.lIRNb1x=0;acbch6.lIRNb1s=0;acbch6.lIRNb1o=0;acbch6.lIRNb1ccp=0;acbch6.lIRNb1ccm=0;acbch6.lIRNb1ccs=0;
+acbch6.rIRNb2=0;acbch6.rIRNb2x=0;acbch6.rIRNb2s=0;acbch6.rIRNb2o=0;acbch6.rIRNb2ccp=0;acbch6.rIRNb2ccm=0;acbch6.rIRNb2ccs=0;
+acbcv6.rIRNb1=0;acbcv6.rIRNb1x=0;acbcv6.rIRNb1s=0;acbcv6.rIRNb1o=0;acbcv6.rIRNb1ccp=0;acbcv6.rIRNb1ccm=0;acbcv6.rIRNb1ccs=0;
+acbcv6.lIRNb2=0;acbcv6.lIRNb2x=0;acbcv6.lIRNb2s=0;acbcv6.lIRNb2o=0;acbcv6.lIRNb2ccp=0;acbcv6.lIRNb2ccm=0;acbcv6.lIRNb2ccs=0;
+                                                                                                         
+acbch7.rIRNb1=0;acbch7.rIRNb1x=0;acbch7.rIRNb1s=0;acbch7.rIRNb1o=0;acbch7.rIRNb1ccp=0;acbch7.rIRNb1ccm=0;acbch7.rIRNb1ccs=0;
+acbch7.lIRNb2=0;acbch7.lIRNb2x=0;acbch7.lIRNb2s=0;acbch7.lIRNb2o=0;acbch7.lIRNb2ccp=0;acbch7.lIRNb2ccm=0;acbch7.lIRNb2ccs=0;
+acbcv7.lIRNb1=0;acbcv7.lIRNb1x=0;acbcv7.lIRNb1s=0;acbcv7.lIRNb1o=0;acbcv7.lIRNb1ccp=0;acbcv7.lIRNb1ccm=0;acbcv7.lIRNb1ccs=0;
+acbcv7.rIRNb2=0;acbcv7.rIRNb2x=0;acbcv7.rIRNb2s=0;acbcv7.rIRNb2o=0;acbcv7.rIRNb2ccp=0;acbcv7.rIRNb2ccm=0;acbcv7.rIRNb2ccs=0;
 
 };
 
@@ -199,145 +197,279 @@ oxcosirIRN:=cos(pi/180*phio_irIRN);
 
 acbxh1.lIRN   :=acbxh1.lIRNx   *on_xIRN*xcosirIRN +
                 acbxh1.lIRNs   *on_sepIRN*xsinirIRN +
-                acbxh1.lIRNo   *on_oIRN*oxcosirIRN;
+                acbxh1.lIRNo   *on_oIRN*oxcosirIRN +
+                acbxh1.lIRNccp *on_ccpIRN +
+                acbxh1.lIRNccm *on_ccmIRN +
+                acbxh1.lIRNccs *on_ccsIRN;
 acbxh1.rIRN   :=acbxh1.rIRNx   *on_xIRN*xcosirIRN +
                 acbxh1.rIRNs   *on_sepIRN*xsinirIRN +
                 acbxh1.rIRNo   *on_oIRN*oxcosirIRN;
+                acbxh1.rIRNccp *on_ccpIRN +
+                acbxh1.rIRNccm *on_ccmIRN +
+                acbxh1.rIRNccs *on_ccsIRN;
 acbxv1.lIRN   :=acbxv1.lIRNx   *on_xIRN*xsinirIRN +
                 acbxv1.lIRNs   *on_sepIRN*xcosirIRN +
                 acbxv1.lIRNo   *on_oIRN*oxsinirIRN;
+                acbxv1.lIRNccp *on_ccpIRN +
+                acbxv1.lIRNccm *on_ccmIRN +
+                acbxv1.lIRNccs *on_ccsIRN;
 acbxv1.rIRN   :=acbxv1.rIRNx   *on_xIRN*xsinirIRN +
                 acbxv1.rIRNs   *on_sepIRN*xcosirIRN +
                 acbxv1.rIRNo   *on_oIRN*oxsinirIRN;
+                acbxv1.rIRNccp *on_ccpIRN +
+                acbxv1.rIRNccm *on_ccmIRN +
+                acbxv1.rIRNccs *on_ccsIRN;
+
 acbxh2.lIRN   :=acbxh2.lIRNx   *on_xIRN*xcosirIRN +
                 acbxh2.lIRNs   *on_sepIRN*xsinirIRN +
-                acbxh2.lIRNo   *on_oIRN*oxcosirIRN;
+                acbxh2.lIRNo   *on_oIRN*oxcosirIRN +
+                acbxh2.lIRNccp *on_ccpIRN +
+                acbxh2.lIRNccm *on_ccmIRN +
+                acbxh2.lIRNccs *on_ccsIRN;
 acbxh2.rIRN   :=acbxh2.rIRNx   *on_xIRN*xcosirIRN +
                 acbxh2.rIRNs   *on_sepIRN*xsinirIRN +
                 acbxh2.rIRNo   *on_oIRN*oxcosirIRN;
+                acbxh2.rIRNccp *on_ccpIRN +
+                acbxh2.rIRNccm *on_ccmIRN +
+                acbxh2.rIRNccs *on_ccsIRN;
 acbxv2.lIRN   :=acbxv2.lIRNx   *on_xIRN*xsinirIRN +
                 acbxv2.lIRNs   *on_sepIRN*xcosirIRN +
                 acbxv2.lIRNo   *on_oIRN*oxsinirIRN;
+                acbxv2.lIRNccp *on_ccpIRN +
+                acbxv2.lIRNccm *on_ccmIRN +
+                acbxv2.lIRNccs *on_ccsIRN;
 acbxv2.rIRN   :=acbxv2.rIRNx   *on_xIRN*xsinirIRN +
                 acbxv2.rIRNs   *on_sepIRN*xcosirIRN +
                 acbxv2.rIRNo   *on_oIRN*oxsinirIRN;
+                acbxv2.rIRNccp *on_ccpIRN +
+                acbxv2.rIRNccm *on_ccmIRN +
+                acbxv2.rIRNccs *on_ccsIRN;
+
 acbxh3.lIRN   :=acbxh3.lIRNx   *on_xIRN*xcosirIRN +
                 acbxh3.lIRNs   *on_sepIRN*xsinirIRN +
-                acbxh3.lIRNo   *on_oIRN*oxcosirIRN;
+                acbxh3.lIRNo   *on_oIRN*oxcosirIRN +
+                acbxh3.lIRNccp *on_ccpIRN +
+                acbxh3.lIRNccm *on_ccmIRN +
+                acbxh3.lIRNccs *on_ccsIRN;
 acbxh3.rIRN   :=acbxh3.rIRNx   *on_xIRN*xcosirIRN +
                 acbxh3.rIRNs   *on_sepIRN*xsinirIRN +
                 acbxh3.rIRNo   *on_oIRN*oxcosirIRN;
+                acbxh3.rIRNccp *on_ccpIRN +
+                acbxh3.rIRNccm *on_ccmIRN +
+                acbxh3.rIRNccs *on_ccsIRN;
 acbxv3.lIRN   :=acbxv3.lIRNx   *on_xIRN*xsinirIRN +
                 acbxv3.lIRNs   *on_sepIRN*xcosirIRN +
                 acbxv3.lIRNo   *on_oIRN*oxsinirIRN;
+                acbxv3.lIRNccp *on_ccpIRN +
+                acbxv3.lIRNccm *on_ccmIRN +
+                acbxv3.lIRNccs *on_ccsIRN;
 acbxv3.rIRN   :=acbxv3.rIRNx   *on_xIRN*xsinirIRN +
                 acbxv3.rIRNs   *on_sepIRN*xcosirIRN +
                 acbxv3.rIRNo   *on_oIRN*oxsinirIRN;
+                acbxv3.rIRNccp *on_ccpIRN +
+                acbxv3.rIRNccm *on_ccmIRN +
+                acbxv3.rIRNccs *on_ccsIRN;
 
 acbrdv4.lIRNb1:=acbrdv4.lIRNb1x*on_xIRN*xsinirIRN +
                 acbrdv4.lIRNb1s*on_sepIRN*xcosirIRN +
-                acbrdv4.lIRNb1o*on_oIRN*oxsinirIRN;
+                acbrdv4.lIRNb1o*on_oIRN*oxsinirIRN +
+                acbrdv4.lIRNb1ccp *on_ccpIRN +
+                acbrdv4.lIRNb1ccm *on_ccmIRN +
+                acbrdv4.lIRNb1ccs *on_ccsIRN;
 acbrdv4.rIRNb1:=acbrdv4.rIRNb1x*on_xIRN*xsinirIRN +
                 acbrdv4.rIRNb1s*on_sepIRN*xcosirIRN +
-                acbrdv4.rIRNb1o*on_oIRN*oxsinirIRN;
+                acbrdv4.rIRNb1o*on_oIRN*oxsinirIRN +
+                acbrdv4.rIRNb1ccp *on_ccpIRN +
+                acbrdv4.rIRNb1ccm *on_ccmIRN +
+                acbrdv4.rIRNb1ccs *on_ccsIRN;
 acbrdh4.lIRNb1:=acbrdh4.lIRNb1x*on_xIRN*xcosirIRN +
                 acbrdh4.lIRNb1s*on_sepIRN*xsinirIRN +
-                acbrdh4.lIRNb1o*on_oIRN*oxcosirIRN;
+                acbrdh4.lIRNb1o*on_oIRN*oxcosirIRN +
+                acbrdh4.lIRNb1ccp *on_ccpIRN +
+                acbrdh4.lIRNb1ccm *on_ccmIRN +
+                acbrdh4.lIRNb1ccs *on_ccsIRN;
 acbrdh4.rIRNb1:=acbrdh4.rIRNb1x*on_xIRN*xcosirIRN +
                 acbrdh4.rIRNb1s*on_sepIRN*xsinirIRN +
-                acbrdh4.rIRNb1o*on_oIRN*oxcosirIRN;
+                acbrdh4.rIRNb1o*on_oIRN*oxcosirIRN +
+                acbrdh4.rIRNb1ccp *on_ccpIRN +
+                acbrdh4.rIRNb1ccm *on_ccmIRN +
+                acbrdh4.rIRNb1ccs *on_ccsIRN;
 
 acbrdv4.lIRNb2:=acbrdv4.lIRNb2x*on_xIRN*xsinirIRN +
                 acbrdv4.lIRNb2s*on_sepIRN*xcosirIRN +
-                acbrdv4.lIRNb2o*on_oIRN*oxsinirIRN;
+                acbrdv4.lIRNb2o*on_oIRN*oxsinirIRN +
+                acbrdv4.lIRNb2ccp *on_ccpIRN +
+                acbrdv4.lIRNb2ccm *on_ccmIRN +
+                acbrdv4.lIRNb2ccs *on_ccsIRN;
 acbrdv4.rIRNb2:=acbrdv4.rIRNb2x*on_xIRN*xsinirIRN +
                 acbrdv4.rIRNb2s*on_sepIRN*xcosirIRN +
-                acbrdv4.rIRNb2o*on_oIRN*oxsinirIRN;
+                acbrdv4.rIRNb2o*on_oIRN*oxsinirIRN +
+                acbrdv4.rIRNb2ccp *on_ccpIRN +
+                acbrdv4.rIRNb2ccm *on_ccmIRN +
+                acbrdv4.rIRNb2ccs *on_ccsIRN;
 acbrdh4.lIRNb2:=acbrdh4.lIRNb2x*on_xIRN*xcosirIRN +
                 acbrdh4.lIRNb2s*on_sepIRN*xsinirIRN +
-                acbrdh4.lIRNb2o*on_oIRN*oxcosirIRN;
+                acbrdh4.lIRNb2o*on_oIRN*oxcosirIRN +
+                acbrdh4.lIRNb2ccp *on_ccpIRN +
+                acbrdh4.lIRNb2ccm *on_ccmIRN +
+                acbrdh4.lIRNb2ccs *on_ccsIRN;
 acbrdh4.rIRNb2:=acbrdh4.rIRNb2x*on_xIRN*xcosirIRN +
                 acbrdh4.rIRNb2s*on_sepIRN*xsinirIRN +
-                acbrdh4.rIRNb2o*on_oIRN*oxcosirIRN;
+                acbrdh4.rIRNb2o*on_oIRN*oxcosirIRN +
+                acbrdh4.rIRNb2ccp *on_ccpIRN +
+                acbrdh4.rIRNb2ccm *on_ccmIRN +
+                acbrdh4.rIRNb2ccs *on_ccsIRN;
 
 acbyvs4.lIRNb1:=acbyvs4.lIRNb1x*on_xIRN*xsinirIRN +
                 acbyvs4.lIRNb1s*on_sepIRN*xcosirIRN +
-                acbyvs4.lIRNb1o*on_oIRN*oxsinirIRN;
+                acbyvs4.lIRNb1o*on_oIRN*oxsinirIRN +
+                acbyvs4.lIRNb1ccp *on_ccpIRN +
+                acbyvs4.lIRNb1ccm *on_ccmIRN +
+                acbyvs4.lIRNb1ccs *on_ccsIRN;
 acbyvs4.rIRNb1:=acbyvs4.rIRNb1x*on_xIRN*xsinirIRN +
                 acbyvs4.rIRNb1s*on_sepIRN*xcosirIRN +
-                acbyvs4.rIRNb1o*on_oIRN*oxsinirIRN;
+                acbyvs4.rIRNb1o*on_oIRN*oxsinirIRN +
+                acbyvs4.rIRNb1ccp *on_ccpIRN +
+                acbyvs4.rIRNb1ccm *on_ccmIRN +
+                acbyvs4.rIRNb1ccs *on_ccsIRN;
 acbyhs4.lIRNb1:=acbyhs4.lIRNb1x*on_xIRN*xcosirIRN +
                 acbyhs4.lIRNb1s*on_sepIRN*xsinirIRN +
-                acbyhs4.lIRNb1o*on_oIRN*oxcosirIRN;
+                acbyhs4.lIRNb1o*on_oIRN*oxcosirIRN +
+                acbyhs4.lIRNb1ccp *on_ccpIRN +
+                acbyhs4.lIRNb1ccm *on_ccmIRN +
+                acbyhs4.lIRNb1ccs *on_ccsIRN;
 acbyhs4.rIRNb1:=acbyhs4.rIRNb1x*on_xIRN*xcosirIRN +
                 acbyhs4.rIRNb1s*on_sepIRN*xsinirIRN +
-                acbyhs4.rIRNb1o*on_oIRN*oxcosirIRN;
+                acbyhs4.rIRNb1o*on_oIRN*oxcosirIRN +
+                acbyhs4.rIRNb1ccp *on_ccpIRN +
+                acbyhs4.rIRNb1ccm *on_ccmIRN +
+                acbyhs4.rIRNb1ccs *on_ccsIRN;
 
 acbyvs4.lIRNb2:=acbyvs4.lIRNb2x*on_xIRN*xsinirIRN +
                 acbyvs4.lIRNb2s*on_sepIRN*xcosirIRN +
-                acbyvs4.lIRNb2o*on_oIRN*oxsinirIRN;
+                acbyvs4.lIRNb2o*on_oIRN*oxsinirIRN +
+                acbyvs4.lIRNb2ccp *on_ccpIRN +
+                acbyvs4.lIRNb2ccm *on_ccmIRN +
+                acbyvs4.lIRNb2ccs *on_ccsIRN;
 acbyvs4.rIRNb2:=acbyvs4.rIRNb2x*on_xIRN*xsinirIRN +
                 acbyvs4.rIRNb2s*on_sepIRN*xcosirIRN +
-                acbyvs4.rIRNb2o*on_oIRN*oxsinirIRN;
+                acbyvs4.rIRNb2o*on_oIRN*oxsinirIRN +
+                acbyvs4.rIRNb2ccp *on_ccpIRN +
+                acbyvs4.rIRNb2ccm *on_ccmIRN +
+                acbyvs4.rIRNb2ccs *on_ccsIRN;
 acbyhs4.lIRNb2:=acbyhs4.lIRNb2x*on_xIRN*xcosirIRN +
                 acbyhs4.lIRNb2s*on_sepIRN*xsinirIRN +
-                acbyhs4.lIRNb2o*on_oIRN*oxcosirIRN;
+                acbyhs4.lIRNb2o*on_oIRN*oxcosirIRN +
+                acbyhs4.lIRNb2ccp *on_ccpIRN +
+                acbyhs4.lIRNb2ccm *on_ccmIRN +
+                acbyhs4.lIRNb2ccs *on_ccsIRN;
 acbyhs4.rIRNb2:=acbyhs4.rIRNb2x*on_xIRN*xcosirIRN +
                 acbyhs4.rIRNb2s*on_sepIRN*xsinirIRN +
-                acbyhs4.rIRNb2o*on_oIRN*oxcosirIRN;
+                acbyhs4.rIRNb2o*on_oIRN*oxcosirIRN +
+                acbyhs4.rIRNb2ccp *on_ccpIRN +
+                acbyhs4.rIRNb2ccm *on_ccmIRN +
+                acbyhs4.rIRNb2ccs *on_ccsIRN;
 
 acbyvs5.lIRNb1:=acbyvs5.lIRNb1x*on_xIRN*xsinirIRN +
                 acbyvs5.lIRNb1s*on_sepIRN*xcosirIRN +
-                acbyvs5.lIRNb1o*on_oIRN*oxsinirIRN;
+                acbyvs5.lIRNb1o*on_oIRN*oxsinirIRN +
+                acbyvs5.lIRNb1ccp *on_ccpIRN +
+                acbyvs5.lIRNb1ccm *on_ccmIRN +
+                acbyvs5.lIRNb1ccs *on_ccsIRN;
 acbyvs5.rIRNb1:=acbyvs5.rIRNb1x*on_xIRN*xsinirIRN +
                 acbyvs5.rIRNb1s*on_sepIRN*xcosirIRN +
-                acbyvs5.rIRNb1o*on_oIRN*oxsinirIRN;
+                acbyvs5.rIRNb1o*on_oIRN*oxsinirIRN +
+                acbyvs5.rIRNb1ccp *on_ccpIRN +
+                acbyvs5.rIRNb1ccm *on_ccmIRN +
+                acbyvs5.rIRNb1ccs *on_ccsIRN;
 acbyhs5.lIRNb1:=acbyhs5.lIRNb1x*on_xIRN*xcosirIRN +
                 acbyhs5.lIRNb1s*on_sepIRN*xsinirIRN +
-                acbyhs5.lIRNb1o*on_oIRN*oxcosirIRN;
+                acbyhs5.lIRNb1o*on_oIRN*oxcosirIRN +
+                acbyhs5.lIRNb1ccp *on_ccpIRN +
+                acbyhs5.lIRNb1ccm *on_ccmIRN +
+                acbyhs5.lIRNb1ccs *on_ccsIRN;
 acbyhs5.rIRNb1:=acbyhs5.rIRNb1x*on_xIRN*xcosirIRN +
                 acbyhs5.rIRNb1s*on_sepIRN*xsinirIRN +
-                acbyhs5.rIRNb1o*on_oIRN*oxcosirIRN;
+                acbyhs5.rIRNb1o*on_oIRN*oxcosirIRN +
+                acbyhs5.rIRNb1ccp *on_ccpIRN +
+                acbyhs5.rIRNb1ccm *on_ccmIRN +
+                acbyhs5.rIRNb1ccs *on_ccsIRN;
 
 acbyvs5.lIRNb2:=acbyvs5.lIRNb2x*on_xIRN*xsinirIRN +
                 acbyvs5.lIRNb2s*on_sepIRN*xcosirIRN +
-                acbyvs5.lIRNb2o*on_oIRN*oxsinirIRN;
+                acbyvs5.lIRNb2o*on_oIRN*oxsinirIRN +
+                acbyvs5.lIRNb2ccp *on_ccpIRN +
+                acbyvs5.lIRNb2ccm *on_ccmIRN +
+                acbyvs5.lIRNb2ccs *on_ccsIRN;
 acbyvs5.rIRNb2:=acbyvs5.rIRNb2x*on_xIRN*xsinirIRN +
                 acbyvs5.rIRNb2s*on_sepIRN*xcosirIRN +
-                acbyvs5.rIRNb2o*on_oIRN*oxsinirIRN;
+                acbyvs5.rIRNb2o*on_oIRN*oxsinirIRN +
+                acbyvs5.rIRNb2ccp *on_ccpIRN +
+                acbyvs5.rIRNb2ccm *on_ccmIRN +
+                acbyvs5.rIRNb2ccs *on_ccsIRN;
 acbyhs5.lIRNb2:=acbyhs5.lIRNb2x*on_xIRN*xcosirIRN +
                 acbyhs5.lIRNb2s*on_sepIRN*xsinirIRN +
-                acbyhs5.lIRNb2o*on_oIRN*oxcosirIRN;
+                acbyhs5.lIRNb2o*on_oIRN*oxcosirIRN +
+                acbyhs5.lIRNb2ccp *on_ccpIRN +
+                acbyhs5.lIRNb2ccm *on_ccmIRN +
+                acbyhs5.lIRNb2ccs *on_ccsIRN;
 acbyhs5.rIRNb2:=acbyhs5.rIRNb2x*on_xIRN*xcosirIRN +
                 acbyhs5.rIRNb2s*on_sepIRN*xsinirIRN +
-                acbyhs5.rIRNb2o*on_oIRN*oxcosirIRN;
+                acbyhs5.rIRNb2o*on_oIRN*oxcosirIRN +
+                acbyhs5.rIRNb2ccp *on_ccpIRN +
+                acbyhs5.rIRNb2ccm *on_ccmIRN +
+                acbyhs5.rIRNb2ccs *on_ccsIRN;
 
 acbcv6.rIRNb1:=acbcv6.rIRNb1x*on_xIRN*xsinirIRN +
                acbcv6.rIRNb1s*on_sepIRN*xcosirIRN +
-               acbcv6.rIRNb1o*on_oIRN*oxsinirIRN;
+               acbcv6.rIRNb1o*on_oIRN*oxsinirIRN +
+               acbcv6.rIRNb1ccp *on_ccpIRN +
+               acbcv6.rIRNb1ccm *on_ccmIRN +
+               acbcv6.rIRNb1ccs *on_ccsIRN;
 acbch6.lIRNb1:=acbch6.lIRNb1x*on_xIRN*xcosirIRN +
                acbch6.lIRNb1s*on_sepIRN*xsinirIRN +
-               acbch6.lIRNb1o*on_oIRN*oxcosirIRN;
+               acbch6.lIRNb1o*on_oIRN*oxcosirIRN +
+               acbch6.lIRNb1ccp *on_ccpIRN +
+               acbch6.lIRNb1ccm *on_ccmIRN +
+               acbch6.lIRNb1ccs *on_ccsIRN;
 
 acbcv6.lIRNb2:=acbcv6.lIRNb2x*on_xIRN*xsinirIRN +
                acbcv6.lIRNb2s*on_sepIRN*xcosirIRN +
-               acbcv6.lIRNb2o*on_oIRN*oxsinirIRN;
+               acbcv6.lIRNb2o*on_oIRN*oxsinirIRN +
+               acbcv6.lIRNb2ccp *on_ccpIRN +
+               acbcv6.lIRNb2ccm *on_ccmIRN +
+               acbcv6.lIRNb2ccs *on_ccsIRN;
 acbch6.rIRNb2:=acbch6.rIRNb2x*on_xIRN*xcosirIRN +
                acbch6.rIRNb2s*on_sepIRN*xsinirIRN +
-               acbch6.rIRNb2o*on_oIRN*oxcosirIRN;
+               acbch6.rIRNb2o*on_oIRN*oxcosirIRN +
+               acbch6.rIRNb2ccp *on_ccpIRN +
+               acbch6.rIRNb2ccm *on_ccmIRN +
+               acbch6.rIRNb2ccs *on_ccsIRN;
 
 acbcv7.lIRNb1:=acbcv7.lIRNb1x*on_xIRN*xsinirIRN +
                acbcv7.lIRNb1s*on_sepIRN*xcosirIRN +
-               acbcv7.lIRNb1o*on_oIRN*oxsinirIRN;
+               acbcv7.lIRNb1o*on_oIRN*oxsinirIRN +
+               acbcv7.lIRNb1ccp *on_ccpIRN +
+               acbcv7.lIRNb1ccm *on_ccmIRN +
+               acbcv7.lIRNb1ccs *on_ccsIRN;
 acbch7.rIRNb1:=acbch7.rIRNb1x*on_xIRN*xcosirIRN +
                acbch7.rIRNb1s*on_sepIRN*xsinirIRN +
-               acbch7.rIRNb1o*on_oIRN*oxcosirIRN;
+               acbch7.rIRNb1o*on_oIRN*oxcosirIRN +
+               acbch7.rIRNb1ccp *on_ccpIRN +
+               acbch7.rIRNb1ccm *on_ccmIRN +
+               acbch7.rIRNb1ccs *on_ccsIRN;
 
 acbcv7.rIRNb2:=acbcv7.rIRNb2x*on_xIRN*xsinirIRN +
                acbcv7.rIRNb2s*on_sepIRN*xcosirIRN +
                acbcv7.rIRNb2o*on_oIRN*oxsinirIRN;
+               acbcv7.rIRNb2ccp *on_ccpIRN +
+               acbcv7.rIRNb2ccm *on_ccmIRN +
+               acbcv7.rIRNb2ccs *on_ccsIRN;
 acbch7.lIRNb2:=acbch7.lIRNb2x*on_xIRN*xcosirIRN +
                acbch7.lIRNb2s*on_sepIRN*xsinirIRN +
-               acbch7.lIRNb2o*on_oIRN*oxcosirIRN;
+               acbch7.lIRNb2o*on_oIRN*oxcosirIRN +
+               acbch7.lIRNb2ccp *on_ccpIRN +
+               acbch7.lIRNb2ccm *on_ccmIRN +
+               acbch7.lIRNb2ccs *on_ccsIRN;
 
 };
