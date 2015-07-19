@@ -2,11 +2,16 @@
  on0_x2=on_x2; on0_sep2=on_sep2; on0_alice=on_alice;
  on0_x5=on_x5; on0_sep5=on_sep5; phi0_IR5=phi_IR5;
  on0_x8=on_x8; on0_sep8=on_sep8; on0_lhcb =on_lhcb;
+ on0_o1=on_o1; on0_o5=on_o5;
+ on0_ccp1=on_ccp1; on0_ccm1=on_ccm1; on0_ccs1=on_ccs1;
+ on0_ccp5=on_ccp5; on0_ccm5=on_ccm5; on0_ccs5=on_ccs5;
  on0_disp=on_disp;
  on0_crab1=on_crab1; on0_crab5=on_crab5;
 
  on_x1=0;on_sep1=0;on_x5=0;on_sep5=0;
  on_x2=0;on_sep2=0;on_x8=0;on_sep8=0;
+ on_o1=0;on_o5=0;
+ on_ccp1=0;on_ccm1=0;on_ccs1=0; on_ccp5=0;on_ccm5=0;on_ccs5=0;
  on_alice=0;on_lhcb=0;
  on_disp=0;
  on_crab1=0;on_crab5=0;
@@ -117,6 +122,9 @@ exec, print_vcrab;
  on_x2=on0_x2; on_sep2=on0_sep2; on_alice=on0_alice;
  on_x5=on0_x5; on_sep5=on0_sep5; phi_IR5=phi0_IR5;
  on_x8=on0_x8; on_sep8=on0_sep8; on_lhcb =on0_lhcb;
+ on_o1=on0_o1; on_o5=on0_o5;
+ on_ccp1=on0_ccp1; on_ccm1=on0_ccm1; on_ccs1=on0_ccs1;
+ on_ccp5=on0_ccp5; on_ccm5=on0_ccm5; on_ccs5=on0_ccs5;
  on_disp=on0_disp;
  on_crab1=on0_crab1; on_crab5=on0_crab5;
 
