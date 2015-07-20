@@ -255,6 +255,11 @@ install_ir15_b12(ENAME,SPOS): macro={
 };
 
 install_ir15_b1_b2(ENAME,SPOS1,SPOS2): macro={
+! orientation:b1 spos1 - IP - spos1
+! orientation:b2 spos2 - IP - spos2
+! -> orientation:
+! b1: h v - IP - v h
+! b2: v h - IP - h v
         value,SPOS1,SPOS2;
         if(bv_aux == 1){
                 seqedit,sequence=lhcb1;
@@ -269,6 +274,29 @@ install_ir15_b1_b2(ENAME,SPOS1,SPOS2): macro={
         install, element=ENAMER1.B2,at= SPOS2*bv_aux,from=IP1;
         install, element=ENAMEL5.B2,at=-SPOS2*bv_aux,from=IP5;
         install, element=ENAMER5.B2,at= SPOS2*bv_aux,from=IP5;
+        endedit;
+};
+
+install_ir15_b1_b2_alt(ENAME,SPOS1,SPOS2): macro={
+! orientation:b1 spos1 - IP - spos2
+! orientation:b2 spos2 - IP - spos1
+! -> orientation:
+! b1: h v - IP - h v
+! b2: v h - IP - v h
+        value,SPOS1,SPOS2;
+        if(bv_aux == 1){
+                seqedit,sequence=lhcb1;
+                install, element=ENAMEL1.B1,at=-SPOS1,from=IP1.L1;
+                install, element=ENAMER1.B1,at= SPOS2,from=IP1;
+                install, element=ENAMEL5.B1,at=-SPOS1,from=IP5;
+                install, element=ENAMER5.B1,at= SPOS2,from=IP5;
+                endedit;
+        };
+        seqedit,sequence=lhcb2;
+        install, element=ENAMEL1.B2,at=-SPOS2*bv_aux,from=IP1.L1;
+        install, element=ENAMER1.B2,at= SPOS1*bv_aux,from=IP1;
+        install, element=ENAMEL5.B2,at=-SPOS2*bv_aux,from=IP5;
+        install, element=ENAMER5.B2,at= SPOS1*bv_aux,from=IP5;
         endedit;
 };
 
@@ -802,35 +830,18 @@ value, ad2.l1,l.MBRD,ad2.l1/l.MBRD*scale,ad2.l1*scale;
 ! D2
 exec,install_ir15_b12(MBRD.4   , posD2    );
 exec,install_ir15_b12(BPMWQ.4, posBPMWQ);
-exec,install_ir15_b1_b2(MCBRDV.4,posMCBRDA,posMCBRDB);
-exec,install_ir15_b1_b2(MCBRDH.4,posMCBRDB,posMCBRDA);
 
+!IP - D2 posMCBRDA posMCBRDB
+! orientation:
+! b1: h v - IP - v h
+! b2: v h - IP - h v
+!exec,install_ir15_b1_b2(MCBRDV.4,posMCBRDA,posMCBRDB);
+!exec,install_ir15_b1_b2(MCBRDH.4,posMCBRDB,posMCBRDA);
 ! orientation:
 ! b1: h v - IP - h v
 ! b2: v h - IP - v h
-!if(bv_aux == 1){
-!seqedit,sequence=lhcb1;
-!install,element=MCBRDV.4L1.B1, at=-posMCBRDA, from= IP1.L1;
-!install,element=MCBRDH.4R1.B1, at= posMCBRDA, from= IP1;
-!install,element=MCBRDV.4L5.B1, at=-posMCBRDA, from= IP5;
-!install,element=MCBRDH.4R5.B1, at= posMCBRDA, from= IP5;
-!install,element=MCBRDH.4L1.B1, at=-posMCBRDB, from= IP1.L1;
-!install,element=MCBRDV.4R1.B1, at= posMCBRDB, from= IP1;
-!install,element=MCBRDH.4L5.B1, at=-posMCBRDB, from= IP5;
-!install,element=MCBRDV.4R5.B1, at= posMCBRDB, from= IP5;
-!endedit;
-!};
-!
-!seqedit,sequence=lhcb2;
-!install,element=MCBRDH.4L1.B2, at=-posMCBRDA*bv_aux, from= IP1.L1;
-!install,element=MCBRDV.4R1.B2, at= posMCBRDA*bv_aux, from= IP1;
-!install,element=MCBRDH.4L5.B2, at=-posMCBRDA*bv_aux, from= IP5;
-!install,element=MCBRDV.4R5.B2, at= posMCBRDA*bv_aux, from= IP5;
-!install,element=MCBRDV.4L1.B2, at=-posMCBRDB*bv_aux, from= IP1.L1;
-!install,element=MCBRDH.4R1.B2, at= posMCBRDB*bv_aux, from= IP1;
-!install,element=MCBRDV.4L5.B2, at=-posMCBRDB*bv_aux, from= IP5;
-!install,element=MCBRDH.4R5.B2, at= posMCBRDB*bv_aux, from= IP5;
-!endedit;
+exec,install_ir15_b1_b2_alt(MCBRDV.4,posMCBRDA,posMCBRDB);
+exec,install_ir15_b1_b2_alt(MCBRDH.4,posMCBRDB,posMCBRDA);
 
 !===============================================
 ! Q4
@@ -899,44 +910,19 @@ exec,newel_ir15_b12(BPMQA.4,BPMQA);
 
 exec,install_ir15_b12(BPMQA.4, posBPMQA.4  );
 exec,install_ir15_b12(MQYY.4 , posQ4       );
-exec,install_ir15_b1_b2(MCBYYV.4,posMCBYY.A4,posMCBYY.B4);
-exec,install_ir15_b1_b2(MCBYYH.4,posMCBYY.B4,posMCBYY.A4);
-
-value,posQ4,posMCBYY.B4,posMCBYY.A4;
-
+!IP - posMCBYY.A4 posMCBYY.B4 Q4
+! orientation:
+! b1: h v - IP - v h
+! b2: v h - IP - h v
+!exec,install_ir15_b1_b2(MCBYYV.4,posMCBYY.A4,posMCBYY.B4);
+!exec,install_ir15_b1_b2(MCBYYH.4,posMCBYY.B4,posMCBYY.A4);
 ! orientation:
 ! b1: h v - IP - h v
 ! b2: v h - IP - v h
-!if(bv_aux == 1){
-!seqedit,sequence=lhcb1;
-!! .... MCBYY.A4
-!install,element=MCBYYV.4L1.B1, at=-posMCBYY.A4, from= IP1.L1;
-!install,element=MCBYYH.4R1.B1, at= posMCBYY.A4, from= IP1;
-!install,element=MCBYYV.4L5.B1, at=-posMCBYY.A4, from= IP5;
-!install,element=MCBYYH.4R5.B1, at= posMCBYY.A4, from= IP5;
-!!
-!! .... MCBYY.B4
-!install,element=MCBYYH.4L1.B1, at=-posMCBYY.B4, from= IP1.L1;
-!install,element=MCBYYV.4R1.B1, at= posMCBYY.B4, from= IP1;
-!install,element=MCBYYH.4L5.B1, at=-posMCBYY.B4, from= IP5;
-!install,element=MCBYYV.4R5.B1, at= posMCBYY.B4, from= IP5;
-!endedit;
-!};
-!
-!seqedit,sequence=lhcb2;
-!! .... MCBYY.4
-!install,element=MCBYYH.4L1.B2, at=-posMCBYY.A4*bv_aux, from= IP1.L1;
-!install,element=MCBYYV.4R1.B2, at= posMCBYY.A4*bv_aux, from= IP1;
-!install,element=MCBYYH.4L5.B2, at=-posMCBYY.A4*bv_aux, from= IP5;
-!install,element=MCBYYV.4R5.B2, at= posMCBYY.A4*bv_aux, from= IP5;
-!
-!! .... MCBYY.4
-!install,element=MCBYYV.4L1.B2, at=-posMCBYY.B4*bv_aux, from= IP1.L1;
-!install,element=MCBYYH.4R1.B2, at= posMCBYY.B4*bv_aux, from= IP1;
-!install,element=MCBYYV.4L5.B2, at=-posMCBYY.B4*bv_aux, from= IP5;
-!install,element=MCBYYH.4R5.B2, at= posMCBYY.B4*bv_aux, from= IP5;
-!endedit;
+exec,install_ir15_b1_b2_alt(MCBYYV.4,posMCBYY.A4,posMCBYY.B4);
+exec,install_ir15_b1_b2_alt(MCBYYH.4,posMCBYY.B4,posMCBYY.A4);
 
+value,posQ4,posMCBYY.B4,posMCBYY.A4;
 
 
 !===============================================
