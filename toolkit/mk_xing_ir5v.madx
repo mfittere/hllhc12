@@ -8,11 +8,11 @@ acbcv7.l5b1=0; acbcv7.r5b2=0;
 };
 
 scale0=1;
-brho=23345;
+brho=23348.89927;
 
 exec,reset_xing_ir5v;
-yip5b1= 2e-3; pyip5b1=0;
-yip5b2= 2e-3; pyip5b2=0;
+yip5b1= 2.0e-3; pyip5b1=0;
+yip5b2= 2.0e-3; pyip5b2=0;
 
 limitMCBXV1 := 2.5/brho *scale0*.49;
 limitMCBXV2 := 2.5/brho *scale0*.33;
@@ -22,10 +22,10 @@ limitMCBY   := 2.7/brho *scale0*.5;
 limitMCBC   := 2.8/brho *scale0*.5;
 
 
-acbxv1.l5=   -2.5/brho*.35;
-acbxv1.r5:=   -acbxv1.l5;
+!acbxv1.l5=   -2.5/brho*.35;
+!acbxv1.r5:=   -acbxv1.l5;
 !acbxv2.l5=  -0.5*limitMCBXV;
-acbxv2.r5:=  -acbxv2.l5;
+!acbxv2.r5:=  -acbxv2.l5;
 !acbxv3.l5=  -0.42*limitMCBXV;
 acbxv3.l5:=  + 4.5/brho*.21;
 acbxv3.r5:= -acbxv3.l5  ;
