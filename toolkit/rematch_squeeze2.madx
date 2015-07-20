@@ -1,0 +1,83 @@
+betxip1_new=bet1; betyip1_new=bet2;
+betxip5_new=bet2; betyip5_new=bet1;
+
+rrr=table(ir2_str_m,tablelength);
+betxip1_ref=1000; betyip1_ref=1000;
+while( betxip1_ref>bet1 || betyip1_ref>bet2){
+value,rrr;
+setvars,table=ir2_str_m,row=rrr;value,sc1;
+setvars,table=ir8_str_m,row=rrr;value,sc1;
+setvars,table=ir4_str_m,row=rrr;value,sc5;
+setvars,table=ir6_str_m,row=rrr;value,sc5;
+kq5.l6b1=kq5.l6b1*4.8/6.8; kq5.l6b2=kq5.l6b2*4.8/6.8;
+kq5.r6b1=kq5.r6b1*4.8/6.8; kq5.r6b2=kq5.r6b2*4.8/6.8;
+betx0=0.44;bety0=0.44;
+scxir1=sc1/betx0; scyir1=sc1/bety0;
+scxir5=sc5/betx0; scyir5=sc5/bety0;
+betx0=0.48;bety0=0.48;
+betxip1_ref=scxir1*betx0; betyip1_ref=scyir1*betx0;
+betxip5_ref=scxir5*betx0; betyip5_ref=scyir5*betx0;
+rrr=rrr-1;
+};
+value,betxip1_ref,betyip1_ref,betxip5_ref,betyip5_ref;
+
+
+scxir1=betxip1_new/betx0; scyir1=betyip1_new/betx0;
+scxir5=betxip5_new/betx0; scyir5=betyip5_new/betx0;
+
+
+value,scxir1,scyir1,scxir5,scyir5,betx0,bety0;
+exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0,bety0);
+exec,selectIRAUX(3,4,5,6,7,b2,scxir5,scyir5,betx0,bety0);
+exec,selectIRAUX(7,8,1,2,3,b1,scxir1,scyir1,betx0,bety0);
+exec,selectIRAUX(7,8,1,2,3,b2,scxir1,scyir1,betx0,bety0);
+on_holdselect=1; jac_calls=   10;jac_tol=1e-23; jac_bisec=3;
+call,file="slhc/toolkit/rematch_ir4b1.madx";
+call,file="slhc/toolkit/rematch_ir4b2.madx";
+call,file="rematch_ir6b1m.madx";
+call,file="rematch_ir6b2m.madx";
+match_on_dx=1;match_on_dpx=1;
+call,file="slhc/toolkit/rematch_ir6b1.madx";
+call,file="slhc/toolkit/rematch_ir6b2.madx";
+call,file="slhc/toolkit/rematch_ir2b12.madx";
+call,file="slhc/toolkit/rematch_ir8b12.madx";
+value,tarir2b1,tarir4b1,tarir6b1,tarir8b1;
+value,tarir2b2,tarir4b2,tarir6b2,tarir8b2;
+tarpresqueeze=tarir2b1+tarir4b1+tarir6b1+tarir8b1+
+              tarir2b2+tarir4b2+tarir6b2+tarir8b2;
+
+value,tarpresqueeze;
+if (tarpresqueeze<1e-15) {
+  exec,check_ip(b1); exec,check_ip(b2);
+  !if (make_squeeze_dorematchw==1){
+    exec,intkbeta(5,L,B1); exec,intkbeta(5,R,B1);
+    exec,intkbeta(1,L,B1); exec,intkbeta(1,R,B1);
+    DeltaIx1=(ix1.l_b1-ix1.r_b1)/2;
+    DeltaIy1=(iy1.l_b1-iy1.r_b1)/2;
+    DeltaIx5=(ix5.l_b1-ix5.r_b1)/2;
+    DeltaIy5=(iy5.l_b1-iy5.r_b1)/2;
+    value,DeltaIx1,DeltaIy1,DeltaIx5,DeltaIy5;
+
+    DeltaIy1=-DeltaIy1; DeltaIy5=-DeltaIy5;
+    exec,CORCHROMA_WEAK(2,b1);
+    exec,CORCHROMA_WEAK(2,b2);
+    exec,global_rematchw(DeltaIx1,DeltaIy1,DeltaIx5,DeltaIy5,1);
+    exec,global_rematchw(DeltaIx1,DeltaIy1,DeltaIx5,DeltaIy5,2);
+    exec,CORCHROMA_WEAK(2,b1);
+    exec,CORCHROMA_WEAK(2,b2);
+
+    value,ksf1.a81b1,ksf1.a12b1,ksf1.a45b1,ksf1.a56b1;
+    value,ksd2.a81b1,ksd2.a12b1,ksd2.a45b1,ksd2.a56b1;
+    value,ksf2.a81b2,ksf2.a12b2,ksf2.a45b2,ksf2.a56b2;
+    value,ksd1.a81b2,ksd1.a12b2,ksd1.a45b2,ksd1.a56b2;
+
+  on_disp=0;
+  call,file="slhc/toolkit/rematch_crossing.madx";
+
+  arc_squeeze=1.0;on_check=1;call,file="slhc/toolkit/save_optics2.madx";
+}
+
+
+
+
+
