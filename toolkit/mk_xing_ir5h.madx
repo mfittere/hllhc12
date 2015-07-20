@@ -1,0 +1,54 @@
+scale0=1;
+
+xip5b1= 1e-3; pxip5b1=0;
+xip5b2=-1e-3; pxip5b2=0;
+acbxh=8e-6;
+
+yip5b1= 1e-3; pyip5b1=0;
+yip5b2=-1e-3; pyip5b2=0;
+acbyh=8e-6*yip5b1/1e-3;
+
+limitMCBXH:=  63.5988e-6*scale0;
+limitMCBXV:=  67.0164e-6*scale0;
+limitMCBY :=  96.3000e-6*scale0;
+limitMCB  :=  80.8000e-6*scale0;
+limitMCBC :=  89.8700e-6*scale0;
+limitMCBW :=  80.1400e-6*scale0;
+
+
+acbxh1.l5  :=acbxh;
+acbxh1.r5  :=acbxh;
+acbxh2.l5  :=acbxh;
+acbxh2.r5  :=acbxh;
+acbxh3.l5  :=acbxh;
+acbxh3.r5  :=acbxh;
+Use, period= LHCB1,RANGE=S.DS.L5.B1/E.DS.R5.B1;
+Use, period= LHCB2,RANGE=S.DS.L5.B2/E.DS.R5.B2;
+Match, sequence=lhcb1,lhcb2, beta0=bir5b1,bir5b2;
+WEIGHT,     x = 1, px =  10, y = 1, py = 10;
+constraint, sequence=lhcb1,range=ip5,       x = xip5b1, px = pxip5b1;
+constraint, sequence=lhcb1,range=E.DS.R5.B1,x = 0.0, px = 0.0;
+constraint, sequence=lhcb2,range=ip5,  x = xip5b2, px = pxip5b2;
+constraint, sequence=lhcb2,range=E.DS.R5.B2,x = 0.0, px = 0.0;
+vary,name=acbyhs4.l5b1, step=1.0E-12,lower=-limitMCBY,upper=limitMCBY;
+vary,name=acbch6.l5b1 , step=1.0E-12,lower=-limitMCBC,upper=limitMCBC;
+vary,name=acbyhs4.r5b1, step=1.0E-12,lower=-limitMCBY,upper=limitMCBY;
+vary,name=acbch5.r5b1 , step=1.0E-12,lower=-limitMCBC,upper=limitMCBC;
+vary,name=acbyhs4.l5b2, step=1.0E-12,lower=-limitMCBY,upper=limitMCBY;
+vary,name=acbch5.l5b2 , step=1.0E-12,lower=-limitMCBC,upper=limitMCBC;
+vary,name=acbyhs4.r5b2, step=1.0E-12,lower=-limitMCBY,upper=limitMCBY;
+vary,name=acbch6.r5b2 , step=1.0E-12,lower=-limitMCBC,upper=limitMCBC;
+jacobian,calls=jac_calls, tolerance=1.E-30;
+Endmatch;
+
+value,acbxh1.l5,acbxh2.l5,acbxh3.l5;
+value,acbxh1.r5,acbxh2.r5,acbxh3.r5;
+value,acbyhs4.l5b1;
+value,acbyhs4.l5b2;
+value,acbyhs4.r5b1;
+value,acbyhs4.r5b2;
+value,acbch5.l5b2;
+value,acbch5.r5b1;
+value,acbch6.l5b1;
+value,acbch6.r5b2;
+
