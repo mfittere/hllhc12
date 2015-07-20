@@ -3841,10 +3841,16 @@ exec,print_orbit_acb(y,s4,l,5);
 exec,print_orbit_acb(y,s4,r,5);
 exec,print_orbit_acb(y,s5,l,5);
 exec,print_orbit_acb(y,s5,r,5);
-exec,print_orbit_knob_ip(acbch6.l5b5,c,s,5);
+exec,print_orbit_knob_ip(acbch6.l5b1,c,s,5);
 exec,print_orbit_knob_ip(acbcv6.l5b2,s,c,5);
 exec,print_orbit_knob_ip(acbcv6.r5b1,s,c,5);
 exec,print_orbit_knob_ip(acbch6.r5b2,c,s,5);
+exec,print_orbit_knob_ip(acbcv7.l5b1,s,c,5);
+exec,print_orbit_knob_ip(acbch7.l5b2,c,s,5);
+exec,print_orbit_knob_ip(acbch7.r5b1,c,s,5);
+exec,print_orbit_knob_ip(acbcv7.r5b2,s,c,5);
 assign,echo=terminal ;
+
+system,"slhc/toolkit/check_mcb.py temp/orbit_knobs";
 
 };

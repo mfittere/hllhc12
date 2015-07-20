@@ -483,7 +483,7 @@ exec,print_orbit_acb(y,s5,r,5);
 !exec,print_orbit_knob_ip(acbch5.l5b2,c,s,5);
 !exec,print_orbit_knob_ip(acbch5.r5b1,c,s,5);
 !exec,print_orbit_knob_ip(acbcv5.r5b2,s,c,5);
-exec,print_orbit_knob_ip(acbch6.l5b5,c,s,5);
+exec,print_orbit_knob_ip(acbch6.l5b1,c,s,5);
 exec,print_orbit_knob_ip(acbcv6.l5b2,s,c,5);
 exec,print_orbit_knob_ip(acbcv6.r5b1,s,c,5);
 exec,print_orbit_knob_ip(acbch6.r5b2,c,s,5);
