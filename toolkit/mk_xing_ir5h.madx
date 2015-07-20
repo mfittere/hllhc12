@@ -1,27 +1,37 @@
-scale0=1;
+reset_xing_ir5h: macro={
+acbxh1.l5=0;acbxh1.r5=0;acbxh2.l5=0;
+acbxh2.r5=0;acbxh3.l5=0;acbxh3.r5=0;
+acbyhs4.l5b1=0; acbyhs4.l5b2=0; acbyhs4.r5b1=0; acbyhs4.r5b2=0;
+acbyhs5.l5b1=0; acbyhs5.r5b2=0;
+acbch6.l5b2=0; acbch6.r5b1=0;
+acbch7.l5b1=0; acbch7.r5b2=0;
+};
 
-xip5b1= 1e-3; pxip5b1=0;
-xip5b2=-1e-3; pxip5b2=0;
-acbxh=8e-6;
+scale0=10;
+brho=23348.89927;
 
-yip5b1= 1e-3; pyip5b1=0;
-yip5b2=-1e-3; pyip5b2=0;
-acbyh=8e-6*yip5b1/1e-3;
+xip5b1= 2e-3; pxip5b1=0;
+xip5b2= 2e-3; pxip5b2=0;
 
-limitMCBXH:=  63.5988e-6*scale0;
-limitMCBXV:=  67.0164e-6*scale0;
-limitMCBY :=  96.3000e-6*scale0;
-limitMCB  :=  80.8000e-6*scale0;
-limitMCBC :=  89.8700e-6*scale0;
-limitMCBW :=  80.1400e-6*scale0;
+limitMCBXV1 := 2.5/brho *scale0*.49;
+limitMCBXV2 := 2.5/brho *scale0*.33;
+limitMCBXV3 := 4.5/brho *scale0*.22;
+limitMCBYY  := 4.5/brho *scale0*.25;
+limitMCBY   := 2.7/brho *scale0*.5;
+limitMCBC   := 2.8/brho *scale0*.5;
 
-
-acbxh1.l5  :=acbxh;
-acbxh1.r5  :=acbxh;
-acbxh2.l5  :=acbxh;
-acbxh2.r5  :=acbxh;
-acbxh3.l5  :=acbxh;
-acbxh3.r5  :=acbxh;
+!acbch7.r5b1= 
+!acbch7.l5b2 
+acbxh3.l5:=  + 4.5/brho*.21;
+acbxh3.r5:= -acbxh3.l5  ;
+acbyhs4.l5b1:= 4.5/brho*.24;!
+acbyhs4.r5b2:= 4.5/brho*.24;!
+!acbyhs4.l5b2:= 4.5/brho*.18;!
+!acbyhs4.r5b1:= 4.5/brho*.18;!
+acbyhs4.l5b2:= 4.5/brho*.24;!
+acbyhs4.r5b1:= 4.5/brho*.24;!
+acbch7.r5b1:=-2.8/brho*0.5;
+acbch7.l5b2:=acbch7.r5b1;
 Use, period= LHCB1,RANGE=S.DS.L5.B1/E.DS.R5.B1;
 Use, period= LHCB2,RANGE=S.DS.L5.B2/E.DS.R5.B2;
 Match, sequence=lhcb1,lhcb2, beta0=bir5b1,bir5b2;
@@ -30,25 +40,55 @@ constraint, sequence=lhcb1,range=ip5,       x = xip5b1, px = pxip5b1;
 constraint, sequence=lhcb1,range=E.DS.R5.B1,x = 0.0, px = 0.0;
 constraint, sequence=lhcb2,range=ip5,  x = xip5b2, px = pxip5b2;
 constraint, sequence=lhcb2,range=E.DS.R5.B2,x = 0.0, px = 0.0;
-vary,name=acbyhs4.l5b1, step=1.0E-12,lower=-limitMCBY,upper=limitMCBY;
+vary,name=acbxh1.l5, step=1.0E-15,lower=-limitMCBXV1,upper=limitMCBXV1;
+vary,name=acbxh1.r5, step=1.0E-15,lower=-limitMCBXV1,upper=limitMCBXV1;
+vary,name=acbxh2.l5, step=1.0E-15,lower=-limitMCBXV2,upper=limitMCBXV2;
+vary,name=acbxh2.r5, step=1.0E-15,lower=-limitMCBXV2,upper=limitMCBXV2;
+vary,name=acbyhs4.l5b1, step=1.0E-12,lower=-limitMCBYY,upper=limitMCBYY;
+vary,name=acbyhs4.r5b1, step=1.0E-12,lower=-limitMCBYY,upper=limitMCBYY;
+vary,name=acbyhs4.l5b2, step=1.0E-12,lower=-limitMCBYY,upper=limitMCBYY;
+vary,name=acbyhs4.r5b2, step=1.0E-12,lower=-limitMCBYY,upper=limitMCBYY;
+vary,name=acbyhs5.r5b1 , step=1.0E-12,lower=-limitMCBC,upper=limitMCBC;
+vary,name=acbyhs5.l5b2 , step=1.0E-12,lower=-limitMCBC,upper=limitMCBC;
 vary,name=acbch6.l5b1 , step=1.0E-12,lower=-limitMCBC,upper=limitMCBC;
-vary,name=acbyhs4.r5b1, step=1.0E-12,lower=-limitMCBY,upper=limitMCBY;
-vary,name=acbch5.r5b1 , step=1.0E-12,lower=-limitMCBC,upper=limitMCBC;
-vary,name=acbyhs4.l5b2, step=1.0E-12,lower=-limitMCBY,upper=limitMCBY;
-vary,name=acbch5.l5b2 , step=1.0E-12,lower=-limitMCBC,upper=limitMCBC;
-vary,name=acbyhs4.r5b2, step=1.0E-12,lower=-limitMCBY,upper=limitMCBY;
 vary,name=acbch6.r5b2 , step=1.0E-12,lower=-limitMCBC,upper=limitMCBC;
+!vary,name=acbch7.r5b1, step=1.0E-12,lower=-limitMCBC,upper=limitMCBC;
+!vary,name=acbch7.l5b2, step=1.0E-12,lower=-limitMCBC,upper=limitMCBC;
 jacobian,calls=jac_calls, tolerance=1.E-30;
 Endmatch;
 
-value,acbxh1.l5,acbxh2.l5,acbxh3.l5;
-value,acbxh1.r5,acbxh2.r5,acbxh3.r5;
-value,acbyhs4.l5b1;
-value,acbyhs4.l5b2;
-value,acbyhs4.r5b1;
-value,acbyhs4.r5b2;
-value,acbch5.l5b2;
-value,acbch5.r5b1;
-value,acbch6.l5b1;
-value,acbch6.r5b2;
+exec,mk_irtwiss(5,b1);
+exec,mk_irtwiss(5,b2);
+
+!value,acbxh1.l5,acbxh2.l5,acbxh3.l5;
+!value,acbxh1.r5,acbxh2.r5,acbxh3.r5;
+!value,acbyhs4.l5b1;
+!value,acbyhs4.l5b2;
+!value,acbyhs4.r5b1;
+!value,acbyhs4.r5b2;
+!value,acbch5.l5b2;
+!value,acbch5.r5b1;
+!value,acbch6.l5b1;
+!value,acbch6.r5b2;
+
+value,acbxh1.l5 / limitMCBXV1*100;
+value,acbxh1.r5 / limitMCBXV1*100;
+value,acbxh2.l5 / limitMCBXV2*100;
+value,acbxh2.r5 / limitMCBXV2*100;
+value,acbxh3.l5 / limitMCBXV3*100;
+value,acbxh3.r5 / limitMCBXV3*100;
+
+
+value,acbyhs4.l5b1 / limitMCBYY*100;
+value,acbyhs4.l5b2 / limitMCBYY*100;
+value,acbyhs4.r5b1 / limitMCBYY*100;
+value,acbyhs4.r5b2 / limitMCBYY*100;
+value,acbyhs5.r5b1 / limitMCBY*100; 
+value,acbyhs5.l5b2 / limitMCBY*100;
+value,acbch6.l5b1/ limitMCBC*100; 
+value,acbch6.r5b2/ limitMCBC*100; 
+value,acbch7.r5b1/ limitMCBC*100; 
+value,acbch7.l5b2/ limitMCBC*100; 
+value,tar;
+
 
