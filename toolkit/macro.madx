@@ -3796,4 +3796,55 @@ value,v_crabv.l5b2;
 value,v_crabv.r5b1;
 value,v_crabv.r5b2;};
 
+print_orbit_knob_ip(corrname,ccc,sss,irn): macro={
+printf,text="corrnamex = %20.10e ;",value=corrnamex;
+printf,text="corrnames = %20.10e ;",value=corrnames;
+printf,text="corrnameo = %20.10e ;",value=corrnameo;
+printf,text="corrnameccp = %20.10e ;",value=corrnameccp;
+printf,text="corrnameccm = %20.10e ;",value=corrnameccm;
+printf,text="corrnameccs = %20.10e ;",value=corrnameccs;
+};
 
+print_orbit_mcbx(mcbn,irn): macro={
+exec, print_orbit_knob_ip(acbxhmcbn.lirn,c,s,irn);
+exec, print_orbit_knob_ip(acbxvmcbn.lirn,s,c,irn);
+exec, print_orbit_knob_ip(acbxhmcbn.rirn,c,s,irn);
+exec, print_orbit_knob_ip(acbxvmcbn.rirn,s,c,irn);
+};
+
+
+print_orbit_acb(acbn1,acbn2,side,irn): macro={
+exec, print_orbit_knob_ip(ACBacbn1Hacbn2.sideirnB1,c,s,irn);
+exec, print_orbit_knob_ip(ACBacbn1Vacbn2.sideirnB1,s,c,irn);
+exec, print_orbit_knob_ip(ACBacbn1Hacbn2.sideirnB2,c,s,irn);
+exec, print_orbit_knob_ip(ACBacbn1Vacbn2.sideirnB2,s,c,irn);
+};
+
+check_orbit: macro={
+!macro to check orbit corrector strength
+system,"rm temp/orbit_knobs";
+option,-echo, -info ;assign, echo=temp/orbit_knobs;
+printf,text="l.MCBXFB = %20.10e ;",value=l.MCBXFB;
+printf,text="l.MCBXFA = %20.10e ;",value=l.MCBXFA;
+printf,text="l.MCBRD = %20.10e ;",value=l.MCBRD;
+printf,text="l.MCBYY = %20.10e ;",value=l.MCBYY;
+printf,text="l.MCBYH = %20.10e ;",value=l.MCBYH;
+printf,text="l.MCBYV = %20.10e ;",value=l.MCBYV;
+printf,text="l.MCBCH = %20.10e ;",value=l.MCBCH;
+printf,text="l.MCBCV = %20.10e ;",value=l.MCBCV;
+exec,print_orbit_mcbx(1,5);
+exec,print_orbit_mcbx(2,5);
+exec,print_orbit_mcbx(3,5);
+exec,print_orbit_acb(rd,4,l,5);
+exec,print_orbit_acb(rd,4,r,5);
+exec,print_orbit_acb(y,s4,l,5);
+exec,print_orbit_acb(y,s4,r,5);
+exec,print_orbit_acb(y,s5,l,5);
+exec,print_orbit_acb(y,s5,r,5);
+exec,print_orbit_knob_ip(acbch6.l5b5,c,s,5);
+exec,print_orbit_knob_ip(acbcv6.l5b2,s,c,5);
+exec,print_orbit_knob_ip(acbcv6.r5b1,s,c,5);
+exec,print_orbit_knob_ip(acbch6.r5b2,c,s,5);
+assign,echo=terminal ;
+
+};
