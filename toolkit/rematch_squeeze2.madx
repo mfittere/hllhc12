@@ -1,37 +1,11 @@
-betxip1_new=bet1; betyip1_new=bet2;
-betxip5_new=bet2; betyip5_new=bet1;
-
-rrr=table(ir2_str_m,tablelength);
-betxip1_ref=1000; betyip1_ref=1000;
-while( betxip1_ref>bet1 || betyip1_ref>bet2){
-value,rrr;
-setvars,table=ir2_str_m,row=rrr;value,sc1;
-setvars,table=ir8_str_m,row=rrr;value,sc1;
-setvars,table=ir4_str_m,row=rrr;value,sc5;
-setvars,table=ir6_str_m,row=rrr;value,sc5;
-kq5.l6b1=kq5.l6b1*4.8/6.8; kq5.l6b2=kq5.l6b2*4.8/6.8;
-kq5.r6b1=kq5.r6b1*4.8/6.8; kq5.r6b2=kq5.r6b2*4.8/6.8;
-betx0=0.44;bety0=0.44;
-scxir1=sc1/betx0; scyir1=sc1/bety0;
-scxir5=sc5/betx0; scyir5=sc5/bety0;
-betx0=0.48;bety0=0.48;
-betxip1_ref=scxir1*betx0; betyip1_ref=scyir1*betx0;
-betxip5_ref=scxir5*betx0; betyip5_ref=scyir5*betx0;
-rrr=rrr-1;
-};
-value,betxip1_ref,betyip1_ref,betxip5_ref,betyip5_ref;
-
-
-scxir1=betxip1_new/betx0; scyir1=betyip1_new/betx0;
-scxir5=betxip5_new/betx0; scyir5=betyip5_new/betx0;
-
-
 value,scxir1,scyir1,scxir5,scyir5,betx0,bety0;
+value,scxir1*betx0 ,scyir1*betx0 ,scxir5*betx0 ,scyir5*betx0;
+
 exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0,bety0);
 exec,selectIRAUX(3,4,5,6,7,b2,scxir5,scyir5,betx0,bety0);
 exec,selectIRAUX(7,8,1,2,3,b1,scxir1,scyir1,betx0,bety0);
 exec,selectIRAUX(7,8,1,2,3,b2,scxir1,scyir1,betx0,bety0);
-on_holdselect=1; jac_calls=   10;jac_tol=1e-23; jac_bisec=3;
+on_holdselect=1; jac_calls= 15;jac_tol=1e-22; jac_bisec=3;
 call,file="slhc/toolkit/rematch_ir4b1.madx";
 call,file="slhc/toolkit/rematch_ir4b2.madx";
 call,file="rematch_ir6b1m.madx";
@@ -47,6 +21,8 @@ tarpresqueeze=tarir2b1+tarir4b1+tarir6b1+tarir8b1+
               tarir2b2+tarir4b2+tarir6b2+tarir8b2;
 
 value,tarpresqueeze;
+exec,check_ip(b1); exec,check_ip(b2);
+
 if (tarpresqueeze<1e-15) {
   exec,check_ip(b1); exec,check_ip(b2);
   !if (make_squeeze_dorematchw==1){

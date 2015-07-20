@@ -18,7 +18,8 @@ value,muxip4b1,betxip4b1,alfxip4b1,muyip4b1,betyip4b1,alfyip4b1,dxip4b1,dpxip4b1
 
 use,period=lhcb1,range=s.ds.l4.b1/e.ds.r4.b1;
 match, sequence=lhcb1, beta0=bir4b1;
-constraint,sequence=lhcb1,range=ip4,dpx =dpxip4b1, dx=dxip4b1;
+constraint,sequence=lhcb1,range=ip4,dx =dxip4b1;
+constraint,sequence=lhcb1,range=ip4,dpx =dpxip4b1;
 constraint,sequence=lhcb1,range=ip4,betx=betxip4b1;
 constraint,sequence=lhcb1,range=ip4,bety=betyip4b1;
 constraint,sequence=lhcb1,range=ip4,alfx=alfxip4b1,alfy=alfyip4b1;

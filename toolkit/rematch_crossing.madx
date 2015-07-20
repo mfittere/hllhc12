@@ -1,5 +1,6 @@
 !account for 2 mm offset
 Poff=2.0e-03;
+Poff=2.0e-04; ! temporary fix
 phio_ir1=90;phio_ir5=0;!positive offset
 !design crab cavity knobs to cope with +/-0.5mm misalignment of cavities
 !Occ: ccp and ccm knob, dABCD: ccs knob

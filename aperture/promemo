@@ -1,3 +1,3 @@
-aperture_upgrade_MS_1.madx: Q4:90mm OCT  Q5: 70mm (collision)
-aperture_upgrade_MS_2.madx: Q4:80mm OCT  Q5: 70mm (collision)
-0perture_upgrade_MS_3.madx: Q4:70mm RECT Q5: 56mm (polarity)
+aperture_upgrade_MS_1.madx: Q4:90mm OCT  Q5: 70mm (collision polarity)
+aperture_upgrade_MS_2.madx: Q4:80mm OCT  Q5: 70mm (injection polarity)
+0perture_upgrade_MS_3.madx: Q4:70mm RECT Q5: 56mm (injection polarity)
