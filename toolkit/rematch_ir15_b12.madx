@@ -270,7 +270,7 @@ vary,name=KQX1.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
 !kqtl11.l5b1:=(0.000926526)*(1-ttt)+(-0.00153889)*(ttt);
 vary,name=KQ7.L5B1   ,UPPER=-scl*qtlim3,LOWER=-sc79*qtlim3;
 vary,name=KQ7.R5B1   ,UPPER= sc79*qtlim3,LOWER= scl*qtlim3;
-!vary,name=KQ7.L5b2   ,UPPER= sc79*qtlim3,LOWER= scl*qtlim3;
+vary,name=KQ7.L5b2   ,UPPER= sc79*qtlim3,LOWER= scl*qtlim3;
 vary,name=KQ7.R5b2   ,UPPER=-scl*qtlim3,LOWER=-sc79*qtlim3;
 vary,name=KQ8.L5B1   ,UPPER= sc79*qtlim3,LOWER= scl*qtlim3;
 vary,name=KQ9.L5B1   ,UPPER=-scl*qtlim3,LOWER=-sc79*qtlim3;
