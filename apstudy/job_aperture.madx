@@ -1,6 +1,6 @@
 option, warn,info;
 system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.1/ slhc";
-system,"ln -fns . slhc";
+system,"ln -fns .. slhc";
 system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
 system,"rm -r temp;mkdir temp";
 
@@ -40,8 +40,6 @@ exec,check_ip(b1); exec,check_ip(b2);
 exec,crossing_enable;
 
 
-
-
 emittance_norm=3.5e-6;
 apbbeat=1.1;
 halor=6; halox=6; haloy=6;
@@ -52,53 +50,48 @@ FULL=1;
 seqedit,sequence=lhcb1;flatten;cycle,start=IP3;endedit;
 seqedit,sequence=lhcb2;flatten;cycle,start=IP3;endedit;
 
+savedata(aaa,bbb,ccc,ddd,eee):macro={
+system,"mkdir opt_aaa_bbb_ccc_ddd_eee";
+system,"cp *_aperture opt_aaa_bbb_ccc_ddd_eee";
+system,"cp temp/* opt_aaa_bbb_ccc_ddd_eee";
+};
 
 mk(aaa,bbb,ccc,ddd):macro={
-call,file=opt_aaa_bbb_ccc_ddd.madx;
+call,file="slhc/opt_aaa_bbb_ccc_ddd.madx";
 call,file="slhc/aperture/aperture_upgrade_MS_1.madx";
 exec,crossing_enable;
 exec,mk_apir(5,b1,NRJ,FULL);
 exec,mk_apir(5,b2,NRJ,FULL);
 exec,mk_apir(1,b1,NRJ,FULL);
 exec,mk_apir(1,b2,NRJ,FULL);
-system,"mv temp opt_aaa_bbb_ccc_ddd_ap_ms1;mkdir temp";
+exec,savedata(aaa,bbb,ccc,ddd,ms1);
 call,file="slhc/aperture/aperture_upgrade_MS_2.madx";
-exec,crossing_enable;
 exec,mk_apir(5,b1,NRJ,FULL);
 exec,mk_apir(5,b2,NRJ,FULL);
 exec,mk_apir(1,b1,NRJ,FULL);
 exec,mk_apir(1,b2,NRJ,FULL);
-system,"mv temp opt_aaa_bbb_ccc_ddd_ap_ms2;mkdir temp";
+exec,savedata(aaa,bbb,ccc,ddd,ms2);
 call,file="slhc/aperture/aperture_upgrade_MS_3.madx";
 exec,crossing_enable;
 exec,mk_apir(5,b1,NRJ,FULL);
 exec,mk_apir(5,b2,NRJ,FULL);
 exec,mk_apir(1,b1,NRJ,FULL);
 exec,mk_apir(1,b2,NRJ,FULL);
-system,"mv temp opt_aaa_bbb_ccc_ddd_ap_ms3;mkdir temp";
+exec,savedata(aaa,bbb,ccc,ddd,ms3);
 };
 
 
-
-exec,mk(100,330,330,100);
-exec,mk(100,400,400,100);
-exec,mk(110,330,330,110);
-exec,mk(120,330,330,120);
 exec,mk(150,150,150,150);
-exec,mk(180,180,180,180);
 exec,mk(200,200,200,200);
 exec,mk(220,220,220,220);
+
+exec,mk(75,300,300,75);
+exec,mk(100,330,330,100);
+exec,mk(120,330,330,120);
+
 exec,mk(300,75,75,300);
 exec,mk(330,100,100,330);
-exec,mk(330,110,110,330);
 exec,mk(330,120,120,330);
-exec,mk(330,80,80,330);
-exec,mk(330,90,90,330)
-exec,mk(75,300,300,75);
-exec,mk(80,320,320,80);
-exec,mk(80,330,330,80);
-exec,mk(90,320,320,90);
-exec,mk(90,330,330,90);
 
 stop;
 

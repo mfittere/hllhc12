@@ -1094,7 +1094,7 @@ install,element=BPM.6L5.B1, at=-(posQ6-dposBPM), from= IP5;   !IP side
 install,element=BPMR.6R5.B1,at= (posQ6+dposBPM), from= IP5;   !non-IP side
 
 ! .... MCBC.6
-install,element=MCBCH.6L1.B1, at=-(posQ6-dposMCBCH), from= IP1.L1;!IP side    
+install,element=MCBCH.6L1.B1, at=-(posQ6-dposMCBCH), from= IP1.L1;!IP side
 install,element=MCBCV.6R1.B1, at= (posQ6+dposMCBCV), from= IP1;   !non-IP side
 install,element=MCBCH.6L5.B1, at=-(posQ6+dposMCBCH), from= IP5;   !non-IP side
 install,element=MCBCV.6R5.B1, at= (posQ6-dposMCBCV), from= IP5;   !IP side
@@ -1109,7 +1109,7 @@ install,element=BPMR.6L5.B2,at=-(posQ6-dposBPM)*bv_aux, from= IP5;   !IP side
 install,element=BPM.6R5.B2, at= (posQ6+dposBPM)*bv_aux, from= IP5;   !non-IP side
 
 ! .... MCBC.6
-install,element=MCBCV.6L1.B2, at=-(posQ6-dposMCBCV)*bv_aux, from= IP1.L1;!IP side    
+install,element=MCBCV.6L1.B2, at=-(posQ6-dposMCBCV)*bv_aux, from= IP1.L1;!IP side
 install,element=MCBCH.6R1.B2, at= (posQ6+dposMCBCH)*bv_aux, from= IP1;   !non-IP side
 install,element=MCBCV.6L5.B2, at=-(posQ6+dposMCBCV)*bv_aux, from= IP5;   !non-IP side
 install,element=MCBCH.6R5.B2, at= (posQ6-dposMCBCH)*bv_aux, from= IP5;   !IP side
