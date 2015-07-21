@@ -11,8 +11,8 @@ scale0=1;
 brho=23348.89927;
 
 exec,reset_xing_ir5v;
-yip5b1= 2.0e-3; pyip5b1=0;
-yip5b2= 2.0e-3; pyip5b2=0;
+!yip5b1= 2.0e-3; pyip5b1=0;
+!yip5b2= 2.0e-3; pyip5b2=0;
 
 limitMCBXV1 := 2.5/brho *scale0*.49;
 limitMCBXV2 := 2.5/brho *scale0*.33;

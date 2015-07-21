@@ -7,13 +7,13 @@ acbch6.l5b2=0; acbch6.r5b1=0;
 acbch7.l5b1=0; acbch7.r5b2=0;
 };
 
-!exec,reset_xing_ir5h;
+exec,reset_xing_ir5h;
 
 scale0=1.0;
 brho=23348.89927;
 
-xip5b1= 2e-3; pxip5b1=0;
-xip5b2= 2e-3; pxip5b2=0;
+!xip5b1= 2e-3; pxip5b1=0;
+!xip5b2= 2e-3; pxip5b2=0;
 
 limitMCBXH1 := 2.5/brho *scale0*.49;
 limitMCBXH2 := 2.5/brho *scale0*.33;
