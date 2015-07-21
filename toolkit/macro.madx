@@ -3061,13 +3061,18 @@ on_disp=on_dispaux;
 };
 
 orbcrab_disable: macro={
-on_ccp1=0;on_ccm1=0;on_ccs1=0;
-on_ccp5=0;on_ccm5=0;on_ccs5=0;
+on_ccph1=0;on_ccmh1=0;on_ccsh1=0;
+on_ccph5=0;on_ccmh5=0;on_ccsh5=0;
+on_ccpv1=0;on_ccmv1=0;on_ccsv1=0;
+on_ccpv5=0;on_ccmv5=0;on_ccsv5=0;
+
 };
 
 orbcrab_restore: macro={
-on_ccp1=on_ccp1aux;on_ccm1=on_ccm1aux;on_ccs1=on_ccs1aux;
-on_ccp5=on_ccp5aux;on_ccm5=on_ccm5aux;on_ccs5=on_ccs5aux;
+on_ccph1=on_ccph1aux;on_ccmh1=on_ccmh1aux;on_ccsh1=on_ccsh1aux;
+on_ccph5=on_ccph5aux;on_ccmh5=on_ccmh5aux;on_ccsh5=on_ccsh5aux;
+on_ccpv1=on_ccpv1aux;on_ccmv1=on_ccmv1aux;on_ccsv1=on_ccsv1aux;
+on_ccpv5=on_ccpv5aux;on_ccmv5=on_ccmv5aux;on_ccsv5=on_ccsv5aux;
 };
 copytable(source,target): macro={
 iii=1;
