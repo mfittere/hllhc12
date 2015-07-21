@@ -1,5 +1,0 @@
------ injection optics -----
-1       inj optics of HLLHCV1.1 with HLLHCV1.2 hllhc_sequence.madx file, but on_layout_custom=1 with HLLHCV1.1 layout and HLLHCV1.2 dq*q* positions
-2       HLLHCV1.2 layout, new IT length and spacing
-3       HLLHCV1.2 layout, grad=132.6
-4       HLLHCV1.2 layout, checked aperture -> no degradation in respect to V1.1
