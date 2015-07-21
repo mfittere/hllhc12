@@ -1,5 +1,5 @@
 option, warn,info;
-system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.1/ slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/ slhc";
 system,"ln -fns . slhc";
 system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
 system,"rm -r temp;mkdir temp";
@@ -31,14 +31,41 @@ call,   file="db5/aperture/aper_tol.b1.madx";
 call,   file="db5/aperture/aper_tol.b2.madx";
 !call,file="db5/aperture/as-built/exp_pipe_model_after_LS2.madx";
 !call,file="db5/aperture/as-built/exp_pipe_install_after_LS2.madx";
-call,file="slhc/aperture/aperture_upgrade_MS.madx";
+call,file="slhc/aperture/aperture_upgrade_MS_1.madx";
+!call,file="slhc/aperture/aperture_upgrade_MS_2.madx";
+!call,file="slhc/aperture/aperture_upgrade_MS_3.madx";
 call,file="slhc/aperture/aperture_upgrade_IT.madx";
 
 exec,mk_beam(7000);
-call,file="slhc/opt_round.madx";
-call,file="slhc/opt_flat.madx";
+!call,file="slhc/opt_round.madx";
+!call,file="slhc/opt_round_new.madx";
+!call,file="opt_100_330_330_100.madx";
+!call,file="opt_150_150_150_150.madx";
+call,file="opt_180_180_180_180.madx";
+!call,file="opt_200_200_200_200.madx";
+!call,file="opt_220_220_220_220.madx";
+!call,file="opt_75_300_300_75.madx";
+!call,file="opt_80_330_330_80.madx";
+!call,file="opt_90_330_330_90.madx";
+!call,file="slhc/opt_flat.madx";
+
 exec,check_ip(b1); exec,check_ip(b2);
 exec,crossing_enable;
+
+seqedit,sequence=lhcb1;flatten;cycle,start=IP3;endedit;
+seqedit,sequence=lhcb2;flatten;cycle,start=IP3;endedit;
+use, sequence=lhcb1;
+exec,check_ip(b1);
+use,sequence=lhcb2;
+exec,check_ip(b2);
+
+return;
+exec, crossing_disable;
+on_ccp1=1;on_ccp5=1;                     
+on_ccm1=1;on_ccm5=1;                     
+on_ccs1=1;on_ccs5=1;                     
+exec,check_ip(b1); exec,check_ip(b2);
+exec,orbcrab_disable;
 
 emittance_norm=3.5e-6;
 apbbeat=1.1;
