@@ -74,6 +74,9 @@ DParcx=0.10; DParcy=0.10;
 COmax=0.002; dPmax=0.0002; VMAXI=30; SPECIF=7;
 FULL=1;
 
+seqedit,sequence=lhcb1;flatten;cycle,start=IP3;endedit;
+seqedit,sequence=lhcb2;flatten;cycle,start=IP3;endedit;
+
 
 mk(aaa,bbb,ccc,ddd):macro={
 call,file=opt_aaa_bbb_ccc_ddd.madx;
