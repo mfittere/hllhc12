@@ -1,0 +1,53 @@
+scale = 23348.89927;
+if(grad==0){grad=140;};
+
+qtlim1 = grad/scale;
+
+kqx1.r5 :=-kqx1.l5;
+kqx2.l5  =kqx2a.l5;
+kqx2a.l5:=kqx2.l5;
+kqx2b.l5:=kqx2.l5;
+kqx2a.r5:=-kqx2.l5;
+kqx2b.r5:=-kqx2.l5;
+kqx3.r5 :=-kqx3.l5;
+
+
+get_betmax_xx(name,xy): macro= {
+bet=table(twiss,name,betxy);
+alf=table(twiss,name,alfxy);
+k1= table(twiss,name,k1l)/table(twiss,name,l);
+betxymax_name=bet+alf^2/bet/abs(k1);
+};
+
+use,period=lhcb2,range=IP5/s.ds.r5.b2;
+mtrip: macro={
+twiss,betx=betxip5b2,bety=betyip5b2;
+exec,get_betmax_xx(MQXFA.A3R5,y);
+exec,get_betmax_xx(MQXFA.B3R5,y);
+exec,get_betmax_xx(MQXFB.B2R5,x);
+exec,get_betmax_xx(MQXFB.C2R5,x);
+exec,get_betmax_xx(MQXFB.D2R5,x);
+bmax1=betymax_mqxfa.a3r5;
+if (betymax_mqxfa.b3r5>bmax1){bmax1=betymax_mqxfa.b3r5;};
+bmax2=betxmax_mqxfb.b2r5;
+if (betxmax_mqxfb.c2r5>bmax2){bmax2=betxmax_mqxfb.c2r5;};
+if (betxmax_mqxfb.d2r5>bmax2){bmax2=betxmax_mqxfb.d2r5;};
+bety_mcby_ref=table(twiss,MCBYYH.4R5.B2,bety);
+betx_mcby_ref=table(twiss,MCBYYH.4R5.B2,betx);
+};
+
+exec,mtrip;
+
+match, use_macro;
+vary,name=KQX1.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
+vary,name=KQX2.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
+vary,name=KQX3.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
+use_macro,name=mtrip;
+constraint,expr= bmax1=bmax2;
+constraint,expr= betx_mcby_ref=betx_mcby;
+constraint,expr= bety_mcby_ref=bety_mcby;
+jacobian,calls=jac_calls,tolerance=jac_tol,bisec=bisec;
+endmatch;
+
+value,tar;
+value,KQX1.L5*scale,KQX2.L5*scale,KQX3.L5*scale;
