@@ -1,5 +1,6 @@
 scale = 23348.89927;
-if(grad==0){grad=140;};
+!if(grad==0){grad=140;};
+if(grad==0){grad=132.6;};
 
 qtlim1 = grad/scale;
 

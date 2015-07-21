@@ -35,7 +35,7 @@ kqx2b.r5:=-kqx2.l5;
 kqx3.r5 :=-kqx3.l5;
 
 
-if (on_holdselect==0{
+if (on_holdselect==0){
  exec,selectIR15(5,45,56,b1);
  exec,selectIR15(5,45,56,b2);
 };
@@ -287,7 +287,7 @@ vary,name=KQ10.R5b2  ,UPPER= sch*qtlim3,LOWER= scl*qtlim3;
 vary,name=KQTL11.L5B1,LOWER=-sch*qtlim4,UPPER= sch*qtlim4;
 vary,name=KQTL11.R5B1,LOWER=-sch*qtlim4,UPPER= sch*qtlim4;
 vary,name=KQTL11.L5b2,LOWER=-sch*qtlim4,UPPER= sch*qtlim4;
-vary,name=KQTL11.R5b2,LOWER=-sch*qtlim4,UPPER= sch*qtlim4;
+vary,name=KQTL11.R5b2,LOWER=-sch*qtlim4*500/550,UPPER= sch*qtlim4*500/550;!non-conformity in IR1
 vary,name=KQT12.L5B1 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
 vary,name=KQT12.L5b2 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
 vary,name=KQT12.R5B1 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
