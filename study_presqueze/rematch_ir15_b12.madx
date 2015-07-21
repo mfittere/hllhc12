@@ -72,7 +72,6 @@ constraint,sequence=lhcb2,range=e.ds.r5.b2,mux=muxip5b2,muy=muyip5b2;
 };
 if (apq789>100){
 constraint,sequence=lhcb1,range=MQM.A7L5.B1,bety<apq789;
-constraint,sequence=lhcb1,range=MQML.8L5.B1,betx<apq789;
 constraint,sequence=lhcb1,range=MQM.9L5.B1 ,bety<apq789;
 constraint,sequence=lhcb1,range=MQM.A7R5.B1,betx<apq789;
 constraint,sequence=lhcb1,range=MQML.8R5.B1,bety<apq789;
