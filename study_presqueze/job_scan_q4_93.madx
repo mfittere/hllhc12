@@ -1,0 +1,78 @@
+option, warn,info;
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
+system,"ln -fns .. slhc";
+
+option,-echo,-info,-warn;
+Option, -echo,-warn,-info;
+REAL CONST l.TAN   = 3.7  ;REAL CONST l.TANAL = l.TAN;
+REAL CONST l.TANAR = l.TAN;REAL CONST l.TANC  = l.TAN;
+REAL CONST l.TCT   = 1.0;REAL CONST l.TCTH  = l.TCT;REAL CONST l.TCTVA = l.TCT;
+call,file="db5/V6.5.seq";
+Option, -echo,warn,-info;
+
+call,file="slhc/toolkit/macro.madx";
+on_holdselect=0;
+call,file="slhc/hllhc_sequence.madx";
+
+exec,mk_beam(7000);
+call,file="slhc/opt_presqueeze.madx";
+exec,check_ip(b1); exec,check_ip(b2);
+
+exec,selectIR15(5,45,56,b1);
+exec,selectIR15(5,45,56,b2);
+exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
+
+scl=0.10; sch=0.95;sc79=0.99+0.000;bmaxds=500;imb=1.30;
+match_on_triplet=0; match_on_tripletconst=0;ir5q4sym=0;ir5q5sym=0;
+match_inj_tunes=0;match_on_aperture=0;
+apq789=0; apq5=0; apq6=0; apq4=0; apq1011=0;
+betx_mcby= 929.91;bety_mcby = 667.82; bety_q3=6753.91;
+jac_calls=0; bisec=3; jac_tol=1e-16;
+
+match_on_triplet=0;  call,file="rematch_ir15_b12.madx";
+
+create,table=layout4,column=g1,g2,g3,
+betx_mcby_ref,bety_mcby_ref,
+betxmax_mqxfa.b3l5,betymax_mqxfb.b2l5,betymax_mqxfb.c2l5,betymax_mqxfb.d2l5,
+betx_q5lb1_ref,bety_q5lb1_ref,alfx_q5lb1_ref,alfy_q5lb1_ref,
+betx_q5rb1_ref,bety_q5rb1_ref,alfx_q5rb1_ref,alfy_q5rb1_ref,
+betx_q5lb2_ref,bety_q5lb2_ref,alfx_q5lb2_ref,alfy_q5lb2_ref,
+betx_q5rb2_ref,bety_q5rb2_ref,alfx_q5rb2_ref,alfy_q5rb2_ref;
+
+makescan(optnnn,xxx,yyy,ddx,ddy,outfn):macro={
+call,file=slhc/optnnn.madx;
+betx_mcby=xxx; bety_mcby=yyy;
+while(tar<1e-10){
+  g1:=-kqx1.l5*scale;g2:=-kqx2.l5*scale;g3:=-kqx3.l5*scale;
+  fill,table=layout4; write,table=layout4,file=outfn;
+  betx_mcby=betx_mcby+ddx; bety_mcby=bety_mcby+ddy;
+  call,file="rematch_triplet.madx";
+  match_on_triplet=0;  call,file="rematch_ir15_b12.madx";
+  };
+};
+
+!!!! STARTING POINT
+
+scl=0.10; sch=0.95;sc79=0.993+0.000;bmaxds=500;imb=1.30;
+match_on_triplet=0; match_on_tripletconst=0;ir5q4sym=0;ir5q5sym=0;
+match_inj_tunes=0;match_on_aperture=0;
+apq789=0; apq5=0; apq6=0; apq4=0; apq1011=0;
+betx_mcby= 929.905129981629;bety_mcby = 667.820841187129; bety_q3=6753.90999963983;
+jac_calls=0; bisec=3; jac_tol=1e-16;
+jac_calls=20;
+match_on_triplet=3;  call,file="rematch_ir15_b12.madx";
+
+if (tar>1e-10){stop;};
+
+return;
+
+xxx=betx_mcby; yyy=bety_mcby;
+jac_calls=15;
+angle=0; step=1;
+while (angle<360){
+  ddx=step*cos(angle/180*pi);
+  ddy=step*sin(angle/180*pi);
+  exec,makescan(opt_presqueeze,xxx,yyy,ddx,ddy,presqueze_q4_scan93.tfs);
+  angle=angle+5.;
+};
+
