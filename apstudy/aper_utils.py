@@ -114,18 +114,18 @@ def plot_case_2in1(name,scen,elem,coil,figname,sig=12.0,scalebeta=1.0):
 
 
 
-def mk_table(scens,elems,var='n1',fmt='%5.2f'):
+def mk_table(scens,elems,var='n1',fmt='%4.1f'):
     tab=[]
-    for scen in scens:
+    for nn,scen in enumerate(scens):
       a11,a12,a51,a52=load_study(scen)
       out=[]
-      print scen
+      print "(%d) %s" % (nn,scen)
       for el in elems:
          res=[aaa.ap[var][aaa.ap//el].min() for aaa in a11,a12,a51,a52]
          out.append(min(res))
       tab.append(out)
     ffmt=fmt[:2]+'s'
-    print "%-15s %s"%(el,' '.join([ffmt%v for v in range(len(scen))] ))
+    print "%-15s %s"%('',' '.join([ffmt%v for v in range(len(scens))] ))
     for el,row in zip(elems,zip(*tab)):
         print "%-15s %s"%(el,' '.join([fmt%v for v in row] ))
 

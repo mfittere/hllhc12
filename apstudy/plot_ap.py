@@ -58,6 +58,7 @@ scens=[
  'opt_150_150_150_150_ms1',
  'opt_180_180_180_180_ms1',
  'opt_200_200_200_200_ms1',
+ 'opt_220_220_220_220_ms1',
  'opt_75_300_300_75_ms1',
  'opt_90_330_330_90_ms1',
  'opt_100_330_330_100_ms1',
@@ -66,32 +67,34 @@ scens=[
 ]
 
 scens=[
- 'opt_200_200_200_200_ms1',
+ 'opt_150_150_150_150_ms2',
+ 'opt_180_180_180_180_ms2',
  'opt_200_200_200_200_ms2',
- 'opt_200_200_200_200_ms3',
- 'opt_100_330_330_100_ms1',
+ 'opt_220_220_220_220_ms2',
+ 'opt_75_300_300_75_ms2',
+ 'opt_90_330_330_90_ms2',
  'opt_100_330_330_100_ms2',
- 'opt_100_330_330_100_ms3',
+ 'opt_110_330_330_110_ms2',
+ 'opt_120_330_330_120_ms2',
 ]
+
+
+scens=[
+ 'opt_150_150_150_150_ms1crab',
+ 'opt_180_180_180_180_ms1crab',
+ 'opt_200_200_200_200_ms1crab',
+ 'opt_220_220_220_220_ms1crab',
+ 'opt_75_300_300_75_ms1crab',
+#'opt_90_330_330_90_ms1crab',
+ 'opt_100_330_330_100_ms1crab',
+ 'opt_110_330_330_110_ms1crab',
+ 'opt_120_330_330_120_ms1crab',
+]
+
 
 mk_table(scens,elems)
 
 mk_table(scens,elems,var='x','%5.5f')
-
-apdata=[
-    ('TAXS'       ,0.054 ,None             ,'circle'),
-    ('MQXFA.[AB]1',0.150 ,[0.102]*2        ,'oct.'),
-    ('MQXFB.[AB]2',0.150 ,[0.124]*2        ,'oct.'),
-    ('MQXFA.[AB]3',0.150 ,[0.124]*2        ,'oct.'),
-    ('MBXF'       ,0.150 ,[0.124]*2        ,'oct.'),
-    ('TAXN'       ,0.145 ,None,            ,'circle'),
-    ('MBRD'       ,0.105 ,[0.0435*2]       ,'otct'),
-    ('TAXN'       ,0.145 ,None,            ,'circle'),
-    ('TAXN'       ,0.145 ,None,            ,'circle'),
-    ('TAXN'       ,0.145 ,None,            ,'circle'),
-    ('TAXN'       ,0.145 ,None,            ,'circle'),
-    ('TAXN'       ,0.145 ,None,            ,'circle'),
-    ('TAXN'       ,0.145 ,None,            ,'circle')]
 
 
 for scen in scens:
@@ -108,7 +111,7 @@ elems=['TAXS','MQXFA.[AB]1','MQXFB.[AB]2','MQXFA.[AB]3',
         'MBXF','TAXN','MBRD','MCBRD',
         'MCBYY','MQYY',
         'TCLMB.5','MCBY[HV].5','MQY.5',
-        'TCLMC.6L','MCBC[HV].6','MQML.6']
+        'TCLMC.6','MCBC[HV].6','MQML.6']
 
 for el in elems:
     for nn in a11.get_n_name(el)[:1]:
@@ -144,8 +147,8 @@ for el in elems:
 tab.extend(zip(*out))
 
 for el,row in zip(elems,zip(*tab)):
-   nrow=row+[sum(row[::2]),sum(row[1::2])]
-   print "%-15s %s"%(el,' '.join(['%4.3f'%v for v in row] ))
+   nrow=row+(sum(row[::2]),sum(row[1::2]))
+   print "%-15s %s"%(el,' '.join(['%4.1f'%v for v in nrow] ))
 
 
 
