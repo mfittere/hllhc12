@@ -327,7 +327,7 @@ print,text="kb.a81        :=  ab.a81/l.mb   ;";
 print,text="";
 
 
-print_orbit_knob_ip(corrname,ccc,sss,irn): macro={
+print_orbit_knob_ip(corrname,ccc,sss,irn,nnn): macro={
 printf,text="corrnamex = %20.10e ;",value=corrnamex;
 printf,text="corrnames = %20.10e ;",value=corrnames;
 printf,text="corrnameo = %20.10e ;",value=corrnameo;
@@ -337,25 +337,25 @@ printf,text="corrnameccs = %20.10e ;",value=corrnameccs;
 printf,text="corrname :=+on_xirn  *cccphi_irirn*(%20.10e)" ,value=corrnamex;
 printf,text="           +on_sepirn*sssphi_irirn*(%20.10e)" ,value=corrnames;
 printf,text="           +on_oirn  *cccphio_irirn*(%20.10e)" ,value=corrnameo;
-printf,text="           +on_ccpirn  *(%20.10e)" ,value=corrnameccp;
-printf,text="           +on_ccmirn  *(%20.10e)" ,value=corrnameccm;
-printf,text="           +on_ccsirn  *(%20.10e);",value=corrnameccs;
+printf,text="           +on_ccpnnnirn  *(%20.10e)" ,value=corrnameccp;
+printf,text="           +on_ccmnnnirn  *(%20.10e)" ,value=corrnameccm;
+printf,text="           +on_ccsnnnirn  *(%20.10e);",value=corrnameccs;
 };
 
 
 print_orbit_mcbx(mcbn,irn): macro={
-exec, print_orbit_knob_ip(acbxhmcbn.lirn,c,s,irn);
-exec, print_orbit_knob_ip(acbxvmcbn.lirn,s,c,irn);
-exec, print_orbit_knob_ip(acbxhmcbn.rirn,c,s,irn);
-exec, print_orbit_knob_ip(acbxvmcbn.rirn,s,c,irn);
+exec, print_orbit_knob_ip(acbxhmcbn.lirn,c,s,irn,h);
+exec, print_orbit_knob_ip(acbxvmcbn.lirn,s,c,irn,v);
+exec, print_orbit_knob_ip(acbxhmcbn.rirn,c,s,irn,h);
+exec, print_orbit_knob_ip(acbxvmcbn.rirn,s,c,irn,v);
 };
 
 
 print_orbit_acb(acbn1,acbn2,side,irn): macro={
-exec, print_orbit_knob_ip(ACBacbn1Hacbn2.sideirnB1,c,s,irn);
-exec, print_orbit_knob_ip(ACBacbn1Vacbn2.sideirnB1,s,c,irn);
-exec, print_orbit_knob_ip(ACBacbn1Hacbn2.sideirnB2,c,s,irn);
-exec, print_orbit_knob_ip(ACBacbn1Vacbn2.sideirnB2,s,c,irn);
+exec, print_orbit_knob_ip(ACBacbn1Hacbn2.sideirnB1,c,s,irn,H);
+exec, print_orbit_knob_ip(ACBacbn1Vacbn2.sideirnB1,s,c,irn,V);
+exec, print_orbit_knob_ip(ACBacbn1Hacbn2.sideirnB2,c,s,irn,H);
+exec, print_orbit_knob_ip(ACBacbn1Vacbn2.sideirnB2,s,c,irn,V);
 };
 
 
@@ -439,18 +439,18 @@ exec,print_orbit_acb(y,s4,l,1);
 exec,print_orbit_acb(y,s4,r,1);
 exec,print_orbit_acb(y,s5,l,1);
 exec,print_orbit_acb(y,s5,r,1);
-!exec,print_orbit_knob_ip(acbcv5.l1b1,s,c,1);
-!exec,print_orbit_knob_ip(acbch5.l1b2,c,s,1);
-!exec,print_orbit_knob_ip(acbch5.r1b1,c,s,1);
-!exec,print_orbit_knob_ip(acbcv5.r1b2,s,c,1);
-exec,print_orbit_knob_ip(acbch6.l1b1,c,s,1);
-exec,print_orbit_knob_ip(acbcv6.l1b2,s,c,1);
-exec,print_orbit_knob_ip(acbcv6.r1b1,s,c,1);
-exec,print_orbit_knob_ip(acbch6.r1b2,c,s,1);
-exec,print_orbit_knob_ip(acbcv7.l1b1,s,c,1);
-exec,print_orbit_knob_ip(acbch7.l1b2,c,s,1);
-exec,print_orbit_knob_ip(acbch7.r1b1,c,s,1);
-exec,print_orbit_knob_ip(acbcv7.r1b2,s,c,1);
+!exec,print_orbit_knob_ip(acbcv5.l1b1,s,c,1,v);
+!exec,print_orbit_knob_ip(acbch5.l1b2,c,s,1,h);
+!exec,print_orbit_knob_ip(acbch5.r1b1,c,s,1,h);
+!exec,print_orbit_knob_ip(acbcv5.r1b2,s,c,1,v);
+exec,print_orbit_knob_ip(acbch6.l1b1,c,s,1,h);
+exec,print_orbit_knob_ip(acbcv6.l1b2,s,c,1,v);
+exec,print_orbit_knob_ip(acbcv6.r1b1,s,c,1,v);
+exec,print_orbit_knob_ip(acbch6.r1b2,c,s,1,h);
+exec,print_orbit_knob_ip(acbcv7.l1b1,s,c,1,v);
+exec,print_orbit_knob_ip(acbch7.l1b2,c,s,1,h);
+exec,print_orbit_knob_ip(acbch7.r1b1,c,s,1,h);
+exec,print_orbit_knob_ip(acbcv7.r1b2,s,c,1,v);
 print,text="";
 print,text=" !***IR1 Crab Cavities***";
 printf,text="ahcrab_l1b1   = %20.10e ;",value=ahcrab_l1b1;
@@ -479,18 +479,18 @@ exec,print_orbit_acb(y,s4,l,5);
 exec,print_orbit_acb(y,s4,r,5);
 exec,print_orbit_acb(y,s5,l,5);
 exec,print_orbit_acb(y,s5,r,5);
-!exec,print_orbit_knob_ip(acbcv5.l5b1,s,c,5);
-!exec,print_orbit_knob_ip(acbch5.l5b2,c,s,5);
-!exec,print_orbit_knob_ip(acbch5.r5b1,c,s,5);
-!exec,print_orbit_knob_ip(acbcv5.r5b2,s,c,5);
-exec,print_orbit_knob_ip(acbch6.l5b1,c,s,5);
-exec,print_orbit_knob_ip(acbcv6.l5b2,s,c,5);
-exec,print_orbit_knob_ip(acbcv6.r5b1,s,c,5);
-exec,print_orbit_knob_ip(acbch6.r5b2,c,s,5);
-exec,print_orbit_knob_ip(acbcv7.l5b1,s,c,5);
-exec,print_orbit_knob_ip(acbch7.l5b2,c,s,5);
-exec,print_orbit_knob_ip(acbch7.r5b1,c,s,5);
-exec,print_orbit_knob_ip(acbcv7.r5b2,s,c,5);
+!exec,print_orbit_knob_ip(acbcv5.l5b1,s,c,5,v);
+!exec,print_orbit_knob_ip(acbch5.l5b2,c,s,5,h);
+!exec,print_orbit_knob_ip(acbch5.r5b1,c,s,5,h);
+!exec,print_orbit_knob_ip(acbcv5.r5b2,s,c,5,v);
+exec,print_orbit_knob_ip(acbch6.l5b1,c,s,5,h);
+exec,print_orbit_knob_ip(acbcv6.l5b2,s,c,5,v);
+exec,print_orbit_knob_ip(acbcv6.r5b1,s,c,5,v);
+exec,print_orbit_knob_ip(acbch6.r5b2,c,s,5,h);
+exec,print_orbit_knob_ip(acbcv7.l5b1,s,c,5,v);
+exec,print_orbit_knob_ip(acbch7.l5b2,c,s,5,h);
+exec,print_orbit_knob_ip(acbch7.r5b1,c,s,5,h);
+exec,print_orbit_knob_ip(acbcv7.r5b2,s,c,5,v);
 print,text="";
 print,text=" !***IR5 Crab Cavities***";
 printf,text="ahcrab_l5b1   = %20.10e ;",value=ahcrab_l5b1;
@@ -531,8 +531,8 @@ exec,print_orbit_acb(y,s4,l,8);
 exec,print_orbit_acb(y,s4,r,8);
 exec,print_orbit_acb(c,s5,l,8);
 exec,print_orbit_acb(y,s5,r,8);
-exec,print_orbit_knob_ip(acbwh5.l8b1,c,s,8);
-exec,print_orbit_knob_ip(acbch5.l8b1,c,s,8);
+exec,print_orbit_knob_ip(acbwh5.l8b1,c,s,8,h);
+exec,print_orbit_knob_ip(acbch5.l8b1,c,s,8,h);
 print,text="";
 
 print,text=" !***IR4 Optics***";
