@@ -175,8 +175,8 @@ r_tol_Q4 =0.00084; h_tol_Q4 :=0.00126+h_tol_Q4_mod; v_tol_Q4 :=0.0006+v_tol_Q4_m
 !MQYY.4R5.B2,    APERTYPE=RECTELLIPSE, APERTURE:={ r_Q4,g_Q4,r_Q4,r_Q4},
 !                APER_TOL:={r_tol_Q4,h_tol_Q4,v_tol_Q4 };
 !
-r1_q4=31.9-5; !C. Garion 9/4 but at 80mm
-r2_q4=36.9-5; !C. Garion 9/4 but at 80mm
+r1_q4=31.9-5-1.5; !C. Garion 9/4 but at 80mm and adding tolerances
+r2_q4=36.9-5-1.5; !C. Garion 9/4 but at 80mm and adding tolerances
 
 r_q4=sqrt((sqrt(2)*r1_q4-r2_q4)^2+r2_q4^2);
 g_q4=r1_q4;
