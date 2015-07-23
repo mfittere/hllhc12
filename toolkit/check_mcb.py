@@ -35,8 +35,8 @@ lumi.update({'acbc%s%s'%(pp,ii): 0.0 for ii in ['6','7'] for pp in ['h','v']})
 arc= {'acbx%s1'%(pp): 0.0 for pp in ['h','v']}
 arc.update({'acbx%s2'%(pp): 0.0 for pp in ['h','v']})
 arc.update({'acbx%s3'%(pp): 0.0 for pp in ['h','v']})
-arc.update({'acbrd%s4'%(pp): 0.7 for pp in ['h','v']})
-arc.update({'acby%ss4'%(pp): 0.0 for pp in ['h','v']})
+arc.update({'acbrd%s4'%(pp): 0.35 for pp in ['h','v']})
+arc.update({'acby%ss4'%(pp): 0.35 for pp in ['h','v']})
 arc.update({'acby%ss5'%(pp): 0.7 for pp in ['h','v']})
 arc.update({'acbc%s%s'%(pp,ii): 0.0 for ii in ['6','7'] for pp in ['h','v']})
 
@@ -82,7 +82,7 @@ def print_acb(corrs,name,scale = 23348.89927):
   #maximum and margin
   cmax=corrmax[name.split('.')[0]]
   out.append(cmax)
-  margin=abs(cmax-tot)*100/cmax
+  margin=(cmax-tot)*100/cmax
   out.append(margin)
   print ('%-15s'+'%7.2f'*13) % tuple(out)
   return out
