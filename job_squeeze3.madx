@@ -31,7 +31,7 @@ call,   file="db5/aperture/aper_tol.b1.madx";
 call,   file="db5/aperture/aper_tol.b2.madx";
 !call,file="db5/aperture/as-built/exp_pipe_model_after_LS2.madx";
 !call,file="db5/aperture/as-built/exp_pipe_install_after_LS2.madx";
-call,file="slhc/aperture/aperture_upgrade_MS.madx";
+call,file="slhc/aperture/aperture_upgrade_MS_1.madx";
 call,file="slhc/aperture/aperture_upgrade_IT.madx";
 
 exec,mk_beam(7000);
@@ -40,44 +40,6 @@ call,file="slhc/opt_round.madx";
 call,file="slhc/opt_100_400_400_100.madx";
 exec,check_ip(b1); exec,check_ip(b2);
 exec,crossing_enable;
-
-
-
-
-return;
-
-mk_round(bbb): macro={
-readmytable,table=ir2_str_m,file=slhc/squeeze/ir2_sround.tfs;
-readmytable,table=ir4_str_m,file=slhc/squeeze/ir4_sround.tfs;
-readmytable,table=ir6_str_m,file=slhc/squeeze/ir6_sround.tfs;
-readmytable,table=ir8_str_m,file=slhc/squeeze/ir8_sround.tfs;
-bet1=bbb/1000;bet2=bbb/1000;
-call,file="slhc/toolkit/rematch_squeeze2.madx";
-system,"cp temp/optics.madx opt_bbb_bbb_bbb_bbb.madx";
-};
-
-exec,mk_round(150);
-exec,mk_round(200);
-exec,mk_round(180);
-
-call,file="slhc/toolkit/rematch_crossing.madx";
-arc_squeeze=1.0;on_check=1;call,file="slhc/toolkit/save_optics2.madx";
-system,"cp temp/optics.madx opt_100_400_400_100.madx";
-
-
-mk_round(bbb,ccc): macro={
-readmytable,table=ir2_str_m,file=slhc/squeeze/ir2_sflat.tfs;
-readmytable,table=ir4_str_m,file=slhc/squeeze/ir4_sflat.tfs;
-readmytable,table=ir6_str_m,file=slhc/squeeze/ir6_sflat.tfs;
-readmytable,table=ir8_str_m,file=slhc/squeeze/ir8_sflat.tfs;
-bet1=bbb/1000;bet2=ccc/1000;
-call,file="slhc/toolkit/rematch_squeeze2.madx";
-system,"cp temp/optics.madx opt_bbb_ccc_ccc_bbb.madx";
-};
-
-exec,mk_round(75);
-exec,mk_round(100);
-exec,mk_round(110);
 
 
 mk_squeeze(bbb,ccc): macro={
@@ -94,6 +56,9 @@ if (tarpresqueeze<1e-15) {
 };
 };
 
+
+
+
 call,file="slhc/opt_75_300_300_75.madx";
 exec,mk_squeeze(75,300);
 call,file="slhc/opt_100_400_400_100.madx";
@@ -101,10 +66,6 @@ exec,mk_squeeze(100,400);
 
 call,file="slhc/opt_150_150_150_150.madx";
 exec,mk_squeeze(150,150);
-call,file="slhc/opt_150_150_150_150.madx";
-exec,mk_squeeze(150,150);
-
-exec,check_ip(b1); exec,check_ip(b2);
-exec,crossing_enable;
-exec,check_ip(b1); exec,check_ip(b2);
+call,file="slhc/opt_200_200_200_200.madx";
+exec,mk_squeeze(200,200);
 

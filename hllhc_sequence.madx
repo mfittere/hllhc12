@@ -390,8 +390,8 @@ exec,install_ir15_cmn(MQXFA.B3,    posQ3b  );
 ! Q2a |.5 } 1 {.5 | Q2b | .489| MCBXFBb |.5 }
 ! Q2b |.489 | MCBXFBb |.1 } .1 {.5 | Q3 | .5}
 
-posMCBXFBa  := posQ2a     -(l.MQX + l.MCBXFB   )/2. -0.488;
-posMCBXFBb  := posQ2b     +(l.MQX + l.MCBXFB   )/2. +0.489;
+posMCBXFBa  := posQ2a     -(l.MQX + l.MCBXFB   )/2. -0.4885;
+posMCBXFBb  := posQ2b     +(l.MQX + l.MCBXFB   )/2. +0.4885;
 !value,l.MCBXFB, posMCBXFBa,posMCBXFBb;
 
 ! Cabling orbit corrector inside Q2a and Q2b cold masses
