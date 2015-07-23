@@ -50,6 +50,8 @@
 !     crossing_save
 !     crossing_disable
 !     crossing_restore
+!     orbcrab_disable
+!     orbcrab_restore
 !     copyir5to1
 !     ptcchrom2
 !     ptcchrom3
@@ -3809,6 +3811,10 @@ printf,text="corrnameccp = %20.10e ;",value=corrnameccp;
 printf,text="corrnameccm = %20.10e ;",value=corrnameccm;
 printf,text="corrnameccs = %20.10e ;",value=corrnameccs;
 };
+
+!print_orbit_knob_ip(corrname,ccc,sss,irn): macro={
+!printf,text="corrnameo = %20.10e ;",value=corrname;
+!};
 
 print_orbit_mcbx(mcbn,irn): macro={
 exec, print_orbit_knob_ip(acbxhmcbn.lirn,c,s,irn);
