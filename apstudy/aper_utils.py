@@ -97,7 +97,6 @@ def plot_case_2in1(name,scen,elem,coil,figname,sig=12.0,scalebeta=1.0):
       plot_circle(coil,'g','coil aperture')
     a11.plot_halo_name(elem,n1=sig,color='b',lbl=None,lblap='aperture')
     a51.plot_halo_name(elem,n1=sig,color='b',lbl='Beam 1')
-    print a11
     pl.title('')
     pl.legend()
     pl.subplot(122)
@@ -128,5 +127,18 @@ def mk_table(scens,elems,var='n1',fmt='%4.1f'):
     print "%-15s %s"%('',' '.join([ffmt%v for v in range(len(scens))] ))
     for el,row in zip(elems,zip(*tab)):
         print "%-15s %s"%(el,' '.join([fmt%v for v in row] ))
+
+
+def mk_fig_set(name,scen,label,single,double):
+    pl.figure(figsize=(7.8,7))
+    for elname,coil,elshort,sig in single:
+       figname='%s/%s_%s.png'%(scen,elshort,name)
+       plot_case(label,scen,elname,coil,figname,sig=sig)
+       print figname
+    pl.figure(figsize=(15.6,7))
+    for elname,coil,elshort,sig in double:
+       plot_case_2in1(label,scen,elname,coil,figname,sig=sig)
+       figname='%s/%s_%s.png'%(scen,elshort,name)
+       print figname
 
 

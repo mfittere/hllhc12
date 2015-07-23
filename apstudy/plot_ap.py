@@ -80,15 +80,51 @@ scens=[
 
 
 scens=[
- 'opt_150_150_150_150_ms1crab',
- 'opt_180_180_180_180_ms1crab',
- 'opt_200_200_200_200_ms1crab',
- 'opt_220_220_220_220_ms1crab',
- 'opt_75_300_300_75_ms1crab',
-#'opt_90_330_330_90_ms1crab',
- 'opt_100_330_330_100_ms1crab',
- 'opt_110_330_330_110_ms1crab',
- 'opt_120_330_330_120_ms1crab',
+ 'res/opt_150_150_150_150_ms1craboff',
+ 'res/opt_180_180_180_180_ms1craboff',
+ 'res/opt_200_200_200_200_ms1craboff',
+ 'res/opt_220_220_220_220_ms1craboff',
+ 'res/opt_75_300_300_75_ms1craboff',
+ 'res/opt_90_330_330_90_ms1craboff',
+ 'res/opt_100_330_330_100_ms1craboff',
+ 'res/opt_110_330_330_110_ms1craboff',
+ 'res/opt_120_330_330_120_ms1craboff',
+]
+
+scens=[
+ 'res/opt_150_150_150_150_ms2craboffxing',
+ 'res/opt_180_180_180_180_ms2craboffxing',
+ 'res/opt_200_200_200_200_ms2craboffxing',
+ 'res/opt_220_220_220_220_ms2craboffxing',
+ 'res/opt_75_300_300_75_ms2craboffxing',
+ 'res/opt_90_330_330_90_ms2craboffxing',
+ 'res/opt_100_330_330_100_ms2craboffxing',
+ 'res/opt_110_330_330_110_ms2craboffxing',
+ 'res/opt_120_330_330_120_ms2craboffxing',
+]
+
+scens=[
+ 'res/opt_150_150_150_150_ms3craboffxing',
+ 'res/opt_180_180_180_180_ms3craboffxing',
+ 'res/opt_200_200_200_200_ms3craboffxing',
+ 'res/opt_220_220_220_220_ms3craboffxing',
+ 'res/opt_75_300_300_75_ms3craboffxing',
+ 'res/opt_90_330_330_90_ms3craboffxing',
+ 'res/opt_100_330_330_100_ms3craboffxing',
+ 'res/opt_110_330_330_110_ms3craboffxing',
+ 'res/opt_120_330_330_120_ms3craboffxing',
+]
+
+scens=[
+ 'res/opt_150_150_150_150_ms3crabxing',
+ 'res/opt_180_180_180_180_ms3crabxing',
+ 'res/opt_200_200_200_200_ms3crabxing',
+ 'res/opt_220_220_220_220_ms3crabxing',
+ 'res/opt_75_300_300_75_ms3crabxing',
+ 'res/opt_90_330_330_90_ms3crabxing',
+ 'res/opt_100_330_330_100_ms3crabxing',
+ 'res/opt_110_330_330_110_ms3crabxing',
+ 'res/opt_120_330_330_120_ms3crabxing',
 ]
 
 
