@@ -1,11 +1,12 @@
-from workpkg import *
-
-
+#from workpkg import *
+from pyoptics import *
+from matplotlib.pyplot import *
 
 def mkfig(fn):
     ynn='g1 g2 g3'.split()
     t=optics.open(fn)
-    figure(figsize=(12,8))
+    figure(fn,figsize=(12,8))
+    title(fn.split('.')[0])
     clf()
     subplot(221)
     plot(t.betx_mcby_ref,t.bety_mcby_ref,'-o')
@@ -36,8 +37,13 @@ def mkfig(fn):
     savefig(figname)
     #os.system('cp %s  ~/dfshome/Desktop/'%figname)
 
+close('all')
+mkfig('presqueze_q4_scan100.tfs')
+mkfig('presqueze_q4_scan107.tfs')
+mkfig('presqueze_q4_scan93.tfs')
 
-
+draw()
+show()
 
 
 
