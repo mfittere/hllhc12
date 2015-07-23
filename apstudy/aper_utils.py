@@ -99,12 +99,23 @@ def plot_case_2in1(name,scen,elem,coil,figname,sig=12.0,scalebeta=1.0):
     a51.plot_halo_name(elem,n1=sig,color='b',lbl='Beam 1')
     pl.title('')
     pl.legend()
-    pl.subplot(122)
+    if coil<0.12:
+        pl.xlim(-0.06,0.06); pl.ylim(-0.06,0.06);
+        tv=linspace(-0.06,0.06,7)
+        pl.xticks(tv,map(str,tv*1000))
+        pl.yticks(tv,map(str,tv*1000))
+    ax=pl.subplot(122)
     if coil is not None:
       plot_circle(coil,'g','coil aperture')
     a12.plot_halo_name(elem,n1=sig,color='r',lbl=None,lblap='aperture')
     a52.plot_halo_name(elem,n1=sig,color='r',lbl='Beam 2')
     n1m=min([ s.get_halo_min_name(elem) for s in [a11,a12,a51,a52]])
+    if coil<0.12:
+        #ax.set_xlim(-0.6,0.6); ax.set_ylim(-0.06,0.06);
+        tv=linspace(-0.06,0.06,7);        tvl=map(str,tv*1000)
+        ax.set_xticks(tv); ax.set_xticklabels(tvl)
+        ax.set_yticks(tv); ax.set_yticklabels(tvl)
+    pl.draw()
     pl.title('')
     pl.legend()
     pl.suptitle(r'%s: %s, $a_{min}=%2.2f\,\sigma$'%(name,elem,n1m))
@@ -137,8 +148,8 @@ def mk_fig_set(name,scen,label,single,double):
        print figname
     pl.figure(figsize=(15.6,7))
     for elname,coil,elshort,sig in double:
-       plot_case_2in1(label,scen,elname,coil,figname,sig=sig)
        figname='%s/%s_%s.png'%(scen,elshort,name)
+       plot_case_2in1(label,scen,elname,coil,figname,sig=sig)
        print figname
 
 
