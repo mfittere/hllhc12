@@ -1,3 +1,4 @@
+optics used: opt_presqueeze.madx
 v_crabh.l1b1 =        11.68216788 ;
 v_crabh.l1b2 =        11.37196502 ;
 v_crabh.r1b1 =        11.37199165 ;
@@ -15,6 +16,7 @@ v_crabv.l5b2 =        11.48752804 ;
 v_crabv.r5b1 =         11.4875348 ;
 v_crabv.r5b2 =        11.90454055 ;
 
+optics used: opt_150_150_150_150.madx
 Checking temp/orbit_knobs
 for 'tot' use maximum value over 'x' and 's'
                            corrector strength [Tm]
@@ -84,6 +86,7 @@ name               x      s      o      ccp    ccm    ccs    iterr  tot    max  
 -- acbcv7         0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00   2.80 100.00
 
 
+optics used: opt_150_150_150_150.madx
 #---------- maximum orbit in different elements
 elem               ccp [mm]     ccm [mm]     ccs [mm]       o [mm]    cc tot [mm]     tot [mm]
                      x    y       x    y       x    y       x    y       x    y       x    y
