@@ -97,15 +97,25 @@ def plot_case_2in1(name,scen,elem,coil,figname,sig=12.0,scalebeta=1.0):
       plot_circle(coil,'g','coil aperture')
     a11.plot_halo_name(elem,n1=sig,color='b',lbl=None,lblap='aperture')
     a51.plot_halo_name(elem,n1=sig,color='b',lbl='Beam 1')
-    print a11
     pl.title('')
     pl.legend()
-    pl.subplot(122)
+    if coil<0.12:
+        pl.xlim(-0.06,0.06); pl.ylim(-0.06,0.06);
+        tv=linspace(-0.06,0.06,7)
+        pl.xticks(tv,map(str,tv*1000))
+        pl.yticks(tv,map(str,tv*1000))
+    ax=pl.subplot(122)
     if coil is not None:
       plot_circle(coil,'g','coil aperture')
     a12.plot_halo_name(elem,n1=sig,color='r',lbl=None,lblap='aperture')
     a52.plot_halo_name(elem,n1=sig,color='r',lbl='Beam 2')
     n1m=min([ s.get_halo_min_name(elem) for s in [a11,a12,a51,a52]])
+    if coil<0.12:
+        #ax.set_xlim(-0.6,0.6); ax.set_ylim(-0.06,0.06);
+        tv=linspace(-0.06,0.06,7);        tvl=map(str,tv*1000)
+        ax.set_xticks(tv); ax.set_xticklabels(tvl)
+        ax.set_yticks(tv); ax.set_yticklabels(tvl)
+    pl.draw()
     pl.title('')
     pl.legend()
     pl.suptitle(r'%s: %s, $a_{min}=%2.2f\,\sigma$'%(name,elem,n1m))
@@ -114,19 +124,32 @@ def plot_case_2in1(name,scen,elem,coil,figname,sig=12.0,scalebeta=1.0):
 
 
 
-def mk_table(scens,elems,var='n1',fmt='%5.2f'):
+def mk_table(scens,elems,var='n1',fmt='%4.1f'):
     tab=[]
-    for scen in scens:
+    for nn,scen in enumerate(scens):
       a11,a12,a51,a52=load_study(scen)
       out=[]
-      print scen
+      print "(%d) %s" % (nn,scen)
       for el in elems:
          res=[aaa.ap[var][aaa.ap//el].min() for aaa in a11,a12,a51,a52]
          out.append(min(res))
       tab.append(out)
     ffmt=fmt[:2]+'s'
-    print "%-15s %s"%(el,' '.join([ffmt%v for v in range(len(scen))] ))
+    print "%-15s %s"%('',' '.join([ffmt%v for v in range(len(scens))] ))
     for el,row in zip(elems,zip(*tab)):
         print "%-15s %s"%(el,' '.join([fmt%v for v in row] ))
+
+
+def mk_fig_set(name,scen,label,single,double):
+    pl.figure(figsize=(7.8,7))
+    for elname,coil,elshort,sig in single:
+       figname='%s/%s_%s.png'%(scen,elshort,name)
+       plot_case(label,scen,elname,coil,figname,sig=sig)
+       print figname
+    pl.figure(figsize=(15.6,7))
+    for elname,coil,elshort,sig in double:
+       figname='%s/%s_%s.png'%(scen,elshort,name)
+       plot_case_2in1(label,scen,elname,coil,figname,sig=sig)
+       print figname
 
 

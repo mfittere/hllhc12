@@ -6,8 +6,7 @@ select, flag=aperture, column=name,s,n1,aper_1,aper_2,aper_3,aper_4,rtol,xtol,yt
 !jac_calls=15; bisec=3; tol=1e-21;
 
 scale = 23348.89927;
-if(grad==0){grad=140.0;};
-!if(grad==0){grad=132.6;}; !new maximum gradient of 132.6 T/m scl=0.15; sch=0.9 ; sc79=1; bmaxds=1360; imb=1.30;
+if(grad==0){grad=132.6;}; !new maximum gradient of 132.6 T/m scl=0.15; sch=0.9 ; sc79=1; bmaxds=1360; imb=1.30;
 if(scl==0){ scl=0.10;};
 if(sch==0){ sch=0.95;};
 if(sc79==0){sc79=0.999;};
@@ -170,9 +169,9 @@ if (ir5q5sym==0){
   imq5r=-KQ5.R5B2/KQ5.R5B1/100;
   Kq5.L5B2:=-Kq5.L5B1*imq5l*100;
   Kq5.R5B2:=-Kq5.R5B1*imq5r*100;
-!  vary,name=imq5l,UPPER=imb/100,LOWER=1/imb/100;
+  vary,name=imq5l,UPPER=imb/100,LOWER=1/imb/100;
   vary,name=imq5r,UPPER=imb/100,LOWER=1/imb/100;
-!  vary,name=KQ5.L5B1   ,UPPER=-scl*qtlimq5,LOWER=-sch*qtlimq5;
+  vary,name=KQ5.L5B1   ,UPPER=-scl*qtlimq5,LOWER=-sch*qtlimq5;
   vary,name=KQ5.R5B1   ,UPPER= sch*qtlimq5,LOWER= scl*qtlimq5;
 };
 if (ir5q5sym==-1){
@@ -251,7 +250,7 @@ if (match_on_triplet==3) {! only beta in q3 and cc region constrained
 vary,name=KQX1.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
 vary,name=KQX2.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
 vary,name=KQX3.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
-!constraint,sequence=lhcb2,range=MCBYYH.4R5.B2,betx=betx_mcby;
+constraint,sequence=lhcb2,range=MCBYYH.4R5.B2,betx=betx_mcby;
 constraint,sequence=lhcb2,range=MCBYYH.4R5.B2,bety=bety_mcby;
 if (bety_q3>0){ constraint,sequence=lhcb2,range=MQXFA.B3R5,bety=bety_q3; };
 if (betx_q2>0){ constraint,sequence=lhcb2,range=mqxfb.a2r5,betx=betx_q2; };
@@ -283,15 +282,15 @@ vary,name=KQ10.L5b2  ,UPPER=-scl*qtlim3,LOWER=-sch*qtlim3;
 vary,name=KQ8.R5b2   ,UPPER= sc79*qtlim3,LOWER= scl*qtlim3;
 vary,name=KQ9.R5b2   ,UPPER=-scl*qtlim3,LOWER=-sc79*qtlim3;
 vary,name=KQ10.R5b2  ,UPPER= sch*qtlim3,LOWER= scl*qtlim3;
-!vary,name=KQTL11.L5B1,LOWER=-sch*qtlim4,UPPER= sch*qtlim4;
+vary,name=KQTL11.L5B1,LOWER=-sch*qtlim4,UPPER= sch*qtlim4;
 vary,name=KQTL11.R5B1,LOWER=-sch*qtlim4,UPPER= sch*qtlim4;
 vary,name=KQTL11.L5b2,LOWER=-sch*qtlim4,UPPER= sch*qtlim4;
 vary,name=KQTL11.R5b2,LOWER=-sch*qtlim4*500/550,UPPER= sch*qtlim4*500/550;!non-conformity in IR1
 vary,name=KQT12.L5B1 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
-!vary,name=KQT12.L5b2 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
+vary,name=KQT12.L5b2 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
 vary,name=KQT12.R5B1 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
 vary,name=KQT12.R5b2 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
-!vary,name=KQT13.L5B1 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
+vary,name=KQT13.L5B1 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
 vary,name=KQT13.L5b2 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
 vary,name=KQT13.R5b2 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
 vary,name=KQT13.R5B1 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;

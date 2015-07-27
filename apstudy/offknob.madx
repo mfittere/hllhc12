@@ -1,20 +1,19 @@
-h_tol_TAS_mod =0  /1000 ;
-h_tol_Q1_mod  =0  /1000 ;
-h_tol_Q2_mod  =0.2/1000 ;
-h_tol_Q3_mod  =0.4/1000 ;
-h_tol_D1_mod  =0.5/1000 ;
-h_tol_TAN_mod =0.9/1000 ;
-h_tol_D2_mod  =1  /1000 ;
-h_tol_D2_mod  =1  /1000 ;
-h_tol_Q4_mod  =1  /1000 ;
-h_tol_Q4_mod  =1  /1000 ;
-h_tol_M5_mod  =0.4/1000 ;
-h_tol_M5_mod  =0  /1000 ;
-h_tol_Q5_mod  =0.2/1000 ;
-h_tol_M6_mod  =0  /1000 ;
-h_tol_M6_mod  =0  /1000 ;
-h_tol_Q6_mod  =0  /1000 ;
-
+h_tol_TAS_mod =0  /1000 + 2  /1000;
+h_tol_Q1_mod  =0  /1000 + 2.4/1000;
+h_tol_Q2_mod  =0.2/1000 + 3.6/1000;
+h_tol_Q3_mod  =0.4/1000 + 2.8/1000;
+h_tol_D1_mod  =0.5/1000 + 2.1/1000;
+h_tol_TAN_mod =0.9/1000 + 3  /1000;
+h_tol_D2_mod  =1  /1000 + 3.3/1000;
+h_tol_D2_mod  =1  /1000 + 3.4/1000;
+h_tol_Q4_mod  =1  /1000 + 4  /1000;
+h_tol_Q4_mod  =1  /1000 + 3.9/1000;
+h_tol_M5_mod  =0.4/1000 + 3.7/1000;
+h_tol_M5_mod  =0  /1000 + 3.6/1000;
+h_tol_Q5_mod  =0.2/1000 + 3.5/1000;
+h_tol_M6_mod  =0  /1000 + 2.3/1000;
+h_tol_M6_mod  =0  /1000 + 2.1/1000;
+h_tol_Q6_mod  =0  /1000 + 2.1/1000;
 
 v_tol_TAS_mod =h_tol_TAS_mod;
 v_tol_Q1_mod  =h_tol_Q1_mod ;

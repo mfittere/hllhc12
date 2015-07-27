@@ -68,8 +68,8 @@ g_D2=r_D2 - t_CT_D2;
 !r2_D2 = H,V halfgap
 !r1_D2=38.0;
 !r2_D2=42.5;
-r1_D2=38.0+1; !C. Garion 9/4
-r2_D2=42.5+1; !C. Garion 9/4
+r1_D2=38.0+1-1.5/2; !C. Garion 9/4
+r2_D2=42.5+1-1.5/2; !C. Garion 9/4
 
 r_D2=sqrt((sqrt(2)*r1_D2-r2_D2)^2+r2_D2^2);
 g_D2=r1_D2;
@@ -294,7 +294,8 @@ r_tol_BPM_Q6 =r_tol_Q5; h_tol_BPM_Q6 =h_tol_Q5; v_tol_BPM_Q6 =v_tol_Q5;
 !was a 26 mm radius circle nominally,see also offset files
 !where the aperture sep. of the TAN has been reduced from 160 mm to 155 mm
 a_TAN=0.0400; b_TAN=0.0400; !95mm
-r_tol_TAN=0.0006;h_tol_TAN:=0.001+h_tol_TAN_mod;v_tol_TAN:=0.001+v_tol_TAN_mod;
+r_tol_TAN=0.00084;
+h_tol_TAN:=0.00136+h_tol_TAN_mod;v_tol_TAN:=0.001+v_tol_TAN_mod;
 
 !TAXN.4L1,  APERTYPE=RECTELLIPSE, APERTURE:={a_TAN,b_TAN,a_TAN,b_TAN},APER_TOL:={r_tol_TAN,h_tol_TAN,v_tol_TAN};
 !TAXN.4R1,  APERTYPE=RECTELLIPSE, APERTURE:={a_TAN,b_TAN,a_TAN,b_TAN},APER_TOL:={r_tol_TAN,h_tol_TAN,v_tol_TAN};

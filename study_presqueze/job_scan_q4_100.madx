@@ -41,6 +41,7 @@ betx_q5rb2_ref,bety_q5rb2_ref,alfx_q5rb2_ref,alfy_q5rb2_ref;
 
 makescan(optnnn,xxx,yyy,ddx,ddy,outfn):macro={
 call,file=slhc/optnnn.madx; tar=0;
+call,file="rematch_ir15_b12.madx";
 betx_mcby=xxx; bety_mcby=yyy;
 while(tar<1e-10){
   g1:=-kqx1.l5*scale;g2:=-kqx2.l5*scale;g3:=-kqx3.l5*scale;

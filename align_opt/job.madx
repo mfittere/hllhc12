@@ -1,0 +1,79 @@
+option, warn,info;
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.1/ slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
+
+option,-echo,-info,-warn;
+Option, -echo,-warn,-info;
+REAL CONST l.TAN   = 3.7  ;REAL CONST l.TANAL = l.TAN;
+REAL CONST l.TANAR = l.TAN;REAL CONST l.TANC  = l.TAN;
+REAL CONST l.TCT   = 1.0;REAL CONST l.TCTH  = l.TCT;REAL CONST l.TCTVA = l.TCT;
+call,file="db5/V6.5.seq";
+Option, -echo,warn,-info;
+
+call,file="slhc/toolkit/macro.madx";
+call,file="optics_log.madx";
+call,file="slhc/hllhc_sequence.madx";
+call,file="db5/aperture/aperture.b1.madx";
+call,file="db5/aperture/aperture.b2.madx";
+call,file="db5/aperture/aper_tol.b1.madx";
+call,file="db5/aperture/aper_tol.b2.madx";
+call,file="slhc/aperture/aperture_upgrade_MS.madx";
+call,file="slhc/aperture/aperture_upgrade_IT.madx";
+
+on_layout_custom=1;
+deltaposq4=4;
+deltaposq5=0;
+call,file="slhc/hllhc_sequence.madx";
+
+
+exec,mk_beam(450);
+call,file=lhc_align.str;
+call,file=slhc/opt_inj.madx;
+exec,check_ip(b1); exec,check_ip(b2);
+
+exec,make_opticstbl_ir5hl(ir5hl);
+!exec,read_opticstbl(ir5hl,ir5hl,ir5hl.tfs);
+
+
+call,file=align.madx;
+
+exec,selectIR15(5,45,56,b1);
+exec,selectIR15(5,45,56,b2);
+exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
+on_holdselect=1;
+
+KQX1.L5=0; KQX2.L5=0; KQX3.L5=0;
+
+scl=0.47; sch=0.95;sc79=0.999+0.000;bmaxds=500;imb=1.30;
+match_on_triplet=0; match_on_tripletconst=0;ir5q4sym=0;ir5q5sym=0;
+apq789=0; apq5=0; apq6=0; apq4=0; apq1011=0;
+betx_mcby= 1037;bety_mcby = 668; bety_q3=7063;
+betyip5b1:=betxip5b1;
+betxip5b2:=betxip5b1;betyip5b2:=betyip5b1;
+betxip5b1=200;
+
+
+deltaposq4=8.047;
+deltaposq5=11;
+call,file="slhc/hllhc_sequence.madx";
+exec,selectIR15(5,45,56,b1); exec,selectIR15(5,45,56,b2);
+exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
+
+apq789=191;apq6=300;apq5=605;apq4=605;
+betxip5b1 = 200 ; betyip5b1 = 200 ;
+betxip5b2 = betyip5b1 ; betyip5b2 = betxip5b1 ;
+betyq4=650;
+!betxq5=500;
+jac_calls=20; bisec=3; jac_tol=1e-16;
+sch=0.90;
+call,file="rematch_ir15_b12.madx";
+
+
+fill,table=ir5hl;
+write,table=ir5hl,file=ir5hl.tfs;
+
+
+
+arc_squeeze=0;on_check=1;call,file="slhc/toolkit/save_optics.madx";
+system,"cp temp/optics.madx opt_align.madx";
+

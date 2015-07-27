@@ -7,35 +7,6 @@ import matplotlib.pyplot as pl
 
 from aper_utils import *
 
-name=r'IR1/5 $\beta^*=15$ cm'
-scen='opt_150_150_150_150_ap_ms1'
-scen='opt_100_330_330_100_ms1'
-pl.figure(figsize=(7.8,7))
-plot_case(name,scen,'TAXS',None,'taxs_15round',add_tol=2e-3)
-plot_case(name,scen,'MQXFA.[AB]1',0.150,'q1_flat9')
-plot_case(name,scen,'MQXFB.[AB]2',0.150,'q2_flat9')
-plot_case(name,scen,'MQXFA.[AB]3',0.150,'q3_flat9')
-plot_case(name,scen,'MBXF',0.150,'d1_round')
-pl.figure(figsize=(15.6,7))
-plot_case_2in1(name,scen,'TAXN',None,'taxn_round')
-plot_case_2in1(name,scen,'MBRD.4L',0.105,'d2_round')
-plot_case_2in1(name,scen,'MBRD.4R',0.105,'d2_round')
-plot_case_2in1(name,scen,'MCBRD..4L',0.105,'d2_round')
-plot_case_2in1(name,scen,'MCBRD..4R',0.105,'d2_round')
-plot_case_2in1(name,scen,'MCBYY..4R',0.09,'mcbyyr_flat9_ms1')
-plot_case_2in1(name,scen,'MCBYY..4L',0.09,'mcbyyr_flat9_ms1')
-plot_case_2in1(name,scen,'MQYY.4L',0.09,'q4_round')
-plot_case_2in1(name,scen,'MQYY.4R',0.09,'q4_round')
-plot_case_2in1(name,scen,'MCBY.5L',0.07,'q5l_round')
-plot_case_2in1(name,scen,'MCBY.5R',0.07,'q5r_round')
-plot_case_2in1(name,scen,'MQY.5L',0.07,'q5l_round')
-plot_case_2in1(name,scen,'MQY.5R',0.07,'q5r_round')
-plot_case_2in1(name,scen,'MCBC.6L',0.056,'q5l_round')
-plot_case_2in1(name,scen,'MCBC.6R',0.056,'q5r_round')
-plot_case_2in1(name,scen,'MQML.6L',0.056,'q6l_round',sig=21)
-plot_case_2in1(name,scen,'MQML.6R',0.056,'q6r_round',sig=21)
-plot_case_2in1(name,scen,'TCLMB.5L',0.056,'mq5l_round_small2')
-plot_case_2in1(name,scen,'TCLMB.5R',0.056,'mq5r_round_small2')
 
 
 elems=['TAXS','MQXFA.[AB]1','MQXFB.[AB]2','MQXFA.[AB]3',
@@ -58,6 +29,7 @@ scens=[
  'opt_150_150_150_150_ms1',
  'opt_180_180_180_180_ms1',
  'opt_200_200_200_200_ms1',
+ 'opt_220_220_220_220_ms1',
  'opt_75_300_300_75_ms1',
  'opt_90_330_330_90_ms1',
  'opt_100_330_330_100_ms1',
@@ -66,32 +38,85 @@ scens=[
 ]
 
 scens=[
- 'opt_200_200_200_200_ms1',
+ 'opt_150_150_150_150_ms2',
+ 'opt_180_180_180_180_ms2',
  'opt_200_200_200_200_ms2',
- 'opt_200_200_200_200_ms3',
- 'opt_100_330_330_100_ms1',
+ 'opt_220_220_220_220_ms2',
+ 'opt_75_300_300_75_ms2',
+ 'opt_90_330_330_90_ms2',
  'opt_100_330_330_100_ms2',
- 'opt_100_330_330_100_ms3',
+ 'opt_110_330_330_110_ms2',
+ 'opt_120_330_330_120_ms2',
 ]
 
+
+scens=[
+ 'res/opt_150_150_150_150_ms1craboff',
+ 'res/opt_180_180_180_180_ms1craboff',
+ 'res/opt_200_200_200_200_ms1craboff',
+ 'res/opt_220_220_220_220_ms1craboff',
+ 'res/opt_75_300_300_75_ms1craboff',
+ 'res/opt_90_330_330_90_ms1craboff',
+ 'res/opt_100_330_330_100_ms1craboff',
+ 'res/opt_110_330_330_110_ms1craboff',
+ 'res/opt_120_330_330_120_ms1craboff',
+]
+
+scens=[
+ 'res/opt_150_150_150_150_ms2craboffxing',
+ 'res/opt_180_180_180_180_ms2craboffxing',
+ 'res/opt_200_200_200_200_ms2craboffxing',
+ 'res/opt_220_220_220_220_ms2craboffxing',
+ 'res/opt_75_300_300_75_ms2craboffxing',
+ 'res/opt_90_330_330_90_ms2craboffxing',
+ 'res/opt_100_330_330_100_ms2craboffxing',
+ 'res/opt_110_330_330_110_ms2craboffxing',
+ 'res/opt_120_330_330_120_ms2craboffxing',
+]
+
+scens=[
+ 'res/opt_150_150_150_150_ms3craboffxing',
+ 'res/opt_180_180_180_180_ms3craboffxing',
+ 'res/opt_200_200_200_200_ms3craboffxing',
+ 'res/opt_220_220_220_220_ms3craboffxing',
+ 'res/opt_75_300_300_75_ms3craboffxing',
+ 'res/opt_90_330_330_90_ms3craboffxing',
+ 'res/opt_100_330_330_100_ms3craboffxing',
+ 'res/opt_110_330_330_110_ms3craboffxing',
+ 'res/opt_120_330_330_120_ms3craboffxing',
+]
+
+scens=[
+ 'res/opt_150_150_150_150_ms3crabxing',
+ 'res/opt_180_180_180_180_ms3crabxing',
+ 'res/opt_200_200_200_200_ms3crabxing',
+ 'res/opt_220_220_220_220_ms3crabxing',
+ 'res/opt_75_300_300_75_ms3crabxing',
+ 'res/opt_90_330_330_90_ms3crabxing',
+ 'res/opt_100_330_330_100_ms3crabxing',
+ 'res/opt_110_330_330_110_ms3crabxing',
+ 'res/opt_120_330_330_120_ms3crabxing',
+]
+
+scens=[
+'study2/opt_150_150_150_150_295_2000_ms1craboffxing',
+'study2/opt_200_200_200_200_255_2000_ms1craboffxing',
+'study2/opt_75_300_300_75_245_750_ms1craboffxing',
+'study2/opt_100_400_400_100_210_750_ms1craboffxing']
+
+
+elems=['TAXS','MQXFA.[AB]1','MQXFB.[AB]2','MQXFA.[AB]3',
+        'MBXF','TAXN','MBRD','MCBRD',
+        'MCBYY','MQYY',
+        'TCLMB.5','MCBY[HV].5','MQY.5',
+        'TCLMC.6','MCBC[HV].6','MQML.6']
+
+
 mk_table(scens,elems)
+mk_table([s.replace('ms1','ms2') for s in scens],elems)
+mk_table([s.replace('ms1','ms3') for s in scens],elems)
 
 mk_table(scens,elems,var='x','%5.5f')
-
-apdata=[
-    ('TAXS'       ,0.054 ,None             ,'circle'),
-    ('MQXFA.[AB]1',0.150 ,[0.102]*2        ,'oct.'),
-    ('MQXFB.[AB]2',0.150 ,[0.124]*2        ,'oct.'),
-    ('MQXFA.[AB]3',0.150 ,[0.124]*2        ,'oct.'),
-    ('MBXF'       ,0.150 ,[0.124]*2        ,'oct.'),
-    ('TAXN'       ,0.145 ,None,            ,'circle'),
-    ('MBRD'       ,0.105 ,[0.0435*2]       ,'otct'),
-    ('TAXN'       ,0.145 ,None,            ,'circle'),
-    ('TAXN'       ,0.145 ,None,            ,'circle'),
-    ('TAXN'       ,0.145 ,None,            ,'circle'),
-    ('TAXN'       ,0.145 ,None,            ,'circle'),
-    ('TAXN'       ,0.145 ,None,            ,'circle'),
-    ('TAXN'       ,0.145 ,None,            ,'circle')]
 
 
 for scen in scens:
@@ -108,7 +133,7 @@ elems=['TAXS','MQXFA.[AB]1','MQXFB.[AB]2','MQXFA.[AB]3',
         'MBXF','TAXN','MBRD','MCBRD',
         'MCBYY','MQYY',
         'TCLMB.5','MCBY[HV].5','MQY.5',
-        'TCLMC.6L','MCBC[HV].6','MQML.6']
+        'TCLMC.6','MCBC[HV].6','MQML.6']
 
 for el in elems:
     for nn in a11.get_n_name(el)[:1]:
@@ -144,11 +169,48 @@ for el in elems:
 tab.extend(zip(*out))
 
 for el,row in zip(elems,zip(*tab)):
-   nrow=row+[sum(row[::2]),sum(row[1::2])]
-   print "%-15s %s"%(el,' '.join(['%4.3f'%v for v in row] ))
+   nrow=row+(sum(row[::2]),sum(row[1::2]))
+   print "%-15s %s"%(el,' '.join(['%4.1f'%v for v in nrow] ))
 
 
 
+single=[
+  ('TAXS',None,'taxs',12),
+  ('MQXFA.[AB]1',0.150,'q1',12),
+  ('MQXFB.[AB]2',0.150,'q2',12),
+  ('MQXFA.[AB]3',0.150,'q3',12),
+  ('MBXF',0.150,'d1',12)]
+double=[
+  ('TAXN',None,'taxn',12),
+  ('MBRD.4L',0.105,'d2cl',12),
+  ('MBRD.4R',0.105,'d2cr',12),
+  ('MCBRD..4L',0.105,'d2l',12),
+  ('MCBRD..4R',0.105,'d2r',12),
+  ('MCBYY..4L',0.09,'q4cl',12),
+  ('MCBYY..4R',0.09,'q4cr',12),
+  ('MQYY.4L',0.09,'q4l',12),
+  ('MQYY.4R',0.09,'q4r',12),
+  ('MCBY..5L',0.07,'q5cl',12),
+  ('MCBY..5R',0.07,'q5cr',12),
+  ('MQY.5L',0.07,'q5l',12),
+  ('MQY.5R',0.07,'q5r',12),
+  ('TCLMB.5L',0.056,'q5ml',18),
+  ('TCLMB.5R',0.056,'q5mr',18),
+  ('MCBC.6L',0.056,'q6cl',18),
+  ('MCBC.6R',0.056,'q6cr',18),
+  ('MQML.6L',0.056,'q6l',18),
+  ('MQML.6R',0.056,'q6r',18),
+  ('TCLMC.6L',0.056,'q6ml',18),
+  ('TCLMC.6R',0.056,'q6mr',18)]
+
+scens=[
+('study2/opt_150_150_150_150_ms1craboffxing','rnd15'),
+('study2/opt_200_200_200_200_ms1craboffxing','rnd20'),
+('study2/opt_75_300_300_75_ms1craboffxing','flt7.5'),
+('study2/opt_100_400_400_100_ms1craboffxing','flt10')]
+
+for scen,name in scens:
+   mk_fig_set(name,scen,single,double)
 
 
 

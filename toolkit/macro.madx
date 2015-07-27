@@ -3813,7 +3813,11 @@ print_orbit_knob_ip(corrname,ccc,sss,irn): macro={
 };
 
 !print_orbit_knob_ip(corrname,ccc,sss,irn): macro={
+<<<<<<< HEAD
 !  printf,text="corrnameo = %20.10e ;",value=corrname;
+=======
+!printf,text="corrnameo = %20.10e ;",value=corrname;
+>>>>>>> 1157c36182601e8472f7ee3a71196477e384de87
 !};
 
 print_orbit_mcbx(mcbn,irn): macro={
