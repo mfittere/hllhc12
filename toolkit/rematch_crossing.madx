@@ -3,12 +3,12 @@ Poff=2.0e-03;!account for 2 mm offset
 !Occ: ccp and ccm knob, dABCD: ccs knob
 Occ:=5.0e-4;dABCD:=2.5e-04;
 Xang=pxip5b1+pyip5b1;Psep=xip5b1+yip5b1;
-Xang=round(Xang*1e6)/1e6; Psep=round(Psep*1e6)/1e6;
-
+Xang=round(Xang*1e6)/1e6; !Psep=round(Psep*1e6)/1e6;
+Psep=2.0e-3;Xang=0.000295;
 if(cd2q4==0){cd2q4 :=0.5;};
 if(cmcb12==0){cmcb12:=0.5;};
 if (betx_ip1>bety_ip1){ phi_IR1= 0;phio_IR1= 0;} else { phi_IR1=90; phio_IR1=90;};
-if (bety_ip5>betx_ip5){ phi_IR5=90; phio_IR5=90;} else { phi_IR5= 0; phio_IR5= 0;};
+if (bety_ip5>betx_ip5){ phi_IR5=90; phio_IR5=90;} else { phi_IR5= 0; phio_IR5= 90;};
 
 value,Xang,Psep,phi_IR1,phi_IR5,cmcb12,cd2q4;
 value,Poff,phio_IR1,phio_IR5;
@@ -37,4 +37,5 @@ tarcrossing=tarir1xing90+tarir1xing0+tarir5xing90+tarir5xing0+
 tarcrab    = tarcrab1+tarcrab5;
 value,tarcrossing;
 value,tarcrab;
+value, cd2q4,cmcb12;
 
