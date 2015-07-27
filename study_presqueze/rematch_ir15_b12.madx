@@ -6,7 +6,8 @@ select, flag=aperture, column=name,s,n1,aper_1,aper_2,aper_3,aper_4,rtol,xtol,yt
 !jac_calls=15; bisec=3; tol=1e-21;
 
 scale = 23348.89927;
-if(grad==0){grad=132.6;}; !new maximum gradient of 132.6 T/m scl=0.15; sch=0.9 ; sc79=1; bmaxds=1360; imb=1.30;
+if(grad==0){grad=140.0;};
+!if(grad==0){grad=132.6;}; !new maximum gradient of 132.6 T/m scl=0.15; sch=0.9 ; sc79=1; bmaxds=1360; imb=1.30;
 if(scl==0){ scl=0.10;};
 if(sch==0){ sch=0.95;};
 if(sc79==0){sc79=0.999;};
