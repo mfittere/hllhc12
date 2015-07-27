@@ -426,10 +426,10 @@ exec,cableXscheme(5);
 
 set,format="22.18e";
 
-!exec,matchXscheme(1,x,s,0);
-!exec,matchXscheme(5,s,x,90);
-!exec,matchXscheme(1,s,x,90);
-!exec,matchXscheme(5,x,s,0);
+exec,matchXscheme(1,x,s,0);
+exec,matchXscheme(5,s,x,90);
+exec,matchXscheme(1,s,x,90);
+exec,matchXscheme(5,x,s,0);
 
 !exec,matchOffset(1,0);
 !exec,matchOffset(1,90);
