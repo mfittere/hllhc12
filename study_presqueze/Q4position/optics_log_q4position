@@ -1,0 +1,8 @@
+1       deltaPosQ4=7.4;bety_q3=6753.9;
+2       deltaPosQ4=6.0;bety_q3=6753.9;betx_mcby_ref = 980.314033165958 ;bety_mcby_ref = 700.764203683696 ;v_crabh.l1b1 = 11.7721285911764 ;
+3       deltaPosQ4=5.0;bety_q3=6753.9;betx_mcby_ref = 981.95992150413 ;bety_mcby_ref = 732.706865147446 ;
+4       deltaPosQ4=4.0;betx_mcby_ref = 999.579466515066 ;bety_mcby_ref = 754.582032534861 ;bety_q3_ref = 6753.9 ;
+5       deltaPosQ4=4.0;v_crabv.l5b1 = 12.0343799976422 ;betx_mcby_ref = 993.528667722135 ;bety_mcby_ref = 758.999999999997 ;bety_q3_ref = 6752.8 ;
+
+with matching constraint betx_acf_ref in middle of further away crab cavities:
+6       deltaPosQ4=7.6;betx_acf_ref = 1057.14962181807 ;bety_acf_ref = 978.418912691987 ;betx_mcby_ref = 938.983643935074 ;
