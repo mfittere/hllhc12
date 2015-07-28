@@ -1,0 +1,1423 @@
+ARC_SQUEEZE = 0.5 ;
+
+ !***LAYOUT***
+l.MQXL        =             8.400000 ;
+l.MQX         =             7.150000 ;
+l.MQYY        =             3.830000 ;
+l.MBXF        =             6.270000 ;
+l.MBRD        =             7.780000 ;
+l.MCBXFA      =             2.200000 ;
+l.MCBXFB      =             1.200000 ;
+l.MCBRD       =             1.800000 ;
+l.MCBYY       =             1.800000 ;
+dq1q2a        =             3.628000 ;
+dq1aq1b       =             0.646000 ;
+dq2aq2b       =             2.108000 ;
+dq2bq3        =             3.628000 ;
+deltaposD2    =           -15.386200 ;
+deltaposQ4    =             8.047000 ;
+deltaposQ5    =            11.000000 ;
+deltaposQ6    =             0.000000 ;
+on_cutMS.10   =             0.000000 ;
+on_cutMS.14   =             0.000000 ;
+is_thin       =             0.000000 ;
+
+ !***BETAS in IR1 and IR5***
+betx0_IP1   =             0.480000 ;
+bety0_IP1   =             0.480000 ;
+betx0_IP5   =             0.480000 ;
+bety0_IP5   =             0.480000 ;
+
+ !***Exp. configuration in IR1, IR2, IR5 and IR8***
+on_sep1=0;on_x1=0;on_os1=0;on_ox1=0;phi_IR1=90;
+on_sep2=0;on_x2=0;on_os2=0;on_ox2=0;phi_IR2=90;
+on_sep5=0;on_x5=0;on_os5=0;on_ox5=0;phi_IR5=0;
+on_sep8=0;on_x8=0;on_os8=0;on_ox8=0;phi_IR8=0;
+cphi_IR1:=cos(phi_IR1*pi/180.);sphi_IR1:=sin(phi_IR1*pi/180.);
+cphi_IR2:=cos(phi_IR2*pi/180.);sphi_IR2:=sin(phi_IR2*pi/180.);
+cphi_IR5:=cos(phi_IR5*pi/180.);sphi_IR5:=sin(phi_IR5*pi/180.);
+cphi_IR8:=cos(phi_IR8*pi/180.);sphi_IR8:=sin(phi_IR8*pi/180.);
+on_disp=0;
+on_sol_atlas=0;
+on_alice=0; on_sol_alice=0;
+on_sol_cms=0;
+on_lhcb=0;
+abas:= 12.00/ 6.0*clight/(7E12)*on_sol_atlas;
+abls:= 6.05/12.1*clight/(7E12)*on_sol_alice ;
+abcs:= 52.00/13.0*clight/(7E12)*on_sol_cms  ;
+abxwt.l2      := -0.0000772587268993839836*on_alice ;
+abwmd.l2      := +0.0001472587268993839840*on_alice ;
+abaw.r2       := -0.0001335474860334838000*on_alice ;
+abxwt.r2      := +0.0000635474860334838004*on_alice ;
+abxws.l8      := -0.000045681598453109894*on_lhcb   ;
+abxwh.l8      := +0.000180681598453109894*on_lhcb   ;
+ablw.r8       := -0.000180681598453109894*on_lhcb   ;
+abxws.r8      := +0.000045681598453109894*on_lhcb   ;
+
+ !***Ring Geometry***
+
+ !Separation/recombination dipoles
+
+kd1.lr1       :=  ad1.lr1/l.mbxf;
+kd2.l1        :=  ad2.l1/l.mbrd ;
+kd2.r1        :=  ad2.r1/l.mbrd ;
+kd1.l2        :=  ad1.l2/l.mbx  ;
+kd1.r2        :=  ad1.r2/l.mbx  ;
+kd2.l2        :=  ad2.l2/l.mbrc ;
+kd2.r2        :=  ad2.r2/l.mbrc ;
+kd3.lr3       :=  ad3.lr3/l.mbw ;
+kd4.lr3       :=  ad4.lr3/l.mbw ;
+kd3.l4        :=  ad3.l4/l.mbrs ;
+kd3.r4        :=  ad3.r4/l.mbrs ;
+kd4.l4        :=  ad4.l4/l.mbrb ;
+kd4.r4        :=  ad4.r4/l.mbrb ;
+kd34.lr3      :=  ad3.lr3/l.mbw ;
+kd34.lr7      :=  ad3.lr7/l.mbw ;
+kd1.lr5       :=  ad1.lr5/l.mbxf;
+kd2.l5        :=  ad2.l5/l.mbrd ;
+kd2.r5        :=  ad2.r5/l.mbrd ;
+kd3.lr7       :=  ad3.lr7/l.mbw ;
+kd4.lr7       :=  ad4.lr7/l.mbw ;
+kd1.l8        :=  ad1.l8/l.mbx  ;
+kd1.r8        :=  ad1.r8/l.mbx  ;
+kd2.l8        :=  ad2.l8/l.mbrc ;
+kd2.r8        :=  ad2.r8/l.mbrc ;
+ksumd2.l1b2   :=  kd2.l1        ;
+ksumd2.l2b2   :=  kd2.l2        ;
+ksumd2.l5b2   :=  kd2.l5        ;
+ksumd2.l8b2   :=  kd2.l8        ;
+ksumd2.r1b2   :=  kd2.l1        ;
+ksumd2.r2b2   :=  kd2.l2        ;
+ksumd2.r5b2   :=  kd2.l5        ;
+ksumd2.r8b2   :=  kd2.l8        ;
+
+ !Main dipoles
+kb.a12        :=  ab.a12/l.mb   ;
+kb.a23        :=  ab.a23/l.mb   ;
+kb.a34        :=  ab.a34/l.mb   ;
+kb.a45        :=  ab.a45/l.mb   ;
+kb.a56        :=  ab.a56/l.mb   ;
+kb.a67        :=  ab.a67/l.mb   ;
+kb.a78        :=  ab.a78/l.mb   ;
+kb.a81        :=  ab.a81/l.mb   ;
+
+ !***IR1 Optics***
+kqx1.l1  =    -5.6658729541e-03;
+kqx2a.l1 =    -5.5978079599e-03;
+kqx2b.l1 =    -5.5978079599e-03;
+kqx3.l1  =    -5.5830122226e-03;
+kqx1.r1  =     5.6658729541e-03;
+kqx2a.r1 =     5.5978079599e-03;
+kqx2b.r1 =     5.5978079599e-03;
+kqx3.r1  =     5.5830122226e-03;
+Kq4.L1B1   =     9.6468283730e-04 ;
+Kq4.L1B2   =    -9.9916507882e-04 ;
+Kq4.R1B1   =    -1.0339232640e-03 ;
+Kq4.R1B2   =     1.0981145379e-03 ;
+Kq5.L1B1   =    -8.5858214750e-04 ;
+Kq5.L1B2   =     6.6075431204e-04 ;
+Kq5.R1B1   =     9.9785125800e-04 ;
+Kq5.R1B2   =    -1.1302507879e-03 ;
+Kq6.L1B1   =     1.1247164100e-03 ;
+Kq6.L1B2   =    -1.1622566647e-03 ;
+Kq6.R1B1   =    -1.4679710263e-03 ;
+Kq6.R1B2   =     1.3033094473e-03 ;
+Kq7.L1B1   =    -6.9154061072e-03 ;
+Kq7.L1B2   =     8.4797290570e-03 ;
+Kq7.R1B1   =     8.4500264320e-03 ;
+Kq7.R1B2   =    -8.4685441579e-03 ;
+Kq8.L1B1   =     7.4872920895e-03 ;
+Kq8.L1B2   =    -7.3643658536e-03 ;
+Kq8.R1B1   =    -7.2933251071e-03 ;
+Kq8.R1B2   =     7.8932326696e-03 ;
+Kq9.L1B1   =    -6.0835140868e-03 ;
+Kq9.L1B2   =     6.5634982172e-03 ;
+Kq9.R1B1   =     6.5350294877e-03 ;
+Kq9.R1B2   =    -6.6742991833e-03 ;
+Kq10.L1B1   =     7.1700965317e-03 ;
+Kq10.L1B2   =    -6.7973144101e-03 ;
+Kq10.R1B1   =    -6.9170144598e-03 ;
+Kq10.R1B2   =     7.1236349916e-03 ;
+Kqtl11.L1B1   =    -5.0810829094e-03 ;
+Kqtl11.L1B2   =    -3.4439957415e-04 ;
+Kqtl11.R1B1   =    -2.5005017670e-04 ;
+Kqtl11.R1B2   =    -1.1175388079e-05 ;
+Kqt12.L1B1   =     3.4049421254e-03 ;
+Kqt12.L1B2   =    -4.8817498459e-03 ;
+Kqt12.R1B1   =    -4.1858165387e-03 ;
+Kqt12.R1B2   =    -9.1107014057e-04 ;
+Kqt13.L1B1   =    -4.8777311107e-03 ;
+Kqt13.L1B2   =    -8.7414076525e-04 ;
+Kqt13.R1B1   =    -8.6371399954e-04 ;
+Kqt13.R1B2   =     2.5861758215e-03 ;
+
+ !***IR1 X-scheme***
+acbxh1.l1x =    -6.0025953542e-06 ;
+acbxh1.l1s =    -4.6221351646e-06 ;
+acbxh1.l1ox=     0.0000000000e+00 ;
+acbxh1.l1os=     0.0000000000e+00 ;
+acbxh1.l1 :=+on_x1 *cphi_ir1*(   -6.0025953542e-06)
+           +on_sep1*sphi_ir1*(   -4.6221351646e-06)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbxv1.l1x =    -6.0009923936e-06 ;
+acbxv1.l1s =     4.6222144365e-06 ;
+acbxv1.l1ox=     0.0000000000e+00 ;
+acbxv1.l1os=     0.0000000000e+00 ;
+acbxv1.l1 :=+on_x1 *sphi_ir1*(   -6.0009923936e-06)
+           +on_sep1*cphi_ir1*(    4.6222144365e-06)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbxh1.r1x =    -4.4834042402e-07 ;
+acbxh1.r1s =    -4.4575423424e-06 ;
+acbxh1.r1ox=     0.0000000000e+00 ;
+acbxh1.r1os=     0.0000000000e+00 ;
+acbxh1.r1 :=+on_x1 *cphi_ir1*(   -4.4834042402e-07)
+           +on_sep1*sphi_ir1*(   -4.4575423424e-06)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbxv1.r1x =    -4.4996826037e-07 ;
+acbxv1.r1s =     4.4576383719e-06 ;
+acbxv1.r1ox=     0.0000000000e+00 ;
+acbxv1.r1os=     0.0000000000e+00 ;
+acbxv1.r1 :=+on_x1 *sphi_ir1*(   -4.4996826037e-07)
+           +on_sep1*cphi_ir1*(    4.4576383719e-06)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbxh2.l1x =    -3.0012976771e-06 ;
+acbxh2.l1s =    -2.3110675823e-06 ;
+acbxh2.l1ox=     0.0000000000e+00 ;
+acbxh2.l1os=     0.0000000000e+00 ;
+acbxh2.l1 :=+on_x1 *cphi_ir1*(   -3.0012976771e-06)
+           +on_sep1*sphi_ir1*(   -2.3110675823e-06)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbxv2.l1x =    -3.0004961968e-06 ;
+acbxv2.l1s =     2.3111072182e-06 ;
+acbxv2.l1ox=     0.0000000000e+00 ;
+acbxv2.l1os=     0.0000000000e+00 ;
+acbxv2.l1 :=+on_x1 *sphi_ir1*(   -3.0004961968e-06)
+           +on_sep1*cphi_ir1*(    2.3111072182e-06)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbxh2.r1x =    -2.2417021201e-07 ;
+acbxh2.r1s =    -2.2287711712e-06 ;
+acbxh2.r1ox=     0.0000000000e+00 ;
+acbxh2.r1os=     0.0000000000e+00 ;
+acbxh2.r1 :=+on_x1 *cphi_ir1*(   -2.2417021201e-07)
+           +on_sep1*sphi_ir1*(   -2.2287711712e-06)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbxv2.r1x =    -2.2498413018e-07 ;
+acbxv2.r1s =     2.2288191860e-06 ;
+acbxv2.r1ox=     0.0000000000e+00 ;
+acbxv2.r1os=     0.0000000000e+00 ;
+acbxv2.r1 :=+on_x1 *sphi_ir1*(   -2.2498413018e-07)
+           +on_sep1*cphi_ir1*(    2.2288191860e-06)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbxh3.l1x =     9.0190350958e-05 ;
+acbxh3.l1s =    -8.6575716927e-06 ;
+acbxh3.l1ox=     0.0000000000e+00 ;
+acbxh3.l1os=     0.0000000000e+00 ;
+acbxh3.l1 :=+on_x1 *cphi_ir1*(    9.0190350958e-05)
+           +on_sep1*sphi_ir1*(   -8.6575716927e-06)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbxv3.l1x =     9.0183625727e-05 ;
+acbxv3.l1s =     8.6575299331e-06 ;
+acbxv3.l1ox=     0.0000000000e+00 ;
+acbxv3.l1os=     0.0000000000e+00 ;
+acbxv3.l1 :=+on_x1 *sphi_ir1*(    9.0183625727e-05)
+           +on_sep1*cphi_ir1*(    8.6575299331e-06)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbxh3.r1x =    -7.8599807062e-05 ;
+acbxh3.r1s =    -8.8831668869e-06 ;
+acbxh3.r1ox=     0.0000000000e+00 ;
+acbxh3.r1os=     0.0000000000e+00 ;
+acbxh3.r1 :=+on_x1 *cphi_ir1*(   -7.8599807062e-05)
+           +on_sep1*sphi_ir1*(   -8.8831668869e-06)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbxv3.r1x =    -7.8593113488e-05 ;
+acbxv3.r1s =     8.8831214323e-06 ;
+acbxv3.r1ox=     0.0000000000e+00 ;
+acbxv3.r1os=     0.0000000000e+00 ;
+acbxv3.r1 :=+on_x1 *sphi_ir1*(   -7.8593113488e-05)
+           +on_sep1*cphi_ir1*(    8.8831214323e-06)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbrdh4.l1b1x =    -7.7665819895e-05 ;
+acbrdh4.l1b1s =    -3.8478992732e-06 ;
+acbrdh4.l1b1ox=     0.0000000000e+00 ;
+acbrdh4.l1b1os=     0.0000000000e+00 ;
+acbrdh4.l1b1 :=+on_x1 *cphi_ir1*(   -7.7665819895e-05)
+           +on_sep1*sphi_ir1*(   -3.8478992732e-06)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbrdv4.l1b1x =    -1.2734645184e-04 ;
+acbrdv4.l1b1s =     1.3355539438e-06 ;
+acbrdv4.l1b1ox=     0.0000000000e+00 ;
+acbrdv4.l1b1os=     0.0000000000e+00 ;
+acbrdv4.l1b1 :=+on_x1 *sphi_ir1*(   -1.2734645184e-04)
+           +on_sep1*cphi_ir1*(    1.3355539438e-06)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbrdh4.l1b2x =     1.2734627922e-04 ;
+acbrdh4.l1b2s =     1.3355133730e-06 ;
+acbrdh4.l1b2ox=     0.0000000000e+00 ;
+acbrdh4.l1b2os=     0.0000000000e+00 ;
+acbrdh4.l1b2 :=+on_x1 *cphi_ir1*(    1.2734627922e-04)
+           +on_sep1*sphi_ir1*(    1.3355133730e-06)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbrdv4.l1b2x =     7.7665892342e-05 ;
+acbrdv4.l1b2s =    -3.8479574378e-06 ;
+acbrdv4.l1b2ox=     0.0000000000e+00 ;
+acbrdv4.l1b2os=     0.0000000000e+00 ;
+acbrdv4.l1b2 :=+on_x1 *sphi_ir1*(    7.7665892342e-05)
+           +on_sep1*cphi_ir1*(   -3.8479574378e-06)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbrdh4.r1b1x =     1.2204296440e-04 ;
+acbrdh4.r1b1s =    -1.2469565969e-06 ;
+acbrdh4.r1b1ox=     0.0000000000e+00 ;
+acbrdh4.r1b1os=     0.0000000000e+00 ;
+acbrdh4.r1b1 :=+on_x1 *cphi_ir1*(    1.2204296440e-04)
+           +on_sep1*sphi_ir1*(   -1.2469565969e-06)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbrdv4.r1b1x =     7.7881958737e-05 ;
+acbrdv4.r1b1s =     3.9002046325e-06 ;
+acbrdv4.r1b1ox=     0.0000000000e+00 ;
+acbrdv4.r1b1os=     0.0000000000e+00 ;
+acbrdv4.r1b1 :=+on_x1 *sphi_ir1*(    7.7881958737e-05)
+           +on_sep1*cphi_ir1*(    3.9002046325e-06)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbrdh4.r1b2x =    -7.7881937504e-05 ;
+acbrdh4.r1b2s =     3.9001684156e-06 ;
+acbrdh4.r1b2ox=     0.0000000000e+00 ;
+acbrdh4.r1b2os=     0.0000000000e+00 ;
+acbrdh4.r1b2 :=+on_x1 *cphi_ir1*(   -7.7881937504e-05)
+           +on_sep1*sphi_ir1*(    3.9001684156e-06)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbrdv4.r1b2x =    -1.2204317123e-04 ;
+acbrdv4.r1b2s =    -1.2469922796e-06 ;
+acbrdv4.r1b2ox=     0.0000000000e+00 ;
+acbrdv4.r1b2os=     0.0000000000e+00 ;
+acbrdv4.r1b2 :=+on_x1 *sphi_ir1*(   -1.2204317123e-04)
+           +on_sep1*cphi_ir1*(   -1.2469922796e-06)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbyhs4.l1b1x =    -3.8832909948e-05 ;
+acbyhs4.l1b1s =    -1.9239496366e-06 ;
+acbyhs4.l1b1ox=     0.0000000000e+00 ;
+acbyhs4.l1b1os=     0.0000000000e+00 ;
+acbyhs4.l1b1 :=+on_x1 *cphi_ir1*(   -3.8832909948e-05)
+           +on_sep1*sphi_ir1*(   -1.9239496366e-06)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbyvs4.l1b1x =    -6.3673225918e-05 ;
+acbyvs4.l1b1s =     6.6777697192e-07 ;
+acbyvs4.l1b1ox=     0.0000000000e+00 ;
+acbyvs4.l1b1os=     0.0000000000e+00 ;
+acbyvs4.l1b1 :=+on_x1 *sphi_ir1*(   -6.3673225918e-05)
+           +on_sep1*cphi_ir1*(    6.6777697192e-07)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbyhs4.l1b2x =     6.3673139610e-05 ;
+acbyhs4.l1b2s =     6.6775668650e-07 ;
+acbyhs4.l1b2ox=     0.0000000000e+00 ;
+acbyhs4.l1b2os=     0.0000000000e+00 ;
+acbyhs4.l1b2 :=+on_x1 *cphi_ir1*(    6.3673139610e-05)
+           +on_sep1*sphi_ir1*(    6.6775668650e-07)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbyvs4.l1b2x =     3.8832946171e-05 ;
+acbyvs4.l1b2s =    -1.9239787189e-06 ;
+acbyvs4.l1b2ox=     0.0000000000e+00 ;
+acbyvs4.l1b2os=     0.0000000000e+00 ;
+acbyvs4.l1b2 :=+on_x1 *sphi_ir1*(    3.8832946171e-05)
+           +on_sep1*cphi_ir1*(   -1.9239787189e-06)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbyhs4.r1b1x =     6.1021482200e-05 ;
+acbyhs4.r1b1s =    -6.2347829846e-07 ;
+acbyhs4.r1b1ox=     0.0000000000e+00 ;
+acbyhs4.r1b1os=     0.0000000000e+00 ;
+acbyhs4.r1b1 :=+on_x1 *cphi_ir1*(    6.1021482200e-05)
+           +on_sep1*sphi_ir1*(   -6.2347829846e-07)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbyvs4.r1b1x =     3.8940979368e-05 ;
+acbyvs4.r1b1s =     1.9501023163e-06 ;
+acbyvs4.r1b1ox=     0.0000000000e+00 ;
+acbyvs4.r1b1os=     0.0000000000e+00 ;
+acbyvs4.r1b1 :=+on_x1 *sphi_ir1*(    3.8940979368e-05)
+           +on_sep1*cphi_ir1*(    1.9501023163e-06)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbyhs4.r1b2x =    -3.8940968752e-05 ;
+acbyhs4.r1b2s =     1.9500842078e-06 ;
+acbyhs4.r1b2ox=     0.0000000000e+00 ;
+acbyhs4.r1b2os=     0.0000000000e+00 ;
+acbyhs4.r1b2 :=+on_x1 *cphi_ir1*(   -3.8940968752e-05)
+           +on_sep1*sphi_ir1*(    1.9500842078e-06)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbyvs4.r1b2x =    -6.1021585614e-05 ;
+acbyvs4.r1b2s =    -6.2349613981e-07 ;
+acbyvs4.r1b2ox=     0.0000000000e+00 ;
+acbyvs4.r1b2os=     0.0000000000e+00 ;
+acbyvs4.r1b2 :=+on_x1 *sphi_ir1*(   -6.1021585614e-05)
+           +on_sep1*cphi_ir1*(   -6.2349613981e-07)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbyhs5.l1b1x =     0.0000000000e+00 ;
+acbyhs5.l1b1s =     0.0000000000e+00 ;
+acbyhs5.l1b1ox=     0.0000000000e+00 ;
+acbyhs5.l1b1os=     0.0000000000e+00 ;
+acbyhs5.l1b1 :=+on_x1 *cphi_ir1*(    0.0000000000e+00)
+           +on_sep1*sphi_ir1*(    0.0000000000e+00)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbyvs5.l1b1x =     0.0000000000e+00 ;
+acbyvs5.l1b1s =     0.0000000000e+00 ;
+acbyvs5.l1b1ox=     0.0000000000e+00 ;
+acbyvs5.l1b1os=     0.0000000000e+00 ;
+acbyvs5.l1b1 :=+on_x1 *sphi_ir1*(    0.0000000000e+00)
+           +on_sep1*cphi_ir1*(    0.0000000000e+00)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbyhs5.l1b2x =     0.0000000000e+00 ;
+acbyhs5.l1b2s =     0.0000000000e+00 ;
+acbyhs5.l1b2ox=     0.0000000000e+00 ;
+acbyhs5.l1b2os=     0.0000000000e+00 ;
+acbyhs5.l1b2 :=+on_x1 *cphi_ir1*(    0.0000000000e+00)
+           +on_sep1*sphi_ir1*(    0.0000000000e+00)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbyvs5.l1b2x =     0.0000000000e+00 ;
+acbyvs5.l1b2s =     0.0000000000e+00 ;
+acbyvs5.l1b2ox=     0.0000000000e+00 ;
+acbyvs5.l1b2os=     0.0000000000e+00 ;
+acbyvs5.l1b2 :=+on_x1 *sphi_ir1*(    0.0000000000e+00)
+           +on_sep1*cphi_ir1*(    0.0000000000e+00)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbyhs5.r1b1x =     0.0000000000e+00 ;
+acbyhs5.r1b1s =     0.0000000000e+00 ;
+acbyhs5.r1b1ox=     0.0000000000e+00 ;
+acbyhs5.r1b1os=     0.0000000000e+00 ;
+acbyhs5.r1b1 :=+on_x1 *cphi_ir1*(    0.0000000000e+00)
+           +on_sep1*sphi_ir1*(    0.0000000000e+00)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbyvs5.r1b1x =     0.0000000000e+00 ;
+acbyvs5.r1b1s =     0.0000000000e+00 ;
+acbyvs5.r1b1ox=     0.0000000000e+00 ;
+acbyvs5.r1b1os=     0.0000000000e+00 ;
+acbyvs5.r1b1 :=+on_x1 *sphi_ir1*(    0.0000000000e+00)
+           +on_sep1*cphi_ir1*(    0.0000000000e+00)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbyhs5.r1b2x =     0.0000000000e+00 ;
+acbyhs5.r1b2s =     0.0000000000e+00 ;
+acbyhs5.r1b2ox=     0.0000000000e+00 ;
+acbyhs5.r1b2os=     0.0000000000e+00 ;
+acbyhs5.r1b2 :=+on_x1 *cphi_ir1*(    0.0000000000e+00)
+           +on_sep1*sphi_ir1*(    0.0000000000e+00)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbyvs5.r1b2x =     0.0000000000e+00 ;
+acbyvs5.r1b2s =     0.0000000000e+00 ;
+acbyvs5.r1b2ox=     0.0000000000e+00 ;
+acbyvs5.r1b2os=     0.0000000000e+00 ;
+acbyvs5.r1b2 :=+on_x1 *sphi_ir1*(    0.0000000000e+00)
+           +on_sep1*cphi_ir1*(    0.0000000000e+00)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbch6.l1b1x =     0.0000000000e+00 ;
+acbch6.l1b1s =     0.0000000000e+00 ;
+acbch6.l1b1ox=     0.0000000000e+00 ;
+acbch6.l1b1os=     0.0000000000e+00 ;
+acbch6.l1b1 :=+on_x1 *cphi_ir1*(    0.0000000000e+00)
+           +on_sep1*sphi_ir1*(    0.0000000000e+00)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+acbcv6.l1b2x =     0.0000000000e+00 ;
+acbcv6.l1b2s =     0.0000000000e+00 ;
+acbcv6.l1b2ox=     0.0000000000e+00 ;
+acbcv6.l1b2os=     0.0000000000e+00 ;
+acbcv6.l1b2 :=+on_x1 *sphi_ir1*(    0.0000000000e+00)
+           +on_sep1*cphi_ir1*(    0.0000000000e+00)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbcv6.r1b1x =     0.0000000000e+00 ;
+acbcv6.r1b1s =     0.0000000000e+00 ;
+acbcv6.r1b1ox=     0.0000000000e+00 ;
+acbcv6.r1b1os=     0.0000000000e+00 ;
+acbcv6.r1b1 :=+on_x1 *sphi_ir1*(    0.0000000000e+00)
+           +on_sep1*cphi_ir1*(    0.0000000000e+00)
+           +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+           +on_os1 *cphi_ir1*(    0.0000000000e+00);
+acbch6.r1b2x =     0.0000000000e+00 ;
+acbch6.r1b2s =     0.0000000000e+00 ;
+acbch6.r1b2ox=     0.0000000000e+00 ;
+acbch6.r1b2os=     0.0000000000e+00 ;
+acbch6.r1b2 :=+on_x1 *cphi_ir1*(    0.0000000000e+00)
+           +on_sep1*sphi_ir1*(    0.0000000000e+00)
+           +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+           +on_os1 *sphi_ir1*(    0.0000000000e+00);
+
+ !***IR1 Crab Cavities***
+ahcrab_l1b1   =     1.6688810880e-06 ;
+ahcrab_l1b2   =     1.6245663944e-06 ;
+avcrab_l1b1   =     1.7006493709e-06 ;
+avcrab_l1b2   =     1.6410757727e-06 ;
+ahcrab_r1b1   =     1.6245701988e-06 ;
+ahcrab_r1b2   =     1.6688852479e-06 ;
+avcrab_r1b1   =     1.6410761311e-06 ;
+avcrab_r1b2   =     1.7006489980e-06 ;
+
+ !***IR5 Optics***
+kqx1.l5  =    -5.6658729541e-03;
+kqx2a.l5 =    -5.5978079599e-03;
+kqx2b.l5 =    -5.5978079599e-03;
+kqx3.l5  =    -5.5830122226e-03;
+kqx1.r5  =     5.6658729541e-03;
+kqx2a.r5 =     5.5978079599e-03;
+kqx2b.r5 =     5.5978079599e-03;
+kqx3.r5  =     5.5830122226e-03;
+Kq4.L5B1   =     9.6468283730e-04 ;
+Kq4.L5B2   =    -9.9916507882e-04 ;
+Kq4.R5B1   =    -1.0339232640e-03 ;
+Kq4.R5B2   =     1.0981145379e-03 ;
+Kq5.L5B1   =    -8.5858214750e-04 ;
+Kq5.L5B2   =     6.6075431204e-04 ;
+Kq5.R5B1   =     9.9785125800e-04 ;
+Kq5.R5B2   =    -1.1302507879e-03 ;
+Kq6.L5B1   =     1.1247164100e-03 ;
+Kq6.L5B2   =    -1.1622566647e-03 ;
+Kq6.R5B1   =    -1.4679710263e-03 ;
+Kq6.R5B2   =     1.3033094473e-03 ;
+Kq7.L5B1   =    -6.9154061072e-03 ;
+Kq7.L5B2   =     8.4797290570e-03 ;
+Kq7.R5B1   =     8.4500264320e-03 ;
+Kq7.R5B2   =    -8.4685441579e-03 ;
+Kq8.L5B1   =     7.4872920895e-03 ;
+Kq8.L5B2   =    -7.3643658536e-03 ;
+Kq8.R5B1   =    -7.2933251071e-03 ;
+Kq8.R5B2   =     7.8932326696e-03 ;
+Kq9.L5B1   =    -6.0835140868e-03 ;
+Kq9.L5B2   =     6.5634982172e-03 ;
+Kq9.R5B1   =     6.5350294877e-03 ;
+Kq9.R5B2   =    -6.6742991833e-03 ;
+Kq10.L5B1   =     7.1700965317e-03 ;
+Kq10.L5B2   =    -6.7973144101e-03 ;
+Kq10.R5B1   =    -6.9170144598e-03 ;
+Kq10.R5B2   =     7.1236349916e-03 ;
+Kqtl11.L5B1   =    -5.0810829094e-03 ;
+Kqtl11.L5B2   =    -3.4439957415e-04 ;
+Kqtl11.R5B1   =    -2.5005017670e-04 ;
+Kqtl11.R5B2   =    -1.1175388079e-05 ;
+Kqt12.L5B1   =     3.4049421254e-03 ;
+Kqt12.L5B2   =    -4.8817498459e-03 ;
+Kqt12.R5B1   =    -4.1858165387e-03 ;
+Kqt12.R5B2   =    -9.1107014057e-04 ;
+Kqt13.L5B1   =    -4.8777311107e-03 ;
+Kqt13.L5B2   =    -8.7414076525e-04 ;
+Kqt13.R5B1   =    -8.6371399954e-04 ;
+Kqt13.R5B2   =     2.5861758215e-03 ;
+
+ !***IR5 X-scheme***
+acbxh1.l5x =    -6.0025953540e-06 ;
+acbxh1.l5s =    -4.6221351646e-06 ;
+acbxh1.l5ox=     0.0000000000e+00 ;
+acbxh1.l5os=     0.0000000000e+00 ;
+acbxh1.l5 :=+on_x5 *cphi_ir5*(   -6.0025953540e-06)
+           +on_sep5*sphi_ir5*(   -4.6221351646e-06)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbxv1.l5x =    -6.0009923934e-06 ;
+acbxv1.l5s =     4.6222144365e-06 ;
+acbxv1.l5ox=     0.0000000000e+00 ;
+acbxv1.l5os=     0.0000000000e+00 ;
+acbxv1.l5 :=+on_x5 *sphi_ir5*(   -6.0009923934e-06)
+           +on_sep5*cphi_ir5*(    4.6222144365e-06)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbxh1.r5x =    -4.4834042425e-07 ;
+acbxh1.r5s =    -4.4575423424e-06 ;
+acbxh1.r5ox=     0.0000000000e+00 ;
+acbxh1.r5os=     0.0000000000e+00 ;
+acbxh1.r5 :=+on_x5 *cphi_ir5*(   -4.4834042425e-07)
+           +on_sep5*sphi_ir5*(   -4.4575423424e-06)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbxv1.r5x =    -4.4996826060e-07 ;
+acbxv1.r5s =     4.4576383719e-06 ;
+acbxv1.r5ox=     0.0000000000e+00 ;
+acbxv1.r5os=     0.0000000000e+00 ;
+acbxv1.r5 :=+on_x5 *sphi_ir5*(   -4.4996826060e-07)
+           +on_sep5*cphi_ir5*(    4.4576383719e-06)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbxh2.l5x =    -3.0012976770e-06 ;
+acbxh2.l5s =    -2.3110675823e-06 ;
+acbxh2.l5ox=     0.0000000000e+00 ;
+acbxh2.l5os=     0.0000000000e+00 ;
+acbxh2.l5 :=+on_x5 *cphi_ir5*(   -3.0012976770e-06)
+           +on_sep5*sphi_ir5*(   -2.3110675823e-06)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbxv2.l5x =    -3.0004961967e-06 ;
+acbxv2.l5s =     2.3111072182e-06 ;
+acbxv2.l5ox=     0.0000000000e+00 ;
+acbxv2.l5os=     0.0000000000e+00 ;
+acbxv2.l5 :=+on_x5 *sphi_ir5*(   -3.0004961967e-06)
+           +on_sep5*cphi_ir5*(    2.3111072182e-06)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbxh2.r5x =    -2.2417021213e-07 ;
+acbxh2.r5s =    -2.2287711712e-06 ;
+acbxh2.r5ox=     0.0000000000e+00 ;
+acbxh2.r5os=     0.0000000000e+00 ;
+acbxh2.r5 :=+on_x5 *cphi_ir5*(   -2.2417021213e-07)
+           +on_sep5*sphi_ir5*(   -2.2287711712e-06)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbxv2.r5x =    -2.2498413030e-07 ;
+acbxv2.r5s =     2.2288191860e-06 ;
+acbxv2.r5ox=     0.0000000000e+00 ;
+acbxv2.r5os=     0.0000000000e+00 ;
+acbxv2.r5 :=+on_x5 *sphi_ir5*(   -2.2498413030e-07)
+           +on_sep5*cphi_ir5*(    2.2288191860e-06)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbxh3.l5x =     9.0190350958e-05 ;
+acbxh3.l5s =    -8.6575716927e-06 ;
+acbxh3.l5ox=     0.0000000000e+00 ;
+acbxh3.l5os=     0.0000000000e+00 ;
+acbxh3.l5 :=+on_x5 *cphi_ir5*(    9.0190350958e-05)
+           +on_sep5*sphi_ir5*(   -8.6575716927e-06)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbxv3.l5x =     9.0183625726e-05 ;
+acbxv3.l5s =     8.6575299331e-06 ;
+acbxv3.l5ox=     0.0000000000e+00 ;
+acbxv3.l5os=     0.0000000000e+00 ;
+acbxv3.l5 :=+on_x5 *sphi_ir5*(    9.0183625726e-05)
+           +on_sep5*cphi_ir5*(    8.6575299331e-06)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbxh3.r5x =    -7.8599807062e-05 ;
+acbxh3.r5s =    -8.8831668869e-06 ;
+acbxh3.r5ox=     0.0000000000e+00 ;
+acbxh3.r5os=     0.0000000000e+00 ;
+acbxh3.r5 :=+on_x5 *cphi_ir5*(   -7.8599807062e-05)
+           +on_sep5*sphi_ir5*(   -8.8831668869e-06)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbxv3.r5x =    -7.8593113487e-05 ;
+acbxv3.r5s =     8.8831214323e-06 ;
+acbxv3.r5ox=     0.0000000000e+00 ;
+acbxv3.r5os=     0.0000000000e+00 ;
+acbxv3.r5 :=+on_x5 *sphi_ir5*(   -7.8593113487e-05)
+           +on_sep5*cphi_ir5*(    8.8831214323e-06)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbrdh4.l5b1x =    -7.7665819895e-05 ;
+acbrdh4.l5b1s =    -3.8478992732e-06 ;
+acbrdh4.l5b1ox=     0.0000000000e+00 ;
+acbrdh4.l5b1os=     0.0000000000e+00 ;
+acbrdh4.l5b1 :=+on_x5 *cphi_ir5*(   -7.7665819895e-05)
+           +on_sep5*sphi_ir5*(   -3.8478992732e-06)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbrdv4.l5b1x =    -1.2734645184e-04 ;
+acbrdv4.l5b1s =     1.3355539438e-06 ;
+acbrdv4.l5b1ox=     0.0000000000e+00 ;
+acbrdv4.l5b1os=     0.0000000000e+00 ;
+acbrdv4.l5b1 :=+on_x5 *sphi_ir5*(   -1.2734645184e-04)
+           +on_sep5*cphi_ir5*(    1.3355539438e-06)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbrdh4.l5b2x =     1.2734627922e-04 ;
+acbrdh4.l5b2s =     1.3355133730e-06 ;
+acbrdh4.l5b2ox=     0.0000000000e+00 ;
+acbrdh4.l5b2os=     0.0000000000e+00 ;
+acbrdh4.l5b2 :=+on_x5 *cphi_ir5*(    1.2734627922e-04)
+           +on_sep5*sphi_ir5*(    1.3355133730e-06)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbrdv4.l5b2x =     7.7665892342e-05 ;
+acbrdv4.l5b2s =    -3.8479574378e-06 ;
+acbrdv4.l5b2ox=     0.0000000000e+00 ;
+acbrdv4.l5b2os=     0.0000000000e+00 ;
+acbrdv4.l5b2 :=+on_x5 *sphi_ir5*(    7.7665892342e-05)
+           +on_sep5*cphi_ir5*(   -3.8479574378e-06)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbrdh4.r5b1x =     1.2204296440e-04 ;
+acbrdh4.r5b1s =    -1.2469565969e-06 ;
+acbrdh4.r5b1ox=     0.0000000000e+00 ;
+acbrdh4.r5b1os=     0.0000000000e+00 ;
+acbrdh4.r5b1 :=+on_x5 *cphi_ir5*(    1.2204296440e-04)
+           +on_sep5*sphi_ir5*(   -1.2469565969e-06)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbrdv4.r5b1x =     7.7881958736e-05 ;
+acbrdv4.r5b1s =     3.9002046325e-06 ;
+acbrdv4.r5b1ox=     0.0000000000e+00 ;
+acbrdv4.r5b1os=     0.0000000000e+00 ;
+acbrdv4.r5b1 :=+on_x5 *sphi_ir5*(    7.7881958736e-05)
+           +on_sep5*cphi_ir5*(    3.9002046325e-06)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbrdh4.r5b2x =    -7.7881937504e-05 ;
+acbrdh4.r5b2s =     3.9001684156e-06 ;
+acbrdh4.r5b2ox=     0.0000000000e+00 ;
+acbrdh4.r5b2os=     0.0000000000e+00 ;
+acbrdh4.r5b2 :=+on_x5 *cphi_ir5*(   -7.7881937504e-05)
+           +on_sep5*sphi_ir5*(    3.9001684156e-06)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbrdv4.r5b2x =    -1.2204317123e-04 ;
+acbrdv4.r5b2s =    -1.2469922796e-06 ;
+acbrdv4.r5b2ox=     0.0000000000e+00 ;
+acbrdv4.r5b2os=     0.0000000000e+00 ;
+acbrdv4.r5b2 :=+on_x5 *sphi_ir5*(   -1.2204317123e-04)
+           +on_sep5*cphi_ir5*(   -1.2469922796e-06)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbyhs4.l5b1x =    -3.8832909948e-05 ;
+acbyhs4.l5b1s =    -1.9239496366e-06 ;
+acbyhs4.l5b1ox=     0.0000000000e+00 ;
+acbyhs4.l5b1os=     0.0000000000e+00 ;
+acbyhs4.l5b1 :=+on_x5 *cphi_ir5*(   -3.8832909948e-05)
+           +on_sep5*sphi_ir5*(   -1.9239496366e-06)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbyvs4.l5b1x =    -6.3673225918e-05 ;
+acbyvs4.l5b1s =     6.6777697192e-07 ;
+acbyvs4.l5b1ox=     0.0000000000e+00 ;
+acbyvs4.l5b1os=     0.0000000000e+00 ;
+acbyvs4.l5b1 :=+on_x5 *sphi_ir5*(   -6.3673225918e-05)
+           +on_sep5*cphi_ir5*(    6.6777697192e-07)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbyhs4.l5b2x =     6.3673139610e-05 ;
+acbyhs4.l5b2s =     6.6775668650e-07 ;
+acbyhs4.l5b2ox=     0.0000000000e+00 ;
+acbyhs4.l5b2os=     0.0000000000e+00 ;
+acbyhs4.l5b2 :=+on_x5 *cphi_ir5*(    6.3673139610e-05)
+           +on_sep5*sphi_ir5*(    6.6775668650e-07)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbyvs4.l5b2x =     3.8832946171e-05 ;
+acbyvs4.l5b2s =    -1.9239787189e-06 ;
+acbyvs4.l5b2ox=     0.0000000000e+00 ;
+acbyvs4.l5b2os=     0.0000000000e+00 ;
+acbyvs4.l5b2 :=+on_x5 *sphi_ir5*(    3.8832946171e-05)
+           +on_sep5*cphi_ir5*(   -1.9239787189e-06)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbyhs4.r5b1x =     6.1021482200e-05 ;
+acbyhs4.r5b1s =    -6.2347829846e-07 ;
+acbyhs4.r5b1ox=     0.0000000000e+00 ;
+acbyhs4.r5b1os=     0.0000000000e+00 ;
+acbyhs4.r5b1 :=+on_x5 *cphi_ir5*(    6.1021482200e-05)
+           +on_sep5*sphi_ir5*(   -6.2347829846e-07)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbyvs4.r5b1x =     3.8940979368e-05 ;
+acbyvs4.r5b1s =     1.9501023163e-06 ;
+acbyvs4.r5b1ox=     0.0000000000e+00 ;
+acbyvs4.r5b1os=     0.0000000000e+00 ;
+acbyvs4.r5b1 :=+on_x5 *sphi_ir5*(    3.8940979368e-05)
+           +on_sep5*cphi_ir5*(    1.9501023163e-06)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbyhs4.r5b2x =    -3.8940968752e-05 ;
+acbyhs4.r5b2s =     1.9500842078e-06 ;
+acbyhs4.r5b2ox=     0.0000000000e+00 ;
+acbyhs4.r5b2os=     0.0000000000e+00 ;
+acbyhs4.r5b2 :=+on_x5 *cphi_ir5*(   -3.8940968752e-05)
+           +on_sep5*sphi_ir5*(    1.9500842078e-06)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbyvs4.r5b2x =    -6.1021585614e-05 ;
+acbyvs4.r5b2s =    -6.2349613981e-07 ;
+acbyvs4.r5b2ox=     0.0000000000e+00 ;
+acbyvs4.r5b2os=     0.0000000000e+00 ;
+acbyvs4.r5b2 :=+on_x5 *sphi_ir5*(   -6.1021585614e-05)
+           +on_sep5*cphi_ir5*(   -6.2349613981e-07)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbyhs5.l5b1x =     0.0000000000e+00 ;
+acbyhs5.l5b1s =     0.0000000000e+00 ;
+acbyhs5.l5b1ox=     0.0000000000e+00 ;
+acbyhs5.l5b1os=     0.0000000000e+00 ;
+acbyhs5.l5b1 :=+on_x5 *cphi_ir5*(    0.0000000000e+00)
+           +on_sep5*sphi_ir5*(    0.0000000000e+00)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbyvs5.l5b1x =     0.0000000000e+00 ;
+acbyvs5.l5b1s =     0.0000000000e+00 ;
+acbyvs5.l5b1ox=     0.0000000000e+00 ;
+acbyvs5.l5b1os=     0.0000000000e+00 ;
+acbyvs5.l5b1 :=+on_x5 *sphi_ir5*(    0.0000000000e+00)
+           +on_sep5*cphi_ir5*(    0.0000000000e+00)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbyhs5.l5b2x =     0.0000000000e+00 ;
+acbyhs5.l5b2s =     0.0000000000e+00 ;
+acbyhs5.l5b2ox=     0.0000000000e+00 ;
+acbyhs5.l5b2os=     0.0000000000e+00 ;
+acbyhs5.l5b2 :=+on_x5 *cphi_ir5*(    0.0000000000e+00)
+           +on_sep5*sphi_ir5*(    0.0000000000e+00)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbyvs5.l5b2x =     0.0000000000e+00 ;
+acbyvs5.l5b2s =     0.0000000000e+00 ;
+acbyvs5.l5b2ox=     0.0000000000e+00 ;
+acbyvs5.l5b2os=     0.0000000000e+00 ;
+acbyvs5.l5b2 :=+on_x5 *sphi_ir5*(    0.0000000000e+00)
+           +on_sep5*cphi_ir5*(    0.0000000000e+00)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbyhs5.r5b1x =     0.0000000000e+00 ;
+acbyhs5.r5b1s =     0.0000000000e+00 ;
+acbyhs5.r5b1ox=     0.0000000000e+00 ;
+acbyhs5.r5b1os=     0.0000000000e+00 ;
+acbyhs5.r5b1 :=+on_x5 *cphi_ir5*(    0.0000000000e+00)
+           +on_sep5*sphi_ir5*(    0.0000000000e+00)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbyvs5.r5b1x =     0.0000000000e+00 ;
+acbyvs5.r5b1s =     0.0000000000e+00 ;
+acbyvs5.r5b1ox=     0.0000000000e+00 ;
+acbyvs5.r5b1os=     0.0000000000e+00 ;
+acbyvs5.r5b1 :=+on_x5 *sphi_ir5*(    0.0000000000e+00)
+           +on_sep5*cphi_ir5*(    0.0000000000e+00)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbyhs5.r5b2x =     0.0000000000e+00 ;
+acbyhs5.r5b2s =     0.0000000000e+00 ;
+acbyhs5.r5b2ox=     0.0000000000e+00 ;
+acbyhs5.r5b2os=     0.0000000000e+00 ;
+acbyhs5.r5b2 :=+on_x5 *cphi_ir5*(    0.0000000000e+00)
+           +on_sep5*sphi_ir5*(    0.0000000000e+00)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbyvs5.r5b2x =     0.0000000000e+00 ;
+acbyvs5.r5b2s =     0.0000000000e+00 ;
+acbyvs5.r5b2ox=     0.0000000000e+00 ;
+acbyvs5.r5b2os=     0.0000000000e+00 ;
+acbyvs5.r5b2 :=+on_x5 *sphi_ir5*(    0.0000000000e+00)
+           +on_sep5*cphi_ir5*(    0.0000000000e+00)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbch6.l5b5x =     0.0000000000e+00 ;
+acbch6.l5b5s =     0.0000000000e+00 ;
+acbch6.l5b5ox=     0.0000000000e+00 ;
+acbch6.l5b5os=     0.0000000000e+00 ;
+acbch6.l5b5 :=+on_x5 *cphi_ir5*(    0.0000000000e+00)
+           +on_sep5*sphi_ir5*(    0.0000000000e+00)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+acbcv6.l5b2x =     0.0000000000e+00 ;
+acbcv6.l5b2s =     0.0000000000e+00 ;
+acbcv6.l5b2ox=     0.0000000000e+00 ;
+acbcv6.l5b2os=     0.0000000000e+00 ;
+acbcv6.l5b2 :=+on_x5 *sphi_ir5*(    0.0000000000e+00)
+           +on_sep5*cphi_ir5*(    0.0000000000e+00)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbcv6.r5b1x =     0.0000000000e+00 ;
+acbcv6.r5b1s =     0.0000000000e+00 ;
+acbcv6.r5b1ox=     0.0000000000e+00 ;
+acbcv6.r5b1os=     0.0000000000e+00 ;
+acbcv6.r5b1 :=+on_x5 *sphi_ir5*(    0.0000000000e+00)
+           +on_sep5*cphi_ir5*(    0.0000000000e+00)
+           +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+           +on_os5 *cphi_ir5*(    0.0000000000e+00);
+acbch6.r5b2x =     0.0000000000e+00 ;
+acbch6.r5b2s =     0.0000000000e+00 ;
+acbch6.r5b2ox=     0.0000000000e+00 ;
+acbch6.r5b2os=     0.0000000000e+00 ;
+acbch6.r5b2 :=+on_x5 *cphi_ir5*(    0.0000000000e+00)
+           +on_sep5*sphi_ir5*(    0.0000000000e+00)
+           +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+           +on_os5 *sphi_ir5*(    0.0000000000e+00);
+
+ !***IR5 Crab Cavities***
+ahcrab_l5b1   =     1.6688821171e-06 ;
+ahcrab_l5b2   =     1.6245732538e-06 ;
+avcrab_l5b1   =     1.7006493512e-06 ;
+avcrab_l5b2   =     1.6410757557e-06 ;
+ahcrab_r5b1   =     1.6245742046e-06 ;
+ahcrab_r5b2   =     1.6688761656e-06 ;
+avcrab_r5b1   =     1.6410761147e-06 ;
+avcrab_r5b2   =     1.7006489838e-06 ;
+
+ !***ARC Optics***
+ !QF/QD
+kqf.A81   =     8.7032988458e-03 ;
+kqf.A12   =     8.7032988458e-03 ;
+kqf.A45   =     8.7032988458e-03 ;
+kqf.A56   =     8.7032988458e-03 ;
+kqd.A81   =    -8.7047551604e-03 ;
+kqd.A12   =    -8.7047551604e-03 ;
+kqd.A45   =    -8.7047551604e-03 ;
+kqd.A56   =    -8.7047551604e-03 ;
+kqf.A23   =     8.7973995985e-03 ;
+kqf.A34   =     8.7973995985e-03 ;
+kqf.A67   =     8.7973995985e-03 ;
+kqf.A78   =     8.7973995985e-03 ;
+kqd.A23   =    -8.7247773206e-03 ;
+kqd.A34   =    -8.7247773206e-03 ;
+kqd.A67   =    -8.7247773206e-03 ;
+kqd.A78   =    -8.7247773206e-03 ;
+
+ !QTF/QTD
+KQTF.B1 =      0.0000000000e+00 ;
+KQTD.B1 =      0.0000000000e+00 ;
+KQTF.B2 =      0.0000000000e+00 ;
+KQTD.B2 =      0.0000000000e+00 ;
+kqtf.A81b1=     0.0000000000e+00 ;
+kqtf.A12b1=     0.0000000000e+00 ;
+kqtf.A45b1=     0.0000000000e+00 ;
+kqtf.A56b1=     0.0000000000e+00 ;
+kqtf.A23b1:=     0.0000000000e+00 +kqtf.b1 ;
+kqtf.A34b1:=     0.0000000000e+00 +kqtf.b1 ;
+kqtf.A67b1:=     0.0000000000e+00 +kqtf.b1 ;
+kqtf.A78b1:=     0.0000000000e+00 +kqtf.b1 ;
+kqtf.A81b2=     0.0000000000e+00 ;
+kqtf.A12b2=     0.0000000000e+00 ;
+kqtf.A45b2=     0.0000000000e+00 ;
+kqtf.A56b2=     0.0000000000e+00 ;
+kqtf.A23b2:=     0.0000000000e+00 +kqtf.b2 ;
+kqtf.A34b2:=     0.0000000000e+00 +kqtf.b2 ;
+kqtf.A67b2:=     0.0000000000e+00 +kqtf.b2 ;
+kqtf.A78b2:=     0.0000000000e+00 +kqtf.b2 ;
+kqtd.A81b1=     0.0000000000e+00 ;
+kqtd.A12b1=     0.0000000000e+00 ;
+kqtd.A45b1=     0.0000000000e+00 ;
+kqtd.A56b1=     0.0000000000e+00 ;
+kqtd.A23b1:=     0.0000000000e+00 +kqtd.b1 ;
+kqtd.A34b1:=     0.0000000000e+00 +kqtd.b1 ;
+kqtd.A67b1:=     0.0000000000e+00 +kqtd.b1 ;
+kqtd.A78b1:=     0.0000000000e+00 +kqtd.b1 ;
+kqtd.A81b2=     0.0000000000e+00 ;
+kqtd.A12b2=     0.0000000000e+00 ;
+kqtd.A45b2=     0.0000000000e+00 ;
+kqtd.A56b2=     0.0000000000e+00 ;
+kqtd.A23b2:=     0.0000000000e+00 +kqtd.b2 ;
+kqtd.A34b2:=     0.0000000000e+00 +kqtd.b2 ;
+kqtd.A67b2:=     0.0000000000e+00 +kqtd.b2 ;
+kqtd.A78b2:=     0.0000000000e+00 +kqtd.b2 ;
+
+ !KSF/KSD
+KSF.B1 =      0.0000000000e+00 ;
+KSD.B1 =      0.0000000000e+00 ;
+KSF.B2 =      0.0000000000e+00 ;
+KSD.B2 =      0.0000000000e+00 ;
+ksf1.A81b1=     2.3323425254e-01 ;
+ksf1.A12b1=     2.1332422539e-01 ;
+ksf1.A45b1=     2.5958530378e-01 ;
+ksf1.A56b1=     2.0503320460e-01 ;
+ksf1.A23b1:=     7.4791406067e-02 +ksf.b1 ;
+ksf1.A34b1:=     7.4791406067e-02 +ksf.b1 ;
+ksf1.A67b1:=     7.4791406067e-02 +ksf.b1 ;
+ksf1.A78b1:=     7.4791406067e-02 +ksf.b1 ;
+ksf1.A81b2=     6.0000000000e-02 ;
+ksf1.A12b2=     6.0000000000e-02 ;
+ksf1.A45b2=     6.0000000000e-02 ;
+ksf1.A56b2=     6.0000000000e-02 ;
+ksf1.A23b2:=     9.2231432789e-02 +ksf.b2 ;
+ksf1.A34b2:=     9.2231432789e-02 +ksf.b2 ;
+ksf1.A67b2:=     9.2231432789e-02 +ksf.b2 ;
+ksf1.A78b2:=     9.2231432789e-02 +ksf.b2 ;
+ksf2.A81b1=     6.0000000000e-02 ;
+ksf2.A12b1=     6.0000000000e-02 ;
+ksf2.A45b1=     6.0000000000e-02 ;
+ksf2.A56b1=     6.0000000000e-02 ;
+ksf2.A23b1:=     7.4791406067e-02 +ksf.b1 ;
+ksf2.A34b1:=     7.4791406067e-02 +ksf.b1 ;
+ksf2.A67b1:=     7.4791406067e-02 +ksf.b1 ;
+ksf2.A78b1:=     7.4791406067e-02 +ksf.b1 ;
+ksf2.A81b2=     1.5625046542e-01 ;
+ksf2.A12b2=     1.9853013181e-01 ;
+ksf2.A45b2=     2.0005279977e-01 ;
+ksf2.A56b2=     2.3436867671e-01 ;
+ksf2.A23b2:=     9.2231432789e-02 +ksf.b2 ;
+ksf2.A34b2:=     9.2231432789e-02 +ksf.b2 ;
+ksf2.A67b2:=     9.2231432789e-02 +ksf.b2 ;
+ksf2.A78b2:=     9.2231432789e-02 +ksf.b2 ;
+ksd1.A81b1=    -9.9000000000e-02 ;
+ksd1.A12b1=    -9.9000000000e-02 ;
+ksd1.A45b1=    -9.9000000000e-02 ;
+ksd1.A56b1=    -9.9000000000e-02 ;
+ksd1.A23b1:=    -1.3204025119e-01 +ksd.b1 ;
+ksd1.A34b1:=    -1.3204025119e-01 +ksd.b1 ;
+ksd1.A67b1:=    -1.3204025119e-01 +ksd.b1 ;
+ksd1.A78b1:=    -1.3204025119e-01 +ksd.b1 ;
+ksd1.A81b2=    -3.4520719224e-01 ;
+ksd1.A12b2=    -3.5841796329e-01 ;
+ksd1.A45b2=    -3.9801094471e-01 ;
+ksd1.A56b2=    -3.3302736457e-01 ;
+ksd1.A23b2:=    -1.3743830540e-01 +ksd.b2 ;
+ksd1.A34b2:=    -1.3743830540e-01 +ksd.b2 ;
+ksd1.A67b2:=    -1.3743830540e-01 +ksd.b2 ;
+ksd1.A78b2:=    -1.3743830540e-01 +ksd.b2 ;
+ksd2.A81b1=    -4.2000000000e-01 ;
+ksd2.A12b1=    -3.6369799845e-01 ;
+ksd2.A45b1=    -3.7209573949e-01 ;
+ksd2.A56b1=    -3.0854688167e-01 ;
+ksd2.A23b1:=    -1.3204025119e-01 +ksd.b1 ;
+ksd2.A34b1:=    -1.3204025119e-01 +ksd.b1 ;
+ksd2.A67b1:=    -1.3204025119e-01 +ksd.b1 ;
+ksd2.A78b1:=    -1.3204025119e-01 +ksd.b1 ;
+ksd2.A81b2=    -9.9000000000e-02 ;
+ksd2.A12b2=    -9.9000000000e-02 ;
+ksd2.A45b2=    -9.9000000000e-02 ;
+ksd2.A56b2=    -9.9000000000e-02 ;
+ksd2.A23b2:=    -1.3743830540e-01 +ksd.b2 ;
+ksd2.A34b2:=    -1.3743830540e-01 +ksd.b2 ;
+ksd2.A67b2:=    -1.3743830540e-01 +ksd.b2 ;
+ksd2.A78b2:=    -1.3743830540e-01 +ksd.b2 ;
+
+ !KOF/KOD
+KOF.B1 =      0.0000000000e+00 ;
+KOD.B1 =      0.0000000000e+00 ;
+KOF.B2 =      0.0000000000e+00 ;
+KOD.B2 =      0.0000000000e+00 ;
+kof.A81b1:=     0.0000000000e+00 +kof.b1;
+kof.A12b1:=     0.0000000000e+00 +kof.b1;
+kof.A45b1:=     0.0000000000e+00 +kof.b1;
+kof.A56b1:=     0.0000000000e+00 +kof.b1;
+kof.A23b1:=     0.0000000000e+00 +kof.b1;
+kof.A34b1:=     0.0000000000e+00 +kof.b1;
+kof.A67b1:=     0.0000000000e+00 +kof.b1;
+kof.A78b1:=     0.0000000000e+00 +kof.b1;
+kof.A81b2:=     0.0000000000e+00 +kof.b2;
+kof.A12b2:=     0.0000000000e+00 +kof.b2;
+kof.A45b2:=     0.0000000000e+00 +kof.b2;
+kof.A56b2:=     0.0000000000e+00 +kof.b2;
+kof.A23b2:=     0.0000000000e+00 +kof.b2;
+kof.A34b2:=     0.0000000000e+00 +kof.b2;
+kof.A67b2:=     0.0000000000e+00 +kof.b2;
+kof.A78b2:=     0.0000000000e+00 +kof.b2;
+kod.A81b1:=     0.0000000000e+00 +kod.b1;
+kod.A12b1:=     0.0000000000e+00 +kod.b1;
+kod.A45b1:=     0.0000000000e+00 +kod.b1;
+kod.A56b1:=     0.0000000000e+00 +kod.b1;
+kod.A23b1:=     0.0000000000e+00 +kod.b1;
+kod.A34b1:=     0.0000000000e+00 +kod.b1;
+kod.A67b1:=     0.0000000000e+00 +kod.b1;
+kod.A78b1:=     0.0000000000e+00 +kod.b1;
+kod.A81b2:=     0.0000000000e+00 +kod.b2;
+kod.A12b2:=     0.0000000000e+00 +kod.b2;
+kod.A45b2:=     0.0000000000e+00 +kod.b2;
+kod.A56b2:=     0.0000000000e+00 +kod.b2;
+kod.A23b2:=     0.0000000000e+00 +kod.b2;
+kod.A34b2:=     0.0000000000e+00 +kod.b2;
+kod.A67b2:=     0.0000000000e+00 +kod.b2;
+kod.A78b2:=     0.0000000000e+00 +kod.b2;
+
+ !Dispersion correction
+ !Dispersion correction ARC81
+acbv15.r8b1x =    -1.3925757461e-05 ;
+acbv15.r8b1s =    -3.5051595124e-08 ;
+acbv15.r8b1ox=     0.0000000000e+00 ;
+acbv15.r8b1os=     0.0000000000e+00 ;
+acbv15.r8b1 :=+(on_x1*sphi_ir1*(   -1.3925757461e-05)
+          +on_sep1*cphi_ir1*(   -3.5051595124e-08)
+          +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+          +on_os1 *cphi_ir1*(    0.0000000000e+00))*on_disp;
+acbh15.r8b2x =     2.8415868967e-05 ;
+acbh15.r8b2s =    -2.9728417732e-07 ;
+acbh15.r8b2ox=     0.0000000000e+00 ;
+acbh15.r8b2os=     0.0000000000e+00 ;
+acbh15.r8b2 :=+(on_x1*cphi_ir1*(    2.8415868967e-05)
+          +on_sep1*sphi_ir1*(   -2.9728417732e-07)
+          +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+          +on_os1 *sphi_ir1*(    0.0000000000e+00))*on_disp;
+acbh16.r8b1x =     2.1118649853e-05 ;
+acbh16.r8b1s =     1.1603592560e-06 ;
+acbh16.r8b1ox=     0.0000000000e+00 ;
+acbh16.r8b1os=     0.0000000000e+00 ;
+acbh16.r8b1 :=+(on_x1*cphi_ir1*(    2.1118649853e-05)
+          +on_sep1*sphi_ir1*(    1.1603592560e-06)
+          +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+          +on_os1 *sphi_ir1*(    0.0000000000e+00))*on_disp;
+acbv16.r8b2x =    -2.2247334803e-05 ;
+acbv16.r8b2s =     1.1110723788e-06 ;
+acbv16.r8b2ox=     0.0000000000e+00 ;
+acbv16.r8b2os=     0.0000000000e+00 ;
+acbv16.r8b2 :=+(on_x1*sphi_ir1*(   -2.2247334803e-05)
+          +on_sep1*cphi_ir1*(    1.1110723788e-06)
+          +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+          +on_os1 *cphi_ir1*(    0.0000000000e+00))*on_disp;
+acbh12.l1b1x =    -2.0694218254e-05 ;
+acbh12.l1b1s =    -1.1371517333e-06 ;
+acbh12.l1b1ox=     0.0000000000e+00 ;
+acbh12.l1b1os=     0.0000000000e+00 ;
+acbh12.l1b1 :=+(on_x1*cphi_ir1*(   -2.0694218254e-05)
+          +on_sep1*sphi_ir1*(   -1.1371517333e-06)
+          +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+          +on_os1 *sphi_ir1*(    0.0000000000e+00))*on_disp;
+acbv12.l1b2x =     2.2500380364e-05 ;
+acbv12.l1b2s =    -1.1249945743e-06 ;
+acbv12.l1b2ox=     0.0000000000e+00 ;
+acbv12.l1b2os=     0.0000000000e+00 ;
+acbv12.l1b2 :=+(on_x1*sphi_ir1*(    2.2500380364e-05)
+          +on_sep1*cphi_ir1*(   -1.1249945743e-06)
+          +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+          +on_os1 *cphi_ir1*(    0.0000000000e+00))*on_disp;
+acbv13.l1b1x =     1.4023543280e-05 ;
+acbv13.l1b1s =     3.5282990635e-08 ;
+acbv13.l1b1ox=     0.0000000000e+00 ;
+acbv13.l1b1os=     0.0000000000e+00 ;
+acbv13.l1b1 :=+(on_x1*sphi_ir1*(    1.4023543280e-05)
+          +on_sep1*cphi_ir1*(    3.5282990635e-08)
+          +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+          +on_os1 *cphi_ir1*(    0.0000000000e+00))*on_disp;
+acbh13.l1b2x =    -2.8387841148e-05 ;
+acbh13.l1b2s =     2.9674245768e-07 ;
+acbh13.l1b2ox=     0.0000000000e+00 ;
+acbh13.l1b2os=     0.0000000000e+00 ;
+acbh13.l1b2 :=+(on_x1*cphi_ir1*(   -2.8387841148e-05)
+          +on_sep1*sphi_ir1*(    2.9674245768e-07)
+          +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+          +on_os1 *sphi_ir1*(    0.0000000000e+00))*on_disp;
+acbh14.l1b1x =     6.3547907655e-07 ;
+acbh14.l1b1s =     3.6535008181e-08 ;
+acbh14.l1b1ox=     0.0000000000e+00 ;
+acbh14.l1b1os=     0.0000000000e+00 ;
+acbh14.l1b1 :=+(on_x1*cphi_ir1*(    6.3547907655e-07)
+          +on_sep1*sphi_ir1*(    3.6535008181e-08)
+          +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+          +on_os1 *sphi_ir1*(    0.0000000000e+00))*on_disp;
+acbv14.l1b2x =     1.3407812393e-07 ;
+acbv14.l1b2s =    -3.6635711628e-09 ;
+acbv14.l1b2ox=     0.0000000000e+00 ;
+acbv14.l1b2os=     0.0000000000e+00 ;
+acbv14.l1b2 :=+(on_x1*sphi_ir1*(    1.3407812393e-07)
+          +on_sep1*cphi_ir1*(   -3.6635711628e-09)
+          +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+          +on_os1 *cphi_ir1*(    0.0000000000e+00))*on_disp;
+acbv15.l1b1x =    -2.4879714709e-08 ;
+acbv15.l1b1s =    -1.3335071837e-10 ;
+acbv15.l1b1ox=     0.0000000000e+00 ;
+acbv15.l1b1os=     0.0000000000e+00 ;
+acbv15.l1b1 :=+(on_x1*sphi_ir1*(   -2.4879714709e-08)
+          +on_sep1*cphi_ir1*(   -1.3335071837e-10)
+          +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+          +on_os1 *cphi_ir1*(    0.0000000000e+00))*on_disp;
+acbh15.l1b2x =    -2.0104788305e-08 ;
+acbh15.l1b2s =    -2.1253735771e-10 ;
+acbh15.l1b2ox=     0.0000000000e+00 ;
+acbh15.l1b2os=     0.0000000000e+00 ;
+acbh15.l1b2 :=+(on_x1*cphi_ir1*(   -2.0104788305e-08)
+          +on_sep1*sphi_ir1*(   -2.1253735771e-10)
+          +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+          +on_os1 *sphi_ir1*(    0.0000000000e+00))*on_disp;
+ !Dispersion correction ARC12
+acbv12.r1b1x =     2.1175158352e-05 ;
+acbv12.r1b1s =     1.0606038097e-06 ;
+acbv12.r1b1ox=     0.0000000000e+00 ;
+acbv12.r1b1os=     0.0000000000e+00 ;
+acbv12.r1b1 :=+(on_x1*sphi_ir1*(    2.1175158352e-05)
+          +on_sep1*cphi_ir1*(    1.0606038097e-06)
+          +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+          +on_os1 *cphi_ir1*(    0.0000000000e+00))*on_disp;
+acbh12.r1b2x =    -2.5717075623e-05 ;
+acbh12.r1b2s =     1.1877584730e-06 ;
+acbh12.r1b2ox=     0.0000000000e+00 ;
+acbh12.r1b2os=     0.0000000000e+00 ;
+acbh12.r1b2 :=+(on_x1*cphi_ir1*(   -2.5717075623e-05)
+          +on_sep1*sphi_ir1*(    1.1877584730e-06)
+          +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+          +on_os1 *sphi_ir1*(    0.0000000000e+00))*on_disp;
+acbh13.r1b1x =    -1.8155385859e-05 ;
+acbh13.r1b1s =     1.3141074425e-07 ;
+acbh13.r1b1ox=     0.0000000000e+00 ;
+acbh13.r1b1os=     0.0000000000e+00 ;
+acbh13.r1b1 :=+(on_x1*cphi_ir1*(   -1.8155385859e-05)
+          +on_sep1*sphi_ir1*(    1.3141074425e-07)
+          +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+          +on_os1 *sphi_ir1*(    0.0000000000e+00))*on_disp;
+acbv13.r1b2x =     1.6870392680e-05 ;
+acbv13.r1b2s =    -5.0132419766e-08 ;
+acbv13.r1b2ox=     0.0000000000e+00 ;
+acbv13.r1b2os=     0.0000000000e+00 ;
+acbv13.r1b2 :=+(on_x1*sphi_ir1*(    1.6870392680e-05)
+          +on_sep1*cphi_ir1*(   -5.0132419766e-08)
+          +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+          +on_os1 *cphi_ir1*(    0.0000000000e+00))*on_disp;
+acbv14.r1b1x =     9.3086478379e-08 ;
+acbv14.r1b1s =     2.9721771548e-09 ;
+acbv14.r1b1ox=     0.0000000000e+00 ;
+acbv14.r1b1os=     0.0000000000e+00 ;
+acbv14.r1b1 :=+(on_x1*sphi_ir1*(    9.3086478379e-08)
+          +on_sep1*cphi_ir1*(    2.9721771548e-09)
+          +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+          +on_os1 *cphi_ir1*(    0.0000000000e+00))*on_disp;
+acbh14.r1b2x =    -2.5797747548e-07 ;
+acbh14.r1b2s =     9.5569282046e-09 ;
+acbh14.r1b2ox=     0.0000000000e+00 ;
+acbh14.r1b2os=     0.0000000000e+00 ;
+acbh14.r1b2 :=+(on_x1*cphi_ir1*(   -2.5797747548e-07)
+          +on_sep1*sphi_ir1*(    9.5569282046e-09)
+          +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+          +on_os1 *sphi_ir1*(    0.0000000000e+00))*on_disp;
+acbh15.r1b1x =    -8.2310329474e-09 ;
+acbh15.r1b1s =    -9.4438979525e-12 ;
+acbh15.r1b1ox=     0.0000000000e+00 ;
+acbh15.r1b1os=     0.0000000000e+00 ;
+acbh15.r1b1 :=+(on_x1*cphi_ir1*(   -8.2310329474e-09)
+          +on_sep1*sphi_ir1*(   -9.4438979525e-12)
+          +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+          +on_os1 *sphi_ir1*(    0.0000000000e+00))*on_disp;
+acbv15.r1b2x =    -3.1645730780e-08 ;
+acbv15.r1b2s =     2.2478169001e-10 ;
+acbv15.r1b2ox=     0.0000000000e+00 ;
+acbv15.r1b2os=     0.0000000000e+00 ;
+acbv15.r1b2 :=+(on_x1*sphi_ir1*(   -3.1645730780e-08)
+          +on_sep1*cphi_ir1*(    2.2478169001e-10)
+          +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+          +on_os1 *cphi_ir1*(    0.0000000000e+00))*on_disp;
+acbh15.l2b1x =     1.8152962288e-05 ;
+acbh15.l2b1s =    -1.3160055186e-07 ;
+acbh15.l2b1ox=     0.0000000000e+00 ;
+acbh15.l2b1os=     0.0000000000e+00 ;
+acbh15.l2b1 :=+(on_x1*cphi_ir1*(    1.8152962288e-05)
+          +on_sep1*sphi_ir1*(   -1.3160055186e-07)
+          +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+          +on_os1 *sphi_ir1*(    0.0000000000e+00))*on_disp;
+acbv15.l2b2x =    -1.6868536462e-05 ;
+acbv15.l2b2s =     5.0169206506e-08 ;
+acbv15.l2b2ox=     0.0000000000e+00 ;
+acbv15.l2b2os=     0.0000000000e+00 ;
+acbv15.l2b2 :=+(on_x1*sphi_ir1*(   -1.6868536462e-05)
+          +on_sep1*cphi_ir1*(    5.0169206506e-08)
+          +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+          +on_os1 *cphi_ir1*(    0.0000000000e+00))*on_disp;
+acbv16.l2b1x =    -2.1083864481e-05 ;
+acbv16.l2b1s =    -1.0555619372e-06 ;
+acbv16.l2b1ox=     0.0000000000e+00 ;
+acbv16.l2b1os=     0.0000000000e+00 ;
+acbv16.l2b1 :=+(on_x1*sphi_ir1*(   -2.1083864481e-05)
+          +on_sep1*cphi_ir1*(   -1.0555619372e-06)
+          +on_ox1 *sphi_ir1*(    0.0000000000e+00)
+          +on_os1 *cphi_ir1*(    0.0000000000e+00))*on_disp;
+acbh16.l2b2x =     2.5378317349e-05 ;
+acbh16.l2b2s =    -1.1724674012e-06 ;
+acbh16.l2b2ox=     0.0000000000e+00 ;
+acbh16.l2b2os=     0.0000000000e+00 ;
+acbh16.l2b2 :=+(on_x1*cphi_ir1*(    2.5378317349e-05)
+          +on_sep1*sphi_ir1*(   -1.1724674012e-06)
+          +on_ox1 *cphi_ir1*(    0.0000000000e+00)
+          +on_os1 *sphi_ir1*(    0.0000000000e+00))*on_disp;
+ !Dispersion correction ARC45
+acbv15.r4b1x =    -1.6524226945e-05 ;
+acbv15.r4b1s =    -4.1581603029e-08 ;
+acbv15.r4b1ox=     0.0000000000e+00 ;
+acbv15.r4b1os=     0.0000000000e+00 ;
+acbv15.r4b1 :=+(on_x5*sphi_ir5*(   -1.6524226945e-05)
+          +on_sep5*cphi_ir5*(   -4.1581603029e-08)
+          +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+          +on_os5 *cphi_ir5*(    0.0000000000e+00))*on_disp;
+acbh15.r4b2x =     2.0010199061e-05 ;
+acbh15.r4b2s =    -2.2995749820e-07 ;
+acbh15.r4b2ox=     0.0000000000e+00 ;
+acbh15.r4b2os=     0.0000000000e+00 ;
+acbh15.r4b2 :=+(on_x5*cphi_ir5*(    2.0010199061e-05)
+          +on_sep5*sphi_ir5*(   -2.2995749820e-07)
+          +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+          +on_os5 *sphi_ir5*(    0.0000000000e+00))*on_disp;
+acbh16.r4b1x =     1.7978926537e-05 ;
+acbh16.r4b1s =     1.0189294933e-06 ;
+acbh16.r4b1ox=     0.0000000000e+00 ;
+acbh16.r4b1os=     0.0000000000e+00 ;
+acbh16.r4b1 :=+(on_x5*cphi_ir5*(    1.7978926537e-05)
+          +on_sep5*sphi_ir5*(    1.0189294933e-06)
+          +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+          +on_os5 *sphi_ir5*(    0.0000000000e+00))*on_disp;
+acbv16.r4b2x =    -1.8842693122e-05 ;
+acbv16.r4b2s =     9.4200956888e-07 ;
+acbv16.r4b2ox=     0.0000000000e+00 ;
+acbv16.r4b2os=     0.0000000000e+00 ;
+acbv16.r4b2 :=+(on_x5*sphi_ir5*(   -1.8842693122e-05)
+          +on_sep5*cphi_ir5*(    9.4200956888e-07)
+          +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+          +on_os5 *cphi_ir5*(    0.0000000000e+00))*on_disp;
+acbh12.l5b1x =    -1.7618840574e-05 ;
+acbh12.l5b1s =    -9.9853131223e-07 ;
+acbh12.l5b1ox=     0.0000000000e+00 ;
+acbh12.l5b1os=     0.0000000000e+00 ;
+acbh12.l5b1 :=+(on_x5*cphi_ir5*(   -1.7618840574e-05)
+          +on_sep5*sphi_ir5*(   -9.9853131223e-07)
+          +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+          +on_os5 *sphi_ir5*(    0.0000000000e+00))*on_disp;
+acbv12.l5b2x =     1.9056567354e-05 ;
+acbv12.l5b2s =    -9.5331848578e-07 ;
+acbv12.l5b2ox=     0.0000000000e+00 ;
+acbv12.l5b2os=     0.0000000000e+00 ;
+acbv12.l5b2 :=+(on_x5*sphi_ir5*(    1.9056567354e-05)
+          +on_sep5*cphi_ir5*(   -9.5331848578e-07)
+          +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+          +on_os5 *cphi_ir5*(    0.0000000000e+00))*on_disp;
+acbv13.l5b1x =     1.6640931182e-05 ;
+acbv13.l5b1s =     4.1863321605e-08 ;
+acbv13.l5b1ox=     0.0000000000e+00 ;
+acbv13.l5b1os=     0.0000000000e+00 ;
+acbv13.l5b1 :=+(on_x5*sphi_ir5*(    1.6640931182e-05)
+          +on_sep5*cphi_ir5*(    4.1863321605e-08)
+          +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+          +on_os5 *cphi_ir5*(    0.0000000000e+00))*on_disp;
+acbh13.l5b2x =    -1.9989294930e-05 ;
+acbh13.l5b2s =     2.2954173235e-07 ;
+acbh13.l5b2ox=     0.0000000000e+00 ;
+acbh13.l5b2os=     0.0000000000e+00 ;
+acbh13.l5b2 :=+(on_x5*cphi_ir5*(   -1.9989294930e-05)
+          +on_sep5*sphi_ir5*(    2.2954173235e-07)
+          +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+          +on_os5 *sphi_ir5*(    0.0000000000e+00))*on_disp;
+acbh14.l5b1x =     5.4481943210e-07 ;
+acbh14.l5b1s =     3.2301196979e-08 ;
+acbh14.l5b1ox=     0.0000000000e+00 ;
+acbh14.l5b1os=     0.0000000000e+00 ;
+acbh14.l5b1 :=+(on_x5*cphi_ir5*(    5.4481943210e-07)
+          +on_sep5*sphi_ir5*(    3.2301196979e-08)
+          +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+          +on_os5 *sphi_ir5*(    0.0000000000e+00))*on_disp;
+acbv14.l5b2x =     1.1365722730e-07 ;
+acbv14.l5b2s =    -3.6327432337e-09 ;
+acbv14.l5b2ox=     0.0000000000e+00 ;
+acbv14.l5b2os=     0.0000000000e+00 ;
+acbv14.l5b2 :=+(on_x5*sphi_ir5*(    1.1365722730e-07)
+          +on_sep5*cphi_ir5*(   -3.6327432337e-09)
+          +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+          +on_os5 *cphi_ir5*(    0.0000000000e+00))*on_disp;
+acbv15.l5b1x =    -2.7739452957e-08 ;
+acbv15.l5b1s =    -1.3771961476e-10 ;
+acbv15.l5b1ox=     0.0000000000e+00 ;
+acbv15.l5b1os=     0.0000000000e+00 ;
+acbv15.l5b1 :=+(on_x5*sphi_ir5*(   -2.7739452957e-08)
+          +on_sep5*cphi_ir5*(   -1.3771961476e-10)
+          +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+          +on_os5 *cphi_ir5*(    0.0000000000e+00))*on_disp;
+acbh15.l5b2x =    -9.8873910775e-09 ;
+acbh15.l5b2s =    -1.7052592509e-10 ;
+acbh15.l5b2ox=     0.0000000000e+00 ;
+acbh15.l5b2os=     0.0000000000e+00 ;
+acbh15.l5b2 :=+(on_x5*cphi_ir5*(   -9.8873910775e-09)
+          +on_sep5*sphi_ir5*(   -1.7052592509e-10)
+          +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+          +on_os5 *sphi_ir5*(    0.0000000000e+00))*on_disp;
+ !Dispersion correction ARC56
+acbv12.r5b1x =     2.6475917783e-05 ;
+acbv12.r5b1s =     1.3258828637e-06 ;
+acbv12.r5b1ox=     0.0000000000e+00 ;
+acbv12.r5b1os=     0.0000000000e+00 ;
+acbv12.r5b1 :=+(on_x5*sphi_ir5*(    2.6475917783e-05)
+          +on_sep5*cphi_ir5*(    1.3258828637e-06)
+          +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+          +on_os5 *cphi_ir5*(    0.0000000000e+00))*on_disp;
+acbh12.r5b2x =    -2.0316912458e-05 ;
+acbh12.r5b2s =     9.0011368781e-07 ;
+acbh12.r5b2ox=     0.0000000000e+00 ;
+acbh12.r5b2os=     0.0000000000e+00 ;
+acbh12.r5b2 :=+(on_x5*cphi_ir5*(   -2.0316912458e-05)
+          +on_sep5*sphi_ir5*(    9.0011368781e-07)
+          +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+          +on_os5 *sphi_ir5*(    0.0000000000e+00))*on_disp;
+acbh13.r5b1x =    -1.8798537295e-05 ;
+acbh13.r5b1s =     1.8128064168e-07 ;
+acbh13.r5b1ox=     0.0000000000e+00 ;
+acbh13.r5b1os=     0.0000000000e+00 ;
+acbh13.r5b1 :=+(on_x5*cphi_ir5*(   -1.8798537295e-05)
+          +on_sep5*sphi_ir5*(    1.8128064168e-07)
+          +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+          +on_os5 *sphi_ir5*(    0.0000000000e+00))*on_disp;
+acbv13.r5b2x =     1.9105515013e-05 ;
+acbv13.r5b2s =    -5.6785894099e-08 ;
+acbv13.r5b2ox=     0.0000000000e+00 ;
+acbv13.r5b2os=     0.0000000000e+00 ;
+acbv13.r5b2 :=+(on_x5*sphi_ir5*(    1.9105515013e-05)
+          +on_sep5*cphi_ir5*(   -5.6785894099e-08)
+          +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+          +on_os5 *cphi_ir5*(    0.0000000000e+00))*on_disp;
+acbv14.r5b1x =     1.2062895411e-07 ;
+acbv14.r5b1s =     3.9075429111e-09 ;
+acbv14.r5b1ox=     0.0000000000e+00 ;
+acbv14.r5b1os=     0.0000000000e+00 ;
+acbv14.r5b1 :=+(on_x5*sphi_ir5*(    1.2062895411e-07)
+          +on_sep5*cphi_ir5*(    3.9075429111e-09)
+          +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+          +on_os5 *cphi_ir5*(    0.0000000000e+00))*on_disp;
+acbh14.r5b2x =    -1.9885680105e-07 ;
+acbh14.r5b2s =     6.7491398874e-09 ;
+acbh14.r5b2ox=     0.0000000000e+00 ;
+acbh14.r5b2os=     0.0000000000e+00 ;
+acbh14.r5b2 :=+(on_x5*cphi_ir5*(   -1.9885680105e-07)
+          +on_sep5*sphi_ir5*(    6.7491398874e-09)
+          +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+          +on_os5 *sphi_ir5*(    0.0000000000e+00))*on_disp;
+acbh15.r5b1x =    -7.6987937590e-09 ;
+acbh15.r5b1s =    -4.0545349554e-11 ;
+acbh15.r5b1ox=     0.0000000000e+00 ;
+acbh15.r5b1os=     0.0000000000e+00 ;
+acbh15.r5b1 :=+(on_x5*cphi_ir5*(   -7.6987937590e-09)
+          +on_sep5*sphi_ir5*(   -4.0545349554e-11)
+          +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+          +on_os5 *sphi_ir5*(    0.0000000000e+00))*on_disp;
+acbv15.r5b2x =    -3.3025861508e-08 ;
+acbv15.r5b2s =     2.1557919391e-10 ;
+acbv15.r5b2ox=     0.0000000000e+00 ;
+acbv15.r5b2os=     0.0000000000e+00 ;
+acbv15.r5b2 :=+(on_x5*sphi_ir5*(   -3.3025861508e-08)
+          +on_sep5*cphi_ir5*(    2.1557919391e-10)
+          +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+          +on_os5 *cphi_ir5*(    0.0000000000e+00))*on_disp;
+acbh15.l6b1x =     1.8796458240e-05 ;
+acbh15.l6b1s =    -1.8158426776e-07 ;
+acbh15.l6b1ox=     0.0000000000e+00 ;
+acbh15.l6b1os=     0.0000000000e+00 ;
+acbh15.l6b1 :=+(on_x5*cphi_ir5*(    1.8796458240e-05)
+          +on_sep5*sphi_ir5*(   -1.8158426776e-07)
+          +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+          +on_os5 *sphi_ir5*(    0.0000000000e+00))*on_disp;
+acbv15.l6b2x =    -1.9102332768e-05 ;
+acbv15.l6b2s =     5.6806527068e-08 ;
+acbv15.l6b2ox=     0.0000000000e+00 ;
+acbv15.l6b2os=     0.0000000000e+00 ;
+acbv15.l6b2 :=+(on_x5*sphi_ir5*(   -1.9102332768e-05)
+          +on_sep5*cphi_ir5*(    5.6806527068e-08)
+          +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+          +on_os5 *cphi_ir5*(    0.0000000000e+00))*on_disp;
+acbv16.l6b1x =    -2.6362794401e-05 ;
+acbv16.l6b1s =    -1.3195960827e-06 ;
+acbv16.l6b1ox=     0.0000000000e+00 ;
+acbv16.l6b1os=     0.0000000000e+00 ;
+acbv16.l6b1 :=+(on_x5*sphi_ir5*(   -2.6362794401e-05)
+          +on_sep5*cphi_ir5*(   -1.3195960827e-06)
+          +on_ox5 *sphi_ir5*(    0.0000000000e+00)
+          +on_os5 *cphi_ir5*(    0.0000000000e+00))*on_disp;
+acbh16.l6b2x =     2.0047744025e-05 ;
+acbh16.l6b2s =    -8.8874564438e-07 ;
+acbh16.l6b2ox=     0.0000000000e+00 ;
+acbh16.l6b2os=     0.0000000000e+00 ;
+acbh16.l6b2 :=+(on_x5*cphi_ir5*(    2.0047744025e-05)
+          +on_sep5*sphi_ir5*(   -8.8874564438e-07)
+          +on_ox5 *cphi_ir5*(    0.0000000000e+00)
+          +on_os5 *sphi_ir5*(    0.0000000000e+00))*on_disp;
+
+return;
