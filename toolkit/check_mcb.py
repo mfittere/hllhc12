@@ -37,23 +37,14 @@ lumi.update({'acbc%s%s'%(pp,ii): 0.0 for ii in ['6','7'] for pp in ['h','v']})
 arc= {'acbx%s1'%(pp): 0.0 for pp in ['h','v']}
 arc.update({'acbx%s2'%(pp): 0.0 for pp in ['h','v']})
 arc.update({'acbx%s3'%(pp): 0.0 for pp in ['h','v']})
-<<<<<<< HEAD
 arc.update({'acbrd%s4'%(pp): 0.0 for pp in ['h','v']})
 arc.update({'acby%ss4'%(pp): 0.7 for pp in ['h','v']})
-=======
-arc.update({'acbrd%s4'%(pp): 0.35 for pp in ['h','v']})
-arc.update({'acby%ss4'%(pp): 0.35 for pp in ['h','v']})
->>>>>>> 1157c36182601e8472f7ee3a71196477e384de87
 arc.update({'acby%ss5'%(pp): 0.0 for pp in ['h','v']})
 arc.update({'acbc%s%s'%(pp,ii): 0.0 for ii in ['6','7'] for pp in ['h','v']})
 
 #dictionary with strength required for D2 transfer fucntion errors scan knobs
-#assume 1.e-3 transfer function error for 35 Tm
-<<<<<<< HEAD
-d2err=35*1.e-3
-=======
+#assume 2.e-3 transfer function error for 35 Tm
 d2err=35*2.e-3
->>>>>>> 1157c36182601e8472f7ee3a71196477e384de87
 d2trans= {'acbx%s1'%(pp): 0.0 for pp in ['h','v']}
 d2trans.update({'acbx%s2'%(pp): 0.0 for pp in ['h','v']})
 d2trans.update({'acbx%s3'%(pp): 0.0 for pp in ['h','v']})
