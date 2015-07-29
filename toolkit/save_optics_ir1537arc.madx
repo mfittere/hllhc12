@@ -72,6 +72,9 @@ exec,print_optics_quad(QT,12,irn);
 exec,print_optics_quad(QT,13,irn);
 };
 
+system,"rm temp/optics_ir1537arc.madx";
+option,-echo, -info ;assign, echo=temp/optics_ir1537arc.madx;
+
 
 print,text=" !***IR1 Optics***";
 exec,print_optics_triplet_hl(1);
@@ -106,6 +109,29 @@ printf,text="famil.A23   = %20.10e ;",value=famil.A23;
 printf,text="famil.A34   = %20.10e ;",value=famil.A34;
 printf,text="famil.A67   = %20.10e ;",value=famil.A67;
 printf,text="famil.A78   = %20.10e ;",value=famil.A78;
+};
+
+print_arc_weak_trim(famil,trim,bim): macro={
+printf,text="famil.A81bim= %20.10e ;",value=famil.A81bim;
+printf,text="famil.A12bim= %20.10e ;",value=famil.A12bim;
+printf,text="famil.A45bim= %20.10e ;",value=famil.A45bim;
+printf,text="famil.A56bim= %20.10e ;",value=famil.A56bim;
+printf,text="famil.A23bim:= %20.10e +trim.bim ;",value=famil.A23bim;
+printf,text="famil.A34bim:= %20.10e +trim.bim ;",value=famil.A34bim;
+printf,text="famil.A67bim:= %20.10e +trim.bim ;",value=famil.A67bim;
+printf,text="famil.A78bim:= %20.10e +trim.bim ;",value=famil.A78bim;
+};
+
+
+print_arc_trim(famil,trim,bim): macro={
+printf,text="famil.A81bim:= %20.10e +trim.bim;",value=famil.A81bim;
+printf,text="famil.A12bim:= %20.10e +trim.bim;",value=famil.A12bim;
+printf,text="famil.A45bim:= %20.10e +trim.bim;",value=famil.A45bim;
+printf,text="famil.A56bim:= %20.10e +trim.bim;",value=famil.A56bim;
+printf,text="famil.A23bim:= %20.10e +trim.bim;",value=famil.A23bim;
+printf,text="famil.A34bim:= %20.10e +trim.bim;",value=famil.A34bim;
+printf,text="famil.A67bim:= %20.10e +trim.bim;",value=famil.A67bim;
+printf,text="famil.A78bim:= %20.10e +trim.bim;",value=famil.A78bim;
 };
 
 print,text=" !***ARC Optics***";
