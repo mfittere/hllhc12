@@ -28,10 +28,10 @@ bs_type=4; ap_mqx=150;
 call,   file="slhc/aperture/aperture_upgrade_IT.madx";
 call,   file="slhc/aperture/aperture_upgrade_MS.madx";
 
-!v1.1
+!!v1.1
+!call,file="slhcv11/opt_inj.madx";
 !on_layout_custom=0;
 !call,file="slhcv11/hllhc_sequence.madx";
-!call,file="slhcv11/opt_inj.madx";
 !v1.2
 call,file="slhc/opt_inj.madx";
 on_layout_custom=0;
@@ -125,14 +125,15 @@ exec,mk_apir(1,b2,450,full);
 
 return;
 
-
 !angle, offset etc. correctly predefined
+call,file="slhc/toolkit/clean_specs.madx";
 call,file="slhc/toolkit/rematch_crossing.madx";
 call,file="slhc/toolkit/rematch_crabs.madx";
 exec, crossing_disable;
 exec, orbcrab_disable; on_o1=0;on_o5=0;
 exec,CORCHROMA_WEAK(2,b1);
 exec,CORCHROMA_WEAK(2,b2);
+call,file="slhc/toolkit/mk_ir28_knobs.madx";
 !save the optics
 exec, crossing_disable;
 exec, orbcrab_disable; on_o1=0;on_o5=0;
