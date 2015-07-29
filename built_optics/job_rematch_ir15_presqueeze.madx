@@ -147,8 +147,8 @@ jac_calls=0; bisec=3; jac_tol=1e-16;
 
 jac_calls=10;
 match_on_triplet=3;
-bety_q3=6753.5;
-betx_mcby= 1172;bety_mcby = 723;
+bety_q3=6753.91;
+betx_mcby= 929.905129981631;bety_mcby = 667.820841187142;
 betyip5b1:=betxip5b1;betxip5b2:=betxip5b1;betyip5b2:=betyip5b1;betxip5b1=0.48;
 call,file="slhc/toolkit/rematch_ir15_b12.madx";!original matching script
 
