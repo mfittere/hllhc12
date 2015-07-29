@@ -27,6 +27,7 @@
 !     mk_tune
 !     optics_dumps
 !     check_ip(BIM)
+!     checkw(BIM)
 !     cable_sext_twofam
 !     twiss_opt
 !     save_optics_ir2846(filename)
@@ -171,9 +172,8 @@ PLOT,colour=100,noversion=true,TITLE=IPNIRBIM,HAXIS=S,VAXIS1=X,Y;
 };
 
 PLOTW(BIM): macro = {
-
 Use, sequence=lhcBIM;
-TWISS,chrom,sequence=lhcBIM;
+TWISS,chrom,sequence=lhcBIM,file=twiss_lhcBIM.tfs;
 PLOT,STYLE=100,colour=100,noline=true,TITLE="LHCCOL",HAXIS=S,VAXIS1=wx,wy,SPLINE;
 value,table(twiss,IP3,wx),table(twiss,IP3,wy),
       table(twiss,IP7,wx),table(twiss,IP7,wy),
@@ -1055,6 +1055,27 @@ endedit;
 };
 
 
+CHECKW(BIM): macro = {
+Use, sequence=lhcBIM;
+exec,twiss_opt;
+TWISS,chrom,sequence=lhcBIM,file=twiss_lhcBIM.tfs;
+value,table(twiss,IP3,wx),table(twiss,IP3,wy),
+      table(twiss,IP7,wx),table(twiss,IP7,wy),
+      table(summ,q1),table(summ,q2),
+      table(summ,dq1),table(summ,dq2);
+value,table(twiss,IP1,wx),
+      table(twiss,IP1,wx)*cos(twopi*table(twiss,IP1,PHIX)),
+      table(twiss,IP1,wx)*sin(twopi*table(twiss,IP1,PHIX));
+value,table(twiss,IP1,wy),
+      table(twiss,IP1,wy)*cos(twopi*table(twiss,IP1,PHIY)),
+      table(twiss,IP1,wy)*sin(twopi*table(twiss,IP1,PHIY));
+value,table(twiss,IP5,wx),
+      table(twiss,IP5,wx)*cos(twopi*table(twiss,IP5,PHIX)),
+      table(twiss,IP5,wx)*sin(twopi*table(twiss,IP5,PHIX));
+value,table(twiss,IP5,wy),
+      table(twiss,IP5,wy)*cos(twopi*table(twiss,IP5,PHIY)),
+      table(twiss,IP5,wy)*sin(twopi*table(twiss,IP5,PHIY));
+};
 
 
 
