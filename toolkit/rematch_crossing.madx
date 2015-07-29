@@ -1,10 +1,11 @@
-Poff=2.0e-03;!account for 2 mm offset
+if(Poff==0){Poff=2.0e-03;};!account for 2 mm offset
 !design crab cavity knobs to cope with +/-0.5mm misalignment of cavities
 !Occ: ccp and ccm knob, dABCD: ccs knob
-Occ:=5.0e-4;dABCD:=2.5e-04;
+if(Occ==0){Occ:=5.0e-4;};
+if(dABCD==0){dABCD:=2.5e-04;};
 !Xang=pxip5b1+pyip5b1;Psep=xip5b1+yip5b1;
-Psep=2.0e-3;Xang=0.000295;! hard coded!!!
-Xang=round(Xang*1e6)/1e6; !Psep=round(Psep*1e6)/1e6;
+if(Psep==0){Psep=2.0e-3;};
+if(Xang==0){Xang=0.000295;Xang=round(Xang*1e6)/1e6;}; !Psep=round(Psep*1e6)/1e6;
                                                 
 if(cd2q4==0){cd2q4 :=0.5;};
 if(cmcb12==0){cmcb12:=0.5;};
@@ -13,7 +14,6 @@ if (bety_ip5>betx_ip5){ phi_IR5=90; phio_IR5=90;} else { phi_IR5= 0; phio_IR5= 9
 
 value,Xang,Psep,phi_IR1,phi_IR5,cmcb12,cd2q4;
 value,Poff,phio_IR1,phio_IR5;
-
 
 on_disp=0;
 call,file="slhc/toolkit/xing.IP28.madx";
