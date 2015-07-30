@@ -685,14 +685,14 @@ BPMSQT:  MONITOR,    L := l.BPMSQ;  ! bpm in the triplets with W insert
 BPMSQW:  MONITOR,    L := l.BPMSQW; ! bpm in the triplets warm
 
 !posBPMW  := 21.475;  !from V6.503
-posBPMW  := posQ1a - l.Q13/2  - l.BPMSQW/2 - 0.826;
-posBPM1  := posQ1b + l.Q13/2. + l.BPMSQ/2  + 1.047;
-posBPM2a := posQ2a + l.MQX/2. + l.BPMSQ/2  + 1.054;
-posBPM2b := posMCBXFBb + l.MCBXFB/2. + l.BPMSQ/2 + 0.8925;
-posBPM3a := posMCBXFA  - l.MCBXFA/2. - l.BPMSQ/2 - 1.176;!1418 mm from start BPMSQT.A3R5.B1 to start MCBXFAH.3R5 
-posBPM3b := posMCSSXF + l.MCSSXF/2 + l.BPMSQ/2 + 0.1365;!to be checked
+posBPMW  := posQ1a - l.Q13/2  - l.BPMSQW/2 - 0.826;!BPMSQW.1R5.B1
+posBPM1  := posQ1b + l.Q13/2. + l.BPMSQ/2  + 1.047;!BPMSQ.1R5.B1
+posBPM2a := posQ2a + l.MQX/2. + l.BPMSQ/2  + 1.054;!BPMSQT.A2R5.B1
+posBPM2b := posMCBXFBb + l.MCBXFB/2. + l.BPMSQ/2 + 0.8925;!BPMSQT.B2R5.B1
+posBPM3a := posQ3b     + (l.Q13     + l.BPMSQ )/2. + 1.047;!BPMSQT.A3R5.B1
+posBPM3b := posMCSSXF + l.MCSSXF/2 + l.BPMSQ/2 + 0.6365;!BPMSQ.B3R5.B1
 ! place BPM at best position = between parasitic beam-beam encounter
-posBPM4  := posD1 + l.MBXF/2 + l.BPMSQ/2 + 5.1303;!to be checked
+posBPM4  := posD1 + l.MBXF/2 + l.BPMSQ/2 + 1.05;!BPMSQ.4R5.B1
 
 value, posBPMW,posBPM1,posBPM2a,posBPM2b,posBPM3a,posBPM3b;
 
@@ -763,7 +763,7 @@ posD2  := 157.9+deltaposD2; ! minimize distance D1-D2, maximum field 35 Tm
 !11 to fit three cavitities with 1.5 meter
 
 
-posBPMWQ  := posD2 - l.MBRD/2 - L.BPMWQ/2 - 1.835;
+posBPMWQ  := posD2 - l.MBRD/2 - L.BPMWQ/2 - 1.638;!BPMWQ.4R5.B1
 posMCBRDA  := posD2 + l.MBRD/2 + l.MCBRD/2 + 0.385;
 posMCBRDB  := posMCBRDA + l.MCBRD          + 0.385;
 
@@ -853,12 +853,12 @@ exec,install_ir15_b1_b2_alt(MCBRDH.4,posMCBRDB,posMCBRDA);
 !if (l.MCBYY==0 ) {l.MCBYY=1.50;};
 
 
-l.BPMQA= 0.0;! l.BPMQA = 0.100
+l.BPMQA= 0.285;! l.BPMQA = 0.100
 
 posQ4       :=169.553+deltaPosQ4;  !new layout (excel file) 182.644 m
 
 ! IP ... MCBYY.A4 0.385 MCBYY.B4 0.372 Q4 1.052 BPMQA.4 
-posBPMQA.4  :=posQ4 + l.MQYY/2  + 1.052;!
+posBPMQA.4  :=posQ4 + (l.MQYY + l.BPMQA)/2 + 3.082 ;!BPMQA.4R5.B1
 posMCBYY.B4 :=posQ4 - l.MQYY/2 - l.MCBYY/2   - 0.372;
 posMCBYY.A4 :=posMCBYY.B4 - l.MCBYY - 0.385;
 
