@@ -2726,8 +2726,6 @@ if (MBX.4L2->l>0) {
   !thin lens
   beam;use,sequence=lhcb1; makethin, sequence=lhcb1,style=teapot;
   beam;use,sequence=lhcb2; makethin, sequence=lhcb2,style=teapot;
-  !beam;use,sequence=lhcb1; makethin, sequence=lhcb1;
-  !beam;use,sequence=lhcb2; makethin, sequence=lhcb2;
 } else {
   print, text="Sequence is already thin";
 };
