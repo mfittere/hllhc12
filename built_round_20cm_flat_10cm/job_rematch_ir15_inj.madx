@@ -125,6 +125,7 @@ exec,mk_apir(1,b2,450,full);
 
 return;
 
+exec,mk_beam(450);!!!!!otherwise wrong x-angle values are taken in IR2/8 x-scheme
 !angle, offset etc. correctly predefined
 call,file="slhc/toolkit/clean_specs.madx";
 call,file="slhc/toolkit/rematch_crossing.madx";

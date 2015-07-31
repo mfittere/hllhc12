@@ -30,8 +30,9 @@ call,   file="slhc/aperture/aperture_upgrade_IT.madx";
 call,   file="slhc/aperture/aperture_upgrade_MS.madx";
 
 !call,file="slhc/opt_presqueeze.madx";
-call,file="slhc/opt_round.madx";
+!call,file="slhc/opt_round.madx";
 !call,file="slhc/opt_flat.madx";
+call,file="slhc/opt_150_150_150_150.madx";
 exec,mk_beam(7000);
 
 seqedit, sequence=lhcb1;
