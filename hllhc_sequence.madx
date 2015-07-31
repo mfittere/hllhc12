@@ -1421,11 +1421,14 @@ posTCL.5  := posTCLMB.5  - l.TCLMB/2 - l.TCL/2 - 0.760;!500/2+270+480/2
 posTCL.6C := posTCLMC.6C - l.TCLMC/2 - l.TCL/2 - 0.760;!500/2+270+480/2
 posTCL.6Q := posTCLMC.6Q - l.TCLMC/2 - l.TCL/2 - 0.760;!500/2+270+480/2
 !non IP side
-posTCTV.5 := posQ5 + l.MQY/2 + l.TCT/2 + 2.600;!1435+655+270+480/2
-posTCTH.5 := posTCTV.5       + l.TCT   + 1.000;!520+480
+!posTCTV.5 := posQ5 + l.MQY/2 + l.TCT/2 + 2.600;!1435+655+270+480/2
+!posTCTH.5 := posTCTV.5       + l.TCT   + 1.000;!520+480
+!install TCTs after correctors on both sides:
+!MCBY - 0.930+0.925+0.480/2 - TCT
+posTCTV.5 := posQ5 + dposMCBY.A5 + l.MCBYV + l.TCT/2 + 2.095;!0.930+0.925+0.480/2
+posTCTH.5 := posTCTV.5       + l.TCT   + 1.000;!0.520+0.480
 
-value,posTAN;
-value,posTCTH,posTCTV,posTCL.4,posTCL.5,posTCL.6C,posTCL.6Q;
+value,posTCLMB.5,posTCLMC.6C,posTCLMC.6Q,posTAN,posTCTH,posTCTV,posTCL.4,posTCL.5,posTCTV.5,posTCTH.5,posTCL.6C,posTCL.6Q;
 
 TCL.4R1.B1: TCL; TCL.4R5.B1: TCL;
 TCL.4L1.B2: TCL; TCL.4L5.B2: TCL;
@@ -1474,12 +1477,12 @@ seqedit,sequence=lhcb1;
 !! ... TCTH
 install,element=TCTH.4L1.B1, at= -posTCTH,   from= IP1.L1;
 install,element=TCTH.4L5.B1, at= -posTCTH,   from= IP5;
-!install,element=TCTH.5L1.B1, at= -posTCTH.5,   from= IP1.L1;
+install,element=TCTH.5L1.B1, at= -posTCTH.5,   from= IP1.L1;
 install,element=TCTH.5L5.B1, at= -posTCTH.5,   from= IP5;
 !! ... TCTV
 install,element=TCTV.4L1.B1, at= -posTCTV, from=IP1.L1;
 install,element=TCTV.4L5.B1, at= -posTCTV, from=IP5;
-!install,element=TCTV.5L1.B1, at= -posTCTV.5,   from= IP1.L1;
+install,element=TCTV.5L1.B1, at= -posTCTV.5,   from= IP1.L1;
 install,element=TCTV.5L5.B1, at= -posTCTV.5,   from= IP5;
 ! ... TCL
 install,element=TCL.4R1.B1,  at= posTCL.4, from=IP1;
@@ -1499,12 +1502,12 @@ seqedit,sequence=lhcb2;
 install,element=TCTH.4R1.B2, at=  posTCTH*bv_aux,   from= IP1;
 install,element=TCTH.4R5.B2, at=  posTCTH*bv_aux,   from= IP5;
 install,element=TCTH.5R1.B2, at=  posTCTH.5*bv_aux,   from= IP1;
-!install,element=TCTH.5R5.B2, at=  posTCTH.5*bv_aux,   from= IP5;
+install,element=TCTH.5R5.B2, at=  posTCTH.5*bv_aux,   from= IP5;
 ! ... TCTV
 install,element=TCTV.4R1.B2, at= posTCTV*bv_aux, from=IP1;
 install,element=TCTV.4R5.B2, at= posTCTV*bv_aux, from=IP5;
 install,element=TCTV.5R1.B2, at= posTCTV.5*bv_aux, from=IP1;
-!install,element=TCTV.5R5.B2, at= posTCTV.5*bv_aux, from=IP5;
+install,element=TCTV.5R5.B2, at= posTCTV.5*bv_aux, from=IP5;
 ! ... TCL
 install,element=TCL.4L1.B2,  at= -posTCL.4*bv_aux, from=IP1.L1;
 install,element=TCL.4L5.B2,  at= -posTCL.4*bv_aux, from=IP5;
