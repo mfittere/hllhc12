@@ -1,0 +1,140 @@
+option, warn,info;
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.1/ slhc";
+system,"ln -fns . slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
+system,"mkdir temp";
+
+option,-echo,-info,-warn;
+Option, -echo,-warn,-info;
+REAL CONST l.TAN   = 3.7  ;REAL CONST l.TANAL = l.TAN;
+REAL CONST l.TANAR = l.TAN;REAL CONST l.TANC  = l.TAN;
+REAL CONST l.TCT   = 1.0;REAL CONST l.TCTH  = l.TCT;REAL CONST l.TCTVA = l.TCT;
+REAL CONST l.MBAS2             =0 ;
+REAL CONST l.MBAW              =0 ;
+REAL CONST l.MBCS2             =0 ;
+REAL CONST l.MBLS2             =0 ;
+REAL CONST l.MBLW              =0 ;
+REAL CONST l.MBWMD             =0 ;
+REAL CONST l.MBXWH             =0 ;
+REAL CONST l.MBXWS             =0 ;
+REAL CONST l.MBXWT             =0 ;
+
+!call,file="db5/V6.5.seq";
+call,file="db5/V6.5.as-built.seq";
+Option, -echo,warn,-info;
+
+call,file="slhc/toolkit/macro.madx";
+call,file="slhc/hllhc_sequence.madx";
+
+exec,mk_beam(7000);
+call,file="slhc/opt_round.madx";
+exec,check_ip(b1); exec,check_ip(b2);
+
+readmytable,table=ir2_sround,file=slhc/squeeze/ir2_sround.tfs;
+readmytable,table=ir4_sround,file=slhc/squeeze/ir4_sround.tfs;
+readmytable,table=ir6_sround,file=slhc/squeeze/ir6_sround.tfs;
+readmytable,table=ir8_sround,file=slhc/squeeze/ir8_sround.tfs;
+readmytable,table=ir2_sflat,file=slhc/squeeze/ir2_sflat.tfs;
+readmytable,table=ir4_sflat,file=slhc/squeeze/ir4_sflat.tfs;
+readmytable,table=ir6_sflat,file=slhc/squeeze/ir6_sflat.tfs;
+readmytable,table=ir8_sflat,file=slhc/squeeze/ir8_sflat.tfs;
+readmytable,table=ir2_sflathv,file=slhc/squeeze/ir2_sflathv.tfs;
+readmytable,table=ir4_sflathv,file=slhc/squeeze/ir4_sflathv.tfs;
+readmytable,table=ir6_sflathv,file=slhc/squeeze/ir6_sflathv.tfs;
+readmytable,table=ir8_sflathv,file=slhc/squeeze/ir8_sflathv.tfs;
+readmytable,table=ir2_flat,file=slhc/squeeze/ir2_flat.tfs;
+readmytable,table=ir4_flat,file=slhc/squeeze/ir4_flat.tfs;
+readmytable,table=ir6_flat,file=slhc/squeeze/ir6_flat.tfs;
+readmytable,table=ir8_flat,file=slhc/squeeze/ir8_flat.tfs;
+readmytable,table=ir2_flathv,file=slhc/squeeze/ir2_flathv.tfs;
+readmytable,table=ir4_flathv,file=slhc/squeeze/ir4_flathv.tfs;
+readmytable,table=ir6_flathv,file=slhc/squeeze/ir6_flathv.tfs;
+readmytable,table=ir8_flathv,file=slhc/squeeze/ir8_flathv.tfs;
+
+
+find_squeeze(bbb,ccc,sround): macro={
+bet1=bbb/1000;bet2=ccc/1000;
+betxip1_new=bet1; betyip1_new=bet2;
+betxip5_new=bet2; betyip5_new=bet1;
+rrr=table(ir2_sround,tablelength);
+gowhile=1;
+while( gowhile==1){
+setvars,table=ir2_sround,row=rrr;!value,sc1;
+setvars,table=ir8_sround,row=rrr;!value,sc1;
+setvars,table=ir4_sround,row=rrr;!value,sc5;
+setvars,table=ir6_sround,row=rrr;!value,sc5;
+kq5.l6b1=kq5.l6b1*4.8/6.8; kq5.l6b2=kq5.l6b2*4.8/6.8;
+kq5.r6b1=kq5.r6b1*4.8/6.8; kq5.r6b2=kq5.r6b2*4.8/6.8;
+betx0=0.44;bety0=0.44;
+scxir1=sc1/betx0; scyir1=sc1/bety0;
+betx0=0.48;bety0=0.48;
+betxip1_ref=scxir1*betx0; betyip1_ref=scyir1*betx0;
+rrr=rrr-1;
+if (betxip1_ref<betxip1_new && betyip1_ref< betyip1_new;){ gowhile=0;};
+if (rrr==0){ gowhile=0;};
+};
+rrr_sround=rrr; value,rrr_sround,sc1,sc5;
+!value,betxip1_ref,betyip1_ref,betxip5_ref,betyip5_ref;
+!value,scxir1*betx0 ,scyir1*betx0 ,scxir5*betx0 ,scyir5*betx0;
+
+scxir1=betxip1_new/betx0; scyir1=betyip1_new/betx0;
+scxir5=betxip5_new/betx0; scyir5=betyip5_new/betx0;
+
+value,scxir1 ,scyir1 ,scxir5 ,scyir5;
+};
+
+mk_squeeze(bbb,ccc,sround): macro={
+exec,find_squeeze(bbb,ccc,sround);
+call,file="slhc/toolkit/rematch_squeeze2.madx";
+if (tarpresqueeze<1e-15) {
+  system,"cp temp/optics.madx opt_bbb_ccc_ccc_bbb.madx";
+};
+};
+
+exec,mk_squeeze(150,150,sround);
+exec,mk_squeeze(180,180,sround);
+exec,mk_squeeze(200,200,sround);
+exec,mk_squeeze(220,220,sround);
+
+exec,mk_squeeze(75,300 ,flat);
+exec,mk_squeeze(80,330 ,flat);
+exec,mk_squeeze(90,330 ,flat);
+exec,mk_squeeze(100,330,flat);
+exec,mk_squeeze(100,400,flat);
+exec,mk_squeeze(110,330,flat);
+exec,mk_squeeze(120,330,flat);
+
+
+exec,mk_squeeze(300,75 ,flathv);
+exec,mk_squeeze(330,80 ,flathv);
+exec,mk_squeeze(330,90 ,flathv);
+exec,mk_squeeze(330,100,flathv);
+exec,mk_squeeze(330,110,flathv);
+exec,mk_squeeze(330,120,flathv);
+
+return;
+
+
+seqedit,sequence=lhcb1;flatten;cycle,start=IP3;endedit;
+seqedit,sequence=lhcb2;flatten;cycle,start=IP3;endedit;
+use,sequence=lhcb1;
+twiss,betx=betxip3b1,bety=betyip3b1,
+      alfx=alfxip3b1,alfy=alfyip3b1, dx= dxip3b1, dpx=dpxip3b1,file=twiss_from_ip3.tfs;
+
+value,table(twiss,ip5,betx);
+value,table(twiss,ip5,bety);
+value,table(twiss,ip5,alfx);
+value,table(twiss,ip5,alfy);
+
+scxir5=0.300000/0.440000;
+scyir5=0.300000/0.440000/4;
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,172 @@
+!call, file=job_rematch_ir15_presqueeze.madx;
+
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+!system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.2 slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
+system,"ln -fns /Users/mfittere/HiLumi/HLLHCV1.2 slhc";
+option,-echo,-info,-warn;
+
+Option, -echo,-warn,-info;
+REAL CONST l.TAN   = 3.7  ;REAL CONST l.TANAL = l.TAN;
+REAL CONST l.TANAR = l.TAN;REAL CONST l.TANC  = l.TAN;
+REAL CONST l.TCT   = 1.0;REAL CONST l.TCTH  = l.TCT;REAL CONST l.TCTVA = l.TCT;
+call,file="db5/V6.5.seq";
+call,   file="db5/aperture/aperture.b1.madx";
+call,   file="db5/aperture/aperture.b2.madx";
+call,   file="db5/aperture/aper_tol.b1.madx";
+call,   file="db5/aperture/aper_tol.b2.madx";
+Option, -echo,warn,-info,no_fatal_stop;
+
+call,file="slhc/toolkit/macro.madx";
+!call,file="slhc/toolkit/optics_log.madx";
+
+!is_thin=1;
+if(is_thin==1){
+  call,file="slhc/hllhc_thin.seq";
+} else {
+  on_layout_custom=0;
+  call,file="slhc/hllhc_sequence.madx";
+};
+
+!call,file="slhc/opt_presqueeze.madx";
+call,file="opt_round_new.madx";
+!call,file="slhc/opt_presqueeze_thin.madx";
+!call,file="slhc/opt_round_thin.madx";
+!call,file="slhc/opt_flat_thin.madx";
+!call,file="slhc/opt_inj_thin.madx";
+
+bs_type=4; ap_mqx=150;
+call,   file="slhc/aperture/aperture_upgrade_IT.madx";
+call,   file="slhc/aperture/aperture_upgrade_MS.madx";
+
+seqedit, sequence=lhcb1;
+cycle,start=ip3;
+endedit;
+seqedit, sequence=lhcb2;
+cycle,start=ip3;
+endedit;
+
+exec,mk_beam(7000);
+!exec,mk_beam(450);
+exec,check_ip(b1);exec,check_ip(b2);
+!exec,selectIR15(5,45,56,b1);exec,selectIR15(5,45,56,b2);
+!exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
+
+exec, crossing_enable;
+
+exec,check_ip(b1);exec,check_ip(b2);
+
+regen_xing(filename): macro={
+call,file="slhc/opt_filename.madx";
+call,file="slhc/hllhc_sequence.madx";
+!use myslice for rematch_crossing as with hllhc_thin.seq
+!there is a marker conflict for the ccs knob
+if(is_thin==1){  exec, myslice;};
+call,file="slhc/toolkit/clean_specs.madx";
+exec,check_ip(b1); exec,check_ip(b2);
+if(arcsqueeze>0.0){call,file="slhc/toolkit/rematch_globalw.madx";};
+call,file="slhc/toolkit/rematch_crossing.madx";
+call,file="slhc/toolkit/rematch_crabs.madx";
+if (tarcrossing>1e-15) { return;};
+if (tarsqueeze+tarir37b12+tarcrossing<1e-15){
+call,file="slhc/toolkit/mk_ir28_knobs.madx";
+on_check=1; call,file="slhc/toolkit/save_optics2.madx";
+system,"cp temp/optics.madx opt_filename_new.madx";
+save,file="filename.seq";
+};
+exec,check_ip(b1); exec,check_ip(b2);
+};
+
+test_xing(filename): macro={
+!system,"rm -r temp;mkdir temp;"
+call,file="opt_filename.madx";
+!call,file="slhc/hllhc_sequence.madx";
+!cycle to not start at ip1
+seqedit, sequence=lhcb1;
+cycle,start=ip3;
+endedit;
+seqedit, sequence=lhcb2;
+cycle,start=ip3;
+endedit;
+!check W function
+exec, twiss_opt;
+use, sequence=lhcb1;
+twiss,sequence=lhcb1,chrom,file=temp/twiss_lhcb1_chrom.tfs;
+use, sequence=lhcb2;
+twiss,sequence=lhcb2,chrom,file=temp/twiss_lhcb2_chrom.tfs;
+!check knobs
+exec,orbcrab_disable;
+exec,crossing_enable;
+twiss,sequence=lhcb1,file=temp/twiss_lhcb1_xing.tfs;
+twiss,sequence=lhcb2,file=temp/twiss_lhcb2_xing.tfs;
+exec,crossing_disable;
+exec,orbcrab_disable;
+on_ccph1=1;on_ccph5=1;
+on_ccpv1=1;on_ccpv5=1;
+twiss,sequence=lhcb1,file=temp/twiss_lhcb1_ccp.tfs;
+twiss,sequence=lhcb2,file=temp/twiss_lhcb2_ccp.tfs;
+exec,orbcrab_disable;
+on_ccmh1=1;on_ccmh5=1;
+on_ccmv1=1;on_ccmv5=1;
+twiss,sequence=lhcb1,file=temp/twiss_lhcb1_ccm.tfs;
+twiss,sequence=lhcb2,file=temp/twiss_lhcb2_ccm.tfs;
+exec,orbcrab_disable;
+on_ccsh1=1;on_ccsh5=1;
+on_ccsv1=1;on_ccsv5=1;
+twiss,sequence=lhcb1,file=temp/twiss_lhcb1_ccs.tfs;
+twiss,sequence=lhcb2,file=temp/twiss_lhcb2_ccs.tfs;
+!check orbit corrector strength
+exec, check_orbit;
+};
+
+!!*** regenerate optics
+!Poff=2.0e-03;
+!Occ:=5.0e-4;dABCD:=2.5e-04;
+!!!presqueeze+round+inj
+!Psep=2.0e-3;Xang=0.000255;
+!!!exec, regen_xing(presqueeze);
+!!exec, regen_xing(round);
+!exec, regen_xing(inj);
+!!flat
+!Psep=0.75e-3;Xang=0.000210;
+!exec, regen_xing(flat);
+!*** check optics
+!exec, test_xing(presqueeze_new);
+exec, test_xing(round_new);
+!exec, test_xing(inj_new);
+!exec, test_xing(flat_new);
+!exec, test_xing(presqueeze_thin);
+!exec, test_xing(round_thin);
+!exec, test_xing(flat_thin);
+!exec, test_xing(inj_thin);
+
+return;
+exec,crossing_enable;
+exec,orbcrab_disable;
+exec,check_ip(b1); exec,check_ip(b2);
+exec,crossing_disable;
+exec,orbcrab_disable;
+exec,check_ip(b1); exec,check_ip(b2);
+return;
+
+!offset knob
+call,file="slhc/toolkit/mk_ir15_knobs.madx";
+exec,resetXscheme(1);
+exec,resetXscheme(5);
+exec,cableXscheme(1);
+exec,cableXscheme(5);
+!call,file="toolkit/rematch_xing_ir15.madx";!match crossing ir1528
+xip5b1= 2e-3; pxip5b1=0;
+xip5b2= 2e-3; pxip5b2=0;
+call,file="slhc/toolkit/mk_xing_ir5h.madx";
+xip1b1= 2e-3; pxip1b1=0;
+xip1b2= 2e-3; pxip1b2=0;
+call,file="slhc/toolkit/mk_xing_ir1h.madx";
+
+yip5b1= 2e-3; pyip5b1=0;
+yip5b2= 2e-3; pyip5b2=0;
+call,file="slhc/toolkit/mk_xing_ir5v.madx";
+yip1b1= 2e-3; pyip1b1=0;
+yip1b2= 2e-3; pyip1b2=0;
+call,file="slhc/toolkit/mk_xing_ir1v.madx";

@@ -1,0 +1,150 @@
+!call, file=job_rematch_ir15.madx;
+!*****************************************************************************************************************
+!   totally mismatched optics with strong "Doublet" Q4-Q5
+!******************************************************************************************************************
+
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+!system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.0 slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
+system,"ln -fns /Users/mfittere/HiLumi/HLLHCV1.2 slhc";
+option,-echo,-info,-warn;
+
+Option, -echo,-warn,-info;
+REAL CONST l.TAN   = 3.7  ;REAL CONST l.TANAL = l.TAN;
+REAL CONST l.TANAR = l.TAN;REAL CONST l.TANC  = l.TAN;
+REAL CONST l.TCT   = 1.0;REAL CONST l.TCTH  = l.TCT;REAL CONST l.TCTVA = l.TCT;
+call,file="db5/V6.5.seq";
+call,   file="db5/aperture/aperture.b1.madx";
+call,   file="db5/aperture/aperture.b2.madx";
+call,   file="db5/aperture/aper_tol.b1.madx";
+call,   file="db5/aperture/aper_tol.b2.madx";
+Option, -echo,warn,-info,no_fatal_stop;
+
+call,file="slhc/toolkit/macro.madx";
+call,file="slhc/toolkit/optics_log.madx";
+
+on_layout_custom=0;
+call,file="slhc/hllhc_sequence.madx";
+bs_type=4; ap_mqx=150;
+call,   file="slhc/aperture/aperture_upgrade_IT.madx";
+call,   file="slhc/aperture/aperture_upgrade_MS.madx";
+
+!call,file="slhc/opt_inj.madx";
+call,file="slhc/opt_vdm30.madx";
+!call,file="slhcv11/opt_vdm30.madx";
+!call,file="slhcv11/hllhc_sequence.madx";
+                                     
+exec,mk_beam(7000);
+!get initial conditions for matching
+exec,selectIR15(5,45,56,b1);exec,selectIR15(5,45,56,b2);
+
+exec,check_ip(b1);exec,check_ip(b2);
+return;
+on_layout_custom=0;
+call,file="slhc/hllhc_sequence.madx";
+
+exec,check_ip(b1);exec,check_ip(b2);
+on_holdselect=1;
+exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
+
+return;
+exec, crossing_disable;
+!exec,make_opticstbl_ir5hl;write,table=ir5hl_log_str,file=ir5hl_log_str.tfs;!create file 
+exec,read_opticstbl(ir5hl); !exec,read_opticstbl(ir5);!ir5=normal optics, ir5hl=hilumi optics
+!exec,load_optics(ir5hl,5); exec,copyir5to1;
+exec,load_lastoptics(ir5hl);exec,copyir5to1;
+
+!get right phase advance, beta, crossing angle etc. in case loaded optics was not matched entirely
+call,file="ref_opt_vdm30.madx";
+
+! ****** get from HLLHCV1.1 triplet layout to new layout
+!destination values
+l.MQXL      =          8.4000000000 ;
+l.MQX       =          7.1500000000 ;
+dq1q2a      =          3.6280000000 ;
+dq1aq1b     =          0.6460000000 ;
+dq2aq2b     =          2.1080000000 ;
+dq2bq3      =          3.6280000000 ;
+deltaposD2  =        -15.3862000000 ;!max. field D2 35 Tm -> move D2 as close as possible to D1
+
+!hllhcv1.1 values
+l.MQXL  =  8.0000000000 ;!8.0
+l.MQX   =  6.8000000000 ;!6.8
+dq2aq2b =  2.0080000000 ;!2.0
+dq1aq1b =  0.5000000000 ;!0.5
+dq2bq3  =  3.7000000000 ;!3.7
+dq1q2a  =  3.7000000000 ;!3.7
+
+l.mqx_old=l.mqx;l.mqxl_old=l.mqxl;
+kqx1.l5_old=kqx1.l5;kqx2.l5_old=kqx2.l5;kqx3.l5_old=kqx3.l5;
+l.mqxl=8.40;l.mqx=7.15;
+kqx1.l5 =kqx1.l5_old*l.mqxl_old/l.mqxl;
+kqx3.l5 =kqx3.l5_old*l.mqxl_old/l.mqxl;
+kqx2a.l5=kqx2.l5_old*l.mqx_old/l.mqx;
+value, kqx1.l5*scale,kqx3.l5*scale,kqx2a.l5*scale;
+on_layout_custom=1;
+call,file="slhc/hllhc_sequence.madx";
+call,file="slhc/toolkit/rematch_ir15_b12.madx";!original matching script
+
+!---- vdm optics
+grad=132.6;
+scl=0.10; sch=0.95;sc79=0.99;bmaxds=500;imb=1.30;
+match_on_tripletconst=0;ir5q4sym=0;ir5q5sym=0;
+match_inj_tunes=1;match_on_aperture=0;
+apq789=0; apq5=0; apq6=0; apq4=0; apq1011=0;
+jac_calls=0; bisec=3; jac_tol=1e-16;
+
+jac_calls=10;
+match_on_triplet=1;
+bety_q3=6753.5;
+betx_mcby= 1172;bety_mcby = 723;
+betyip5b1:=betxip5b1;betxip5b2:=betxip5b1;betyip5b2:=betyip5b1;betxip5b1=30.0;
+call,file="slhc/toolkit/rematch_ir15_b12.madx";!original matching script
+
+exec, check_ip(b1);exec, check_ip(b2);
+on_opticstbl_ir5hl=1;
+exec,store_optics(ir5hl);!save optics
+
+
+!check optics + aperture - collision
+exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
+exec,mk_irtwiss(1,b1); exec,mk_irtwiss(1,b2);
+
+seqedit, sequence=lhcb1;
+cycle,start=s.ds.l1.b1;
+endedit;
+seqedit, sequence=lhcb2;
+cycle,start=s.ds.l1.b2;
+endedit;
+
+emittance_norm=3.5e-6;
+apbbeat=1.1;
+halor=6.001; halox=6; haloy=6;
+DParcx=0.10; DParcy=0.10;
+COmax=0.002; dPmax=0.0002; VMAXI=30; SPECIF=10;
+FULL=1;
+
+exec,mk_apir(5,b1,7000,full);
+exec,mk_apir(5,b2,7000,full);
+exec,mk_apir(1,b1,7000,full);
+exec,mk_apir(1,b2,7000,full);
+
+
+return;
+
+!angle, offset etc. correctly predefined
+call,file="slhc/toolkit/rematch_crossing.madx";
+call,file="slhc/toolkit/rematch_crabs.madx";
+exec, crossing_disable;
+exec, orbcrab_disable; on_o1=0;on_o5=0;
+exec,CORCHROMA_WEAK(2,b1);
+exec,CORCHROMA_WEAK(2,b2);
+!save the optics
+exec, crossing_disable;
+exec, orbcrab_disable; on_o1=0;on_o5=0;
+arc_squeeze=0.0;!vdm + injection
+on_check=1;call,file="slhc/toolkit/save_optics2.madx";
+system,"cp temp/optics.madx opt_vdm30_new.madx";
+save,file="vdm30.seq";
+
