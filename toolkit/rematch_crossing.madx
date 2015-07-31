@@ -19,6 +19,8 @@ value,Poff,phio_IR1,phio_IR5;
 
 on_disp=0;
 call,file="slhc/toolkit/xing.IP28.madx";
+call,file="slhc/toolkit/mk_ir28_knobs.madx";
+
 call,file="slhc/toolkit/rematch_xing_ir15.madx";
 !value,tarir1xing90,tarir1xing0,tarir5xing90,tarir5xing0;
 !value,tarir2b1xing,tarir2b2xing,tarir8b1xing,tarir8b2xing;
