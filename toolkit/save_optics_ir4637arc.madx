@@ -8,8 +8,8 @@
 !!  rewrite using printf from new madx
 !!  adding offset knobs
 
-system,"rm temp/optics.madx";
-option,-echo, -info ;assign, echo=temp/optics.madx;
+system,"rm temp/optics_ir4637arc.madx";
+option,-echo, -info ;assign, echo=temp/optics_ir4637arc.madx;
 
 print_optics_quad(ntype,nquad,irn): macro={
 printf,text="Kntypenquad.LirnB1   = %20.10e ;",value=Kntypenquad.LirnB1;
