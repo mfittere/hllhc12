@@ -20,7 +20,7 @@ deltaposQ5    =            11.000000 ;
 deltaposQ6    =             0.000000 ;
 on_cutMS.10   =             0.000000 ;
 on_cutMS.14   =             0.000000 ;
-is_thin       =             1.000000 ;
+is_thin       =             0.000000 ;
 
  !***BETAS in IR1 and IR5***
 betx_IP1    =             6.000000 ;
