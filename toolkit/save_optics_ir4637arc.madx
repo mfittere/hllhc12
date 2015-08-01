@@ -11,6 +11,28 @@
 system,"rm temp/optics_ir4637arc.madx";
 option,-echo, -info ;assign, echo=temp/optics_ir4637arc.madx;
 
+print_optics_triplet(irn): macro={
+printf,text="kqx.lirn   = %20.10e;",value=kqx.lirn;
+printf,text="ktqx1.lirn = %20.10e;",value=ktqx1.lirn;
+printf,text="ktqx2.lirn = %20.10e;",value=ktqx2.lirn;
+printf,text="kqx.rirn   = %20.10e;",value=kqx.rirn;
+printf,text="ktqx1.rirn = %20.10e;",value=ktqx1.rirn;
+printf,text="ktqx2.rirn = %20.10e;",value=ktqx2.rirn;
+};
+
+
+print_optics_triplet_hl(irn): macro={
+printf,text="kqx1.lirn  = %20.10e;",value=kqx1.lirn;
+printf,text="kqx2a.lirn = %20.10e;",value=kqx2a.lirn;
+printf,text="kqx2b.lirn = %20.10e;",value=kqx2b.lirn;
+printf,text="kqx3.lirn  = %20.10e;",value=kqx3.lirn;
+printf,text="kqx1.rirn  = %20.10e;",value=kqx1.rirn;
+printf,text="kqx2a.rirn = %20.10e;",value=kqx2a.rirn;
+printf,text="kqx2b.rirn = %20.10e;",value=kqx2b.rirn;
+printf,text="kqx3.rirn  = %20.10e;",value=kqx3.rirn;
+};
+
+
 print_optics_quad(ntype,nquad,irn): macro={
 printf,text="Kntypenquad.LirnB1   = %20.10e ;",value=Kntypenquad.LirnB1;
 printf,text="Kntypenquad.LirnB2   = %20.10e ;",value=Kntypenquad.LirnB2;
@@ -100,6 +122,18 @@ printf,text="famil.A78bim:= %20.10e +trim.bim ;",value=famil.A78bim;
 };
 
 
+print_arc_trim(famil,trim,bim): macro={
+printf,text="famil.A81bim:= %20.10e +trim.bim;",value=famil.A81bim;
+printf,text="famil.A12bim:= %20.10e +trim.bim;",value=famil.A12bim;
+printf,text="famil.A45bim:= %20.10e +trim.bim;",value=famil.A45bim;
+printf,text="famil.A56bim:= %20.10e +trim.bim;",value=famil.A56bim;
+printf,text="famil.A23bim:= %20.10e +trim.bim;",value=famil.A23bim;
+printf,text="famil.A34bim:= %20.10e +trim.bim;",value=famil.A34bim;
+printf,text="famil.A67bim:= %20.10e +trim.bim;",value=famil.A67bim;
+printf,text="famil.A78bim:= %20.10e +trim.bim;",value=famil.A78bim;
+};
+
+
 print,text=" !***ARC Optics***";
 print,text=" !QF/QD";
 exec,print_arc_strong(KQF);
@@ -118,6 +152,10 @@ exec,print_arc_weak_trim(KQTF,KQTF,B2);
 exec,print_arc_weak_trim(KQTD,KQTD,B1);
 exec,print_arc_weak_trim(KQTD,KQTD,B2);
 print,text="";
+
+assign,echo=terminal ;
+!call,file='temp/optics.madx';
+option,-echo;
 
 set,format=24.12g;
 
