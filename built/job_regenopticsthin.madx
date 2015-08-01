@@ -55,7 +55,7 @@ exec,check_ip(b1); exec,check_ip(b2);
 };
 
 !create Presqueeze
-exec,regen_optics(presqueeze);
+!exec,regen_optics(presqueeze);
 !exec,regen_optics(ions);
 
 !load presqueezed optics
@@ -63,14 +63,14 @@ exec,regen_optics(presqueeze);
 !call,file="slhc/opt_presqueeze_thin.madx";
 
 !save ir optics for creating squeezed optics
-call,file="toolkit/save_optics_ir1537arc.madx";
-system,"cp temp/optics_ir1537arc.madx optics_ir1537arc_thin.madx";
+!call,file="toolkit/save_optics_ir1537arc.madx";
+!system,"cp temp/optics_ir1537arc.madx optics_ir1537arc_thin.madx";
 !copy ir4637 for injection optics as it stays the same
 !call,file="toolkit/save_optics_ir4637arc.madx";
 !system,"cp temp/optics_ir4637arc.madx optics_ir4637arc_thin.madx";
 
 !save sequence in file;
-save,sequence=lhcb1,lhcb2,file=hllhc_thin.seq;
+!save,sequence=lhcb1,lhcb2,file=hllhc_thin.seq;
 
 ! Squeeze
 
@@ -103,13 +103,13 @@ exec,check_ip(b1); exec,check_ip(b2);
 };
 
 !exec,mk_beam(7000);
-exec,regen_squeeze(round);
+!exec,regen_squeeze(round);
 !exec,regen_squeeze(sround);
-exec,regen_squeeze(flat);
+!exec,regen_squeeze(flat);
 !exec,regen_squeeze(flathv);
 !exec,regen_squeeze(sflat);
 !exec,regen_squeeze(sflathv);
-return;
+!return;
 
 regen_inj(filename): macro={
 call,file="slhc/opt_filename.madx"; is_thin=1;
@@ -128,7 +128,7 @@ Occ:=5.0e-4;dABCD:=2.5e-04;
 !!presqueeze+round+inj
 !Psep=2.0e-3;Xang=0.000255;
 call,file="toolkit/rematch_crossing.madx";
-call,file="slhc/toolkit/rematch_crabs.madx";
+call,file="toolkit/rematch_crabs.madx";
 exec,CORCHROMA_WEAK(2,b1);
 exec,CORCHROMA_WEAK(2,b2);
 if (tarcrossing>1e-15) { return;};
@@ -141,8 +141,8 @@ if (tarinj+tarir37b12+tarcrossing<1e-15){
 exec,check_ip(b1); exec,check_ip(b2);
 };
 
-return;
 exec,mk_beam(450);
+return;
 exec,regen_inj(inj);
 !exec,regen_inj(inj15);
 

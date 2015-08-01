@@ -44,6 +44,13 @@ exec,selectIR15(5,45,56,b1);exec,selectIR15(5,45,56,b2);
 exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
 
 return;
+exec,mk_beam(450);
+!rematch IR2 and IR8 x-scheme
+call,file="slhc/toolkit/xing.IP28.madx";
+call,file="slhc/toolkit/mk_ir2_knobs.madx";
+exec, crossing_disable;
+exec,check_ip(b1);exec,check_ip(b2);
+return;
 exec, crossing_disable;
 !exec,make_opticstbl_ir5hl;write,table=ir5hl_log_str,file=ir5hl_log_str.tfs;!create file 
 exec,read_opticstbl(ir5hl); !exec,read_opticstbl(ir5);!ir5=normal optics, ir5hl=hilumi optics

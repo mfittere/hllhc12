@@ -21,7 +21,7 @@ Option, -echo,warn,-info,no_fatal_stop;
 call,file="slhc/toolkit/macro.madx";
 !call,file="slhc/toolkit/optics_log.madx";
 
-!is_thin=1;
+is_thin=0;
 if(is_thin==1){
   call,file="slhc/hllhc_thin.seq";
 } else {
@@ -30,7 +30,7 @@ if(is_thin==1){
 };
 
 !call,file="slhc/opt_presqueeze.madx";
-call,file="opt_round_new.madx";
+call,file="slhc/opt_inj.madx";
 !call,file="slhc/opt_presqueeze_thin.madx";
 !call,file="slhc/opt_round_thin.madx";
 !call,file="slhc/opt_flat_thin.madx";
@@ -54,7 +54,7 @@ exec,check_ip(b1);exec,check_ip(b2);
 !exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
 
 exec, crossing_enable;
-
+on_alice=0;on_lhcb=0;
 exec,check_ip(b1);exec,check_ip(b2);
 
 regen_xing(filename): macro={
@@ -133,13 +133,14 @@ exec, check_orbit;
 !exec, regen_xing(flat);
 !*** check optics
 !exec, test_xing(presqueeze_new);
-exec, test_xing(round_new);
+!exec, test_xing(round_new);
 !exec, test_xing(inj_new);
 !exec, test_xing(flat_new);
 !exec, test_xing(presqueeze_thin);
 !exec, test_xing(round_thin);
 !exec, test_xing(flat_thin);
 !exec, test_xing(inj_thin);
+exec, test_xing(inj);
 
 return;
 exec,crossing_enable;
