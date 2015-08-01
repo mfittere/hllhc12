@@ -37,7 +37,7 @@ SCang_2 := 1.70 * on_x2 ; offx_2:= 0.0 * on_x2 ; offy_2:= 0.0 * on_x2 ;  !... in
 SCang_8x := 1.70 * on_x8 ; SCang_8y := 0.40 * on_sep8 ;
 offx_8 := 0.7 * on_o8 ; offy_8:= 0.0 * on_sep8 ;  !... inj (beta*=10m)
 SPsep_2 := 2.00 * on_sep2 ;   !... inj (beta*=10m) 
-SPsep_8 := 35.0 * on_sep8 ;   !... inj (beta*=10m) 
+SPsep_8 := 3.5 * on_sep8 ;   !... inj (beta*=10m) 
 };
 if(nrjaux>3499.9999)
 { 
