@@ -82,7 +82,7 @@ while(tar<1e-10){
 };
 
 !!!! STARTING POINT
-
+grad=140;
 scl=0.10; sch=0.95;sc79=1.000+0.000;bmaxds=500;imb=1.30;
 match_on_triplet=0; match_on_tripletconst=0;ir5q4sym=0;ir5q5sym=0;
 match_inj_tunes=0;match_on_aperture=0;

@@ -93,14 +93,13 @@ jac_calls=20;
 match_on_triplet=3;  call,file="rematch_ir15_b12.madx";
 
 if (tar>1e-10){stop;};
-
 xxx=betx_mcby; yyy=bety_mcby;
 jac_calls=15;
 angle=0; step=2;
 while (angle<360){
   ddx=step*cos(angle/180*pi);
   ddy=step*sin(angle/180*pi);
-  exec,makescan(opt_presqueeze,xxx,yyy,ddx,ddy,presqueze_q4_scan93.tfs);
+  exec,makescan(opt_presqueeze,xxx,yyy,ddx,ddy,presqueze_q4_scan99.3.tfs);
   angle=angle+5.;
   value,angle;
 };
