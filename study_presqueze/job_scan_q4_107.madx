@@ -12,7 +12,7 @@ Option, -echo,warn,-info;
 
 call,file="slhc/toolkit/macro.madx";
 on_holdselect=0;
-call,file="slhc/hllhc_sequence.madx";
+call,file="hllhc_sequence.madx";
 
 !install marker at 3 and 5 m from end of Q5 for wire
 posw3m=posQ4+l.MQYY/2+3.0;
