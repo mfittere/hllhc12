@@ -255,8 +255,12 @@ vary,name=KQX2.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
 vary,name=KQX3.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
 !constraint,sequence=lhcb2,range=M.ACFC.CDR5.B2,betx=betx_acf;
 !constraint,sequence=lhcb2,range=M.ACFC.CDR5.B2,bety=bety_acf;
-!constraint,sequence=lhcb2,range=MCBYYH.4R5.B2,betx=betx_mcby;
-!constraint,sequence=lhcb2,range=MCBYYH.4R5.B2,bety=bety_mcby;
+if (betx_mcby>0){
+constraint,sequence=lhcb2,range=MCBYYH.4R5.B2,betx=betx_mcby;
+};
+if (bety_mcby>0){
+constraint,sequence=lhcb2,range=MCBYYH.4R5.B2,bety=bety_mcby;
+};
 if (bety_q3>0){
   constraint,sequence=lhcb2,range=MQXFA.B3R5,bety=bety_q3;
 };
