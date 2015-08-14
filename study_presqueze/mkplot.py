@@ -93,6 +93,7 @@ def mkfig_crab_wire(fn):
     subplot(331)
     for yy in ynn:
         plot(t.betx_acfdrb2_ref,abs(t[yy]),'.',label=yy)
+        plot(t.betx_acfdrb2_ref[0],abs(t[yy])[0],'ko')#starting point
     plot([1,3000],[132.6,132.6],'k-')
     xlabel(r'$\beta_x \rm ACFD 5RB2 [m]$')
     ylabel('g [T/m]')
@@ -103,6 +104,7 @@ def mkfig_crab_wire(fn):
     subplot(332)
     for yy in ynn:
         plot(t.bety_acfdrb2_ref,abs(t[yy]),'.',label=yy)
+        plot(t.bety_acfdrb2_ref[0],abs(t[yy])[0],'ko')#starting point
     plot([1,3000],[132.6,132.6],'k-')
     xlabel(r'$\beta_y \rm ACFD 5RB2 [m]$')
     ylabel('g [T/m]')
@@ -115,9 +117,10 @@ def mkfig_crab_wire(fn):
       for ll in 'lr':
         pp='_acf%s%sb2_ref'%(cc,ll)
         plot(t['betx'+pp],t['bety'+pp],'.',label='ACF%s %s5B2'%(cc.upper(),ll.upper()))
+        plot(t['betx'+pp][0],t['bety'+pp][0],'ko')#starting point
     plot([400,2000],[400,2000],'k-')
-    xlabel(r'$\beta_x \rm cc [m]$')
-    ylabel(r'$\beta_y \rm cc [m]$')
+    xlabel(r'$\beta_x \rm (cc) \  [m]$')
+    ylabel(r'$\beta_y \rm (cc) \ [m]$')
     xlim(800,2300)
     ylim(600,1800)
     legend()
@@ -126,11 +129,13 @@ def mkfig_crab_wire(fn):
     #calculate beta at wire at 7m
     t['betx_wire7mlb1_ref'],t['bety_wire7mlb1_ref'],t['betx_wire7mrb2_ref'],t['bety_wire7mrb2_ref']=get_wire_7m(t,2)
     for pw in '357':
-      plot(t['betx_wire'+pw+'mlb1_ref'],t['bety_wire'+pw+'mlb1_ref'],'-',label='Wire '+pw+'m LB1')
-      plot(t['betx_wire'+pw+'mrb2_ref'],t['bety_wire'+pw+'mrb2_ref'],'-',label='Wire '+pw+'m RB2')
+      plot(t['betx_wire'+pw+'mlb1_ref'],t['bety_wire'+pw+'mlb1_ref'],'.',label='Wire '+pw+'m LB1')
+      plot(t['betx_wire'+pw+'mlb1_ref'][0],t['bety_wire'+pw+'mlb1_ref'][0],'ko')#starting point
+      plot(t['betx_wire'+pw+'mrb2_ref'],t['bety_wire'+pw+'mrb2_ref'],'.',label='Wire '+pw+'m RB2')
+      plot(t['betx_wire'+pw+'mrb2_ref'][0],t['bety_wire'+pw+'mrb2_ref'][0],'ko')#starting point
     plot(arange(100,5000,500),0.5*arange(100,5000,500),'-k')
-    xlabel(r'$\beta_x \rm wire [m]$')
-    ylabel(r'$\beta_y \rm wire [m]$')
+    xlabel(r'$\beta_x \rm (wire) \ [m]$')
+    ylabel(r'$\beta_y \rm (wire) \ [m]$')
     legend()
     grid()
 #fixed range
@@ -147,7 +152,8 @@ def mkfig_crab_wire(fn):
     t,vmax=get_cc_max(t)
     for pw in '357':
       plot(vmax,t['betx_wire'+pw+'mrb2_ref']/t['bety_wire'+pw+'mrb2_ref'],'.',label='Wire '+pw+'m RB2')
-    xlabel(r'$V_{\rm crab, max} [MV]$')
+      plot(vmax[0],t['betx_wire'+pw+'mrb2_ref'][0]/t['bety_wire'+pw+'mrb2_ref'][0],'ko')#starting point
+    xlabel(r'$V_{\rm crab, max} \ [MV]$')
     ylabel(r'$\beta_x/\beta_y(\rm wire)$')
     legend(loc='upper left')
     grid()
@@ -160,9 +166,11 @@ def mkfig_crab_wire(fn):
     bmin_mcbyy=np.min([t.betx_mcby_ref,t.bety_mcby_ref], axis=0)
     bmax_mcbyy=np.max([t.betx_mcby_ref,t.bety_mcby_ref], axis=0)
     plot(vmax,bmin_mcbyy,'.',label='min(beta(MCBYY))')
+    plot(vmax[0],bmin_mcbyy[0],'ko')#starting point
     plot(vmax,bmax_mcbyy,'.',label='max(beta(MCBYY))')
-    xlabel(r'$V_{\rm crab} [MV]$')
-    ylabel(r'$\beta_{x/y}(\rm MCBYY) [m]$')
+    plot(vmax[0],bmax_mcbyy[0],'ko')#starting point
+    xlabel(r'$V_{\rm crab,max} \ [MV]$')
+    ylabel(r'$\beta_{x/y}(\rm MCBYY) \ [m]$')
     legend(loc='center right')
     xlim(11,12.5)
     ylim(300,1600)
@@ -175,10 +183,9 @@ def mkfig_crab_wire(fn):
     beta_crab_r = np.sum(np.array([ t['betx_acf%srb2_ref'%(aa)]+t['bety_acf%srb2_ref'%(aa)] for aa in 'abcd']),axis=0)    
     beta_crab_sum = beta_crab_l+beta_crab_r
     plot(vmax,beta_crab_sum*1.e-3,'.',label='LB2+RB2')
-    plot(vmax,2*beta_crab_l*1.e-3,'.',label='2*LB2')
-    plot(vmax,2*beta_crab_r*1.e-3,'.',label='2*RB2')
-    xlabel(r'$V_{\rm crab} [MV]$')
-    ylabel(r'$\sum_{s=ABCD}(\beta_x(\rm ACFs) + \beta_y(\rm ACFs) ) [km]$')
+    plot(vmax[0],beta_crab_sum[0]*1.e-3,'ko')#starting point
+    xlabel(r'$V_{\rm crab, max} \ [MV]$')
+    ylabel(r'$\sum_{s=ABCD}(\beta_x(\rm ACFs) + \beta_y(\rm ACFs) ) \ [km]$')
     legend(loc='lower right')
     xlim(11,12.5)
     ylim(17,22)
@@ -194,13 +201,13 @@ close('all')
 #mkfig('scan_q4_8m/presqueze_q4_scan99.3.tfs')
 #mkfig('scan_q4_8m/presqueze_q4_scan100.tfs')
 #mkfig('scan_q4_8m/presqueze_q4_scan107.tfs')
-#mkfig_crab_wire('scan_q4_8m/presqueze_q4_scan100.tfs')
-#mkfig_crab_wire('scan_q4_8m/presqueze_q4_scan107.tfs')
+mkfig_crab_wire('scan_q4_8m/presqueze_q4_scan100.tfs')
+mkfig_crab_wire('scan_q4_8m/presqueze_q4_scan107.tfs')
 mkfig_crab_wire('scan_q4_8m/presqueze_q4_scan99.3.tfs')
-#mkfig_crab_wire('scan_q4_10m/presqueze_q4_scan99.3.tfs')
-#mkfig_crab_wire('scan_q4_6m/presqueze_q4_scan99.3.tfs')
-#mkfig_crab_wire('scan_q5_9m/presqueze_q4_scan99.3.tfs')
-#mkfig_crab_wire('scan_q5_13m/presqueze_q4_scan99.3.tfs')
+mkfig_crab_wire('scan_q4_10m/presqueze_q4_scan99.3.tfs')
+mkfig_crab_wire('scan_q4_6m/presqueze_q4_scan99.3.tfs')
+mkfig_crab_wire('scan_q5_9m/presqueze_q4_scan99.3.tfs')
+mkfig_crab_wire('scan_q5_13m/presqueze_q4_scan99.3.tfs')
 
 draw()
 show()
