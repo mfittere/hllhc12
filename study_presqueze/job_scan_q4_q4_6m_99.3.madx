@@ -25,7 +25,6 @@ exec,install_ir15_b12(WIRE3M,posw3m);
 exec,install_ir15_b12(WIRE5M,posw5m);
 
 exec,mk_beam(7000);
-!call,file="opt_presqueeze_q4_6m.madx";
 exec,check_ip(b1); exec,check_ip(b2);
 exec,selectIR15(5,45,56,b1);
 exec,selectIR15(5,45,56,b2);
@@ -43,32 +42,48 @@ value, deltaposq4;
 value, deltaposq5;
 
 create,table=layout4,column=g1,g2,g3,
-betx_mcby_ref,bety_mcby_ref,
-betxmax_mqxfa.b3l5,betymax_mqxfb.b2l5,betymax_mqxfb.c2l5,betymax_mqxfb.d2l5,
-betx_acfdlb1_ref,bety_acfdlb1_ref,alfx_acfdlb1_ref,alfy_acfdlb1_ref,
-betx_acfdrb1_ref,bety_acfdrb1_ref,alfx_acfdrb1_ref,alfy_acfdrb1_ref,
-betx_acfdlb2_ref,bety_acfdlb2_ref,alfx_acfdlb2_ref,alfy_acfdlb2_ref,
-betx_acfdrb2_ref,bety_acfdrb2_ref,alfx_acfdrb2_ref,alfy_acfdrb2_ref,
-betx_acfclb1_ref,bety_acfclb1_ref,alfx_acfclb1_ref,alfy_acfclb1_ref,
-betx_acfcrb1_ref,bety_acfcrb1_ref,alfx_acfcrb1_ref,alfy_acfcrb1_ref,
-betx_acfclb2_ref,bety_acfclb2_ref,alfx_acfclb2_ref,alfy_acfclb2_ref,
-betx_acfcrb2_ref,bety_acfcrb2_ref,alfx_acfcrb2_ref,alfy_acfcrb2_ref,
-betx_acfblb1_ref,bety_acfblb1_ref,alfx_acfblb1_ref,alfy_acfblb1_ref,
-betx_acfbrb1_ref,bety_acfbrb1_ref,alfx_acfbrb1_ref,alfy_acfbrb1_ref,
-betx_acfblb2_ref,bety_acfblb2_ref,alfx_acfblb2_ref,alfy_acfblb2_ref,
-betx_acfbrb2_ref,bety_acfbrb2_ref,alfx_acfbrb2_ref,alfy_acfbrb2_ref,
-betx_acfalb1_ref,bety_acfalb1_ref,alfx_acfalb1_ref,alfy_acfalb1_ref,
-betx_acfarb1_ref,bety_acfarb1_ref,alfx_acfarb1_ref,alfy_acfarb1_ref,
-betx_acfalb2_ref,bety_acfalb2_ref,alfx_acfalb2_ref,alfy_acfalb2_ref,
-betx_acfarb2_ref,bety_acfarb2_ref,alfx_acfarb2_ref,alfy_acfarb2_ref,
-betx_wire3mlb1_ref,bety_wire3mlb1_ref,alfx_wire3mlb1_ref,alfy_wire3mlb1_ref,
-betx_wire3mrb1_ref,bety_wire3mrb1_ref,alfx_wire3mrb1_ref,alfy_wire3mrb1_ref,
-betx_wire3mlb2_ref,bety_wire3mlb2_ref,alfx_wire3mlb2_ref,alfy_wire3mlb2_ref,
-betx_wire3mrb2_ref,bety_wire3mrb2_ref,alfx_wire3mrb2_ref,alfy_wire3mrb2_ref,
-betx_wire5mlb1_ref,bety_wire5mlb1_ref,alfx_wire5mlb1_ref,alfy_wire5mlb1_ref,
-betx_wire5mrb1_ref,bety_wire5mrb1_ref,alfx_wire5mrb1_ref,alfy_wire5mrb1_ref,
-betx_wire5mlb2_ref,bety_wire5mlb2_ref,alfx_wire5mlb2_ref,alfy_wire5mlb2_ref,
-betx_wire5mrb2_ref,bety_wire5mrb2_ref,alfx_wire5mrb2_ref,alfy_wire5mrb2_ref;
+  kqx1.r5,kqx2a.r5,kqx2b.r5,kqx3.r5,
+  kqx1.l5,kqx2a.l5,kqx2b.l5,kqx3.l5,
+  kq4.l5b1,kq5.l5b1,kq6.l5b1,kq7.l5b1,kq8.l5b1,kq9.l5b1,kq10.l5b1,
+  kqtl11.l5b1,kqt12.l5b1,kqt13.l5b1,
+  kq4.r5b1,kq5.r5b1,kq6.r5b1,kq7.r5b1,kq8.r5b1,kq9.r5b1,kq10.r5b1,
+  kqtl11.r5b1,kqt12.r5b1,kqt13.r5b1,
+  kq4.l5b2,kq5.l5b2,kq6.l5b2,kq7.l5b2,kq8.l5b2,kq9.l5b2,kq10.l5b2,
+  kqtl11.l5b2,kqt12.l5b2,kqt13.l5b2,
+  kq4.r5b2,kq5.r5b2,kq6.r5b2,kq7.r5b2,kq8.r5b2,kq9.r5b2,kq10.r5b2,
+  kqtl11.r5b2,kqt12.r5b2,kqt13.r5b2,
+  betxip5b1,betyip5b1,alfxip5b1,alfyip5b1,dxip5b1,dpxip5b1,
+  betxip5b2,betyip5b2,alfxip5b2,alfyip5b2,dxip5b2,dpxip5b2,
+  l.mqxl,l.mqx,dq1q2a,dq2aq2b,dq2bq3,deltaposq4,deltaposq5,deltaposq6,
+  dq1aq1b,grad,
+  scl,sch,bmaxds,sc79,betx_marke,bety_marke,
+  ir5q4sym,ir5q5sym,imb,
+  betx_mcby_ref,bety_mcby_ref,
+  betxmax_mqxfa.b3l5,betymax_mqxfb.b2l5,betymax_mqxfb.c2l5,betymax_mqxfb.d2l5,
+  betx_acfdlb1_ref,bety_acfdlb1_ref,alfx_acfdlb1_ref,alfy_acfdlb1_ref,
+  betx_acfdrb1_ref,bety_acfdrb1_ref,alfx_acfdrb1_ref,alfy_acfdrb1_ref,
+  betx_acfdlb2_ref,bety_acfdlb2_ref,alfx_acfdlb2_ref,alfy_acfdlb2_ref,
+  betx_acfdrb2_ref,bety_acfdrb2_ref,alfx_acfdrb2_ref,alfy_acfdrb2_ref,
+  betx_acfclb1_ref,bety_acfclb1_ref,alfx_acfclb1_ref,alfy_acfclb1_ref,
+  betx_acfcrb1_ref,bety_acfcrb1_ref,alfx_acfcrb1_ref,alfy_acfcrb1_ref,
+  betx_acfclb2_ref,bety_acfclb2_ref,alfx_acfclb2_ref,alfy_acfclb2_ref,
+  betx_acfcrb2_ref,bety_acfcrb2_ref,alfx_acfcrb2_ref,alfy_acfcrb2_ref,
+  betx_acfblb1_ref,bety_acfblb1_ref,alfx_acfblb1_ref,alfy_acfblb1_ref,
+  betx_acfbrb1_ref,bety_acfbrb1_ref,alfx_acfbrb1_ref,alfy_acfbrb1_ref,
+  betx_acfblb2_ref,bety_acfblb2_ref,alfx_acfblb2_ref,alfy_acfblb2_ref,
+  betx_acfbrb2_ref,bety_acfbrb2_ref,alfx_acfbrb2_ref,alfy_acfbrb2_ref,
+  betx_acfalb1_ref,bety_acfalb1_ref,alfx_acfalb1_ref,alfy_acfalb1_ref,
+  betx_acfarb1_ref,bety_acfarb1_ref,alfx_acfarb1_ref,alfy_acfarb1_ref,
+  betx_acfalb2_ref,bety_acfalb2_ref,alfx_acfalb2_ref,alfy_acfalb2_ref,
+  betx_acfarb2_ref,bety_acfarb2_ref,alfx_acfarb2_ref,alfy_acfarb2_ref,
+  betx_wire3mlb1_ref,bety_wire3mlb1_ref,alfx_wire3mlb1_ref,alfy_wire3mlb1_ref,
+  betx_wire3mrb1_ref,bety_wire3mrb1_ref,alfx_wire3mrb1_ref,alfy_wire3mrb1_ref,
+  betx_wire3mlb2_ref,bety_wire3mlb2_ref,alfx_wire3mlb2_ref,alfy_wire3mlb2_ref,
+  betx_wire3mrb2_ref,bety_wire3mrb2_ref,alfx_wire3mrb2_ref,alfy_wire3mrb2_ref,
+  betx_wire5mlb1_ref,bety_wire5mlb1_ref,alfx_wire5mlb1_ref,alfy_wire5mlb1_ref,
+  betx_wire5mrb1_ref,bety_wire5mrb1_ref,alfx_wire5mrb1_ref,alfy_wire5mrb1_ref,
+  betx_wire5mlb2_ref,bety_wire5mlb2_ref,alfx_wire5mlb2_ref,alfy_wire5mlb2_ref,
+  betx_wire5mrb2_ref,bety_wire5mrb2_ref,alfx_wire5mrb2_ref,alfy_wire5mrb2_ref;
 
 makescan(optnnn,xxx,yyy,ddx,ddy,dirfn,outfn):macro={
 call,file=optnnn.madx; tar=0;
