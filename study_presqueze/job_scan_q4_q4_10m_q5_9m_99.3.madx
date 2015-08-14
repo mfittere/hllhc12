@@ -1,0 +1,127 @@
+option, warn,info;
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
+system,"ln -fns .. slhc";
+
+option,-echo,-info,-warn;
+Option, -echo,-warn,-info;
+REAL CONST l.TAN   = 3.7  ;REAL CONST l.TANAL = l.TAN;
+REAL CONST l.TANAR = l.TAN;REAL CONST l.TANC  = l.TAN;
+REAL CONST l.TCT   = 1.0;REAL CONST l.TCTH  = l.TCT;REAL CONST l.TCTVA = l.TCT;
+call,file="db5/V6.5.seq";
+Option, -echo,warn,-info;
+
+call,file="slhc/toolkit/macro.madx";
+call,file="opt_presqueeze_q4_10m_q5_9m.madx";
+on_layout_custom=1;
+call,file="hllhc_sequence.madx";
+
+!install marker at 3 and 5 m from end of Q5 for wire
+posw3m=posQ4+l.MQYY/2+3.0;
+posw5m=posQ4+l.MQYY/2+5.0;
+value, posw3m,posw5m;
+exec,newel_ir15_b12(WIRE3M,MARKER);
+exec,newel_ir15_b12(WIRE5M,MARKER);
+exec,install_ir15_b12(WIRE3M,posw3m);
+exec,install_ir15_b12(WIRE5M,posw5m);
+
+exec,mk_beam(7000);
+exec,check_ip(b1); exec,check_ip(b2);
+exec,selectIR15(5,45,56,b1);
+exec,selectIR15(5,45,56,b2);
+exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
+
+scl=0.10; sch=0.95;sc79=0.99+0.000;bmaxds=500;imb=1.30;
+match_on_triplet=0; match_on_tripletconst=0;ir5q4sym=0;ir5q5sym=0;
+match_inj_tunes=0;match_on_aperture=0;
+apq789=0; apq5=0; apq6=0; apq4=0; apq1011=0;
+betx_mcby= 900.198392406144;bety_mcby = 624.509366158928; bety_q3=6754.35;
+jac_calls=0; bisec=3; jac_tol=1e-16;
+
+match_on_triplet=3;  call,file="rematch_ir15_b12.madx";
+value, deltaposq4;
+value, deltaposq5;
+
+create,table=layout4,column=g1,g2,g3,
+  kqx1.r5,kqx2a.r5,kqx2b.r5,kqx3.r5,
+  kqx1.l5,kqx2a.l5,kqx2b.l5,kqx3.l5,
+  kq4.l5b1,kq5.l5b1,kq6.l5b1,kq7.l5b1,kq8.l5b1,kq9.l5b1,kq10.l5b1,
+  kqtl11.l5b1,kqt12.l5b1,kqt13.l5b1,
+  kq4.r5b1,kq5.r5b1,kq6.r5b1,kq7.r5b1,kq8.r5b1,kq9.r5b1,kq10.r5b1,
+  kqtl11.r5b1,kqt12.r5b1,kqt13.r5b1,
+  kq4.l5b2,kq5.l5b2,kq6.l5b2,kq7.l5b2,kq8.l5b2,kq9.l5b2,kq10.l5b2,
+  kqtl11.l5b2,kqt12.l5b2,kqt13.l5b2,
+  kq4.r5b2,kq5.r5b2,kq6.r5b2,kq7.r5b2,kq8.r5b2,kq9.r5b2,kq10.r5b2,
+  kqtl11.r5b2,kqt12.r5b2,kqt13.r5b2,
+  betxip5b1,betyip5b1,alfxip5b1,alfyip5b1,dxip5b1,dpxip5b1,
+  betxip5b2,betyip5b2,alfxip5b2,alfyip5b2,dxip5b2,dpxip5b2,
+  l.mqxl,l.mqx,dq1q2a,dq2aq2b,dq2bq3,deltaposq4,deltaposq5,deltaposq6,
+  dq1aq1b,grad,
+  scl,sch,bmaxds,sc79,betx_marke,bety_marke,
+  ir5q4sym,ir5q5sym,imb,
+  betx_mcby_ref,bety_mcby_ref,
+  betxmax_mqxfa.b3l5,betymax_mqxfb.b2l5,betymax_mqxfb.c2l5,betymax_mqxfb.d2l5,
+  betx_acfdlb1_ref,bety_acfdlb1_ref,alfx_acfdlb1_ref,alfy_acfdlb1_ref,
+  betx_acfdrb1_ref,bety_acfdrb1_ref,alfx_acfdrb1_ref,alfy_acfdrb1_ref,
+  betx_acfdlb2_ref,bety_acfdlb2_ref,alfx_acfdlb2_ref,alfy_acfdlb2_ref,
+  betx_acfdrb2_ref,bety_acfdrb2_ref,alfx_acfdrb2_ref,alfy_acfdrb2_ref,
+  betx_acfclb1_ref,bety_acfclb1_ref,alfx_acfclb1_ref,alfy_acfclb1_ref,
+  betx_acfcrb1_ref,bety_acfcrb1_ref,alfx_acfcrb1_ref,alfy_acfcrb1_ref,
+  betx_acfclb2_ref,bety_acfclb2_ref,alfx_acfclb2_ref,alfy_acfclb2_ref,
+  betx_acfcrb2_ref,bety_acfcrb2_ref,alfx_acfcrb2_ref,alfy_acfcrb2_ref,
+  betx_acfblb1_ref,bety_acfblb1_ref,alfx_acfblb1_ref,alfy_acfblb1_ref,
+  betx_acfbrb1_ref,bety_acfbrb1_ref,alfx_acfbrb1_ref,alfy_acfbrb1_ref,
+  betx_acfblb2_ref,bety_acfblb2_ref,alfx_acfblb2_ref,alfy_acfblb2_ref,
+  betx_acfbrb2_ref,bety_acfbrb2_ref,alfx_acfbrb2_ref,alfy_acfbrb2_ref,
+  betx_acfalb1_ref,bety_acfalb1_ref,alfx_acfalb1_ref,alfy_acfalb1_ref,
+  betx_acfarb1_ref,bety_acfarb1_ref,alfx_acfarb1_ref,alfy_acfarb1_ref,
+  betx_acfalb2_ref,bety_acfalb2_ref,alfx_acfalb2_ref,alfy_acfalb2_ref,
+  betx_acfarb2_ref,bety_acfarb2_ref,alfx_acfarb2_ref,alfy_acfarb2_ref,
+  betx_wire3mlb1_ref,bety_wire3mlb1_ref,alfx_wire3mlb1_ref,alfy_wire3mlb1_ref,
+  betx_wire3mrb1_ref,bety_wire3mrb1_ref,alfx_wire3mrb1_ref,alfy_wire3mrb1_ref,
+  betx_wire3mlb2_ref,bety_wire3mlb2_ref,alfx_wire3mlb2_ref,alfy_wire3mlb2_ref,
+  betx_wire3mrb2_ref,bety_wire3mrb2_ref,alfx_wire3mrb2_ref,alfy_wire3mrb2_ref,
+  betx_wire5mlb1_ref,bety_wire5mlb1_ref,alfx_wire5mlb1_ref,alfy_wire5mlb1_ref,
+  betx_wire5mrb1_ref,bety_wire5mrb1_ref,alfx_wire5mrb1_ref,alfy_wire5mrb1_ref,
+  betx_wire5mlb2_ref,bety_wire5mlb2_ref,alfx_wire5mlb2_ref,alfy_wire5mlb2_ref,
+  betx_wire5mrb2_ref,bety_wire5mrb2_ref,alfx_wire5mrb2_ref,alfy_wire5mrb2_ref;
+
+makescan(optnnn,xxx,yyy,ddx,ddy,dirfn,outfn):macro={
+call,file=optnnn.madx; tar=0;
+print,text="optnnn.madx";
+betx_mcby=xxx; bety_mcby=yyy;
+call,file="rematch_ir15_b12.madx";
+g1:=-kqx1.l5*scale;g2:=-kqx2.l5*scale;g3:=-kqx3.l5*scale;
+fill,table=layout4; write,table=layout4,file=dirfn/outfn;
+while(tar<1e-10){
+  g1:=-kqx1.l5*scale;g2:=-kqx2.l5*scale;g3:=-kqx3.l5*scale;
+  fill,table=layout4; write,table=layout4,file=dirfn/outfn;
+  print,text="dirfn/outfn";
+  value, ddx;value, ddy;
+  betx_mcby=betx_mcby+ddx; bety_mcby=bety_mcby+ddy;
+  call,file="rematch_triplet.madx";
+  match_on_triplet=0;  call,file="rematch_ir15_b12.madx";
+  };
+};
+
+!!!! STARTING POINT
+scl=0.10; sch=0.95;sc79=0.993+0.000;bmaxds=500;imb=1.30;
+match_on_triplet=0; match_on_tripletconst=0;ir5q4sym=0;ir5q5sym=0;
+match_inj_tunes=0;match_on_aperture=0;
+apq789=0; apq5=0; apq6=0; apq4=0; apq1011=0;
+betx_mcby= 900.198392406144;bety_mcby = 624.509366158928; bety_q3=6754.35;
+jac_calls=0; bisec=3; jac_tol=1e-16;
+jac_calls=20;
+match_on_triplet=3;  call,file="rematch_ir15_b12.madx";
+
+if (tar>1e-10){stop;};
+xxx=betx_mcby; yyy=bety_mcby;
+jac_calls=15;
+angle=0; step=2;
+while (angle<360){
+  ddx=step*cos(angle/180*pi);
+  ddy=step*sin(angle/180*pi);
+  exec,makescan(opt_presqueeze_q4_10m_q5_9m,xxx,yyy,ddx,ddy,scan_q4_10m_q5_9m,presqueze_q4_scan99.3.tfs);
+  angle=angle+5.;
+  value,angle;
+};
+
