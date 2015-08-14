@@ -22,11 +22,11 @@ call,file="slhc/toolkit/macro.madx";
 call,file="slhc/toolkit/optics_log.madx";
 
 !call,file="slhc/opt_presqueeze.madx";
+call,file="opt_presqueeze.madx";
 !call,file="slhc/opt_round.madx";
-call,file="slhc/opt_presqueeze_thin.madx";
+!call,file="slhc/opt_presqueeze_thin.madx";
 
 if(is_thin==1){
-  value,2.00045;
   value, is_thin;
   call,file="slhc/hllhc_thin.seq";
 } else {
@@ -46,6 +46,7 @@ exec,check_ip(b1);exec,check_ip(b2);
 !exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
 
 exec, crossing_enable;
+exec,check_ip(b1);exec,check_ip(b2);
 
 regen_xing(filename): macro={
 call,file="slhc/opt_filename.madx";
@@ -67,7 +68,12 @@ exec,check_ip(b1); exec,check_ip(b2);
 
 test_xing(filename): macro={
 !system,"rm -r temp;mkdir temp;"
+if(is_thin==1){
+call,file="opt_filename_thin.madx";
+}
+else {
 call,file="opt_filename.madx";
+};
 !call,file="slhc/hllhc_sequence.madx";
 !cycle to not start at ip1
 seqedit, sequence=lhcb1;
@@ -119,11 +125,11 @@ exec, check_orbit;
 !Psep=0.75e-3;Xang=0.000210;
 !exec, regen_xing(flat);
 !*** check optics
-!exec, test_xing(presqueeze_new);
-!exec, test_xing(round_new);
-!exec, test_xing(inj_new);
-!exec, test_xing(flat_new);
-exec, test_xing(presqueeze_thin);
+exec, test_xing(presqueeze);
+!exec, test_xing(round);
+!exec, test_xing(inj);
+!exec, test_xing(flat);
+!exec, test_xing(presqueeze_thin);
 exec,crossing_enable;
 exec,orbcrab_disable;
 exec,check_ip(b1); exec,check_ip(b2);

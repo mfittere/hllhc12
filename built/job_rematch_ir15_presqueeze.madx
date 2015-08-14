@@ -31,7 +31,8 @@ bs_type=4; ap_mqx=150;
 call,   file="slhc/aperture/aperture_upgrade_IT.madx";
 call,   file="slhc/aperture/aperture_upgrade_MS.madx";
 
-call,file="slhc/opt_presqueeze.madx";
+!call,file="slhc/opt_presqueeze.madx";
+call,file="opt_presqueeze_new.madx";
 !HLLHCV1.1 sequence file
 !call,file="/afs/cern.ch/eng/lhc/optics/HLLHCV1.1/hllhc_sequence.madx";
 
