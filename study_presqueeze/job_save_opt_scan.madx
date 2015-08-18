@@ -1,0 +1,143 @@
+!call, file=job_rematch_ir15_presqueeze.madx;
+!*****************************************************************************************************************
+!   totally mismatched optics with strong "Doublet" Q4-Q5
+!******************************************************************************************************************
+
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
+system,"ln -fns /Users/mfittere/HiLumi/HLLHCV1.2 slhc";
+option,-echo,-info,-warn;
+
+Option, -echo,-warn,-info;
+REAL CONST l.TAN   = 3.7  ;REAL CONST l.TANAL = l.TAN;
+REAL CONST l.TANAR = l.TAN;REAL CONST l.TANC  = l.TAN;
+REAL CONST l.TCT   = 1.0;REAL CONST l.TCTH  = l.TCT;REAL CONST l.TCTVA = l.TCT;
+call,file="db5/V6.5.seq";
+Option, -echo,warn,-info,no_fatal_stop;
+
+call,file="slhc/toolkit/macro.madx";
+
+call,file="opt_presqueeze.madx";
+on_layout_custom=0;
+call,file="hllhc_sequence.madx";
+
+exec,mk_beam(7000);
+
+exec,check_ip(b1);exec,check_ip(b2);
+exec,selectIR15(5,45,56,b1);exec,selectIR15(5,45,56,b2);
+exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
+
+mk_table(nnn):macro={
+create,table=nnn,column=idx,g1,g2,g3,posw3m,posw5m,
+  kqx1.r5,kqx2a.r5,kqx2b.r5,kqx3.r5,
+  kqx1.l5,kqx2a.l5,kqx2b.l5,kqx3.l5,
+  kq4.l5b1,kq5.l5b1,kq6.l5b1,kq7.l5b1,kq8.l5b1,kq9.l5b1,kq10.l5b1,
+  kqtl11.l5b1,kqt12.l5b1,kqt13.l5b1,
+  kq4.r5b1,kq5.r5b1,kq6.r5b1,kq7.r5b1,kq8.r5b1,kq9.r5b1,kq10.r5b1,
+  kqtl11.r5b1,kqt12.r5b1,kqt13.r5b1,
+  kq4.l5b2,kq5.l5b2,kq6.l5b2,kq7.l5b2,kq8.l5b2,kq9.l5b2,kq10.l5b2,
+  kqtl11.l5b2,kqt12.l5b2,kqt13.l5b2,
+  kq4.r5b2,kq5.r5b2,kq6.r5b2,kq7.r5b2,kq8.r5b2,kq9.r5b2,kq10.r5b2,
+  kqtl11.r5b2,kqt12.r5b2,kqt13.r5b2,
+  betxip5b1,betyip5b1,alfxip5b1,alfyip5b1,dxip5b1,dpxip5b1,
+  betxip5b2,betyip5b2,alfxip5b2,alfyip5b2,dxip5b2,dpxip5b2,
+  l.mqxl,l.mqx,dq1q2a,dq2aq2b,dq2bq3,deltaposq4,deltaposq5,deltaposq6,
+  dq1aq1b,grad,
+  scl,sch,bmaxds,sc79,betx_marke,bety_marke,
+  ir5q4sym,ir5q5sym,imb,
+  betx_mcby_ref,bety_mcby_ref,
+  betxmax_mqxfa.b3l5,betymax_mqxfb.b2l5,betymax_mqxfb.c2l5,betymax_mqxfb.d2l5,
+  v_crabh.l1b1,v_crabh.r1b1,v_crabh.l5b1,v_crabh.r5b1,v_crabh.l1b2,v_crabh.r1b2,v_crabh.l5b2,v_crabh.r5b2,
+  v_crabv.l1b1,v_crabv.r1b1,v_crabv.l5b1,v_crabv.r5b1,v_crabv.l1b2,v_crabv.r1b2,v_crabv.l5b2,v_crabv.r5b2,
+  betx_acfdlb1_ref,bety_acfdlb1_ref,alfx_acfdlb1_ref,alfy_acfdlb1_ref,
+  betx_acfdrb1_ref,bety_acfdrb1_ref,alfx_acfdrb1_ref,alfy_acfdrb1_ref,
+  betx_acfdlb2_ref,bety_acfdlb2_ref,alfx_acfdlb2_ref,alfy_acfdlb2_ref,
+  betx_acfdrb2_ref,bety_acfdrb2_ref,alfx_acfdrb2_ref,alfy_acfdrb2_ref,
+  betx_acfclb1_ref,bety_acfclb1_ref,alfx_acfclb1_ref,alfy_acfclb1_ref,
+  betx_acfcrb1_ref,bety_acfcrb1_ref,alfx_acfcrb1_ref,alfy_acfcrb1_ref,
+  betx_acfclb2_ref,bety_acfclb2_ref,alfx_acfclb2_ref,alfy_acfclb2_ref,
+  betx_acfcrb2_ref,bety_acfcrb2_ref,alfx_acfcrb2_ref,alfy_acfcrb2_ref,
+  betx_acfblb1_ref,bety_acfblb1_ref,alfx_acfblb1_ref,alfy_acfblb1_ref,
+  betx_acfbrb1_ref,bety_acfbrb1_ref,alfx_acfbrb1_ref,alfy_acfbrb1_ref,
+  betx_acfblb2_ref,bety_acfblb2_ref,alfx_acfblb2_ref,alfy_acfblb2_ref,
+  betx_acfbrb2_ref,bety_acfbrb2_ref,alfx_acfbrb2_ref,alfy_acfbrb2_ref,
+  betx_acfalb1_ref,bety_acfalb1_ref,alfx_acfalb1_ref,alfy_acfalb1_ref,
+  betx_acfarb1_ref,bety_acfarb1_ref,alfx_acfarb1_ref,alfy_acfarb1_ref,
+  betx_acfalb2_ref,bety_acfalb2_ref,alfx_acfalb2_ref,alfy_acfalb2_ref,
+  betx_acfarb2_ref,bety_acfarb2_ref,alfx_acfarb2_ref,alfy_acfarb2_ref,
+  betx_wire3mlb1_ref,bety_wire3mlb1_ref,alfx_wire3mlb1_ref,alfy_wire3mlb1_ref,
+  betx_wire3mrb1_ref,bety_wire3mrb1_ref,alfx_wire3mrb1_ref,alfy_wire3mrb1_ref,
+  betx_wire3mlb2_ref,bety_wire3mlb2_ref,alfx_wire3mlb2_ref,alfy_wire3mlb2_ref,
+  betx_wire3mrb2_ref,bety_wire3mrb2_ref,alfx_wire3mrb2_ref,alfy_wire3mrb2_ref,
+  betx_wire5mlb1_ref,bety_wire5mlb1_ref,alfx_wire5mlb1_ref,alfy_wire5mlb1_ref,
+  betx_wire5mrb1_ref,bety_wire5mrb1_ref,alfx_wire5mrb1_ref,alfy_wire5mrb1_ref,
+  betx_wire5mlb2_ref,bety_wire5mlb2_ref,alfx_wire5mlb2_ref,alfy_wire5mlb2_ref,
+  betx_wire5mrb2_ref,bety_wire5mrb2_ref,alfx_wire5mrb2_ref,alfy_wire5mrb2_ref;
+};
+
+exec,newel_ir15_b12(WIRE3M,MARKER);
+exec,newel_ir15_b12(WIRE5M,MARKER);
+gen_optics(ooo,dirfn,infn,ppp,iii,ttt): macro={
+  call,file="ooo.madx";
+  on_layout_custom=1;
+  call,file="hllhc_sequence.madx";
+  posw3m=posQ4+l.MQYY/2+3.0;
+  posw5m=posQ4+l.MQYY/2+5.0;
+  value, posw3m,posw5m;
+  exec,install_ir15_b12(WIRE3M,posw3m);
+  exec,install_ir15_b12(WIRE5M,posw5m);
+  exec,check_ip(b1);exec,check_ip(b2);
+  value, betx_mcby_ref;
+  exec, crossing_disable;
+  exec, orbcrab_disable;on_o1=0;on_o5=0;
+!  print,text="dirfn/infn";
+!  print,text="ppp";
+  readmytable,table=ir5_log,file=dirfn/infn;
+  setvars,table=ir5_log,row=iii;
+  value, betx_mcby_ref;
+  grad=132.6;
+  scl=0.10; sch=0.95;sc79=0.993;bmaxds=500;imb=1.30;
+  match_on_tripletconst=0;ir5q4sym=0;ir5q5sym=0;
+  match_inj_tunes=0;match_on_aperture=0;
+  apq789=0; apq5=0; apq6=0; apq4=0; apq1011=0;
+  jac_calls=10; bisec=3; jac_tol=1e-16;
+  match_on_triplet=3;!first match with match_on_triplet =1, then fine tune for equal beta functions with match_on_triplet=3
+  bety_q3=0;!not stored
+  betx_mcby=betx_mcby_ref;bety_mcby =bety_mcby_ref;
+  betyip5b1:=betxip5b1;betxip5b2:=betxip5b1;betyip5b2:=betyip5b1;betxip5b1=0.48;
+  call,file="rematch_ir15_b12.madx";!original matching script
+  if (tarir15b12>1e-15) { stop;};
+  call,file="slhc/toolkit/rematch_globalw.madx";
+  call,file="slhc/toolkit/rematch_crossing.madx";
+  if (tarcrossing>1e-15) { stop;};
+  if (tarcrossing+tarir37b12+tarsqueeze+tarir15b12<1e-15){
+    call,file="slhc/toolkit/rematch_crabs.madx";
+    call,file="slhc/toolkit/mk_ir28_knobs.madx";
+    on_check=1; call,file="slhc/toolkit/save_optics2.madx";
+    system,"cp temp/optics.madx dirfn/ooo_iii_ttt.madx";
+  };
+  exec,check_ip(b1); exec,check_ip(b2);
+  exec, crossing_enable;
+  exec,check_ip(b1);exec,check_ip(b2);
+  idx=iii;
+  fill,table=ppp; write,table=ppp,file=dirfn/presqueeze_q4_scan_opt99.3_new.tfs;
+};
+
+!exec, mk_table(lq48q511);
+!exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,1,org);
+!exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,933,wire);
+!exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,1009,ccvolt);
+!exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,236,imp);
+
+exec, mk_table(lq410q513);
+exec, gen_optics(opt_presqueeze_q4_10m_q5_13m,scan_q4_10m_q5_13m,presqueze_q4_scan99.3.tfs,lq410q513,1,org);
+exec, gen_optics(opt_presqueeze_q4_10m_q5_13m,scan_q4_10m_q5_13m,presqueze_q4_scan99.3.tfs,lq410q513,524,wire);
+exec, gen_optics(opt_presqueeze_q4_10m_q5_13m,scan_q4_10m_q5_13m,presqueze_q4_scan99.3.tfs,lq410q513,1252,ccvolt);
+exec, gen_optics(opt_presqueeze_q4_10m_q5_13m,scan_q4_10m_q5_13m,presqueze_q4_scan99.3.tfs,lq410q513,355,imp);
+
+exec, mk_table(lq46q59);
+exec, gen_optics(opt_presqueeze_q4_6m_q5_9m,scan_q4_6m_q5_9m,presqueze_q4_scan99.3.tfs,lq46q59,1,org);
+exec, gen_optics(opt_presqueeze_q4_6m_q5_9m,scan_q4_6m_q5_9m,presqueze_q4_scan99.3.tfs,lq46q59,718,wire);
+exec, gen_optics(opt_presqueeze_q4_6m_q5_9m,scan_q4_6m_q5_9m,presqueze_q4_scan99.3.tfs,lq46q59,1081,ccvolt);
+exec, gen_optics(opt_presqueeze_q4_6m_q5_9m,scan_q4_6m_q5_9m,presqueze_q4_scan99.3.tfs,lq46q59,250,imp);
