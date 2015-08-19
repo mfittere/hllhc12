@@ -88,15 +88,15 @@ def mktab_opt(fn):
     print_opt(t,name,idx,lw5q5)
 
 print_con();
-#mktab_opt('scan_q4_8m/presqueeze_q4_scan_opt99.3.tfs')
-#mktab('scan_q4_8m/presqueze_q4_scan99.3.tfs')
-#print '----'
+mktab_opt('scan_q4_8m/presqueeze_q4_scan_opt99.3.tfs')
+mktab('scan_q4_8m/presqueze_q4_scan99.3.tfs')
+print '----'
 mktab_opt('scan_q4_10m_q5_13m/presqueeze_q4_scan_opt99.3.tfs')
 mktab('scan_q4_10m_q5_13m/presqueze_q4_scan99.3.tfs')
-#print '----'
-#mktab_opt('scan_q4_6m_q5_9m/presqueeze_q4_scan_opt99.3.tfs')
-#mktab('scan_q4_6m_q5_9m/presqueze_q4_scan99.3.tfs')
-
-mktab_opt('scan_q4_8m/presqueeze_q4_scan_opt99.3.tfs')
-mktab_opt('scan_q4_10m_q5_13m/presqueeze_q4_scan_opt99.3.tfs')
+print '----'
 mktab_opt('scan_q4_6m_q5_9m/presqueeze_q4_scan_opt99.3.tfs')
+mktab('scan_q4_6m_q5_9m/presqueze_q4_scan99.3.tfs')
+
+#mktab_opt('scan_q4_8m/presqueeze_q4_scan_opt99.3.tfs')
+#mktab_opt('scan_q4_10m_q5_13m/presqueeze_q4_scan_opt99.3.tfs')
+#mktab_opt('scan_q4_6m_q5_9m/presqueeze_q4_scan_opt99.3.tfs')

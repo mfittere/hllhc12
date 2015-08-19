@@ -121,14 +121,14 @@ gen_optics(ooo,dirfn,infn,ppp,iii,ttt): macro={
   exec, crossing_enable;
   exec,check_ip(b1);exec,check_ip(b2);
   idx=iii;
-  fill,table=ppp; write,table=ppp,file=dirfn/presqueeze_q4_scan_opt99.3_new.tfs;
+  fill,table=ppp; write,table=ppp,file=dirfn/presqueeze_q4_scan_opt99.3.tfs;
 };
 
-!exec, mk_table(lq48q511);
-!exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,1,org);
-!exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,933,wire);
-!exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,1009,ccvolt);
-!exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,236,imp);
+exec, mk_table(lq48q511);
+exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,1,org);
+exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,933,wire);
+exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,1009,ccvolt);
+exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,236,imp);
 
 exec, mk_table(lq410q513);
 exec, gen_optics(opt_presqueeze_q4_10m_q5_13m,scan_q4_10m_q5_13m,presqueze_q4_scan99.3.tfs,lq410q513,1,org);
