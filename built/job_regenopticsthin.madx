@@ -13,9 +13,9 @@ Option, -echo,warn,-info;
 
 call,file="slhc/toolkit/macro.madx";
 
-call,file="slhc/hllhc_sequence.madx";
+call,file="hllhc_sequence.madx";
 
-save,sequence=lhcb1,lhcb2,file=hllhc.seq;
+!save,sequence=lhcb1,lhcb2,file=hllhc.seq;
 
 exec,myslice;
 
@@ -25,8 +25,9 @@ exec,mk_beam(7000);
 
 
 regen_optics(filename): macro={
-call,file="slhc/opt_filename.madx"; is_thin=1;
-!call,file="slhc/opt_presqueeze.madx"; is_thin=1;
+!call,file="slhc/opt_filename.madx"; is_thin=1;
+call,file="slhc/opt_filename_wire.madx"; is_thin=1;
+print, text="slhc/opt_filename_wire.madx";
 exec,check_ip(b1); exec,check_ip(b2);
 call,file="toolkit/clean_specs.madx";
 call,file="toolkit/rematch_arcs.madx";
@@ -48,7 +49,7 @@ if (tarcrossing+tarir37b12+tarsqueeze+tarir15b12<1e-15){
   call,file="toolkit/mk_ir28_knobs.madx";
   on_check=1; call,file="toolkit/save_optics2.madx";
 !  system,"cp temp/optics.madx opt_filename_thin.madx";
-  system,"cp temp/optics.madx opt_presqueeze_thin.madx";
+  system,"cp temp/optics.madx opt_filename_wire_thin.madx";
 !  save,file="filename.seq";
 };
 exec,check_ip(b1); exec,check_ip(b2);
@@ -57,14 +58,13 @@ exec,check_ip(b1); exec,check_ip(b2);
 !create Presqueeze
 !exec,regen_optics(presqueeze);
 !exec,regen_optics(ions);
-
 !load presqueezed optics
-!call,file="slhc/hllhc_thin.seq";
-!call,file="slhc/opt_presqueeze_thin.madx";
+call,file="slhc/hllhc_thin.seq";
+call,file="slhc/opt_presqueeze_wire_thin.madx";
 
 !save ir optics for creating squeezed optics
-!call,file="toolkit/save_optics_ir1537arc.madx";
-!system,"cp temp/optics_ir1537arc.madx optics_ir1537arc_thin.madx";
+call,file="toolkit/save_optics_ir1537arc.madx";
+system,"cp temp/optics_ir1537arc.madx optics_ir1537arc_thin.madx";
 !copy ir4637 for injection optics as it stays the same
 !call,file="toolkit/save_optics_ir4637arc.madx";
 !system,"cp temp/optics_ir4637arc.madx optics_ir4637arc_thin.madx";
@@ -75,8 +75,8 @@ exec,check_ip(b1); exec,check_ip(b2);
 ! Squeeze
 
 regen_squeeze(filename): macro={
-call,file="slhc/opt_filename.madx"; is_thin=1;
-!call,file="slhc/opt_round.madx"; is_thin=1;
+!call,file="slhc/opt_filename.madx"; is_thin=1;
+call,file="slhc/opt_filename_wire.madx"; is_thin=1;
 call,file="optics_ir1537arc_thin.madx";
 call,file="toolkit/clean_specs.madx";
 exec,check_ip(b1); exec,check_ip(b2);
@@ -95,17 +95,17 @@ if (tarcrossing>1e-15) { return;};
 if (tarsqueeze+tarir37b12+tarcrossing<1e-15){
  call,file="toolkit/mk_ir28_knobs.madx";
  on_check=1; call,file="toolkit/save_optics2.madx";
- system,"cp temp/optics.madx opt_filename_thin.madx";
-! system,"cp temp/optics.madx opt_round_thin.madx";
+! system,"cp temp/optics.madx opt_filename_thin.madx";
+ system,"cp temp/optics.madx opt_filename_wire_thin.madx";
 ! save,file="filename.seq";
 };
 exec,check_ip(b1); exec,check_ip(b2);
 };
 
 !exec,mk_beam(7000);
-!exec,regen_squeeze(round);
+exec,regen_squeeze(round);
 !exec,regen_squeeze(sround);
-!exec,regen_squeeze(flat);
+exec,regen_squeeze(flat);
 !exec,regen_squeeze(flathv);
 !exec,regen_squeeze(sflat);
 !exec,regen_squeeze(sflathv);
