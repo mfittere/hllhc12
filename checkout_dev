@@ -1,0 +1,3 @@
+git checkout dev aperture/*.py
+git checkout dev aperture/*.madx
+git checkout dev aperture/offset*
