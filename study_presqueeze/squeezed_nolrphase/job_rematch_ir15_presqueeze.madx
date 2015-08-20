@@ -1,0 +1,110 @@
+!call, file=job_rematch_ir15_presqueeze.madx;
+!*****************************************************************************************************************
+!   totally mismatched optics with strong "Doublet" Q4-Q5
+!******************************************************************************************************************
+
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
+system,"ln -fns /Users/mfittere/HiLumi/HLLHCV1.2 slhc";
+option,-echo,-info,-warn;
+
+Option, -echo,-warn,-info;
+REAL CONST l.TAN   = 3.7  ;REAL CONST l.TANAL = l.TAN;
+REAL CONST l.TANAR = l.TAN;REAL CONST l.TANC  = l.TAN;
+REAL CONST l.TCT   = 1.0;REAL CONST l.TCTH  = l.TCT;REAL CONST l.TCTVA = l.TCT;
+call,file="db5/V6.5.seq";
+call,   file="db5/aperture/aperture.b1.madx";
+call,   file="db5/aperture/aperture.b2.madx";
+call,   file="db5/aperture/aper_tol.b1.madx";
+call,   file="db5/aperture/aper_tol.b2.madx";
+Option, -echo,warn,-info,no_fatal_stop;
+
+call,file="slhc/toolkit/macro.madx";
+call,file="slhc/toolkit/optics_log.madx";
+
+call,file="opt_presqueeze.madx";
+on_layout_custom=0;
+call,file="hllhc_sequence.madx";
+
+bs_type=4; ap_mqx=150;
+call,   file="slhc/aperture/aperture_upgrade_IT.madx";
+call,   file="slhc/aperture/aperture_upgrade_MS.madx";
+
+exec,mk_beam(7000);
+
+exec,check_ip(b1);exec,check_ip(b2);
+exec,selectIR15(5,45,56,b1);exec,selectIR15(5,45,56,b2);
+exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
+
+return;
+exec, crossing_disable;
+!exec,make_opticstbl_ir5hl;write,table=ir5hl_log_str,file=ir5hl_log_str.tfs;!create file
+exec,read_opticstbl(ir5hl); !exec,read_opticstbl(ir5);!ir5=normal optics, ir5hl=hilumi optics
+!exec,load_optics(ir5hl,5); exec,copyir5to1;
+exec,load_lastoptics(ir5hl);exec,copyir5to1;
+
+exec, check_ip(b1);exec, check_ip(b2);
+on_opticstbl_ir5hl=1;
+exec,store_optics(ir5hl);!save optics
+
+! Q4/Q5 position
+!destination values
+deltaposQ4=8.047;
+deltaposQ5=11.0;
+
+deltaposQ4=10.047;
+deltaposQ5=13.0;
+
+on_layout_custom=1;
+call,file="hllhc_sequence.madx";
+
+!****** matching parameters for different optics
+!---- pre-squeezed optics
+grad=132.6;
+scl=0.10; sch=0.95;sc79=2.0;bmaxds=500;imb=1.30;
+match_on_tripletconst=0;ir5q4sym=0;ir5q5sym=0;
+match_inj_tunes=1;match_on_aperture=0;
+apq789=0; apq5=0; apq6=0; apq4=0; apq1011=0;
+jac_calls=0; bisec=3; jac_tol=1e-16;
+
+match_on_triplet=1;!first match with match_on_triplet =1, then fine tune for equal beta functions with match_on_triplet=3
+bety_q3=6754.1;
+betx_mcby=0;bety_mcby =0;
+betyip5b1:=betxip5b1;betxip5b2:=betxip5b1;betyip5b2:=betyip5b1;betxip5b1=0.307;
+jac_calls=30;apq789=850;
+call,file="rematch_ir15_b12.madx";!original matching script
+value, grad;
+value, deltaposQ4,deltaposQ5;
+! *** check aperture and optics
+seqedit, sequence=lhcb1;
+cycle,start=s.ds.l1.b1;
+endedit;
+seqedit, sequence=lhcb2;
+cycle,start=s.ds.l1.b2;
+endedit;
+
+! **** steps to take to get opt_presqueeze.madx
+exec, crossing_disable;
+exec, orbcrab_disable;
+on_o1=0;on_o5=0;
+call,file="slhc/toolkit/rematch_arcs.madx";
+call,file="slhc/toolkit/rematch_squeeze.madx";
+call,file="slhc/toolkit/rematch_ir37b12.madx";
+call,file="slhc/toolkit/rematch_globalw.madx";
+call,file="slhc/toolkit/rematch_crossing.madx";!match crossing ir1528
+call,file="slhc/toolkit/rematch_crabs.madx";
+call,file="toolkit/mk_ir28_knobs.madx";
+
+exec, crossing_disable;
+exec,check_ip(b1);exec,check_ip(b2);
+exec, crossing_enable;
+exec,check_ip(b1);exec,check_ip(b2);
+
+!save the optics
+exec, crossing_disable;
+exec, orbcrab_disable; on_o1=0;on_o5=0;
+arc_squeeze=0.5;!presqueeze
+on_check=1; call,file="slhc/toolkit/save_optics2.madx";
+system,"cp temp/optics.madx opt_presqueeze_new.madx";
+save,file="presqueeze.seq";
