@@ -57,11 +57,13 @@ exec,check_ip(b1); exec,check_ip(b2);
 
 
 regen_optics(filename): macro={
-call,file="slhc/opt_filename.madx";
-call,file="slhc/hllhc_sequence.madx";
+print, text="opt_filename.madx";
+call,file="opt_filename.madx";
+call,file="hllhc_sequence.madx";
 exec,check_ip(b1); exec,check_ip(b2);
 call,file="toolkit/rematch_arcs.madx";
-call,file="toolkit/rematch_presqueeze.madx";
+!call,file="toolkit/rematch_presqueeze.madx";
+call,file="toolkit/rematch_presqueeze_wire.madx";
 if (tarir15b12>1e-15) { stop;};
 call,file="toolkit/rematch_squeeze.madx";
 if (tarsqueeze>1e-15) { stop;};
@@ -71,9 +73,10 @@ call,file="toolkit/rematch_globalw.madx";
 call,file="toolkit/rematch_crossing.madx";
 if (tarcrossing>1e-15) { stop;};
 if (tarcrossing+tarir37b12+tarsqueeze+tarir15b12<1e-15){
- call,file="slhc/toolkit/rematch_crabs.madx";
+ call,file="toolkit/rematch_crabs.madx";
  call,file="toolkit/mk_ir28_knobs.madx";
  on_check=1; call,file="toolkit/save_optics2.madx";
+print, text="cp temp/optics.madx opt_filename_new.madx";
  system,"cp temp/optics.madx opt_filename_new.madx";
  save,file="filename.seq";
 };
@@ -84,8 +87,11 @@ exec,mk_beam(7000);
 call,file="slhc/hllhc_sequence.madx";
 call,file="slhc/opt_presqueeze.madx";
 exec,check_ip(b1); exec,check_ip(b2);
-
+return;
+!opt_presqueeze_wire.madx = optics from study_presqueeze/scan_q4_8m/opt_presqueeze_933_wire.madx - optimized for wire ratio
+!regen_optics does not work due to _wire in filename
 !exec,regen_optics(presqueeze);
+
 call,file="toolkit/save_optics_ir1537arc.madx";
 system,"cp temp/optics_ir1537arc.madx optics_ir1537arc_new.madx";
 call,file="toolkit/save_optics_ir4637arc.madx";
@@ -98,9 +104,9 @@ system,"cp temp/optics_ir4637arc.madx optics_ir4637arc_new.madx";
 ! Squeeze
 
 regen_squeeze(filename): macro={
-call,file="opt_filename.madx";
+call,file="slhc/opt_filename.madx";
 call,file="optics_ir1537arc_new.madx";
-call,file="slhc/hllhc_sequence.madx";
+call,file="hllhc_sequence.madx";
 call,file="toolkit/clean_specs.madx";
 exec,check_ip(b1); exec,check_ip(b2);
 call,file="toolkit/rematch_squeeze.madx";
@@ -108,7 +114,7 @@ if (tarsqueeze>1e-15) { return;};
 call,file="toolkit/rematch_globalw.madx";
 Psep=0.75e-3;Xang=0.000275;
 call,file="toolkit/rematch_crossing.madx";
-call,file="slhc/toolkit/rematch_crabs.madx";
+call,file="toolkit/rematch_crabs.madx";
 if (tarcrossing>1e-15) { return;};
 if (tarsqueeze+tarir37b12+tarcrossing<1e-15){
 call,file="toolkit/mk_ir28_knobs.madx";
@@ -120,9 +126,9 @@ exec,check_ip(b1); exec,check_ip(b2);
 };
 
 exec,mk_beam(7000);
-!exec,regen_squeeze(round);
+exec,regen_squeeze(round);
 !exec,regen_squeeze(sround);
-exec,regen_squeeze(flat);
+!exec,regen_squeeze(flat);
 return;
 !exec,regen_squeeze(flathv);
 !exec,regen_squeeze(sflat);
