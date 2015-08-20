@@ -1,0 +1,24 @@
+rsync -avz hllhc_sequence.madx /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/
+rsync -avz hllhc_thin.seq /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/
+rsync -avz hllhc.seq /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/
+
+rsync -avz opt_* /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/
+#rsync -avz opt_presqueeze.madx /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/
+#rsync -avz opt_round.madx /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/
+#rsync -avz opt_flat.madx /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/
+#rsync -avz opt_inj.madx /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/
+#rsync -avz opt_presqueeze_thin.madx /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/
+#rsync -avz opt_round_thin.madx /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/
+#rsync -avz opt_flat_thin.madx /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/
+#rsync -avz opt_inj_thin.madx /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/
+
+#rsync -avz aperture/* /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/aperture/
+rsync -avz aperture/*.madx /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/aperture/
+rsync -avz aperture/*.py /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/aperture/
+rsync -avz aperture/offset* /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/aperture/
+
+#rsync -avz toolkit/* /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/toolkit/
+rsync -avz toolkit/*.madx /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/toolkit/
+rsync -avz toolkit/*.py /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/toolkit/
+
+rsync -avz examples/job_* /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/examples/
