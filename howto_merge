@@ -1,0 +1,11 @@
+1) merge with branch master in order to be up to date
+git checkout dev
+git merge master
+2) update master branch
+git checkout master
+./checkout_dev #gets the current files from dev branch
+
+to add new files, you have to add them manually:
+git checkout dev opt_presqueeze_wire.madx
+
+then commit your changes
