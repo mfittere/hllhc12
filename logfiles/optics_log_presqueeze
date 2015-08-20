@@ -1,0 +1,33 @@
+----- pre-squeezed optics -----
+1       pre_squeeze optics of HLLHCV1.1 with HLLHCV1.2 hllhc_sequence.madx file, but on_layout_custom=1 with HLLHCV1.1 layout
+2       de-squeeze and reduce margin in imq5l, kq7.l5b2, betxip5b1=0.455
+3       de-squeeze to betxip5b1=0.5
+4       increase length: betxip5b1=0.5;l.mqx=6.91;l.mqxl=8.09;
+5       increase length,adjust distance between ITs: betxip5b1=0.5;l.mqx=6.93;l.mqxl=8.19;dq2bq3  =  3.6280;dq1q2a  =  3.62800;
+6       increase length,adjust distance between ITs: betxip5b1=0.5;l.mqx=6.93;l.mqxl=8.19;dq2bq3  =  3.6280;dq1q2a  =  3.62800;dq1aq1b =  0.6460;
+7       increase length,adjust distance between ITs: betxip5b1=0.5;l.mqx=7.15;l.mqxl=8.40;dq2bq3  =  3.6280;dq1q2a  =  3.62800;dq1aq1b =  0.6460;
+8       optics 7 with deltaposD2=-15.386200;
+->final layout reached
+9       equalize beta -> reduce Q1 gradient
+10      grad=132.6 -> gradient limitation reached
+11      squeeze beta*: betxip5b1=0.47;
+12      squeeze beta*: betxip5b1=0.46;
+13      squeeze beta*: betxip5b1=0.45;
+14      squeeze beta*: betxip5b1=0.446;
+15      squeeze beta*: betxip5b1=0.446;equalize beta_max in IT, bety_q3=7235;
+16      squeeze beta*: betxip5b1=0.443;
+17      squeeze beta*: betxip5b1=0.44;
+18      squeeze beta*: betxip5b1=0.44;equalize beta_max in IT, bety_q3=7360;
+19      squeeze beta*: betxip5b1=0.46;equalize beta_max in IT, bety_q3=7040;
+20      betxip5b1=0.46;equalize beta_max in IT and at crab cavtities, bety_q3=7140;betx_mcby_ref = 1087.256;bety_mcby_ref = 705 ;
+21      betxip5b1=0.46;equalize beta_max in IT and at crab cavtities ...
+22      betxip5b1=0.46;equalize beta_max in IT and at crab cavtities ...
+23      betxip5b1=0.46;equalize beta_max in IT and at crab cavtities: bety_q3=7045;bety_mcby = 740;
+24      betxip5b1=0.48;equalize beta_max in IT, 0.99 % of Q7 strength bety_q3=6756; betx_mcby_ref = 978.9829548; bety_mcby_ref = 715.05527; vcrab_max=v_crabv.l1b1 = 11.96468
+25      betxip5b1=0.48;bety_q3=6756; bety_mcby = 720; vcrab_max=v_crabv.l1b1 = 11.96468
+26      betxip5b1=0.48;bety_q3=6753.5;betx_mcby= 0;bety_mcby = 723; equalized beta-functions in IT to 1.e-1
+27      slightly wrong layout, now corrected: betxip5b1=0.48;bety_q3=6753.7;betx_mcby= 0;bety_mcby = 725; equalized beta-functions in IT to 1.e-1
+28      betxip5b1=0.48;bety_q3=6753.91;bety_mcby = 726.5; equalized beta-functions in IT to 1.e-1
+
+
+
