@@ -1,7 +1,7 @@
 option, warn,info;
 !system,"rm -rf temp"; system,"mkdir temp";
 !system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/ slhc";
-system,"ln -fns /Users/mfittere/HiLumi/HLLHCV1.2/ slhc";
+system,"ln -fns .. slhc";
 system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
 option,-echo,-info,-warn;
 Option, -echo,-warn,-info;
@@ -23,21 +23,20 @@ exec,mk_beam(7000);
 
 ! Presqueeze
 
-
 regen_optics(filename): macro={
 !call,file="slhc/opt_filename.madx"; is_thin=1;
-call,file="slhc/opt_filename_wire.madx"; is_thin=1;
-print, text="slhc/opt_filename_wire.madx";
+call,file="slhc/opt_filename_thin.madx"; is_thin=1;
+!call,file="slhc/opt_filename_wire.madx"; is_thin=1;
 exec,check_ip(b1); exec,check_ip(b2);
 call,file="toolkit/clean_specs.madx";
-call,file="toolkit/rematch_arcs.madx";
-call,file="toolkit/rematch_presqueeze.madx";
-if (tarir15b12>1e-20) { stop;};
-call,file="toolkit/rematch_squeeze.madx";
-if (tarsqueeze>1e-15) { stop;};
-call,file="toolkit/rematch_ir37b12.madx";
-if (tarir37b12>1e-15) { stop;};
-call,file="toolkit/rematch_globalw.madx";
+!call,file="toolkit/rematch_arcs.madx";
+!call,file="toolkit/rematch_presqueeze.madx";
+!if (tarir15b12>1e-20) { stop;};
+!call,file="toolkit/rematch_squeeze.madx";
+!if (tarsqueeze>1e-15) { stop;};
+!call,file="toolkit/rematch_ir37b12.madx";
+!if (tarir37b12>1e-15) { stop;};
+!call,file="toolkit/rematch_globalw.madx";
 Poff=2.0e-03;
 Occ:=5.0e-4;dABCD:=2.5e-04;
 !presqueeze+round+inj
@@ -45,18 +44,19 @@ Occ:=5.0e-4;dABCD:=2.5e-04;
 call,file="toolkit/rematch_crossing.madx";
 if (tarcrossing>1e-15) { stop;};
 if (tarcrossing+tarir37b12+tarsqueeze+tarir15b12<1e-15){
-  call,file="slhc/toolkit/rematch_crabs.madx";
+  call,file="toolkit/rematch_crabs.madx";
   call,file="toolkit/mk_ir28_knobs.madx";
   on_check=1; call,file="toolkit/save_optics2.madx";
-!  system,"cp temp/optics.madx opt_filename_thin.madx";
-  system,"cp temp/optics.madx opt_filename_wire_thin.madx";
+  system,"cp temp/optics.madx opt_filename_thin.madx";
+!  system,"cp temp/optics.madx opt_filename_wire_thin.madx";
 !  save,file="filename.seq";
 };
 exec,check_ip(b1); exec,check_ip(b2);
 };
 
 !create Presqueeze
-!exec,regen_optics(presqueeze);
+exec,regen_optics(presqueeze);
+return;
 !exec,regen_optics(ions);
 !load presqueezed optics
 call,file="slhc/hllhc_thin.seq";
