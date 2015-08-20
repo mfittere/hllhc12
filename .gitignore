@@ -1,0 +1,13 @@
+*.swp
+*.pyc
+twiss_*.tfs
+.DS_Store
+Q1_APERTURE
+Q2Q3_APERTURE
+d2_aperture
+q4_aperture
+mcbrd_aperture
+slhc
+db5
+temp/
+*/temp/
