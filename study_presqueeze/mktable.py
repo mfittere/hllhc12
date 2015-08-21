@@ -46,6 +46,34 @@ def print_opt(t,name,idx,lw5q5):
     idx0=idx
   print fmt%(idx0,name.ljust(10),bxbywire3,bxbywire7,t['betx_wire3mrb2_ref'][idx],t['betx_wire7mrb2_ref'][idx],t['bety_wire3mrb2_ref'][idx],t['bety_wire7mrb2_ref'][idx],vmax[idx],imp[idx]*1.e-3,t['betx_mbrdrb2_ref'][idx],t['bety_mbrdrb2_ref'][idx],t['betx_mcby_ref'][idx],t['bety_mcby_ref'][idx],t['betx_q5rb2_ref'][idx],t['bety_q5rb2_ref'][idx])
 
+def print_opt_sum(t,name,idx,lw5q5):
+  # wire
+  bxbywire5=t['betx_wire5mrb2_ref'][idx]/t['bety_wire5mrb2_ref'][idx]
+  bmaxwire5=max([t['betx_wire5mrb2_ref'][idx],t['bety_wire5mrb2_ref'][idx]])
+  bminwire5=min([t['betx_wire5mrb2_ref'][idx],t['bety_wire5mrb2_ref'][idx]])
+  #cc voltage
+  t,vmax=get_cc_max(t)
+  #impedance
+  imp=get_sum_beta(t)
+  #Q4
+  bmaxq4=max([t['betx_mcby_ref'][idx],t['bety_mcby_ref'][idx]])
+  bminq4=min([t['betx_mcby_ref'][idx],t['bety_mcby_ref'][idx]])
+  #Q5
+  t['betx_q5lb1_ref'],t['bety_q5lb1_ref'],t['betx_q5rb2_ref'],t['bety_q5rb2_ref']=from_wire_5m(t,lw5q5) 
+  bmaxq5=max([t['betx_q5lb1_ref'][idx],t['bety_q5lb1_ref'][idx],t['betx_q5rb2_ref'][idx],t['bety_q5rb2_ref'][idx]])
+  bminq5=min([t['betx_q5lb1_ref'][idx],t['bety_q5lb1_ref'][idx],t['betx_q5rb2_ref'][idx],t['bety_q5rb2_ref'][idx]])
+  #D2
+  lacfad2=-18.972000#distance start D2 and ACFA cavity
+  t['betx_mbrdlb1_ref'],t['bety_mbrdlb1_ref'],t['betx_mbrdrb2_ref'],t['bety_mbrdrb2_ref']=from_acfa(t,lacfad2)
+  bmaxd2=max([t['betx_mbrdlb1_ref'][idx],t['bety_mbrdlb1_ref'][idx],t['betx_mbrdrb2_ref'][idx],t['bety_mbrdrb2_ref'][idx]])
+  bmind2=min([t['betx_mbrdlb1_ref'][idx],t['bety_mbrdlb1_ref'][idx],t['betx_mbrdrb2_ref'][idx],t['bety_mbrdrb2_ref'][idx]])
+  fmt='%4u %10s'+('%5.2f'.center(15))+('%5.2f/%5.2f'.center(30))+('%5.2f'.center(15))+('%5.4f'.center(16))+('%5.2f/%5.2f'.center(15)*3) 
+  if 'idx' in t.keys():
+    idx0=t.idx[idx]-1
+  else:
+    idx0=idx
+  print fmt%(idx0,name.ljust(10),bxbywire5,bminwire5,bmaxwire5,vmax[idx],imp[idx]*1.e-3,bmind2,bmaxd2,bminq4,bmaxq4,bminq5,bmaxq5)
+
 def print_con():
   print 'wire: RB2'
   print 'MCBYY: RB2'
@@ -59,6 +87,12 @@ def print_header(fn):
   w37='   3m    7m    '
   print fmt%('idx','optics'.ljust(10),'betx/bety(wire)','betx(wire) [m]'.center(15),'bety(wire) [m]'.center(15),'Vmax [MV]'.center(10),'sum_beta_cc [km]'.center(16),'MBRD [m]'.center(15),'MCBYY [m]'.center(15),'MQY [m]'.center(15))
   print fmt%('','',w37,w37,w37,'','','betx    bety'.center(15),'betx    bety'.center(15),'betx    bety'.center(15))
+
+def print_header_sum(fn):
+  print '\n%s'%fn
+  fmt='%4s %10s %15s %30s %15s %16s %15s %15s %15s'
+  print ' '.center(100)+'betmin/betmax [m]'.center(45)
+  print fmt%('idx','optics'.ljust(10),'betx/bety(wire)','betmin/betmax(wire) [m]'.center(30),'Vmax [MV]'.center(15),'sum_beta_cc [km]'.center(16),'MBRD [m]'.center(15),'MCBYY [m]'.center(15),'MQY [m]'.center(15))
 
 def mktab(fn):
   print_header(fn)
@@ -83,9 +117,16 @@ def mktab(fn):
 def mktab_opt(fn):
   print_header(fn)
   t=optics.open(fn)
-  lw5q5=21.275
+  lw5q5=21.275#distance wire 5m to q5
   for idx,name in zip(range(len(t['idx'])),['presqueeze','wire','ccvolt','impedance','q4ap']):
     print_opt(t,name,idx,lw5q5)
+
+def mktab_opt_sum(fn):
+  print_header_sum(fn)
+  t=optics.open(fn)
+  lw5q5=21.275#distance wire 5m to q5
+  for idx,name in zip(range(len(t['idx'])),['presqueeze','wire','ccvolt','impedance','q4ap']):
+    print_opt_sum(t,name,idx,lw5q5)
 
 print_con();
 mktab_opt('scan_q4_8m/presqueeze_q4_scan_opt99.3.tfs')
@@ -100,3 +141,6 @@ mktab('scan_q4_6m_q5_9m/presqueze_q4_scan99.3.tfs')
 #mktab_opt('scan_q4_8m/presqueeze_q4_scan_opt99.3.tfs')
 #mktab_opt('scan_q4_10m_q5_13m/presqueeze_q4_scan_opt99.3.tfs')
 #mktab_opt('scan_q4_6m_q5_9m/presqueeze_q4_scan_opt99.3.tfs')
+#mktab_opt_sum('scan_q4_8m/presqueeze_q4_scan_opt99.3.tfs')
+#mktab_opt_sum('scan_q4_10m_q5_13m/presqueeze_q4_scan_opt99.3.tfs')
+#mktab_opt_sum('scan_q4_6m_q5_9m/presqueeze_q4_scan_opt99.3.tfs')

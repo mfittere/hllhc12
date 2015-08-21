@@ -17,7 +17,7 @@ def from_acfa(t,ldrift):
   bxrb2=t.betx_acfarb2_ref-2*t.alfx_acfarb2_ref*ldrift+ldrift**2*(1+t.alfx_acfarb2_ref**2)/t.betx_acfarb2_ref
   byrb2=t.bety_acfarb2_ref-2*t.alfy_acfarb2_ref*ldrift+ldrift**2*(1+t.alfy_acfarb2_ref**2)/t.bety_acfarb2_ref
   return bxlb1,bylb1,bxrb2,byrb2
-def get_cc(t,ll='r',bb='2'):
+def get_cc(t,ll='r',bb='2',xy='x'):
   """calculate the cc voltage *vcrab* in [MV]:
      vcrab = ncc*Ebeam*tan(xing)*sigma_s/(beta*sin(2*pi*hrf_cc*sigma_s/clight))*1.e-6
   ncc   : number of cc per IP and side (e.g. lb2)
@@ -35,7 +35,7 @@ def get_cc(t,ll='r',bb='2'):
   Ebeam=7.0e12 #V
   sigma_s=0.075 #bunch length [m]
   ncc=4#number of crab cavities
-  beta  = np.sum(np.array([ sqrt(beta_star*t['betx_acf%s%sb%s_ref'%(aa,ll,bb)]) for aa in 'abcd']),axis=0)
+  beta  = np.sum(np.array([ sqrt(beta_star*t['bet%s_acf%s%sb%s_ref'%(xy,aa,ll,bb)]) for aa in 'abcd']),axis=0)
   vcrab = ncc*Ebeam*tan(xing)*sigma_s/(beta*sin(2*pi*hrf_cc*sigma_s/clight))*1.e-6
   return vcrab
 def get_cc_max(t):
@@ -45,15 +45,15 @@ def get_cc_max(t):
   it is sufficient to take the max over one beam
   and one ir"""
   if 'v_crabv.r1b1' in t.keys():
-    aa=aa='v_crabh.l1b1,v_crabh.r1b1,v_crabh.l5b1,v_crabh.r5b1,v_crabh.l1b2,v_crabh.r1b2,v_crabh.l5b2,v_crabh.r5b2,v_crabv.l1b1,v_crabv.r1b1,v_crabv.l5b1,v_crabv.r5b1,v_crabv.l1b2,v_crabv.r1b2,v_crabv.l5b2,v_crabv.r5b2'.split(',')
+    aa='v_crabh.l1b1,v_crabh.r1b1,v_crabh.l5b1,v_crabh.r5b1,v_crabh.l1b2,v_crabh.r1b2,v_crabh.l5b2,v_crabh.r5b2,v_crabv.l1b1,v_crabv.r1b1,v_crabv.l5b1,v_crabv.r5b1,v_crabv.l1b2,v_crabv.r1b2,v_crabv.l5b2,v_crabv.r5b2'.split(',')
     t['vcrabh_lb2_ref'] = t['v_crabh.l5b2']
     t['vcrabh_rb2_ref'] = t['v_crabh.r5b2']
     vmax=np.max([ t[kk] for kk in aa ],axis=0)
   else:
-    t['vcrabh_lb2_ref'] = get_cc(t,ll='l',bb='2')
-    t['vcrabh_rb2_ref'] = get_cc(t,ll='r',bb='2')
-    aa=np.array([ t['vcrabh_lb2_ref'],t['vcrabh_rb2_ref']])
-    vmax=aa.max(axis=0)
+    t['vcrabh_lb2_ref'] = get_cc(t,ll='l',bb='2',xy='x')
+    t['vcrabh_rb2_ref'] = get_cc(t,ll='r',bb='2',xy='x')
+    vcrab = np.array([ get_cc(t,ll,bb,xy) for ll in 'lr' for bb in '12' for xy in 'xy' ])
+    vmax=vcrab.max(axis=0)
   return t,vmax
 
 def get_sum_beta(t):
