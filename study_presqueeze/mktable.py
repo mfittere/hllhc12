@@ -67,7 +67,7 @@ def print_opt_sum(t,name,idx,lw5q5):
   t['betx_mbrdlb1_ref'],t['bety_mbrdlb1_ref'],t['betx_mbrdrb2_ref'],t['bety_mbrdrb2_ref']=from_acfa(t,lacfad2)
   bmaxd2=max([t['betx_mbrdlb1_ref'][idx],t['bety_mbrdlb1_ref'][idx],t['betx_mbrdrb2_ref'][idx],t['bety_mbrdrb2_ref'][idx]])
   bmind2=min([t['betx_mbrdlb1_ref'][idx],t['bety_mbrdlb1_ref'][idx],t['betx_mbrdrb2_ref'][idx],t['bety_mbrdrb2_ref'][idx]])
-  fmt='%4u %10s'+('%5.2f'.center(15))+('%5.2f/%5.2f'.center(30))+('%5.2f'.center(15))+('%5.4f'.center(16))+('%5.2f/%5.2f'.center(15)*3) 
+  fmt='%4u&%10s&'+('%5.2f&'.center(15))+('%5.0f/%5.0f&'.center(30))+('%5.2f&'.center(15))+('%5.1f&'.center(16))+('%5.0f/%5.0f&'.center(15)*3) 
   if 'idx' in t.keys():
     idx0=t.idx[idx]-1
   else:
@@ -90,7 +90,7 @@ def print_header(fn):
 
 def print_header_sum(fn):
   print '\n%s'%fn
-  fmt='%4s %10s %15s %30s %15s %16s %15s %15s %15s'
+  fmt='%4s&%10s&%15s&%30s&%15s&%16s&%15s&%15s&%15s'
   print ' '.center(100)+'betmin/betmax [m]'.center(45)
   print fmt%('idx','optics'.ljust(10),'betx/bety(wire)','betmin/betmax(wire) [m]'.center(30),'Vmax [MV]'.center(15),'sum_beta_cc [km]'.center(16),'MBRD [m]'.center(15),'MCBYY [m]'.center(15),'MQY [m]'.center(15))
 
@@ -128,19 +128,29 @@ def mktab_opt_sum(fn):
   for idx,name in zip(range(len(t['idx'])),['presqueeze','wire','ccvolt','impedance','q4ap']):
     print_opt_sum(t,name,idx,lw5q5)
 
-print_con();
-mktab_opt('scan_q4_8m/presqueeze_q4_scan_opt99.3.tfs')
-mktab('scan_q4_8m/presqueze_q4_scan99.3.tfs')
-print '----'
-mktab_opt('scan_q4_10m_q5_13m/presqueeze_q4_scan_opt99.3.tfs')
-mktab('scan_q4_10m_q5_13m/presqueze_q4_scan99.3.tfs')
-print '----'
-mktab_opt('scan_q4_6m_q5_9m/presqueeze_q4_scan_opt99.3.tfs')
-mktab('scan_q4_6m_q5_9m/presqueze_q4_scan99.3.tfs')
+#--- compare different Q4/Q5 positions
+#print_con();
+#mktab('scan_q4_6m/presqueze_q4_scan99.3.tfs')
+#mktab('scan_q4_8m/presqueze_q4_scan99.3.tfs')
+#mktab('scan_q4_10m/presqueze_q4_scan99.3.tfs')
+#mktab('scan_q5_9m/presqueze_q4_scan99.3.tfs')
+#mktab('scan_q5_13m/presqueze_q4_scan99.3.tfs')
 
+#compare calculated cc voltage with matched cc voltage
+#print_con();
+#mktab_opt('scan_q4_8m/presqueeze_q4_scan_opt99.3.tfs')
+#mktab('scan_q4_8m/presqueze_q4_scan99.3.tfs')
+#print '----'
+#mktab_opt('scan_q4_10m_q5_13m/presqueeze_q4_scan_opt99.3.tfs')
+#mktab('scan_q4_10m_q5_13m/presqueze_q4_scan99.3.tfs')
+#print '----'
+#mktab_opt('scan_q4_6m_q5_9m/presqueeze_q4_scan_opt99.3.tfs')
+#mktab('scan_q4_6m_q5_9m/presqueze_q4_scan99.3.tfs')
+
+#print the summary tables
 #mktab_opt('scan_q4_8m/presqueeze_q4_scan_opt99.3.tfs')
 #mktab_opt('scan_q4_10m_q5_13m/presqueeze_q4_scan_opt99.3.tfs')
 #mktab_opt('scan_q4_6m_q5_9m/presqueeze_q4_scan_opt99.3.tfs')
-#mktab_opt_sum('scan_q4_8m/presqueeze_q4_scan_opt99.3.tfs')
-#mktab_opt_sum('scan_q4_10m_q5_13m/presqueeze_q4_scan_opt99.3.tfs')
-#mktab_opt_sum('scan_q4_6m_q5_9m/presqueeze_q4_scan_opt99.3.tfs')
+mktab_opt_sum('scan_q4_8m/presqueeze_q4_scan_opt99.3.tfs')
+mktab_opt_sum('scan_q4_10m_q5_13m/presqueeze_q4_scan_opt99.3.tfs')
+mktab_opt_sum('scan_q4_6m_q5_9m/presqueeze_q4_scan_opt99.3.tfs')

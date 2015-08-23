@@ -127,17 +127,17 @@ gen_optics(ooo,dirfn,infn,ppp,iii,ttt): macro={
 exec, mk_table(lq48q511);
 exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,1,org);
 exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,933,wire);
-exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,1009,ccvolt);
+exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,166,ccvolt);
 exec, gen_optics(opt_presqueeze,scan_q4_8m,presqueze_q4_scan99.3.tfs,lq48q511,236,imp);
 
 exec, mk_table(lq410q513);
 exec, gen_optics(opt_presqueeze_q4_10m_q5_13m,scan_q4_10m_q5_13m,presqueze_q4_scan99.3.tfs,lq410q513,1,org);
 exec, gen_optics(opt_presqueeze_q4_10m_q5_13m,scan_q4_10m_q5_13m,presqueze_q4_scan99.3.tfs,lq410q513,524,wire);
-exec, gen_optics(opt_presqueeze_q4_10m_q5_13m,scan_q4_10m_q5_13m,presqueze_q4_scan99.3.tfs,lq410q513,1252,ccvolt);
+exec, gen_optics(opt_presqueeze_q4_10m_q5_13m,scan_q4_10m_q5_13m,presqueze_q4_scan99.3.tfs,lq410q513,197,ccvolt);
 exec, gen_optics(opt_presqueeze_q4_10m_q5_13m,scan_q4_10m_q5_13m,presqueze_q4_scan99.3.tfs,lq410q513,355,imp);
 
 exec, mk_table(lq46q59);
 exec, gen_optics(opt_presqueeze_q4_6m_q5_9m,scan_q4_6m_q5_9m,presqueze_q4_scan99.3.tfs,lq46q59,1,org);
 exec, gen_optics(opt_presqueeze_q4_6m_q5_9m,scan_q4_6m_q5_9m,presqueze_q4_scan99.3.tfs,lq46q59,718,wire);
-exec, gen_optics(opt_presqueeze_q4_6m_q5_9m,scan_q4_6m_q5_9m,presqueze_q4_scan99.3.tfs,lq46q59,1081,ccvolt);
+exec, gen_optics(opt_presqueeze_q4_6m_q5_9m,scan_q4_6m_q5_9m,presqueze_q4_scan99.3.tfs,lq46q59,250,ccvolt);
 exec, gen_optics(opt_presqueeze_q4_6m_q5_9m,scan_q4_6m_q5_9m,presqueze_q4_scan99.3.tfs,lq46q59,250,imp);

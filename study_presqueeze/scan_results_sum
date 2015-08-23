@@ -1,0 +1,24 @@
+scan_q4_8m/presqueeze_q4_scan_opt99.3.tfs
+                                                                                                                  betmin/betmax [m]              
+ idx&optics    &betx/bety(wire)&   betmin/betmax(wire) [m]    &   Vmax [MV]   &sum_beta_cc [km]&    MBRD [m]   &   MCBYY [m]   &    MQY [m]    
+   0&presqueeze&      1.63&               479/  781&              11.98&          18.0&        1381/ 1982&     668/  930&     168/  478& 
+ 932&wire      &      2.00&               455/  909&              12.22&          18.9&        1523/ 1929&     622/ 1100&     183/  507& 
+ 165&ccvolt    &      1.60&               487/  781&              11.93&          18.1&        1381/ 1992&     676/  929&     173/  479& 
+ 235&impedance &      1.63&               480/  780&              11.97&          18.0&        1380/ 1984&     669/  928&     169/  478& 
+
+scan_q4_10m_q5_13m/presqueeze_q4_scan_opt99.3.tfs
+                                                                                                                  betmin/betmax [m]              
+ idx&optics    &betx/bety(wire)&   betmin/betmax(wire) [m]    &   Vmax [MV]   &sum_beta_cc [km]&    MBRD [m]   &   MCBYY [m]   &    MQY [m]    
+   0&presqueeze&      1.74&               438/  760&              11.96&          18.0&        1381/ 1986&     619/  908&     145/  460& 
+ 523&wire      &      2.00&               408/  814&              12.21&          18.2&        1442/ 1936&     577/  981&     135/  474& 
+ 196&ccvolt    &      1.70&               449/  764&              11.89&          18.2&        1386/ 1999&     630/  913&     152/  464& 
+ 354&impedance &      1.65&               451/  742&              11.86&          18.0&        1361/ 2006&     637/  883&     149/  454& 
+
+scan_q4_6m_q5_9m/presqueeze_q4_scan_opt99.3.tfs
+                                                                                                                  betmin/betmax [m]              
+ idx&optics    &betx/bety(wire)&   betmin/betmax(wire) [m]    &   Vmax [MV]   &sum_beta_cc [km]&    MBRD [m]   &   MCBYY [m]   &    MQY [m]    
+   0&presqueeze&      1.57&               516/  812&              12.04&          18.0&        1391/ 1970&     710/  964&     192/  499& 
+ 717&wire      &      2.00&               474/  948&              12.43&          18.8&        1546/ 1891&     643/ 1150&     202/  514& 
+ 249&ccvolt    &      1.53&               525/  801&              11.98&          18.0&        1379/ 1983&     722/  950&     196/  495& 
+ 249&impedance &      1.53&               525/  801&              11.98&          18.0&        1379/ 1983&     722/  950&     196/  495& 
+

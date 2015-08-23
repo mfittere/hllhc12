@@ -22,20 +22,20 @@ def mkfig(fn):
     xlabel(r'$\beta_x \rm mcby [m]$')
     ylabel('g [T/m]')
     ylim(128,133)
-    legend()
+    legend(fontsize=12)
     subplot(223)
     for yy in ynn:
         plot(t.bety_mcby_ref,abs(t[yy]),'-o',label=yy)
     xlabel(r'$\beta_y \rm mcby [m]$')
     ylabel('g [T/m]')
     ylim(128,133)
-    legend()
+    legend(fontsize=12)
     subplot(224)
     for yy in ynn:
         hist(abs(t[yy]),label=yy,alpha=0.2)
     xlim(128,133)
     xlabel('g [T/m]')
-    legend()
+    legend(fontsize=12)
     tight_layout()
     figname=fn.replace('tfs','png')
     savefig(figname)
@@ -59,7 +59,7 @@ def mkfig_crab_wire(fn,indfig=False):
     qtlim3 = 200.0#Q7
     #calculate cc voltage
     t,vmax=get_cc_max(t)#adds also t['vcrabh_lb2_ref'] and t['vcrabh_rb2_ref'] to t
-    #--- figure 1
+    #--- IT gradient vs betax mcbyy
     if(indfig == True):
       figure()
     else:
@@ -75,10 +75,11 @@ def mkfig_crab_wire(fn,indfig=False):
     ylabel('g [T/m]')
     xlim(1000,1700)
     ylim(128,133)
-    legend()
+    legend(fontsize=12)
     grid()
+    #--- IT gradient vs betay mcbyy
     if(indfig == True):
-      savefig(figname+'_1.png')
+      savefig(figname+'_1.png', bbox_inches='tight')
       figure() 
     else: subplot(342)
     for yy in ynn:
@@ -89,10 +90,11 @@ def mkfig_crab_wire(fn,indfig=False):
     ylabel('g [T/m]')
     xlim(700,1000)
     ylim(128,133)
-    legend()
+    legend(fontsize=12)
     grid()
+    #betx vs betay at crab cavities
     if(indfig == True):
-      savefig(figname+'_2.png')
+      savefig(figname+'_2.png', bbox_inches='tight')
       figure()
     else: subplot(343)
     for cc in 'abcd':
@@ -103,12 +105,13 @@ def mkfig_crab_wire(fn,indfig=False):
     plot([400,2000],[400,2000],'k-')
     xlabel(r'$\beta_x \rm (cc) \  [m]$')
     ylabel(r'$\beta_y \rm (cc) \ [m]$')
-    xlim(800,2300)
-    ylim(600,1800)
-    legend()
+    xlim(800,2800)
+    ylim(600,2000)
+    legend(fontsize=12)
     grid()
+    #betx vs bety wire
     if(indfig == True):
-      savefig(figname+'_3.png')
+      savefig(figname+'_3.png', bbox_inches='tight')
       figure()
     else: subplot(344)
     #calculate beta at wire at 7m
@@ -121,17 +124,17 @@ def mkfig_crab_wire(fn,indfig=False):
     plot(arange(100,5000,500),0.5*arange(100,5000,500),'-k')
     xlabel(r'$\beta_x \rm (wire) \ [m]$')
     ylabel(r'$\beta_y \rm (wire) \ [m]$')
-    legend()
+    legend(fontsize=12)
     grid()
 #fixed range
-    xlim(600,1400)
-    ylim(300,700)
+    xlim(600,1600)
+    ylim(300,800)
 #flexibel range
 #    xlim(plot_range(t,['betx_wire3mlb1_ref','betx_wire5mlb1_ref','betx_wire7mlb1_ref','betx_wire3mrb2_ref','betx_wire5mrb2_ref','betx_wire7mrb2_ref']))
 #    ylim(plot_range(t,['bety_wire3mlb1_ref','bety_wire5mlb1_ref','bety_wire7mlb1_ref','bety_wire3mrb2_ref','bety_wire5mrb2_ref','bety_wire7mrb2_ref']))
     #---- Vmax vs betx/bety wire
     if(indfig == True):
-      savefig(figname+'_4.png')
+      savefig(figname+'_4.png', bbox_inches='tight')
       figure()
     else: subplot(345)
     #calculate beta at wire at 7m
@@ -142,13 +145,13 @@ def mkfig_crab_wire(fn,indfig=False):
     plot([0,20],[2.0,2.0],'k-')
     xlabel(r'$V_{\rm crab, max} \ [MV]$')
     ylabel(r'$\beta_x/\beta_y(\rm wire)$')
-    legend(loc='upper left')
+    legend(fontsize=12,loc='upper left')
     grid()
-    xlim(11,12.5)
+    xlim(11.3,13.2)
     ylim(1.4,4.0)
     #---- Vmax vs beta_min(MCBYY), beta_max(MCBYY)
     if(indfig == True):
-      savefig(figname+'_5.png')
+      savefig(figname+'_5.png', bbox_inches='tight')
       figure()
     else: subplot(346)
     bmin_mcbyy=np.min([t.betx_mcby_ref,t.bety_mcby_ref], axis=0)
@@ -159,13 +162,13 @@ def mkfig_crab_wire(fn,indfig=False):
     plot(vmax[0],bmax_mcbyy[0],'ko')#starting point
     xlabel(r'$V_{\rm crab,max} \ [MV]$')
     ylabel(r'$\beta_{x/y}(\rm MCBYY) \ [m]$')
-    legend(loc='upper right')
-    xlim(11,12.5)
+    legend(fontsize=12,loc='upper right')
+    xlim(11.3,13.2)
     ylim(300,1600)
     grid()
     #---- Vmax vs impedance
     if(indfig == True):
-      savefig(figname+'_6.png')
+      savefig(figname+'_6.png', bbox_inches='tight')
       figure()
     else: subplot(347)
     beta_crab_sum = get_sum_beta(t)
@@ -173,13 +176,13 @@ def mkfig_crab_wire(fn,indfig=False):
     plot(vmax[0],beta_crab_sum[0]*1.e-3,'ko')#starting point
     xlabel(r'$V_{\rm crab, max} \ [MV]$')
     ylabel(r'$\sum_{s=ABCD}(\beta_x(\rm ACFs) + \beta_y(\rm ACFs) ) \ [km]$')
-    legend(loc='lower right')
-    xlim(11,12.5)
+    legend(fontsize=12,loc='lower right')
+    xlim(11.3,13.2)
     ylim(17,22)
     grid()
     #---- Vmax vs kq5
     if(indfig == True):
-      savefig(figname+'_7.png')
+      savefig(figname+'_7.png', bbox_inches='tight')
       figure()
     else: subplot(348)
     for ss in 'lr':
@@ -190,13 +193,13 @@ def mkfig_crab_wire(fn,indfig=False):
 #    plot([10,13],[t.sch*qtlimq5,t.sch*qtlimq5],'k-')#upper limit Q5 strength 
     xlabel(r'$V_{\rm crab, max} \ [MV]$')
     ylabel(r'B [T/m]')
-    xlim(11,12.5)
+    xlim(11.3,13.2)
     ylim(0.0,120)
     grid()
-    legend(loc='upper left') 
+    legend(fontsize=12,loc='upper left') 
     #---- Vmax vs kq7 strength
     if(indfig == True):
-      savefig(figname+'_8.png')
+      savefig(figname+'_8.png', bbox_inches='tight')
       figure()
     else: subplot(349)
     for ss in 'lr':
@@ -207,13 +210,13 @@ def mkfig_crab_wire(fn,indfig=False):
     plot([10,13],[t.sc79*qtlim3,t.sc79*qtlim3],'k-')#upper limit Q7 strength 
     xlabel(r'$V_{\rm crab, max} \ [MV]$')
     ylabel(r'B [T/m]')
-    xlim(11,12.5)
+    xlim(11.3,13.2)
     ylim(140,200)
     grid()
-    legend(loc='center right')
+    legend(fontsize=12,loc='center right')
     #---- imq5l vs kq7 strength
     if(indfig == True):
-      savefig(figname+'_9.png')
+      savefig(figname+'_9.png', bbox_inches='tight')
       figure()
     else: subplot(3,4,10)
     imq5l=t['kq5.l5b2']/t['kq5.l5b1']
@@ -229,10 +232,10 @@ def mkfig_crab_wire(fn,indfig=False):
     xlabel(r'kq5.l5b1/kq5.l5b1')
     ylabel(r'B [T/m]')
     grid()
-    legend(loc='center right')
+    legend(fontsize=12,loc='center right')
     #---- imq5r vs kq7 strength
     if(indfig == True):
-      savefig(figname+'_10.png')
+      savefig(figname+'_10.png', bbox_inches='tight')
       figure()
     else: subplot(3,4,11)
     imq5r=t['kq5.r5b2']/t['kq5.r5b1']
@@ -248,12 +251,12 @@ def mkfig_crab_wire(fn,indfig=False):
     xlabel(r'kq5.r5b1/kq5.r5b1')
     ylabel(r'B [T/m]')
     grid()
-    legend(loc='center left')
+    legend(fontsize=12,loc='center left')
     if(indfig == True):
-      savefig(figname+'_11.png')
+      savefig(figname+'_11.png', bbox_inches='tight')
     else:
       tight_layout()
-      savefig(figname)
+      savefig(figname, bbox_inches='tight')
 close('all')
 #mkfig('results_riccardo/presqueze_q4_scan99.3.tfs')
 #mkfig('results_riccardo/presqueze_q4_scan100.tfs')
@@ -262,6 +265,7 @@ close('all')
 #mkfig('scan_q4_8m/presqueze_q4_scan100.tfs')
 #mkfig('scan_q4_8m/presqueze_q4_scan107.tfs')
 indfig=False
+#indfig=True
 #mkfig_crab_wire('scan_q4_8m/presqueze_q4_scan100.tfs')
 #mkfig_crab_wire('scan_q4_8m/presqueze_q4_scan107.tfs')
 mkfig_crab_wire('scan_q4_8m/presqueze_q4_scan99.3.tfs',indfig)
