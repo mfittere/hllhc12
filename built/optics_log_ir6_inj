@@ -1,0 +1,14 @@
+--- work on beam1
+1       matched IR6b1 with toolkit/rematch_ir6b1.madx - aperture not good enough -> match with toolkit/rematch_ir6b1m.madx
+2       straight section above 9.6, DS still below
+3       DS slightly optimized -> reaching the limit
+--- work on beam2
+4       beam 2 optics, straight section above 9.6 (approx.), DS partly optimized
+5       beam 2 optics, aperture optimized in straight section, DS partly optimized, dropped dispersion and dmuxkickb2 constraint
+6       restore phase advance and dispersion constraint
+7       optimized aperture beam2
+--- work on beam1
+8       keep aperture constraint, try to restore phase advance: dmuxkickb1=0.26788, epsap=3.0
+9       epsap=3.0, dmuxkickb1-0.25 = 0.0125
+--- work on beam2
+10      epsap=3.0, dmuxkickb1-0.25 = 0.0125 also fro beam 2 now -> good optics!

@@ -1,7 +1,7 @@
 option, warn,info;
 !system,"rm -rf temp"; system,"mkdir temp";
 !system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/ slhc";
-system,"ln -fns /Users/mfittere/HiLumi/HLLHCV1.2 slhc";
+system,"ln -fns .. slhc";
 system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
 option,-echo,-info,-warn;
 Option, -echo,-warn,-info;
@@ -40,11 +40,11 @@ if (tarinj+tarir37b12+tarcrossing<1e-15){
 exec,check_ip(b1); exec,check_ip(b2);
 };
 
-!exec,mk_beam(450);
-!call,file="slhc/opt_inj.madx";
-!call,file="slhc/hllhc_sequence.madx";
-!return;
-!exec, crossing_disable;
+exec,mk_beam(450);
+call,file="slhc/opt_inj.madx";
+call,file="slhc/hllhc_sequence.madx";
+return;
+exec, crossing_disable;
 !on_sep8=1;on_x8=1;phio_ir8=0;phi_ir8=0;on_o8=0;
 !exec,check_ip(b1); exec,check_ip(b2);
 !exec,regen_inj(inj);

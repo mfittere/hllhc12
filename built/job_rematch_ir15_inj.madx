@@ -7,7 +7,7 @@ option, warn,info;
 system,"rm -rf temp"; system,"mkdir temp";
 !system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.0 slhc";
 system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
-system,"ln -fns /Users/mfittere/HiLumi/HLLHCV1.2 slhc";
+system,"ln -fns .. slhc";
 option,-echo,-info,-warn;
 
 Option, -echo,-warn,-info;
@@ -34,17 +34,60 @@ call,   file="slhc/aperture/aperture_upgrade_MS.madx";
 !call,file="slhcv11/hllhc_sequence.madx";
 !v1.2
 call,file="slhc/opt_inj.madx";
+!call,file="opt_inj_newir6.madx";
 on_layout_custom=0;
 call,file="slhc/hllhc_sequence.madx";
                                      
-exec,mk_beam(7000);
+exec,mk_beam(450);
+!exec,mk_beam(7000);
 
+return;
 exec,check_ip(b1);exec,check_ip(b2);
 exec,selectIR15(5,45,56,b1);exec,selectIR15(5,45,56,b2);
 exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
 
 return;
+!exec,make_opticstbl_ir6(ir6);
+exec,read_opticstbl(ir6);
+exec,load_lastoptics(ir6);
+exec,load_optics(ir6,7);
+on_opticstbl_ir6 = 1 ;
+exec,store_optics(ir6);
+!--- rematch ir6
 exec,mk_beam(450);
+on_holdselect=0; jac_calls=   10;jac_tol=1e-16; jac_bisec=3;
+jac_calls=0;
+on_fixedip=1;
+!match_on_aperture=1;
+!epsap=15;
+!match_on_dx =1;
+!match_on_dpx =1;
+!call,file="toolkit/rematch_ir6b1.madx";
+!call,file="toolkit/rematch_ir6b2.madx";
+epsap=1.0;
+call,file="toolkit/rematch_ir6b1m.madx";
+call,file="toolkit/rematch_ir6b2m.madx";
+
+emittance_norm=3.5e-6;
+apbbeat=1.05;
+halor=6.001; halox=6; haloy=6;
+DParcx=0.14; DParcy=0.14;
+COmax=0.004; dPmax=0.0006; VMAXI=30; SPECIF=7;
+FULL=1;
+
+seqedit, sequence=lhcb1;
+cycle,start=s.ds.l1.b1;
+endedit;
+seqedit, sequence=lhcb2;
+cycle,start=s.ds.l1.b2;
+endedit;
+exec,mk_apir(6,b1,450,full);
+exec,mk_apir(6,b2,450,full);
+system,"../aperture/check_aperture.py temp/ap_ir6b1.tfs 0.0 hllhc_inj";
+system,"../aperture/check_aperture.py temp/ap_ir6b2.tfs 0.0 hllhc_inj";
+
+return;
+!--- rematch ir15
 !rematch IR2 and IR8 x-scheme
 call,file="slhc/toolkit/xing.IP28.madx";
 call,file="slhc/toolkit/mk_ir2_knobs.madx";
