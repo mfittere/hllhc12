@@ -15,7 +15,8 @@ def check_aperture(fn,eps=0,n1ref='nominal'):
   labels=['NAME', 'BETX', 'BETY', 'DX', 'DY', 'X', 'Y', 'N1']
 
   out=[]
-  limn1={'nominal':{'MSD':7.5,'MQW':5.5,'MQF':7,'MQD':6.7,'TCT':6.5},'hllhc_col':{'MSD':12.0,'MQW':12.0,'MQF':12.0,'MQD':12.0,'TCT':12.0},'hllhc_inj':{'MSD':9.6,'MQW':9.6,'MQF':9.6,'MQD':9.6,'TCT':9.6}}
+# nominal LHC runII optics 2015: injection ir6b1: 9.5, ir8: 9.1
+  limn1={'nominal':{'MSD':7.5,'MQW':5.5,'MQF':7,'MQD':6.7,'TCT':6.5},'hllhc_col':{'MSD':12.0,'MQW':12.0,'MQF':12.0,'MQD':12.0,'TCT':12.0},'hllhc_inj':{'MSD':9.5,'MQW':9.5,'MQF':9.5,'MQD':9.5,'TCT':9.5}}
     
   for l in fh:
     if l.startswith('*'):
