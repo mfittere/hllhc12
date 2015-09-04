@@ -38,7 +38,8 @@ call,file="slhc/aperture/aperture_upgrade_IT.madx";
 
 exec,mk_beam(7000);
 !call,file="slhc/opt_flat.madx";
-call,file="slhc/opt_presqueeze.madx";
+!call,file="slhc/opt_presqueeze.madx";
+call,file="slhc/opt_round.madx";
 exec, crossing_disable;
 exec,check_ip(b1); exec,check_ip(b2);
 
@@ -47,11 +48,11 @@ return;
 
 
 !create tables
-exec,make_opticstbl_ir2(ir2);
-exec,make_opticstbl_ir4(ir4);
-exec,make_opticstbl_ir6(ir6);
-exec,make_opticstbl_ir8(ir8);
-exec,make_opticstbl_ir5hl;
+!exec,make_opticstbl_ir2(ir2);
+!exec,make_opticstbl_ir4(ir4);
+!exec,make_opticstbl_ir6(ir6);
+!exec,make_opticstbl_ir8(ir8);
+!exec,make_opticstbl_ir5hl;
 
 !return;
 
@@ -86,8 +87,8 @@ exec,store_optics(ir5hl);
 
 return;
 
-betx_ip1=0.35;bety_ip1=0.35;
-betx_ip5=0.35;bety_ip5=0.35;
+betx_ip1=0.15;bety_ip1=0.15;
+betx_ip5=0.15;bety_ip5=0.15;
 call,file="rematch_squeeze.madx";
 exec,check_ip(b1); exec,check_ip(b2);
 
@@ -119,21 +120,3 @@ exec,mk_apir(5,b1,NRJ,FULL);
 exec,mk_apir(5,b2,NRJ,FULL);
 exec,mk_apir(1,b1,NRJ,FULL);
 exec,mk_apir(1,b2,NRJ,FULL);
-
-
-call,file="slhc/opt_inj.madx";
-emittance_norm=3.5e-6;
-apbbeat=1.05;
-halor=6.001; halox=6; haloy=6;
-DParcx=0.14; DParcy=0.14;
-COmax=0.004; dPmax=0.0006; VMAXI=30; SPECIF=7;
-FULL=1;
-
-exec,crossing_enable;
-exec,mk_apir(5,b1,NRJ,FULL);
-exec,mk_apir(5,b2,NRJ,FULL);
-exec,mk_apir(1,b1,NRJ,FULL);
-exec,mk_apir(1,b2,NRJ,FULL);
-
-
-
