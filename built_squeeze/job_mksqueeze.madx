@@ -1,4 +1,6 @@
 option, warn,info;
+!system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.1/ slhc";
+!system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.0/ slhc";
 !system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/ slhc";
 system,"ln -fns .. slhc";
 system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
@@ -37,53 +39,57 @@ call,file="slhc/aperture/aperture_upgrade_IT.madx";
 exec,mk_beam(7000);
 !call,file="slhc/opt_flat.madx";
 call,file="slhc/opt_presqueeze.madx";
+exec, crossing_disable;
 exec,check_ip(b1); exec,check_ip(b2);
 
 call,file="slhc/toolkit/optics_log.madx";
+return;
+
+
+!create tables
+exec,make_opticstbl_ir2(ir2);
+exec,make_opticstbl_ir4(ir4);
+exec,make_opticstbl_ir6(ir6);
+exec,make_opticstbl_ir8(ir8);
+exec,make_opticstbl_ir5hl;
+
+!return;
+
+!load table
+exec,read_opticstbl(ir2);
+exec,read_opticstbl(ir4);
+exec,read_opticstbl(ir6);
+exec,read_opticstbl(ir8);
+exec,read_opticstbl(ir5hl);
+
+!return;
+
+!get last optics = last squeeze step
+exec,load_lastoptics(ir2);
+exec,load_lastoptics(ir4);
+exec,load_lastoptics(ir8);
+exec,load_lastoptics(ir5hl);exec,copyir5to1;
+exec,load_lastoptics(ir6);
 
 return;
 
-!create tables
-exec,make_opticstbl_ir2(ir2_str_m);
-exec,make_opticstbl_ir4(ir4_str_m);
-exec,make_opticstbl_ir6(ir6_str_m);
-exec,make_opticstbl_ir8(ir8_str_m);
-exec,make_opticstbl_ir5hl;
-
-!load table
-exec,read_opticstbl(ir2_str_m);
-exec,read_opticstbl(ir4_str_m);
-exec,read_opticstbl(ir6_str_m);
-exec,read_opticstbl(ir8_str_m);
-exec,read_opticstbl(ir5hl);
-!get last optics = last squeeze step
-exec,load_lastoptics(ir2_str_m);
-exec,load_lastoptics(ir4_str_m);
-exec,load_lastoptics(ir6_str_m);
-exec,load_lastoptics(ir8_str_m);
-exec,load_lastoptics(ir5hl);exec,copyir5to1;
-
-on_opticstbl_ir2_str_m = 1 ;
-on_opticstbl_ir4_str_m = 1 ;
-on_opticstbl_ir6_str_m = 1 ;
-on_opticstbl_ir8_str_m = 1 ;
-exec,store_optics(ir2_str_m);
-exec,store_optics(ir4_str_m);
-exec,store_optics(ir6_str_m);
-exec,store_optics(ir8_str_m);
+on_opticstbl_ir2 = 1 ;
+on_opticstbl_ir4 = 1 ;
+on_opticstbl_ir6 = 1 ;
+on_opticstbl_ir8 = 1 ;
+exec,store_optics(ir2);
+exec,store_optics(ir4);
+exec,store_optics(ir6);
+exec,store_optics(ir8);
 on_opticstbl_ir5hl=1;
 exec,store_optics(ir5hl);
 
-exec, crossing_disable;
-
-
-
 return;
 
-betx_ip1=0.48;bety_ip1=0.48;
-betx_ip5=0.48;bety_ip5=0.48;
+betx_ip1=0.35;bety_ip1=0.35;
+betx_ip5=0.35;bety_ip5=0.35;
 call,file="rematch_squeeze.madx";
-
+exec,check_ip(b1); exec,check_ip(b2);
 
 !!exec,make_opticstbl_ir5hl;write,table=ir5hl_log_str,file=ir5hl_log_str.tfs;!create file
 !exec,read_opticstbl(ir5hl); !exec,read_opticstbl(ir5);!ir5=normal optics, ir5hl=hilumi optics
