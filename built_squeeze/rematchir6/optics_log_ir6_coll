@@ -1,0 +1,34 @@
+1     presqueezed optics: previous optics 04/09/2015 for IR1/5/2/4/6/8
+--- opt_round: 0.15/0.15 m
+2     round optics: previous optics 04/09/2015 for IR1/5/2/4/6/8
+3     IR6 optics matched for beam 1
+4     IR6 beam 1 optics + reduce beta function in Q4/Q5
+5     optics 4 + iR6 beam 2 matched, reduced beta in Q4/Q5
+6     optics 4 + iR6 beam 2 matched, reduced beta in Q4/Q5 little bit further
+7     new opt_round
+--- opt_flat: 0.075/0.30 m
+8     flat optics: IR6 beam1/beam2 matched -> replace by optics 9
+9     flat optics: save latest version of IR6 b1/b2 optics
+--- opt_flat hv: 0.30/0.075 m
+10    flat hv optics: b1 matched, aperture not optimized
+11    flat hv optics: b1 matched, optimize aperture, decrease betx @ q9l by decreasing betx @q4r
+12    flat hv optics: b1 matched, optimize aperture, decrease betx @ q9l by decreasing betx @q4r
+13    flat hv optics: b1 matched, optimize aperture, decrease betx @ q9l by decreasing betx @q4r
+14    flat hv optics: b1 matched, aperture otpimized
+15    flat hv optics: b2 matched, optimize aperture
+16    flat hv optics: b1+b2 matched, aperture optimized
+--- opt_round: 0.20/0.20 m
+17    round 0.2/0.2: first match beam1
+--- opt_round: 0.15/0.15 m
+18  with new constraint at MKD betx>380, beam 1 matched, but: betx(MKD.H5L6.B1)=380-45 -> have to drop dmuxkick constraint to increase beta
+19  with new constraint at MKD betx>380, beam 1 matched, but: betx(MKD.H5L6.B1)=380-90 -> have to drop dmuxkick constraint to increase beta
+--- opt_flat: 0.075/0.30 m
+20    flat optics: b1+b2 matched, aperture optimized, betx @ MKD b1>380, b2>380-35
+--- opt_flat hv: 0.30/0.075 m
+21    flat hv optics: b1+b2 matched, aperture optimized, betx @ MKD b1>380-110, b2>380-105
+22    same optics as 21
+--- opt_round: 0.20/0.20 m
+23    round 0.2/0.2
+--- opt_flat: 0.10/0.40 m
+24    flat hv optics: not correctly saved
+25    flat hv optics: b1+b2 matched, aperture optimized, betx @ MKD b1>380, b2>380-35, betx @ TCDQ b1>160, b2>160-30

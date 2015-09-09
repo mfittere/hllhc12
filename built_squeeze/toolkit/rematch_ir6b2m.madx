@@ -26,7 +26,7 @@ value,dxip6b2,dpxip6b2;
 use,sequence=lhcb2,range=s.ds.l6.b2/e.ds.r6.b2;
 match,use_macro;
  vary,name=kqt13.l6b2,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
- vary,name=kqt12.l6b2,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
+! vary,name=kqt12.l6b2,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
  vary,name=kqtl11.l6b2, step=1.0E-6, lower=-qtlimit4*400./550., upper=qtlimit4*400./550.;
  vary,name=kq10.l6b2,   step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
  vary,name=kq9.l6b2,    step=1.0E-6, lower=-qtlimit3, upper=-qtlimit3*scmin;
@@ -59,9 +59,9 @@ bydumpb2=refbetyip6b2+2*al_dump*refalfyip6b2+
 constraint,expr=dmuxkickb2=0.25+0.0125;
 constraint,expr=bxdumpb2>5052;
 constraint,expr=bydumpb2>3698;
-!limit on minimal beam size @TCDQ to intercept particles
-constraint,sequence=lhcb2,range=TCDQA.A4L6.B2,betx>520;
-constraint,sequence=lhcb2,range=TCDQA.A4L6.B2,bety>175;
+constraint,sequence=lhcb2,range=MKD.H5R6.B2,  betx>380-35;
+constraint,sequence=lhcb2,range=TCDQA.A4L6.B2,betx>495;
+constraint,sequence=lhcb2,range=TCDQA.A4L6.B2,bety>160-30;
 !constraint,sequence=lhcb2,range=ip6,betx=betxip6b2;
 !constraint,sequence=lhcb2,range=ip6,bety=betyip6b2;
 !constraint,sequence=lhcb2,range=ip6,alfx=alfxip6b2;
@@ -81,10 +81,12 @@ constraint,sequence=lhcb2,range=e.ds.r6.b2,   mux=muxip6b2+eir6b2->mux;
 constraint,sequence=lhcb2,range=e.ds.r6.b2,   muy=muyip6b2+eir6b2->muy;
 if(match_on_aperture==1){
 if(nrj>3000):{
-constraint,sequence=lhcb2,range=MQY.4L6.B2, betx <1065;!0.15 775,0.075/0.30 
-constraint,sequence=lhcb2,range=MQY.B5L6.B2,bety <1065;!0.15 680,0.075/0.30
-constraint,sequence=lhcb2,range=MQY.4R6.B2, bety <1065;!0.15 680,0.075/0.30
-constraint,sequence=lhcb2,range=MQY.5R6.B2, betx <1065;!0.15 680,0.075/0.30
+betarc=1065;
+constraint,sequence=lhcb2,range=MQY.4L6.B2,   betx <betarc;!0.15 775,0.075/0.30 
+constraint,sequence=lhcb2,range=MQY.B5L6.B2,  bety <betarc;!0.15 680,0.075/0.30
+constraint,sequence=lhcb2,range=MQY.4R6.B2,   bety <betarc;!0.15 680,0.075/0.30
+constraint,sequence=lhcb2,range=MQY.5R6.B2,   betx <betarc;!0.15 680,0.075/0.30
+constraint,sequence=lhcb2,range= mqml.10l6.b2,betx <betarc;
 };
 else{
 constraint,range=mq.11l6.b2,bety< 173+epsap;
