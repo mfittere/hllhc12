@@ -296,5 +296,3 @@ system, "date '+timestamp=%s;' >tmp_ttstamp";
 call,file=tmp_ttstamp;
 system, "rm tmp_ttstamp";
 };
-
-value, kqx1.l5;
