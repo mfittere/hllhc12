@@ -33,11 +33,29 @@ call,   file="slhc/aperture/aperture_upgrade_MS.madx";
 !on_layout_custom=0;
 !call,file="slhcv11/hllhc_sequence.madx";
 !v1.2
-call,file="slhc/opt_inj.madx";
-!call,file="opt_inj_newir6.madx";
+!call,file="slhc/opt_inj.madx";
+call,file="rematchir6/opt_inj_new.madx";
 on_layout_custom=0;
 call,file="slhc/hllhc_sequence.madx";
-                                     
+
+return;
+!--- save the presqueezed optics
+exec,mk_beam(7000);
+exec,check_ip(b1);exec,check_ip(b2);
+exec, save_optics_ir4637arc("opt_ir4637.madx");
+call,file="slhc/opt_presqueeze.madx";
+call,file="opt_ir4637.madx";
+exec,check_ip(b1); exec,check_ip(b2);
+call,file="toolkit/rematch_globalw.madx";
+call,file="toolkit/rematch_crossing.madx";
+if (tarcrossing>1e-15) { return;};
+call,file="toolkit/rematch_crabs.madx";
+call,file="toolkit/mk_ir28_knobs.madx";
+ARC_SQUEEZE :=  0.5 ;
+on_check=1; call,file="toolkit/save_optics2.madx";
+system,"cp temp/optics.madx opt_presqueeze_new.madx";
+
+
 exec,mk_beam(450);
 !exec,mk_beam(7000);
 
@@ -47,6 +65,7 @@ exec,selectIR15(5,45,56,b1);exec,selectIR15(5,45,56,b2);
 exec,mk_irtwiss(5,b1); exec,mk_irtwiss(5,b2);
 
 return;
+!---- optimize injection optics IR6
 !exec,make_opticstbl_ir6(ir6);
 exec,read_opticstbl(ir6);
 exec,load_lastoptics(ir6);
@@ -63,7 +82,7 @@ match_on_aperture=1;
 !match_on_dpx =1;
 !call,file="toolkit/rematch_ir6b1.madx";
 !call,file="toolkit/rematch_ir6b2.madx";
-epsap=3.0;
+epsap=2.5;
 call,file="toolkit/rematch_ir6b1m.madx";
 call,file="toolkit/rematch_ir6b2m.madx";
 
