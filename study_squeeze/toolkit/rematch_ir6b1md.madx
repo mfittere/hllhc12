@@ -48,6 +48,7 @@ m:macro={twiss,beta0=bir6b1;
 al_dump=761;!distance IP6 <-> dump
 refbetxip6b1=table(twiss,IP6,betx); refalfxip6b1=table(twiss,IP6,alfx);
 refbetyip6b1=table(twiss,IP6,bety); refalfyip6b1=table(twiss,IP6,alfy);
+refdxip6b1=table(twiss,IP6,dx); refdpxip6b1=table(twiss,IP6,dpx);
 dmuxkickb1=table(twiss,TCSG.4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
 dxq5l6b1=abs(table(twiss,MQY.B5L6.B1,dx));
 dxq4r6b1=abs(table(twiss,MQY.4R6.B1,dx));
@@ -59,8 +60,8 @@ bydumpb1=refbetyip6b1-2*al_dump*refalfyip6b1+
 !phase advance between TCSG and dump kickers, 10% deviation allowed
 !constraint,weight=1000,expr= abs(dmuxkickb1-0.250)<0.0125;
 constraint,weight=1000,expr= dmuxkickb1=0.25+0.0125;
-constraint,expr= bxdumpb1>5012;!area at dump
-constraint,expr= bydumpb1>3955;
+constraint,expr= bxdumpb1=refbxdumpb1;!area at dump
+constraint,expr= bydumpb1=refbydumpb1;
 !!minimize kick(mkd)/sigma_x in case of asynchronous dump, 380 = beta for nom. optics
 !constraint, sequence=lhcb1,range=MKD.H5L6.B1,betx > 380;
 !!finit stepsize of TCDQ motor -> maximize beam size for better alignment, ideally betx>500-600 m
@@ -87,12 +88,16 @@ if(match_on_aperture==1){
 !constraints for collision aperture
 if(nrj>3000){
 betarc=1065;
-constraint,range=MQY.4L6.B1,bety   < betarc;!0.15 680,0.075/0.30 1000 0.075/0.30 hv 1065
-constraint,range=MQY.B5L6.B1,betx  < betarc;!0.15 680,0.075/0.30 1000 0.075/0.30 hv 1065
-constraint,range=MQY.4R6.B1,betx   < betarc;!0.15 680,0.075/0.30 1000 0.075/0.30 hv 785
-constraint,range=MQY.5R6.B1,bety   < betarc;!0.15 680,0.075/0.30 1000 0.075/0.30 hv 1065
-constraint,range=mqml.10l6.b1,bety < betarc;!0.075/0.30 1000 0.075/0.30 hv 1065
-constraint,range=mqm.9l6.b1,betx   < betarc;!0.075/0.30 hv 865
+constraint,range=MQY.4L6.B1,bety   < betarc;
+constraint,range=MQY.4R6.B1,betx   < betarc;
+constraint,range=MQY.B5L6.B1,betx  < betarc;
+constraint,range=MQY.5R6.B1,bety   < betarc;
+constraint,range=mqml.8l6.b1,bety  < betarc;
+constraint,range=mqml.8r6.b1,betx  < betarc;
+constraint,range=mqm.9l6.b1,betx   < betarc;
+constraint,range=mqm.9r6.b1,bety   < betarc;
+constraint,range=mqml.10l6.b1,bety < betarc;
+constraint,range=mqml.10r6.b1,betx < betarc;
 };
 else{
 !constraint,range=mqm.9r6.b1,bety<205;
@@ -128,6 +133,8 @@ betxip6b1=refbetxip6b1 ;
 betyip6b1=refbetyip6b1 ;
 alfxip6b1=refalfxip6b1 ;
 alfyip6b1=refalfyip6b1 ;
+dxip6b1 =refdxip6b1 ;
+dpxip6b1=refdpxip6b1 ;
 
 
 
