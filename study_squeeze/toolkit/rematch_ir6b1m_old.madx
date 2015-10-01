@@ -58,8 +58,7 @@ bydumpb1=refbetyip6b1-2*al_dump*refalfyip6b1+
 };
 !phase advance between TCSG and dump kickers, 10% deviation allowed
 !constraint,weight=1000,expr= abs(dmuxkickb1-0.250)<0.0125;
-!constraint,weight=1000,expr= dmuxkickb1=0.25+0.0125;
-constraint,weight=1000,expr= dmuxkickb1=0.25;
+constraint,weight=1000,expr= dmuxkickb1=0.25+0.0125;
 constraint,expr= bxdumpb1>5012;!area at dump
 constraint,expr= bydumpb1>3955;
 !!minimize kick(mkd)/sigma_x in case of asynchronous dump, 380 = beta for nom. optics

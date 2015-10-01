@@ -57,8 +57,7 @@ bydumpb2=refbetyip6b2+2*al_dump*refalfyip6b2+
 };
 !phase advance between TCSG and dump kickers, 5% deviation allowed
 !constraint,weight=1000,expr= abs(dmuxkickb2-0.250)<0.0125;!0.025;
-!constraint,expr=dmuxkickb2=0.25+0.0125;
-constraint,expr=dmuxkickb2=0.25;
+constraint,expr=dmuxkickb2=0.25+0.0125;
 constraint,expr=bxdumpb2>5052;
 constraint,expr=bydumpb2>3698;
 !constraint,sequence=lhcb2,range=MKD.H5R6.B2,  betx>380-35;
