@@ -33,8 +33,8 @@ call,   file="slhc/aperture/aperture_upgrade_MS.madx";
 !on_layout_custom=0;
 !call,file="slhcv11/hllhc_sequence.madx";
 !v1.2
-!call,file="slhc/opt_inj.madx";
-call,file="rematchir6/opt_inj_new.madx";
+call,file="slhc/opt_inj.madx";
+!call,file="rematchir6/opt_inj_new.madx";
 on_layout_custom=0;
 call,file="slhc/hllhc_sequence.madx";
 
