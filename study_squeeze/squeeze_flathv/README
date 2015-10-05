@@ -1,0 +1,47 @@
+!!!ONLY MATCH IR6!!!
+squeeze1: job_mksqueeze2.madx, *ir6b2m.madx, *ir6b1m.madx -> gives hint on constraints for first interpolation
+          - IR6: start from flat optics, limit minimum beta at dump and dispersion
+squeeze2: job_mksqueeze2.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: no preloaded tables, interpolate b[xy]dumpb[12], fit_squeeze2.madx
+squeeze3: job_mksqueeze3-4+6-15.madx, *ir6b2m.madx, *ir6b1m.madx -> does not work, go back to squeeze2
+          - IR6: no preloaded tables, interpolate bet[xy]ip6b[12],alf[xy]ip6b[12] fit_squeeze3.madx +
+            no limit on tcdq beta function, limit maximum dispersion
+squeeze4: job_mksqueeze3-4+6-15.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: no preloaded tables, interpolate b[xy]dumpb[12]
+            as squeeze2, only bydumpb1 decreased, fit_squeeze4.madx
+squeeze5: job_mksqueeze5.madx, *ir6b2m.madx, *ir6b1m.madx, reverse squeeze (start from pre-squeeze)
+          - IR6: no preloaded tables, interpolate b[xy]dumpb[12], fit_squeeze5.madx
+squeeze6: job_mksqueeze3-4+6-15.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: no preloaded tables, interpolate betaytcdqb[12], fit_squeeze6.madx
+squeeze7: job_mksqueeze3-4+6-15.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: no preloaded tables, interpolate betaytcdqb[12] and kq5.r6b2,kq5.l6b1, fit_squeeze7.madx
+squeeze8: job_mksqueeze3-4+6-15.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: no preloaded tables, interpolate+fix betaytcdqb[12] and dmuxkickb[12]_tcsg, fit_squeeze8.madx
+squeeze9: job_mksqueeze3-4+6-15.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: no preloaded tables, interpolate+fix betaytcdqb[12] and dmuxkickb[12]_tcsg, fit_squeeze9.madx
+            interpolate + fix kqt12.l6b1,kqt12.r6b2
+squeeze10: job_mksqueeze3-4+6-15.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: no preloaded tables, interpolate+fix betaytcdqb[12] and dmuxkickb[12]_tcsg, fit_squeeze10.madx
+            interpolate + fix kqt12
+squeeze11: job_mksqueeze3-4+6-15.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: no preloaded tables, interpolate+fix betaytcdqb[12] and dmuxkickb[12]_tcsg, bxdumpb[12],fit_squeeze11.madx
+            interpolate (not fix) kqt12*b1+kqt13, fix kqt12*b2 (by mistake)
+squeeze12: job_mksqueeze3-4+6-15.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: no preloaded tables, interpolate+fix betaytcdqb[12] and dmuxkickb[12]_tcsg, b[xy]dumpb[12],fit_squeeze12.madx
+            interpolate (not fix) kqt12+kqt13
+squeeze13: job_mksqueeze3-4+6-15.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: no preloaded tables, interpolate+fix betaytcdqb[12] and dmuxkickb[12]_tcsg, b[xy]dumpb[12],fit_squeeze13.madx
+            interpolate (not fix) kqt12+kqt13, interpolate+fix kq4
+squeeze14: job_mksqueeze3-4+6-15.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: no preloaded tables, interpolate+fix betaytcdqb[12] and dmuxkickb[12]_tcsg, b[xy]dumpb[12],fit_squeeze14.madx
+            interpolate (not fix) kqt12+kqt13, interpolate+fix kq4
+squeeze15: job_mksqueeze3-4+6-15.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: no preloaded tables, interpolate+fix betaytcdqb[12] and dmuxkickb[12]_tcsg, b[xy]dumpb[12],fit_squeeze15.madx
+            interpolate (not fix) kqt12+kqtl11, interpolate+fix kq4
+squeeze16: job_mksqueeze3-4+6-15.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze16.madx missing!!!
+          - IR6: squeeze15/ir6_log_str.tfs, interpolate+fix betaytcdqb[12] and dmuxkickb[12]_tcsg, b[xy]dumpb[12],fit_squeeze15.madx
+            interpolate+fix kqt12
+squeeze17: job_mksqueeze16-17.madx, *ir6b2m.madx, *ir6b1m.madx -> !!! first smooth squeeze !!!
+          - IR6: squeeze_flathv/squeeze17/ir6_log_str.tfs, interpolate+fix betaytcdqb[12] 
+            and dmuxkickb[12]_tcsg, b[xy]dumpb[12],fit_squeeze15.madx, basically just rematch squeeze_flathv/squeeze16 (before
+            the penalty function was sometimes 1.e-7)

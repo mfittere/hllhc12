@@ -1,0 +1,120 @@
+option, warn,info;
+!system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.1/ slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.0/ slhcv10";
+!system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/ slhc";
+system,"ln -fns .. slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
+system,"mkdir temp";
+
+option,-echo,-info,-warn;
+option, -echo,-warn,-info,no_fatal_stop;
+REAL CONST l.TAN   = 3.7  ;REAL CONST l.TANAL = l.TAN;
+REAL CONST l.TANAR = l.TAN;REAL CONST l.TANC  = l.TAN;
+REAL CONST l.TCT   = 1.0;REAL CONST l.TCTH  = l.TCT;REAL CONST l.TCTVA = l.TCT;
+REAL CONST l.MBAS2             =0 ;
+REAL CONST l.MBAW              =0 ;
+REAL CONST l.MBCS2             =0 ;
+REAL CONST l.MBLS2             =0 ;
+REAL CONST l.MBLW              =0 ;
+REAL CONST l.MBWMD             =0 ;
+REAL CONST l.MBXWH             =0 ;
+REAL CONST l.MBXWS             =0 ;
+REAL CONST l.MBXWT             =0 ;
+
+!call,file="db5/V6.5.seq";
+call,file="db5/V6.5.as-built.seq";
+Option, -echo,warn,-info;
+
+call,file="slhc/toolkit/macro.madx";
+call,file="slhc/hllhc_sequence.madx";
+
+exec,mk_beam(7000);
+!call,file="rematchir6/opt_flat_new.madx";
+call,file="rematchir6/opt_flathv_new.madx";
+exec, crossing_disable;
+exec,check_ip(b1); exec,check_ip(b2);
+
+call,file="slhc/toolkit/optics_log.madx";
+
+!--- all indices given in comments start at 1!!! ----
+!V1.0 squeeze tables
+readmytable,table=ir6_flat,file="squeeze_round/squeeze12/ir6_log_str.tfs";
+!V1.2 squeeze tables round, use them from index 51 to the end
+readmytable,table=ir6_round,file="squeeze_round/squeeze12/ir6_log_str.tfs";
+!create squeeze tables
+exec,make_opticstbl_ir6(ir6);
+on_opticstbl_ir6 = 1 ;
+
+set_beta_const: macro ={
+  betx0_ip1=0.48;bety0_ip1=0.48;betx0_ip5=0.48;bety0_ip5=0.48;
+  betx_ip2=10.0;bety_ip2=10.0;alfx_ip2=0;alfy_ip2=0;
+  betx_ip8=3.0;bety_ip8=3.0;alfx_ip8=0;alfy_ip8=0;
+  alfx_ip1=0;alfy_ip1=0; 
+  alfx_ip5=0;alfy_ip5=0;
+};
+
+mk_squeeze: macro={
+sss=0.005;!0.5 cm squeeze steps
+rrr=1;!81 for 0.4 m beta*
+k:=rrr-1;
+eee=(0.48-0.10)/sss+1+(0.4-0.3)/sss;
+value,sss,rrr,eee;
+while(rrr<=eee){
+  if(rrr<=6){
+    bet12_2=0.075+sss*(rrr-1);!beta* v12 tables
+    bet12_1=0.30+sss*(rrr-1);!beta* v12 tables
+  };
+  if(6<rrr && rrr<=20){
+    bet12_2=0.1;!beta* v12 tables
+    bet12_1=0.30+sss*(rrr-1);!beta* v12 tables
+  };
+  if(rrr>20 && rrr<82){
+    bet12_2=0.1+sss*(rrr-21);!beta* v12 tables
+    bet12_1=0.4;!beta* v12 tables
+  };
+  if(rrr>=82){
+    bet12_2=0.1+sss*(rrr-21);!beta* v12 tables
+    bet12_1=0.1+sss*(rrr-21);!beta* v12 tables
+  };
+  value, bet12_2,bet12_1,bet12_2/0.48;
+  value, bet12_2,bet12_1,bet12_2/0.48;
+  if(bet12_2<0.4){
+  betx_ip1=bet12_1;bety_ip1=bet12_2;
+  betx_ip5=bet12_2;bety_ip5=bet12_1;
+  jac_calls=   20;
+!  call,file="squeeze_flathv/fit_squeeze2.madx";
+!  call,file="squeeze_flathv/fit_squeeze3.madx";
+!  call,file="squeeze_flathv/fit_squeeze4.madx";
+  call,file="squeeze_flathv/fit_squeeze5.madx";
+  };
+  else{!set round optics value for beta*>0.4 m, rrr=82
+  tl=table(ir2_round,tablelength);
+  value, tl;
+  value, eee-rrr;
+  kkk=(eee-rrr)+1;
+  setvars,table=ir6_round,row=kkk;
+  value, betx_ip1;
+  betx_ip1=bet12_2;bety_ip1=bet12_2;
+  betx_ip5=bet12_2;bety_ip5=bet12_2;
+  value, betx_ip1;
+  jac_calls=   0;
+  };
+  value, jac_calls;
+  exec, set_beta_const;
+  value, betx_ip1,bety_ip1,betx_ip5,bety_ip5;
+  call,file="toolkit/rematch_squeeze.madx";
+!  if(tarsqueeze>1.e-15){return;};
+  exec,store_optics(ir6);
+  rrr=rrr+1;
+};
+value,betx_ip1,betx_ip5;
+value,ttt,rrr;
+};
+
+!return;
+exec, mk_squeeze;
+
+exec,check_ip(b1); exec,check_ip(b2);
+
+return;
+
