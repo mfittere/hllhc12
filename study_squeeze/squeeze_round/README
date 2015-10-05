@@ -33,7 +33,7 @@ squeeze10: job_mksqueeze6-11.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze9
           - IR6: polynomial fit to dx and dpx !!!! last point missing -> wrong fit!!!!
 squeeze11: job_mksqueeze6-11.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze10/ir6_round.tfs
           - IR6: fix value of kq4 by fit, interpolate b[xy]dumpb[12] and dxip6b[12], dpxip6b[12]
-squeeze12: job_mksqueeze6-11.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze11/ir6_log_str_nokqt.tfs
+squeeze12: job_mksqueeze12.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze11/ir6_log_str_nokqt.tfs
           - IR6: interpolate b[xy]dumpb[12] and dxip6b[12], dpxip6b[12], kq4 and kq5, start from 
            presqueezed optics (reversed to previous cases), do NOT load the kqt values (use squeeze11/ir6_log_str_nokqt.tfs)
 
