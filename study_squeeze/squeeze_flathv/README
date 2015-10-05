@@ -1,4 +1,5 @@
 !!!ONLY MATCH IR6!!!
+---- squeeze_round/squeeze12/ir6_log_str.tfs
 squeeze1: job_mksqueeze2.madx, *ir6b2m.madx, *ir6b1m.madx -> gives hint on constraints for first interpolation
           - IR6: start from flat optics, limit minimum beta at dump and dispersion
 squeeze2: job_mksqueeze2.madx, *ir6b2m.madx, *ir6b1m.madx

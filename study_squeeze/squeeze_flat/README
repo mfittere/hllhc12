@@ -1,4 +1,5 @@
 !!!ONLY MATCH IR6!!!
+---- squeeze_round/squeeze12/ir6_log_str.tfs
 squeeze1: job_mksqueeze1.madx, *ir6b2m.madx, *ir6b1m.madx -> very bumpy squeeze!
           - IR6: values form HLLHCV1.0, constraint minimum value of b[xy]dumpb[12] and maximum value of dx
 squeeze2: job_mksqueeze2.madx, *ir6b2m.madx, *ir6b1m.madx -> gives hint on constraints for first interpolation
