@@ -1,6 +1,6 @@
 option, warn,info;
 !system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.1/ slhc";
-!system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.0/ slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.0/ slhcv10";
 !system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.2/ slhc";
 system,"ln -fns .. slhc";
 system,"ln -fns /afs/cern.ch/eng/lhc/optics/V6.503 db5";
@@ -29,18 +29,23 @@ call,file="slhc/toolkit/macro.madx";
 call,file="slhc/hllhc_sequence.madx";
 
 exec,mk_beam(7000);
-call,file="slhc/opt_presqueeze.madx";
+call,file="rematchir6/opt_presqueeze_new.madx";
 exec, crossing_disable;
 exec,check_ip(b1); exec,check_ip(b2);
 
 call,file="slhc/toolkit/optics_log.madx";
 
+!--- all indices given in comments start at 1!!! ----
+!V1.2 squeeze tables round, use them from index 51 to the end
+readmytable,table=ir2_round,file="squeeze_round/squeeze12/ir2_log_str.tfs";
+readmytable,table=ir4_round,file="squeeze_round/squeeze12/ir4_log_str.tfs";
+readmytable,table=ir6_round,file="squeeze_round/squeeze12/ir6_log_str.tfs";
+readmytable,table=ir8_round,file="squeeze_round/squeeze12/ir8_log_str.tfs";
 !V1.0 squeeze tables
-readmytable,table=ir2_sround_v10,file="../slhcv10/squeeze/ir2_sround.tfs";
-readmytable,table=ir4_sround_v10,file="../slhcv10/squeeze/ir4_sround.tfs";
-readmytable,table=ir6_sround_v10,file="../slhcv10/squeeze/ir6_sround.tfs";
-!take table from squeeze2
-readmytable,table=ir8_round,file="squeeze2/ir8_round.tfs";
+readmytable,table=ir2_sflat_v10,file="slhcv10/squeeze/ir2_sflat.tfs";
+readmytable,table=ir4_sflat_v10,file="slhcv10/squeeze/ir4_sflat.tfs";
+readmytable,table=ir6_sflat_v10,file="slhcv10/squeeze/ir6_sflat.tfs";
+readmytable,table=ir8_sflat_v10,file="slhcv10/squeeze/ir8_sflat.tfs";
 !create squeeze tables
 exec,make_opticstbl_ir2(ir2);
 exec,make_opticstbl_ir4(ir4);
@@ -61,30 +66,47 @@ set_beta_const: macro ={
 
 mk_squeeze: macro={
 sss=0.005;!0.5 cm squeeze steps
-rrr=1;
-eee=(0.48-0.15)/sss+1;
+rrr=1;!61 for 0.395 m beta*
+eee=(0.48-0.10)/sss+1;
 value,sss,rrr,eee;
 while(rrr<=eee){
-  bet12=0.15+sss*(rrr-1);!beta* v12 tables
-  taux=(bet12*0.44/0.48-0.10)/sss+1;!calculate squeezed value in table
-  ttt=round(taux-0.4999);!convert to int
-  bet10=0.10+sss*(ttt-1);!beta* v10 tables, note setvars_lin starts at 0, setvars starts at 1 with the index
-  !before madx version 5.02.03
-  ppp=(bet10+sss-bet12*0.44/0.48)/sss;
-  !after madx version 5.02.03
-!  ppp=(bet12*0.44/0.48-bet10)/sss;
-  setvars_lin,table=ir2_sround_v10,row1=ttt,row2=ttt+1,param=ppp;
-  setvars_lin,table=ir4_sround_v10,row1=ttt,row2=ttt+1,param=ppp;
-  setvars_lin,table=ir6_sround_v10,row1=ttt,row2=ttt+1,param=ppp;
-  setvars,table=ir8_round,row=rrr;
+  bet12=0.10+sss*(rrr-1);!beta* v12 tables
+  !use v1.2 round squeeze for beta*>0.4 m
+  if(bet12<0.4){
+    taux=(bet12*0.44/0.48-0.05)/sss+1;!calculate squeezed value in table
+    ttt=round(taux-0.4999);!convert to int
+    bet10=0.05+sss*(ttt-1);!beta* v10 tables, note setvars_lin starts at 0, setvars starts at 1 with the index
+    !before madx version 5.02.03
+    ppp=(bet10+sss-bet12*0.44/0.48)/sss;
+    !after madx version 5.02.03
+!    ppp=(bet12*0.44/0.48-bet10)/sss;
+    setvars_lin,table=ir2_sflat_v10,row1=ttt,row2=ttt+1,param=ppp;
+    setvars_lin,table=ir4_sflat_v10,row1=ttt,row2=ttt+1,param=ppp;
+    setvars_lin,table=ir6_sflat_v10,row1=ttt,row2=ttt+1,param=ppp;
+    setvars_lin,table=ir8_sflat_v10,row1=ttt,row2=ttt+1,param=ppp;
+  };
+  else{
+    setvars,table=ir2_round,row=rrr-11;
+    setvars,table=ir4_round,row=rrr-11;
+    setvars,table=ir6_round,row=rrr-11;
+    setvars,table=ir8_round,row=rrr-11;
+  };
   value, bet12,bet12/0.48,sc1/0.44;
   value, bet12,bet12/0.48,sc5/0.44;
   value, ttt;
   exec, set_beta_const;
-  betx_ip1=bet12;bety_ip1=bet12;
-  betx_ip5=bet12;bety_ip5=bet12;
+  if(bet12<0.4){
+  betx_ip1=bet12;bety_ip1=0.4;
+  betx_ip5=0.4;bety_ip5=bet12;
   kq5.l6b1=kq5.l6b1*4.8/6.8; kq5.l6b2=kq5.l6b2*4.8/6.8;
   kq5.r6b1=kq5.r6b1*4.8/6.8; kq5.r6b2=kq5.r6b2*4.8/6.8;
+  jac_calls=   15;
+  };
+  else{
+  betx_ip1=bet12;bety_ip1=bet12;
+  betx_ip5=bet12;bety_ip5=bet12;
+  jac_calls=   0;
+  };
   call,file="toolkit/rematch_squeeze.madx";
   value, betx_ip1;
   if(tarsqueeze>1.e-15){return;};

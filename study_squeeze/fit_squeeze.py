@@ -26,6 +26,7 @@ ds.plot_dump(fn='fit_squeeze7_idx_15_66.madx')
 
 #do a fit of manually, second order until point15, linear fit afterwards
 ds.poly_fit(var=ds.get_vars('b[xy]dumpb[12]'),order=2,n1=0,n2=81)
+ds.poly_fit(var=ds.get_vars('b[xy]dumpb[12]'),order=r,n1=5,n2=36,x0_idx=[5,-1],y0_idx=[ds[var][5],ds[var][35]],xp0_idx=[20,35])
 ds.poly_fit(var=['kq4.l6b2','kq4.r6b1'],fn='fit_squeeze12_idx_0_14.madx')
 ds.poly_fit(var=['kq5.l6b2','kq5.r6b2','kq5.l6b1','kq5.r6b1'],order=2)
 ds.poly_fit(var=['kq8.l6b2','kq8.r6b2','kq8.l6b1','kq8.r6b1'],order=2)
