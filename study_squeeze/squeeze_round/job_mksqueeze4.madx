@@ -29,18 +29,18 @@ call,file="slhc/toolkit/macro.madx";
 call,file="slhc/hllhc_sequence.madx";
 
 exec,mk_beam(7000);
-call,file="rematchir6/opt_presqueeze_new.madx";
+call,file="rematchir6/opt_round_new.madx";
 exec, crossing_disable;
 exec,check_ip(b1); exec,check_ip(b2);
 
 call,file="slhc/toolkit/optics_log.madx";
 
 !V1.0 squeeze tables
-readmytable,table=ir2_round,file="squeeze3/ir2_round.tfs";
-readmytable,table=ir4_round,file="squeeze3/ir4_round.tfs";
-readmytable,table=ir6_round,file="squeeze3/ir6_round.tfs";
+readmytable,table=ir2_round,file="squeeze_round/squeeze3/ir2_round.tfs";
+readmytable,table=ir4_round,file="squeeze_round/squeeze3/ir4_round.tfs";
+readmytable,table=ir6_round,file="squeeze_round/squeeze3/ir6_round.tfs";
 !take table from squeeze2
-readmytable,table=ir8_round,file="squeeze3/ir8_round.tfs";
+readmytable,table=ir8_round,file="squeeze_round/squeeze3/ir8_round.tfs";
 !create squeeze tables
 exec,make_opticstbl_ir2(ir2);
 exec,make_opticstbl_ir4(ir4);
@@ -59,9 +59,9 @@ set_beta_const: macro ={
   alfx_ip5=0;alfy_ip5=0;
 };
 
-mk_squeeze: macro={
 sss=0.005;!0.5 cm squeeze steps
 rrr=1;
+k:=rrr-1;
 eee=(0.48-0.15)/sss+1;
 value,sss,rrr,eee;
 while(rrr<=eee){
@@ -88,6 +88,8 @@ while(rrr<=eee){
   refbxdumpb1:=6690-25.42*(rrr-1);
   refbydumpb1:=3955;
   value, refbxdumpb1,refbydumpb1;
+  jac_calls=15;
+  call,file="squeeze_round/fit_ir4/fit_squeeze4a.madx";
   call,file="toolkit/rematch_squeeze.madx";
   value, betx_ip1;
   if(tarsqueeze>1.e-15){return;};
@@ -99,15 +101,13 @@ while(rrr<=eee){
 };
 value,betx_ip1,betx_ip5;
 value,ttt,rrr;
-};
-
-exec, mk_squeeze;
 
 exec,check_ip(b1); exec,check_ip(b2);
-return;
 
 call,file="rematchir6/opt_presqueeze_new.madx";
 exec,check_ip(b1); exec,check_ip(b2);
+call,file="squeeze_round/fit_ir4/fit_squeeze4a.madx";
+call,file="toolkit/rematch_squeeze.madx";
 exec,store_optics(ir2);
 exec,store_optics(ir4);
 exec,store_optics(ir6);

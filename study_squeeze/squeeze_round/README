@@ -11,14 +11,17 @@ squeeze3: job_mksqueeze3.madx, *ir6b[12]m_old.madx, base optics: slhc/opt_presqu
           - IR8 fix kq4, interpolate kq* of squeeze2/ir8_round.tfs, fit_ir8/fit_squeeze3.madx
           - IR6 no dump constraints (bxdumpb1,bydumpb1,dmuxkickb1) and no beta @ MKD and TCDQ
 squeeze4: job_mksqueeze4.madx, *ir6b2m_old.madx, *ir6b1md.madx
-          - IR2/4/8 as in squeeze3
-          - IR6: use squeeze3 as starting point for IR6, beam2 already fine
-            squeeze4a: base optics: slhc/opt_presqueeze.madx
-                       linear interpolation until minimum betxdumpb1 is reached, then keep constant 
-                       + constant betydumpb1
-            squeeze4b: base optics: rematchir6/opt_presqueeze.madx
-                       linear interpolation from maximum to minimum value for betxdumpb1
-                       + constant betydumpb1
+          - IR2/8 as in squeeze3
+          - IR4/6: use squeeze3 as starting point for IR6, beam2 already fine
+            squeeze4a: IR6: base optics: slhc/opt_presqueeze.madx
+                            linear interpolation until minimum betxdumpb1 is reached, then keep constant 
+                            + constant betydumpb1
+                       IR4: interpolate+fix kq7, squeeze_round/squeeze3/ir4_round.tfs -> does not really improve
+                            (fixing kq5 leads to unmatched optics around k>50, acting kqt12 influenced kq5 in the
+                            unwanted direction)
+            squeeze4b: IR6: base optics: rematchir6/opt_presqueeze.madx
+                            linear interpolation from maximum to minimum value for betxdumpb1
+                            + constant betydumpb1
 squeeze5: job_mksqueeze5.madx, *ir6b2m_old.madx, *ir6b1md.madx
          - IR2/4/8 as in squeeze3
          - IR6: use squeeze4b as starting point for IR6, find smoother transition between presqueezed
