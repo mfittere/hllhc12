@@ -36,5 +36,31 @@ squeeze11: job_mksqueeze6-11.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze1
 squeeze12: job_mksqueeze12.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze11/ir6_log_str_nokqt.tfs
           - IR6: interpolate b[xy]dumpb[12] and dxip6b[12], dpxip6b[12], kq4 and kq5, start from 
            presqueezed optics (reversed to previous cases), do NOT load the kqt values (use squeeze11/ir6_log_str_nokqt.tfs)
+---- squeeze12 = first final solution for which first version of flat and flathv is developed -----
+squeeze13: job_mksqueeze13.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze12/ir6_log_str.tfs
+          - IR6: interpolate+fix betytcdqb[12], constraint b[xy]dumpb[12] only to minimum values and dx<0.5, otherwise the matching
+            does not converge -> increase betytcdqb[12]
+squeeze14: job_mksqueeze13.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze13/ir6_log_str.tfs
+          - IR6: interpolate+fix bet[xy]tcdqb[12], constraint b[xy]dumpb[12] only to minimum values and dx<0.5
+            -> increase betytcdqb[12]
+squeeze15: job_mksqueeze13.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze14/ir6_log_str.tfs
+          - IR6: interpolate +constraint bet[xy]tcdqb[12], constraint b[xy]dumpb[12] only to minimum values and dx<0.5
+            -> increase betytcdqb[12]
+squeeze16: job_mksqueeze13.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze15/ir6_log_str.tfs
+          - IR6: interpolate +constraint bet[xy]tcdqb[12], constraint b[xy]dumpb[12] only to minimum values and dx<0.5
+            -> increase betytcdqb[12]
+squeeze17: job_mksqueeze13.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze16/ir6_log_str.tfs
+          - IR6: interpolate +constraint bet[xy]tcdqb[12], constraint b[xy]dumpb[12] only to minimum values and dx<0.5
+            -> increase betytcdqb[12]
+squeeze18: job_mksqueeze13.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze16/ir6_log_str.tfs
+          - IR6: interpolate +constraint bet[xy]tcdqb[12], constraint b[xy]dumpb[12] only to minimum values and dx<0.5
+            -> increase betytcdqb[12]
+squeeze19: job_mksqueeze13.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze16/ir6_log_str.tfs
+          - IR6: interpolate +constraint bet[xy]tcdqb[12], constraint b[xy]dumpb[12] only to minimum values and dx<0.5
+            smooth bumps -> fix kq4.l6b1
+squeeze20: job_mksqueeze13.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze16/ir6_log_str.tfs
+          - IR6: interpolate +constraint bet[xy]tcdqb[12], constraint b[xy]dumpb[12] only to minimum values and dx<0.5
+            smooth bumps -> fix kq4.l6b1,kqt12.l6b1
 
-squeeze12 is the final solution 
+constraints: 6 (DS) + 2 (dump) + 2 (tcdq) + 1 (mu MKD->TCSG) + 2 (dx,dpx ip6) = 15
+variables:   4*2 (Q5-Q10) + 3*2 (DS) + 1 (Q4) = 15
