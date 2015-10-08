@@ -59,9 +59,93 @@ squeeze19: job_mksqueeze18.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze19.madx
           - IR6: interpolate + constraint betatcdqb[12], dumxkickb[12]_tcsg, b[xy]dumpb[12],
             values loaded from squeeze18/ir6_log_str.tfs, kqt12+kqt13, set to fitted values
             (basically reconstruct method of squeeze18)
+squeeze20: job_mksqueeze18.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze20.madx
+          - IR6: interpolate + constraint betatcdqb[12], dumxkickb[12]_tcsg, b[xy]dumpb[12],
+            values loaded from squeeze19/ir6_log_str.tfs
 
+---- squeeze_round/squeeze24/ir6_log_str.tfs
+squeeze21: job_mksqueeze21.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: get squeeze20 with new round squeeze in the end
+squeeze22: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze22.madx, squeeze21/ir6_log_str.tfs
+          - IR6: interpolate + constraint bet[xy]tcdqb[12], dumxkickb[12]_tcsg, bydumpb[12],
+squeeze23: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze23.madx, squeeze22/ir6_log_str.tfs
+          - IR6: interpolate + constraint bet[xy]tcdqb[12], dumxkickb[12]_tcsg, bydumpb[12],
+            interpolate bxdumpb[12]
+squeeze24-26: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze[24-26].madx, squeeze[23-25]/ir6_log_str.tfs
+          - IR6: interpolate + constraint bet[xy]tcdqb[12], dumxkickb[12]_tcsg, kq10.r6b2, kq5.r6b1
+            only with > constraints: b[xy]dumpb[12], dx, dpx
+squeeze27: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze27.madx, squeeze26/ir6_log_str.tfs
+          - IR6: interpolate + constraint bet[xy]tcdqb[12], dumxkickb[12]_tcsg, 
+            only with > constraints: b[xy]dumpb[12], dx, dpx
+squeeze28-29: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze[28-29].madx, squeeze27-28/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12],betxtcdqb1, dumxkickb[12]_tcsg (if possible),
+            interpolate + constraint kq10.r6b2 (flatten kq10.r6b2)
+            only with > constraints: b[xy]dumpb[12], dx, dpx, betxtcdqb2
+squeeze30: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze30+31.madx, squeeze29/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12],betxtcdqb1, dumxkickb[12]_tcsg,
+            interpolate + constraint kq4 (flatten kq4)
+            only with > constraints: b[xy]dumpb[12], dx, dpx, betxtcdqb2
+squeeze31: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze30+31.madx, squeeze30/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12],betxtcdqb1, dumxkickb[12]_tcsg,
+            interpolate + constraint kq4, kq10.r6b2 (flatten kq4+kq10)
+            only with > constraints: b[xy]dumpb[12], dx, dpx, betxtcdqb2
+squeeze32-33: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze[32-33].madx, squeeze31+32/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12],betxtcdqb1, dumxkickb[12]_tcsg,
+            interpolate + constraint kq4.l6b2 + some trims
+            only with > constraints: b[xy]dumpb[12], dx, dpx, betxtcdqb2
+squeeze34: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze34.madx, squeeze33/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], dumxkickb[12]_tcsg,
+            interpolate + constraint kqt13*, interpolate also other trims
+            only with > constraints: b[xy]dumpb[12], dx, dpx, betxtcdqb[12] -> almost smooth!!!
+squeeze35: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze34.madx, squeeze33/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], dumxkickb[12]_tcsg,
+            interpolate + constraint kqt4.r6b1,kq9.r6b2,kqt13.[lr]6b2
+            only with > constraints: b[xy]dumpb[12], dx, dpx, betxtcdqb[12]
+squeeze36: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze35.madx, squeeze34/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], dumxkickb[12]_tcsg,
+            interpolate + constraint kqt4.r6b1,kq9.r6b2,kqt12.l6b2,kqt13.r6b1
+            only with > constraints: b[xy]dumpb[12], dx, dpx, betxtcdqb[12]
+squeeze37: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze35.madx, squeeze34/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], dumxkickb[12]_tcsg,
+            interpolate + constraint kq4.r6b1,kq8.l6b1,kq9.l6b2 (smoothen) 
+            only with > constraints: b[xy]dumpb[12], dx, dpx, betxtcdqb[12]
+            -> explodes
+squeeze38: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze38.madx, squeeze36/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], b[xy]dumpb[12], dumxkickb[12]_tcsg,(bxdumpb2 from squeeze34)
+            interpolate + constraint kq12.r6b2, kqt13.r6b1
+            only with > constraints: dx, dpx, betxtcdqb[12]
+squeeze39: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze38.madx, squeeze38/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], b[xy]dumpb[12], dumxkickb[12]_tcsg,
+            interpolate + constraint kq12.r6b2, kqt13* (smoothen)
+            only with > constraints: dx, dpx, betxtcdqb[12]
+squeeze40: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze38.madx, squeeze39/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], b[xy]dumpb[12], dumxkickb[12]_tcsg,
+            interpolate + constraint kq12.r6b2, kqt13.r6b1
+            only with > constraints: dx, dpx, betxtcdqb[12]
+squeeze41: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze38.madx, squeeze39/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], bydumpb[12], bxdumpb2 (smoothen), dumxkickb[12]_tcsg,
+            interpolate + constraint kq12.r6b2, kqt13.r6b1, + kq4.r6b1 (smoothen) -> smooth solution!!!
+            only with > constraints: dx, dpx, betxtcdqb[12], bxdumpb1
+squeeze42: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze38.madx, squeeze39/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], bydumpb[12], bxdumpb2 (smoothen), dumxkickb[12]_tcsg,
+            interpolate + constraint kq12.r6b2, kqt13.r6b1, + kq5.r6b1 (smoothen) -> kq4.r6b1 unsmoothend (try kqt12 next) 
+            only with > constraints: dx, dpx, betxtcdqb[12], bxdumpb1
+squeeze43: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze38.madx, squeeze39/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], bxdumpb[12], bydumpb2 (smoothen), dumxkickb[12]_tcsg,
+            interpolate + constraint kq12.r6b2, kq4.r6b1 smoothened -> !!! would be smooth if only now constraint bydumpb1 
+            only with > constraints: dx, dpx, betxtcdqb[12], bydumpb1
+squeeze44: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze38.madx, squeeze39/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], bydumpb[12], bxdumpb2 (smoothen), dumxkickb[12]_tcsg,
+            interpolate + constraint kq12.r6b2, kqt13.r6b1, + kq5.r6b1 (smoothen) -> kq4.r6b1 unsmoothend (try kqt12 next) 
+            only with > constraints: dx, dpx, betxtcdqb[12], bxdumpb1
+            play with bxdumpb1,smoothen bydumpb1, smoothen kq10.l6b1
+squeeze45: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze38.madx, squeeze43/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], bydumpb[12], bxdumpb2 (smoothen), dumxkickb[12]_tcsg,
+            interpolate + constraint kq12.r6b2, kqt13.r6b1 (change of bytcdqb1 in order to match idx=20)
+            only with > constraints: dx, dpx, betxtcdqb[12], bxdumpb1
+            -> smoothest solution
 
-
+final squeeze: squeeze 45
 
 
 constraints: 8 (ds) + 2 (dump) + 1 (mkd->tcdq) + 1 (tcdq) = 12
