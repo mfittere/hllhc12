@@ -33,10 +33,14 @@ call,   file="slhc/aperture/aperture_upgrade_MS.madx";
 !on_layout_custom=0;
 !call,file="slhcv11/hllhc_sequence.madx";
 !v1.2
-call,file="slhc/opt_inj.madx";
+!call,file="slhc/opt_flat.madx";
+!call,file="slhc/opt_inj.madx";
 !call,file="rematchir6/opt_inj_new.madx";
+call,file="rematchir6/opt_inj_v11_new.madx";
 on_layout_custom=0;
 call,file="slhc/hllhc_sequence.madx";
+exec,mk_beam(450);
+exec,check_ip(b1);exec,check_ip(b2);
 
 return;
 !--- save the presqueezed optics
@@ -120,5 +124,5 @@ exec, crossing_disable;
 exec, orbcrab_disable; on_o1=0;on_o5=0;
 arc_squeeze=0.0;!vdm + injection
 on_check=1;call,file="slhc/toolkit/save_optics2.madx";
-system,"cp temp/optics.madx opt_inj_new.madx";
+system,"cp temp/optics.madx rematchir6/opt_inj_v11_new.madx";
 save,file="inj.seq";
