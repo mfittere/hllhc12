@@ -46,3 +46,79 @@ squeeze17: job_mksqueeze16-17.madx, *ir6b2m.madx, *ir6b1m.madx -> !!! first smoo
           - IR6: squeeze_flathv/squeeze17/ir6_log_str.tfs, interpolate+fix betaytcdqb[12] 
             and dmuxkickb[12]_tcsg, b[xy]dumpb[12],fit_squeeze15.madx, basically just rematch squeeze_flathv/squeeze16 (before
             the penalty function was sometimes 1.e-7)
+
+---- squeeze_round/squeeze24/ir6_log_str.tfs
+squeeze18: job_mksqueeze18.madx, *ir6b2m.madx, *ir6b1m.madx
+          - IR6: get squeeze17 with new round squeeze in the end
+squeeze19: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze19.madx, squeeze18/ir6_log_str.tfs
+          - IR6: interpolate + constraint bet[xy]tcdqb[12], dumxkickb[12]_tcsg
+            only with > constraints: b[xy]dumpb[12], dx, dpx
+squeeze20: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze19.madx, squeeze19/ir6_log_str.tfs
+          - IR6: interpolate + constraint bet[xy]tcdqb[12], dumxkickb[12]_tcsg, kq4
+            only with > constraints: b[xy]dumpb[12], dx, dpx
+squeeze21: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze21.madx, squeeze20/ir6_log_str.tfs
+          - IR6: interpolate + constraint bet[xy]tcdqb[12], dumxkickb[12]_tcsg (change betxtcdqb2)
+            only with > constraints: b[xy]dumpb[12], dx, dpx
+squeeze22: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze22.madx, squeeze21/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], dumxkickb[12]_tcsg, kq4.l6b2, kq10.l6b1 
+            only with > constraints: b[xy]dumpb[12], betxtcdqb[12], dx, dpx
+            -> too rapid change of  kq4.l6b2, kq10.l6b1
+squeeze23: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze23.madx, squeeze22/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], dumxkickb[12]_tcsg, kq4.l6b2, kq10.l6b1 
+            only with > constraints: b[xy]dumpb[12], betxtcdqb[12], dx, dpx
+            -> too rapid change of  kq4.l6b2, kq10.l6b1
+squeeze24: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze24.madx, squeeze22/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], dumxkickb[12]_tcsg, kq4.l6b2, kq10.l6b1 (flatten strength) 
+            only with > constraints: b[xy]dumpb[12], betxtcdqb[12], dx, dpx,betxtcdqb[12]
+squeeze25: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze25.madx, squeeze24/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], dumxkickb[12]_tcsg, kq4.l6b2, ,kq4.r6b1,kq10.l6b1 (flatten strength) 
+            only with > constraints: b[xy]dumpb[12], betxtcdqb[12], dx, dpx,betxtcdqb[12]
+squeeze26+27: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze26+27.madx, squeeze25+26/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], dumxkickb[12]_tcsg, 
+            fix+interpolate: kq4.l6b2, ,kq4.r6b1,kq10.l6b1 (flatten strength) 
+            only with > constraints: b[xy]dumpb[12], betxtcdqb[12], dx, dpx,betxtcdqb[12]
+            constraint + interpolate: kq4.l6b1,kqt13.r6b1,kq9.l6b2
+squeeze28-30: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze29-30.madx, squeeze27-29/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], dumxkickb[12]_tcsg, kqt13 
+            only with > constraints: b[xy]dumpb[12], betxtcdqb[12], dx, dpx,betxtcdqb[12]
+            constraint + interpolate: kq4.l6b1 ???
+squeeze31: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze31.madx, squeeze30/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], dumxkickb[12]_tcsg, kqt13 
+            only with > constraints: b[xy]dumpb[12], betxtcdqb[12], dx, dpx,betxtcdqb[12]
+            constraint + interpolate: kq4.l6b1,kq5.l6b1,kq4.r6b2,kq10.l6b2
+            (same as 30 only differnt kq* constrained -> explodes)
+squeeze32: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze32.madx, squeeze29/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], dumxkickb[12]_tcsg, b[xy]dumpb[12] 
+            only with > constraints: betxtcdqb[12], dx, dpx,betxtcdqb[12]
+            constraint + interpolate: kqt13.r6b1,kqt12.r6b2
+squeeze33: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze33.madx, squeeze32/ir6_log_str.tfs
+          - IR6: fixed: betytcdqb[12], dumxkickb[12]_tcsg, bydumpb[12]
+                 fixed: ?? 
+squeeze34: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze34.madx, squeeze33/ir6_log_str.tfs
+          - IR6: fixed: betytcdqb[12], dumxkickb[12]_tcsg, bydumpb[12]
+                 fixed: kqt12.r6b2,kqt13.l6b2,kqt12.l6b1
+squeeze35-40: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze[35-40].madx, squeeze34-36/ir6_log_str.tfs
+          - IR6: fixed: betytcdqb[12], dumxkickb[12]_tcsg, bydumpb[12] (reduce bydumpb2)
+                 fixed: kqt12.r6b2,kqt13.l6b2,kqt12.l6b1
+squeeze41: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeez41.madx, squeeze34-36/ir6_log_str.tfs
+          - IR6: fixed: betytcdqb[12], dumxkickb[12]_tcsg, b[xy]dumpb[12]
+                 fixed: kqt12.r6b2,kqt13.l6b1 ->!!! good smoothe solution
+squeeze42+43: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeez41.madx, squeeze41/ir6_log_str.tfs
+          - IR6: fixed: betytcdqb[12], dumxkickb[12]_tcsg, b[xy]dumpb1
+                 fixed: kqt12.r6b2,kqt13.l6b1 + kq8.l6b2 (reduce kinck) -> kinck appears stronger in kq4.l6b2
+                 only with > constraints: betxtcdqb[12], dx, dpx,b[xy]dumpb2
+squeeze44: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeez44.madx, squeeze41/ir6_log_str.tfs
+          - IR6: fixed: betytcdqb[12], dumxkickb[12]_tcsg, b[xy]dumpb1
+                 fixed: kqt12.r6b2,kqt13.l6b1 + kq10.r6b2 (reduce wiggle)
+                 only with > constraints: betxtcdqb[12], dx, dpx,b[xy]dumpb2
+           -> smoothest squeeze 
+squeeze45: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeez45.madx, squeeze44/ir6_log_str.tfs
+          - IR6: fixed: betytcdqb[12], dumxkickb[12]_tcsg, b[xy]dumpb1
+                 fixed: kqt12.r6b2,kqt13.l6b1 + kq10.r6b2 (reduce wiggle)
+                 only with > constraints: betxtcdqb[12], dx, dpx,b[xy]dumpb2
+           -> smoothest squeeze 
+squeeze46: job_mksqueeze19.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeez46.madx, squeeze45/ir6_log_str.tfs
+          - IR6: fixed: betytcdqb[12], dumxkickb[12]_tcsg, b[xy]dumpb1
+                 fixed: kqt12.r6b2,kqt13.l6b1 + kq9.l6b1 (reduce kink) 
+                 -> appears in kq5.l6b1, kq9.r6b1,kq10.r6b1, .... -> not good!
+                 only with > constraints: betxtcdqb[12], dx, dpx,b[xy]dumpb2
