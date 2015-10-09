@@ -143,6 +143,10 @@ squeeze45: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze38.madx,
           - IR6: interpolate + constraint betytcdqb[12], bydumpb[12], bxdumpb2 (smoothen), dumxkickb[12]_tcsg,
             interpolate + constraint kq12.r6b2, kqt13.r6b1 (change of bytcdqb1 in order to match idx=20)
             only with > constraints: dx, dpx, betxtcdqb[12], bxdumpb1
+squeeze46: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze38.madx, squeeze45/ir6_log_str.tfs
+          - IR6: interpolate + constraint betytcdqb[12], bydumpb1,betxtcdqb[12], b[xy]dumpb2, dumxkickb[12]_tcsg,
+            interpolate + constraint kq12.r6b2, kqt13.r6b1i, smoothen kq10.l6b1
+            only with > constraints: dx, dpx, betxtcdqb[12], bxdumpb1
             -> smoothest solution
 
 final squeeze: squeeze 45

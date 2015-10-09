@@ -56,7 +56,8 @@ call,file="slhc/toolkit/optics_log.madx";
 !readmytable,table=ir6_flat,file="squeeze_flat/squeeze39/ir6_log_str.tfs";
 !readmytable,table=ir6_flat,file="squeeze_flat/squeeze40/ir6_log_str.tfs";
 !readmytable,table=ir6_flat,file="squeeze_flat/squeeze41/ir6_log_str.tfs";
-readmytable,table=ir6_flat,file="squeeze_flat/squeeze43/ir6_log_str.tfs";
+!readmytable,table=ir6_flat,file="squeeze_flat/squeeze43/ir6_log_str.tfs";
+readmytable,table=ir6_flat,file="squeeze_flat/squeeze45/ir6_log_str.tfs";
 !V1.2 squeeze tables round, use them from index 51 to the end
 readmytable,table=ir6_round,file="squeeze_round/squeeze24/ir6_log_str.tfs";
 !create squeeze tables
@@ -78,7 +79,6 @@ eee=(0.48-0.10)/sss+(0.4-0.3)/sss+1;
 rrr=1;
 k:=rrr-1;
 value,sss,rrr,eee;
-eee=19;
 while(rrr<=eee){
   if(rrr<=6){
     bet12_1=0.075+sss*(rrr-1);!beta* v12 tables
@@ -109,7 +109,8 @@ while(rrr<=eee){
 !call,file="squeeze_flat/fit_ir6/fit_squeeze42.madx";
 !call,file="squeeze_flat/fit_ir6/fit_squeeze43.madx";
 !call,file="squeeze_flat/fit_ir6/fit_squeeze44.madx";
-call,file="squeeze_flat/fit_ir6/fit_squeeze45.madx";
+!call,file="squeeze_flat/fit_ir6/fit_squeeze45.madx";
+call,file="squeeze_flat/fit_ir6/fit_squeeze46.madx";
   };
   else{!set round optics value for beta*>0.4 m, rrr=82
   tl=table(ir6_round,tablelength);
