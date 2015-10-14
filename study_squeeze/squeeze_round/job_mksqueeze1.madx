@@ -40,7 +40,7 @@ exec,mk_beam(7000);
 call,file="slhc/opt_presqueeze.madx";
 !call,file="slhc/opt_round.madx";
 !call,file="slhc/opt_flat.madx";
-!call,file="rematchir6/opt_flathv_new.madx";
+!call,file="opt_new/opt_flathv_new.madx";
 !call,file="slhc/opt_200_200_200_200.madx";
 !call,file="slhc/opt_100_400_400_100.madx";
 exec, crossing_disable;

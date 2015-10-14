@@ -29,8 +29,8 @@ call,file="slhc/toolkit/macro.madx";
 call,file="slhc/hllhc_sequence.madx";
 
 exec,mk_beam(7000);
-!call,file="rematchir6/opt_flat_new.madx";
-call,file="rematchir6/opt_flathv_new.madx";
+!call,file="opt_new/opt_flat_new.madx";
+call,file="opt_new/opt_flathv_new.madx";
 exec, crossing_disable;
 exec,check_ip(b1); exec,check_ip(b2);
 
