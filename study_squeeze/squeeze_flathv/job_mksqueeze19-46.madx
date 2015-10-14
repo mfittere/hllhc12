@@ -29,8 +29,8 @@ call,file="slhc/toolkit/macro.madx";
 call,file="slhc/hllhc_sequence.madx";
 
 exec,mk_beam(7000);
-!call,file="rematchir6/opt_flat_new.madx";
-call,file="rematchir6/opt_flathv_new.madx";
+!call,file="opt_new/opt_flat_new.madx";
+call,file="opt_new/opt_flathv_new.madx";
 exec, crossing_disable;
 exec,check_ip(b1); exec,check_ip(b2);
 
@@ -103,6 +103,19 @@ while(rrr<=eee){
   betx_ip5=bet12_2;bety_ip5=bet12_1;
   jac_calls=   20;
   setvars,table=ir6_flathv,row=rrr;
+!  call,file="squeeze_flathv/fit_ir6/fit_squeeze19.madx";
+!  call,file="squeeze_flathv/fit_ir6/fit_squeeze20.madx";
+!  call,file="squeeze_flathv/fit_ir6/fit_squeeze21.madx";
+!  call,file="squeeze_flathv/fit_ir6/fit_squeeze22.madx";
+!  call,file="squeeze_flathv/fit_ir6/fit_squeeze22.madx";
+!  call,file="squeeze_flathv/fit_ir6/fit_squeeze23.madx";
+!  call,file="squeeze_flathv/fit_ir6/fit_squeeze24.madx";
+!  call,file="squeeze_flathv/fit_ir6/fit_squeeze25.madx";
+!  call,file="squeeze_flathv/fit_ir6/fit_squeeze26.madx";
+!  call,file="squeeze_flathv/fit_ir6/fit_squeeze27.madx";
+!  call,file="squeeze_flathv/fit_ir6/fit_squeeze28+29.madx";
+!  call,file="squeeze_flathv/fit_ir6/fit_squeeze30.madx";
+!  call,file="squeeze_flathv/fit_ir6/fit_squeeze31.madx";
 !  call,file="squeeze_flathv/fit_ir6/fit_squeeze32.madx";
 !  call,file="squeeze_flathv/fit_ir6/fit_squeeze33.madx";
 !  call,file="squeeze_flathv/fit_ir6/fit_squeeze34.madx";
@@ -143,16 +156,3 @@ value,ttt,rrr;
 
 return;
 
-!  call,file="squeeze_flathv/fit_ir6/fit_squeeze19.madx";
-!  call,file="squeeze_flathv/fit_ir6/fit_squeeze20.madx";
-!  call,file="squeeze_flathv/fit_ir6/fit_squeeze21.madx";
-!  call,file="squeeze_flathv/fit_ir6/fit_squeeze22.madx";
-!  call,file="squeeze_flathv/fit_ir6/fit_squeeze22.madx";
-!  call,file="squeeze_flathv/fit_ir6/fit_squeeze23.madx";
-!  call,file="squeeze_flathv/fit_ir6/fit_squeeze24.madx";
-!  call,file="squeeze_flathv/fit_ir6/fit_squeeze25.madx";
-!  call,file="squeeze_flathv/fit_ir6/fit_squeeze26.madx";
-!  call,file="squeeze_flathv/fit_ir6/fit_squeeze27.madx";
-!  call,file="squeeze_flathv/fit_ir6/fit_squeeze28+29.madx";
-!  call,file="squeeze_flathv/fit_ir6/fit_squeeze30.madx";
-!  call,file="squeeze_flathv/fit_ir6/fit_squeeze31.madx";

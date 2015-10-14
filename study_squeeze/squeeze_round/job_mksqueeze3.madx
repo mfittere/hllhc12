@@ -101,7 +101,7 @@ while(rrr<=eee){
 value,betx_ip1,betx_ip5;
 value,ttt,rrr;
 
-call,file="rematchir6/opt_presqueeze_new.madx";
+call,file="opt_new/opt_presqueeze_new.madx";
 exec,check_ip(b1); exec,check_ip(b2);
 jac_calls=0;
 call,file="squeeze_round/ir8_fit/fit_squeeze3.madx";
