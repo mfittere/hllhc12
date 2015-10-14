@@ -1,4 +1,3 @@
-!!!ONLY MATCH IR6!!!
 ---- squeeze_round/squeeze12/ir6_log_str.tfs
 squeeze1: job_mksqueeze1.madx, *ir6b2m.madx, *ir6b1m.madx -> very bumpy squeeze!
           - IR6: values form HLLHCV1.0, constraint minimum value of b[xy]dumpb[12] and maximum value of dx
@@ -63,28 +62,59 @@ squeeze20: job_mksqueeze18.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze20.madx
           - IR6: interpolate + constraint betatcdqb[12], dumxkickb[12]_tcsg, b[xy]dumpb[12],
             values loaded from squeeze19/ir6_log_str.tfs
 
----- squeeze_round/squeeze24/ir6_log_str.tfs
+---- squeeze_round/squeeze24/ir6_log_str.tfs, squeeze_round/squeeze3/ir[248]_round.tfs
 squeeze21: job_mksqueeze21.madx, *ir6b2m.madx, *ir6b1m.madx
           - IR6: get squeeze20 with new round squeeze in the end
+squeeze21a: job_mksqueeze21a.madx 
+          - IR2/4/8: reversed presqueeze -> flat optics
 squeeze22: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze22.madx, squeeze21/ir6_log_str.tfs
           - IR6: interpolate + constraint bet[xy]tcdqb[12], dumxkickb[12]_tcsg, bydumpb[12],
+squeeze22a: job_mksqueeze22a.madx, fit_squeeze22a.madx, squeeze21a/ir[248]_log_str.tfs 
+          - IR2: smoothen kq4.r2b1,kq5.l2b2 ->better
+          - IR4: smoothen kq8.r4b1,kq10.r4b2 -> better 
+          - IR8: smoothen kq4.l8b2,kq7.r8b1 
 squeeze23: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze23.madx, squeeze22/ir6_log_str.tfs
           - IR6: interpolate + constraint bet[xy]tcdqb[12], dumxkickb[12]_tcsg, bydumpb[12],
             interpolate bxdumpb[12]
+squeeze23a: job_mksqueeze22a.madx, fit_squeeze23a.madx, squeeze22a/ir[248]_log_str.tfs 
+          - IR2: smoothen kq4.r2b1,kq5.l2b2,kq5.r2b2 
+          - IR4: smoothen kq5.r4b1,kq10.r4b2,kq5.l4b2
+          - IR8: smoothen  kq4.l8b2+kq10.l8b2,kq7.r8b1 
+squeeze24a: job_mksqueeze22a.madx, fit_squeeze24a.madx, squeeze23a/ir[248]_log_str.tfs 
+          - IR2: smoothen kq4.r2b1,kq5.l2b2,kq5.r2b2
+          - IR4: smoothen kq5.r4b1,kq8.l4b1,kq10.r4b2,kq5.l4b2,kq7.l4b2
+          - IR8: smoothen  kq4.l8b2+kq10.l8b2+kq4.r8b2,kq7.r8b1 
+          -> smooth squeeze IR2,IR8
+squeeze25a: job_mksqueeze25a.madx, fit_squeeze25a.madx, squeeze24a/ir[248]_log_str.tfs 
+            (squeeze round wrong loaded) 
+          - IR4: smoothen kq5.r4b1,kqt13.l4b1, kq10.r4b2,kq5.l4b2,kq7.l4b2 (beam 2 unchanged)
+squeeze26a: job_mksqueeze25a.madx, fit_squeeze26a.madx, squeeze25a/ir[248]_log_str.tfs 
+            (squeeze round wrong loaded) 
+          - IR4: smoothen kq5.r4b1,kqt12.l4b1,kqt12.r4b1, kq10.r4b2,kq5.l4b2,kq7.l4b2 (beam 2 unchanged)
 squeeze24-26: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze[24-26].madx, squeeze[23-25]/ir6_log_str.tfs
           - IR6: interpolate + constraint bet[xy]tcdqb[12], dumxkickb[12]_tcsg, kq10.r6b2, kq5.r6b1
             only with > constraints: b[xy]dumpb[12], dx, dpx
 squeeze27: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze27.madx, squeeze26/ir6_log_str.tfs
           - IR6: interpolate + constraint bet[xy]tcdqb[12], dumxkickb[12]_tcsg, 
             only with > constraints: b[xy]dumpb[12], dx, dpx
+squeeze27a: job_mksqueeze25a.madx, fit_squeeze27a.madx, squeeze26a/ir[248]_log_str.tfs 
+          - IR4: smoothen kq5.r4b1,kqt13.l4b1, kq10.r4b2,kq5.l4b2,kq7.l4b2 (beam 2 unchanged)
 squeeze28-29: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze[28-29].madx, squeeze27-28/ir6_log_str.tfs
           - IR6: interpolate + constraint betytcdqb[12],betxtcdqb1, dumxkickb[12]_tcsg (if possible),
             interpolate + constraint kq10.r6b2 (flatten kq10.r6b2)
             only with > constraints: b[xy]dumpb[12], dx, dpx, betxtcdqb2
+squeeze28a: job_mksqueeze25a.madx, fit_squeeze28a.madx, squeeze27a/ir[248]_log_str.tfs 
+          - IR4: smoothen kq10.r4b1,kqt13.l4b1,kq10.r4b2,kq5.l4b2,kq7.l4b2 (beam 2 unchanged)
+squeeze29a: job_mksqueeze25a.madx, fit_squeeze29a.madx, squeeze28a/ir[248]_log_str.tfs 
+          - IR4: smoothen kq8.r4b1,kqt13.l4b1,kq10.r4b2,kq5.l4b2,kq7.l4b2 (beam 2 unchanged)
+          -> smooth squeeze IR4
 squeeze30: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze30+31.madx, squeeze29/ir6_log_str.tfs
           - IR6: interpolate + constraint betytcdqb[12],betxtcdqb1, dumxkickb[12]_tcsg,
             interpolate + constraint kq4 (flatten kq4)
             only with > constraints: b[xy]dumpb[12], dx, dpx, betxtcdqb2
+squeeze30a: job_mksqueeze25a.madx, fit_squeeze30a.madx, squeeze29a/ir[248]_log_str.tfs 
+          - IR4: smoothen kq9.r4b1 (+kqt13.l4b1),kq10.r4b2,kq5.l4b2,kq7.l4b2 (beam 2 unchanged)
+          -> bumpy squeeze, smoothening kq9.r4b1 is not possible
 squeeze31: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze30+31.madx, squeeze30/ir6_log_str.tfs
           - IR6: interpolate + constraint betytcdqb[12],betxtcdqb1, dumxkickb[12]_tcsg,
             interpolate + constraint kq4, kq10.r6b2 (flatten kq4+kq10)
@@ -149,7 +179,7 @@ squeeze46: job_mksqueeze22.madx, *ir6b2m.madx, *ir6b1m.madx, fit_squeeze38.madx,
             only with > constraints: dx, dpx, betxtcdqb[12], bxdumpb1
             -> smoothest solution
 
-final squeeze: squeeze 45
+final squeeze: IR6: squeeze45, IR2: squeeze24a, IR8: squeeze24a, IR4: squeeze29a
 
 
 constraints: 8 (ds) + 2 (dump) + 1 (mkd->tcdq) + 1 (tcdq) = 12
