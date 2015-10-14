@@ -11,7 +11,7 @@ squeeze3: job_mksqueeze3.madx, *ir6b[12]m_old.madx, base optics: slhc/opt_presqu
           - IR8 fix kq4, interpolate kq* of squeeze2/ir8_round.tfs, fit_ir8/fit_squeeze3.madx
           - IR6 no dump constraints (bxdumpb1,bydumpb1,dmuxkickb1) and no beta @ MKD and TCDQ
 squeeze4: job_mksqueeze4.madx, *ir6b2m_old.madx, *ir6b1md.madx
-          - IR2/8 as in squeeze3
+          - IR8 as in squeeze3
           - IR4/6: use squeeze3 as starting point for IR6, beam2 already fine
             squeeze4a: IR6: base optics: slhc/opt_presqueeze.madx
                             linear interpolation until minimum betxdumpb1 is reached, then keep constant 
@@ -88,6 +88,8 @@ squeeze24: job_mksqueeze13-24.madx, *ir6b2m.madx, *ir6b1m.madx, ir6table=squeeze
 squeeze25: job_mksqueeze25.madx, *ir6b2m.madx, *ir6b1m.madx, squeeze25/ir6_log_str.tfs
            -IR6: squeeze24 with V1.1 injection optics (9.4 n1 instead of 9.24) 
                  for beam2 -> note bydumpb2 = 3550 m
+
+final squeeze: IR2: squeeze3, IR4: squeeze3, IR6: squeeze24, IR8: squeeze3
 
 constraints: 6 (DS) + 2 (dump) + 2 (tcdq) + 1 (mu MKD->TCSG) + 2 (dx,dpx ip6) = 15
 variables:   4*2 (Q5-Q10) + 3*2 (DS) + 1 (Q4) = 15
