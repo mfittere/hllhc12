@@ -40,7 +40,7 @@ def bdump(oo):
 def print_ir6(oo,elem,lbl):
   elem=oo.name[oo//elem][0]
   idx=int(where(oo.name==elem)[0])
-  fmt='%s'+'%4.2f  '*4
+  fmt='%s'+'%4.0f  '*4
   print fmt%((lbl.ljust(15),)+tuple([ oo[tt][idx] for tt in 'betx','bety','alfx','alfy' ]))
 def print_comp_layout_mkd_tcdq():
   for bb in '12':
@@ -56,6 +56,19 @@ def print_comp_layout_mkd_tcdq():
       print 'layout'.ljust(15)+'betx bety alfx alfy' 
       for lbl,oo in zip(['runI4TeV60cm','runII80cm','hllhc10','hllhc11'],[oorunI,oorunII,oov10,oov11]):
         print_ir6(oo,elem,lbl)
+def print_comp_layout_inj():
+  for bb in '12':
+    print '---- Beam '+bb
+    optwww='/afs/cern.ch/work/l/lhcopt/public/lhc_optics_web/www/'
+    oorunI=optics.open(optwww+'pprun1/inj/ap_ir6b'+bb+'.tfs')
+    oorunII=optics.open(optwww+'opt2015/inj/ap_ir6b'+bb+'.tfs')
+    oov10=optics.open(optwww+'hllhc10/inj/ap_ir6b'+bb+'.tfs')
+    oov11=optics.open(optwww+'hllhc11/inj/ap_ir6b'+bb+'.tfs')
+    oov12=optics.open('inj_new/ap_ir6b'+bb+'.tfs')
+    print 'layout'.ljust(15)+'minimum n1' 
+    for lbl,oo in zip(['runI','runII','hllhc10','hllhc11','hllhc12'],[oorunI,oorunII,oov10,oov11,oov12]):
+      m=np.argmin(oo.n1)
+      print '%s %4.2f %s %4.2f'%(lbl,oo.betx[oo//'IP5'],oo.name[m],oo.n1[m])
 
 #----- print twiss at TCDQ, MKD and IR6 for LHC optics and HLLHC optics
 #print_comp_layout_mkd_tcdq()
@@ -68,7 +81,16 @@ def print_comp_layout_mkd_tcdq():
 #print min(ap.n1)
 #savefig('flat/ap_arc45_flat.png')
 
+#plot injection optics
 close('all')
+for bb in '12':
+  optwww='/afs/cern.ch/work/l/lhcopt/public/lhc_optics_web/www/'
+  oov12=optics.open('inj_new/twiss_ir6b'+bb+'.tfs')
+  #oov1=optics.open(optwww+'hllhc10/inj/ap_ir6b'+bb+'.tfs')
+  oov1=optics.open(optwww+'hllhc11/inj/ap_ir6b'+bb+'.tfs')
+  oov12.plotap(ref=9.4)
+  oov1.s=oov1.s+oov12.s[oov12//('S.DS.L6.B%s'%bb)]
+  plot(oov1.s,oov1.n1,color='r')
 #for ir in '2468':
 #  plot_ir(ir)
 #plot_arc()
