@@ -25,16 +25,17 @@ readmytable,table=ir2_round    ,file="ir2_round.tfs";
 readmytable,table=ir4_round    ,file="ir4_round.tfs";
 readmytable,table=ir6_round    ,file="ir6_round.tfs";
 readmytable,table=ir8_round    ,file="ir8_round.tfs";
-!readmytable,table=ir2_flat     ,file="ir2_flat.tfs";
-!readmytable,table=ir4_flat     ,file="ir4_flat.tfs";
-!readmytable,table=ir6_flat     ,file="ir6_flat.tfs";
-!readmytable,table=ir8_flat     ,file="ir8_flat.tfs";
-!readmytable,table=ir2_flathv   ,file="ir2_flathv.tfs";
-!readmytable,table=ir4_flathv   ,file="ir4_flathv.tfs";
-!readmytable,table=ir6_flathv   ,file="ir6_flathv.tfs";
-!readmytable,table=ir8_flathv   ,file="ir8_flathv.tfs";
+readmytable,table=ir2_flat     ,file="ir2_flat.tfs";
+readmytable,table=ir4_flat     ,file="ir4_flat.tfs";
+readmytable,table=ir6_flat     ,file="ir6_flat.tfs";
+readmytable,table=ir8_flat     ,file="ir8_flat.tfs";
+readmytable,table=ir2_flathv   ,file="ir2_flathv.tfs";
+readmytable,table=ir4_flathv   ,file="ir4_flathv.tfs";
+readmytable,table=ir6_flathv   ,file="ir6_flathv.tfs";
+readmytable,table=ir8_flathv   ,file="ir8_flathv.tfs";
 
 saveopt(nnn,aaa,bbb,ccc,ddd): macro={
+!exec,check_ip(b1); exec,check_ip(b2);
 call,file="slhc/toolkit/clean_specs.madx";
 call,file="slhc/toolkit/rematch_squeeze.madx";
 if (tarsqueeze>1e-15) { return;};
@@ -49,6 +50,7 @@ system,"cp temp/optics.madx opt_nnn_aaa_bbb_ccc_ddd.madx";
 };
 };
 
+return;
 ! round
 call,file="opt_presqueeze_new.madx";
 iii=1; iiistop=table(ir2_round,tablelength);
@@ -64,10 +66,9 @@ ccc=round(betx_ip5*1e3); ddd=round(betx_ip5*1e3);
 exec,saveopt(round,$aaa,$bbb,$ccc,$ddd);
 iii=iii+1;
 };
-return;
 
 ! flat
-call,file="slhc/opt_flat_thin.madx";
+call,file="opt_presqueeze_new.madx";
 iii=1; iiistop=table(ir2_flat,tablelength);
 value,iii,iiistop;
 while(iii<=iiistop){
@@ -75,19 +76,16 @@ setvars,table=ir2_flat,row=iii;
 setvars,table=ir4_flat,row=iii;
 setvars,table=ir6_flat,row=iii;
 setvars,table=ir8_flat,row=iii;
-value,sc1,sc5;
-aaa=round(sc1*1e3); bbb=300;
-ccc=300           ; ddd=round(sc5*1e3);
-betxip1b1=round(aaa)/1e3;betyip1b1=round(bbb)/1e3;
-betxip5b1=round(ccc)/1e3;betyip5b1=round(ddd)/1e3;
-value,nnn,betxip1b1,betyip1b1,betxip5b1,betyip5b1;
+value,betx_ip1,betx_ip5,bety_ip1,bety_ip5;
+aaa=round(betx_ip1*1e3); bbb=round(betx_ip1*1e3);
+ccc=round(betx_ip5*1e3); ddd=round(betx_ip5*1e3);
 exec,saveopt(flat,$aaa,$bbb,$ccc,$ddd);
 iii=iii+1;
 if (aaa==bbb){iii=1000000;};
 };
 
 ! flathv
-call,file="slhc/opt_flathv_thin.madx";
+call,file="opt_presqueeze_new.madx";
 exec,check_ip(b1); exec,check_ip(b2);
 iii=1; iiistop=table(ir2_flathv,tablelength);
 value,iii,iiistop;
@@ -96,54 +94,10 @@ setvars,table=ir2_flathv,row=iii;
 setvars,table=ir4_flathv,row=iii;
 setvars,table=ir6_flathv,row=iii;
 setvars,table=ir8_flathv,row=iii;
-value,sc1,sc5;
-bbb=round(sc1*1e3); aaa=300;
-ddd=300           ; ccc=round(sc5*1e3);
-betxip1b1=round(aaa)/1e3;betyip1b1=round(bbb)/1e3;
-betxip5b1=round(ccc)/1e3;betyip5b1=round(ddd)/1e3;
-value,nnn,betxip1b1,betyip1b1,betxip5b1,betyip5b1;
+value,betx_ip1,betx_ip5,bety_ip1,bety_ip5;
+aaa=round(betx_ip1*1e3); bbb=round(betx_ip1*1e3);
+ccc=round(betx_ip5*1e3); ddd=round(betx_ip5*1e3);
 exec,saveopt(flathv,$aaa,$bbb,$ccc,$ddd);
-iii=iii+1;
-if (aaa==bbb){iii=1000000;};
-};
-
-! sflat
-call,file="slhc/opt_sflat_thin.madx";
-exec,check_ip(b1); exec,check_ip(b2);
-iii=1; iiistop=table(ir2_sflat,tablelength);
-value,iii,iiistop;
-while(iii<=iiistop){
-setvars,table=ir2_sflat,row=iii;
-setvars,table=ir4_sflat,row=iii;
-setvars,table=ir6_sflat,row=iii;
-setvars,table=ir8_sflat,row=iii;
-value,sc1,sc5;
-aaa=round(sc1*1e3); bbb=200;
-ccc=200           ; ddd=round(sc5*1e3);
-betxip1b1=round(aaa)/1e3;betyip1b1=round(bbb)/1e3;
-betxip5b1=round(ccc)/1e3;betyip5b1=round(ddd)/1e3;
-value,nnn,betxip1b1,betyip1b1,betxip5b1,betyip5b1;
-exec,saveopt(sflat,$aaa,$bbb,$ccc,$ddd);
-iii=iii+1;
-if (aaa==bbb){iii=1000000;};
-};
-
-! sflathv
-call,file="slhc/opt_sflathv_thin.madx";
-iii=1; iiistop=table(ir2_sflathv,tablelength);
-value,iii,iiistop;
-while(iii<=iiistop){
-setvars,table=ir2_sflathv,row=iii;
-setvars,table=ir4_sflathv,row=iii;
-setvars,table=ir6_sflathv,row=iii;
-setvars,table=ir8_sflathv,row=iii;
-value,sc1,sc5;
-bbb=round(sc1*1e3); aaa=200;
-ddd=200           ; ccc=round(sc5*1e3);
-betxip1b1=round(aaa)/1e3;betyip1b1=round(bbb)/1e3;
-betxip5b1=round(ccc)/1e3;betyip5b1=round(ddd)/1e3;
-value,nnn,betxip1b1,betyip1b1,betxip5b1,betyip5b1;
-exec,saveopt(sflathv,$aaa,$bbb,$ccc,$ddd);
 iii=iii+1;
 if (aaa==bbb){iii=1000000;};
 };
