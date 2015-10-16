@@ -1,5 +1,3 @@
-
-
 scale = 23348.89927;
 scmin := 0.03*7000./nrj;
 qtlimitx28 := 1.0*225.0/scale;
@@ -83,13 +81,14 @@ endmatch;
 
 exec,mk_irtwiss(6,b2);
 value,kq4.r6b2+0.004833837730000;
-dmuxkickb2=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCSG.4L6.B2,mux);
+dmuxkickb2_tcsg=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCSG.4L6.B2,mux);
+dmuxkickb2=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCDQA.A4L6.B2,mux);
 value,dmuxkickb2;
 al_dump=761;
-bxdumpb2=refbetxip6b2+2*al_dump*refalfxip6b2+
-                        al_dump^2*(1+refalfxip6b2^2)/refbetxip6b2;
-bydumpb2=refbetyip6b2+2*al_dump*refalfyip6b2+
-                        al_dump^2*(1+refalfyip6b2^2)/refbetyip6b2;
+bxdumpb2=betxip6b2+2*al_dump*alfxip6b2+
+                        al_dump^2*(1+alfxip6b2^2)/betxip6b2;
+bydumpb2=betyip6b2+2*al_dump*alfyip6b2+
+                        al_dump^2*(1+alfyip6b2^2)/betyip6b2;
 value,bxdumpb2,bydumpb2;
 
 tarir6b2=tar;

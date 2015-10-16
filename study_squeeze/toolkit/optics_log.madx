@@ -209,6 +209,8 @@ make_opticstbl_ir6(ir6):macro={
     bxdumpb1,bydumpb1,bxdumpb2,bydumpb2,
     dmuxkickb1,dmuxkickb2,dmuxkickb1_tcsg,dmuxkickb2_tcsg,
     betxtcdqb1,betxtcdqb2,betytcdqb1,betytcdqb2,
+    betxtcdsb1,betxtcdsb2,betytcdsb1,betytcdsb2,
+    betxtcsgb1,betxtcsgb2,betytcsgb1,betytcsgb2,
     betxmkdb1,betxmkdb2,betymkdb1,betymkdb2,
     scxir5, scyir5,betx_ip5,bety_ip5,
     tarir6b1,tarir6b2,
