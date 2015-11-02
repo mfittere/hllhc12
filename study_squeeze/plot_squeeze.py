@@ -71,7 +71,7 @@ def print_comp_layout_inj():
       print '%s %4.2f %s %4.2f'%(lbl,oo.betx[oo//'IP5'],oo.name[m],oo.n1[m])
 
 #----- print twiss at TCDQ, MKD and IR6 for LHC optics and HLLHC optics
-#print_comp_layout_mkd_tcdq()
+print_comp_layout_mkd_tcdq()
 ##----- aperture for HLLHCV11 flat optics
 #optarc45='/afs/cern.ch/work/l/lhcopt/public/lhc_optics_web/www/hllhc11/flat/'
 #optarc45='flat/'
@@ -81,28 +81,28 @@ def print_comp_layout_inj():
 #print min(ap.n1)
 #savefig('flat/ap_arc45_flat.png')
 
-#plot injection optics
-close('all')
-for bb in '12':
-  optwww='/afs/cern.ch/work/l/lhcopt/public/lhc_optics_web/www/'
-  oov12=optics.open('inj_new/twiss_ir6b'+bb+'.tfs')
-  #oov1=optics.open(optwww+'hllhc10/inj/ap_ir6b'+bb+'.tfs')
-  oov1=optics.open(optwww+'hllhc11/inj/ap_ir6b'+bb+'.tfs')
-  oov12.plotap(ref=9.4)
-  oov1.s=oov1.s+oov12.s[oov12//('S.DS.L6.B%s'%bb)]
-  plot(oov1.s,oov1.n1,color='r')
-#for ir in '2468':
-#  plot_ir(ir)
-#plot_arc()
-#for ir in '2468':
-#  StrTable.open('../slhcv10/squeeze/ir%s_sround.tfs'%ir).plot_squeeze(title='IR%s v10'%ir)
-#  savefig('ir%s_squeeze_round_v10.png'%ir)
-#for ir in '248':
-#  StrTable.open('squeeze5/ir%s_log_str.tfs'%ir).plot_squeeze(title='IR%s'%ir)
-#  savefig('ir%s_squeeze5.png'%ir)
-#StrTable.open('squeeze5/ir6_log_str.tfs').plot_squeeze_ir6(title='IR6')
-#savefig('ir6_squeeze5.png')
-#StrTable.open('squeeze5/ir6_log_str.tfs').plot_betip(title='Twiss IR6')
-#savefig('ir6_twiss_squeeze5.png')
-draw()
-show()
+##plot injection optics
+#close('all')
+#for bb in '12':
+#  optwww='/afs/cern.ch/work/l/lhcopt/public/lhc_optics_web/www/'
+#  oov12=optics.open('inj_new/twiss_ir6b'+bb+'.tfs')
+#  #oov1=optics.open(optwww+'hllhc10/inj/ap_ir6b'+bb+'.tfs')
+#  oov1=optics.open(optwww+'hllhc11/inj/ap_ir6b'+bb+'.tfs')
+#  oov12.plotap(ref=9.4)
+#  oov1.s=oov1.s+oov12.s[oov12//('S.DS.L6.B%s'%bb)]
+#  plot(oov1.s,oov1.n1,color='r')
+##for ir in '2468':
+##  plot_ir(ir)
+##plot_arc()
+##for ir in '2468':
+##  StrTable.open('../slhcv10/squeeze/ir%s_sround.tfs'%ir).plot_squeeze(title='IR%s v10'%ir)
+##  savefig('ir%s_squeeze_round_v10.png'%ir)
+##for ir in '248':
+##  StrTable.open('squeeze5/ir%s_log_str.tfs'%ir).plot_squeeze(title='IR%s'%ir)
+##  savefig('ir%s_squeeze5.png'%ir)
+##StrTable.open('squeeze5/ir6_log_str.tfs').plot_squeeze_ir6(title='IR6')
+##savefig('ir6_squeeze5.png')
+##StrTable.open('squeeze5/ir6_log_str.tfs').plot_betip(title='Twiss IR6')
+##savefig('ir6_twiss_squeeze5.png')
+#draw()
+#show()
