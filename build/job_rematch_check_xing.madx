@@ -165,17 +165,20 @@ exec,resetXscheme(1);
 exec,resetXscheme(5);
 exec,cableXscheme(1);
 exec,cableXscheme(5);
-!call,file="toolkit/rematch_xing_ir15.madx";!match crossing ir1528
+! you might have to run 
+!call,file="slhc/toolkit/rematch_crossing.madx";in order to set psep and xang
+psep=0.75e-3;!reset to 0.75e-3 instead of 2.0e-3
+!call,file="slhc/toolkit/rematch_xing_ir15.madx";!match crossing ir1528
 xip5b1= 2e-3; pxip5b1=0;
 xip5b2= 2e-3; pxip5b2=0;
-call,file="slhc/toolkit/mk_xing_ir5h.madx";
+call,file="slhc/toolkit/offset_deltaposq4_8m/mk_xing_ir5h.madx";
 xip1b1= 2e-3; pxip1b1=0;
 xip1b2= 2e-3; pxip1b2=0;
-call,file="slhc/toolkit/mk_xing_ir1h.madx";
+call,file="slhc/toolkit/offset_deltaposq4_8m/mk_xing_ir1h.madx";
 
 yip5b1= 2e-3; pyip5b1=0;
 yip5b2= 2e-3; pyip5b2=0;
-call,file="slhc/toolkit/mk_xing_ir5v.madx";
+call,file="slhc/toolkit/offset_deltaposq4_8m/mk_xing_ir5v.madx";
 yip1b1= 2e-3; pyip1b1=0;
 yip1b2= 2e-3; pyip1b2=0;
-call,file="slhc/toolkit/mk_xing_ir1v.madx";
+call,file="slhc/toolkit/offset_deltaposq4_8m/mk_xing_ir1v.madx";
