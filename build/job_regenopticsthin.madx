@@ -206,10 +206,3 @@ match_on_aperture=1; epsap=-0;
 call,file="toolkit/rematch_ir15_b12.madx";
 };
 
-
-
-
-
-
-
-

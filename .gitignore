@@ -1,6 +1,7 @@
-*.swp
+*.sw?
+*.png
 *.pyc
-twiss_*.tfs
+*.tfs
 .DS_Store
 Q1_APERTURE
 Q2Q3_APERTURE
